@@ -1,0 +1,153 @@
+# The Upper Colorado Corridor
+
+> Spillover Predictor's first end-to-end corridor. Within a hydrologically connected
+> corridor we name which parcels are structurally load-bearing for specific downstream
+> beneficiaries, with calibrated uncertainty, and we tested those ecological scores
+> against real water-quality data and reported, in public, that they do not yet beat a
+> two-variable baseline. This page is a data-driven landing built entirely from the
+> upper_colorado_corridor_mvp run; every number resolves to data/bundle.js (window.APP_DATA).
+
+engine: spillover_predictor_v3.0
+model_card: keystone_state_space_v0_1
+case_id: upper_colorado_corridor_mvp
+artifact: v1.7-agent-portal
+data_mode: public_live
+prereg: SHA-256 frozen 2026-05-28, before unblinding
+seed: 20260507
+
+## Why this exists (the market motivation)
+
+The world needs to move roughly $700B/yr into nature (Paulson/TNC biodiversity finance gap)
+and >50% of global GDP is nature-dependent (WEF/PwC), yet capital cannot underwrite a diffuse
+public good ("healthier watersheds in general"); it can only price a specific asset tied to a
+specific beneficiary cashflow at risk. Site-level scores measure condition, not dependency.
+An ecosystem is a network: keystones are high-centrality nodes, spillovers are edge flows, and
+a beneficiary is where a flow becomes a cashflow. Resolving that source->conveyance->demand
+dependency graph is the missing translation layer between what ecology can observe and what a
+market can price. The credibility bar is set by carbon's collapse (independent review found the
+large majority of a leading standard's REDD+ credits delivered no real benefit; nature-based
+prices fell from ~$15 to ~$1), so a pre-registered, concurrent-validity-tested, uncertainty-honest
+engine is the flight-to-quality asset. (These $ figures are EXTERNAL market context, not the
+corridor's own economics.)
+
+## The primitive: the keystone polygon
+
+The atomic unit is the "keystone polygon": a geographically delineated ecological asset (a land
+polygon) whose spatial position and mechanistic pathways exert disproportionate influence over the
+stability and productivity of the surrounding managed estate and its downstream beneficiaries. Named
+and scored one polygon at a time, not a portfolio average or a site rating. Scientific lineage
+(species -> structure -> polygon): keystone species and structural (not abundance) influence
+(Paine 1966); keystone STRUCTURES, place-as-keystone (Tews et al. 2004); cross-boundary meta-ecosystem
+flows and ecosystem-service "servicesheds" (Loreau et al. 2003; Bagstad et al. 2013); graph centrality
+of habitat patches as a measurable spatial keystone (Urban & Keitt 2001); spatial non-stationarity
+licensing per-polygon underwriting (GWR, Brunsdon et al. 1996). Naming the land polygon as the
+underwriting unit is the new synthesis (Gutierrez, "Naturalizing Finance: The Land Next Door").
+
+## Dual-legible by design (the agentic economy)
+
+The deliverable ships human-readable AND agent-consumable: this llms.txt plus machine-readable,
+provenance-carrying data, so an AI agent pre-screening a deal can re-pull each source and re-run each
+check itself rather than discount a document it cannot parse. Every figure traces to a source.
+
+## Honesty status (read this first)
+
+- Grade: SCREENING-GRADE, not investment-grade. Proves the engine, not investability lift.
+- The headline result is NEGATIVE and is the hero of the page, not a footnote.
+- No corridor-level dollar-at-risk or cap rate is computed anywhere; none is shown. The only
+  dollar figures on the page are external market-context facts (the $700B gap, carbon prices).
+  The ask names the missing corridor dollar as the next step.
+- Parcels are candidate envelopes: 24 verified_boundary, 32 public_seed_envelope of 56.
+- Mechanism evidence is modeled-overlay (336 records; live_comid_count = 0).
+- No mechanism clears validated_incremental.
+
+## The claim, and its boundary
+
+allowed: evidence navigation, screening-grade diligence, verification routing.
+do_not_infer:
+  - parcel-caused facility outcomes (routing is service-area, not causal).
+  - treatment effects from causal-readiness tiers.
+  - station proximity as mechanism verification.
+  - screening outputs as investment-performance evidence.
+caveats:
+  - Homestake beneficiaries are Aurora Water and Colorado Springs Utilities, not Denver Water.
+  - Ute Water primary supply is Plateau Creek / Grand Mesa; the Colorado is backup.
+  - Moab Regional Hospital is on municipal wells, not a direct Colorado River intake.
+
+## The corridor
+
+length_km: 230
+bbox: [-109.75, 38.20, -106.05, 39.95]
+catchments: 182   huc8_subbasins: 20   parcels: 56   zones: 3
+zones:
+  - source_headwaters      (9,000 to 12,000 ft) generate the water
+  - connector_mainstem     (5,500 to 7,500 ft)  convey it
+  - demand_valley_canyon   (4,500 to 5,500 ft)  consume it
+beneficiaries: 16, routed by hydrology through zone-weighted service profiles.
+
+## The graph result (forward win, setup for the reckoning)
+
+forward_impact_paths: 255
+reverse_dependency_paths: 199
+matched_both_ways: 44 of 56
+keystone_ratio: 4 of 56 (7.1%) clear the prior credible interval (ci_low > 0.5), all Eagle
+            headwaters (Red Cliff / Eagle River); 16 of 56 (28.6%) at keystone_score >= 0.50.
+top_parcel: ucc-red_cliff_eagle-03, keystone posterior mean 0.67 (90% CI 0.55 to 0.79), zone
+            source_headwaters, provenance verified_boundary (Eagle County parcels portal, live),
+            rank 1 of 56. Clears the prior; BELOW the keystone gate (0.72) and investable gate (0.80).
+gates: keystone 0.72, investable 0.80, bad_neighbor 0.55.
+
+## The reckoning (concurrent validity vs 232 real stations)
+
+method: COMID-catchment unit; leave-one-HUC8-out spatial CV; 2000-permutation null;
+        macro-gradient control = elevation + % developed.
+in_sample_signal_is_real:
+  turbidity   n=45  rho=-0.329 p=0.026
+  ssc         n=38  rho=-0.373 p=0.021
+  tss         n=63  rho=-0.424 p=0.001
+  conductance n=140 rho=-0.478 p=0.0005
+but:
+  forest_pct_alone_rho=-0.391 beats the composite (-0.329)
+  partial rho after elevation+developed control: -0.047 (signal collapses)
+out_of_sample_r2 (leave-one-HUC8-out, log-turbidity, n=45; higher is better):
+  elevation + %developed only .... +0.403   (baseline WINS)
+  forest % only .................. -0.375
+  hand-set sediment_avoidance .... -0.398
+  all mechanism features (refit) . -1.017
+  mechanism features + confounders +0.270  (dR2 -0.13 vs baseline)
+verdict: associated_not_incremental (WEAK)
+diagnosis: the bottleneck is the FEATURES, not the weights; their relationship to water
+           quality is spatially non-stationary and does not transfer to a new sub-basin.
+second_mechanism: hydrology_retention vs baseflow index -> not_supported (wrong sign;
+           forest-based retention peaks in flashier high-elevation snowmelt headwaters).
+
+## The recalibration (the honest turn), computed live
+
+The interactive recomputes the posterior LIVE from the engine's real precision-weighted Gaussian
+update in logit space (validation/coloradoriver/calibrated_likelihood.py): obs_sd = MAX_SD -
+(MAX_SD-BASE_SD)*sqrt(clip(oof_r2,0,1)), BASE_SD 0.45, MAX_SD 1.40, prior_p 0.54, prior_sd 0.82,
+mechanism_value 0.70. As observation noise widens from the synthetic (overconfident) obs_sd 0.678
+to the skill-calibrated obs_sd 1.40 (sediment_avoidance OOF R2 ~ 0.0), the posterior mean slides
+from a falsely-confident 0.638 to 0.583, back toward the mechanism prior of 0.54. Widening the
+noise pulls the posterior mean monotonically toward the prior mean; it cannot manufacture
+confidence the data does not support. (Note: the mechanism prior here is 0.54; the parcel-level
+keystone posterior uses a Beta(2,2) prior, mean 0.5 -- two different priors.)
+
+## The ask
+
+one real parcel, one verified payor, one dollar.
+contact: corridor@graphoflife.com
+
+## Provenance of this page
+
+source_run: case_studies/upper_colorado_corridor_mvp/
+geometry: data/geo.js (parcels, 232 stations, arcs, zone hulls, OOF scatter arrays) emitted by
+          data/_extract_geo.py from the run's processed GeoJSON + frozen validity record.
+hydrography: data/hydro.js (the corridor's real river network, HUC-8 basin frame, reservoirs),
+          fetched by data/_fetch_hydro.py from USGS WBD + NHDPlus HR (ArcGIS REST) and processed
+          by data/_build_hydro.py (dissolve by river name, clip to the Colorado corridor HUC-8s,
+          drop irrigation infrastructure). Basemap: MapLibre GL + CARTO dark-matter + Terrarium
+          DEM hillshade, all degrading to a solid dark canvas / d3 SVG fallback offline.
+numbers: data/bundle.js (window.APP_DATA). No value is invented; where a corridor value does not
+         exist (a dollar-at-risk / cap rate), the page says so. External market figures (the
+         $700B gap, carbon prices) are sourced context, clearly distinct from corridor economics.
+oof_report: validation/COLORADO_RIVER_EVIDENCE_REPORT.md (leave-one-HUC8-out table, pre-registered).

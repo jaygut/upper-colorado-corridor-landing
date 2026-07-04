@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Upper Colorado Corridor · Spillover Predictor</title>
+  <meta name="description" content="We built an engine to name the parcels a downstream economy leans on across a 230 km stretch of the Colorado, then let 232 real monitoring stations grade it. The reckoning is the story.">
+  <meta name="agent-readable" content="true">
+  <meta name="theme-color" content="#08203A">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="We let the river grade the model.">
+  <meta property="og:description" content="A hydrologically connected corridor, 56 candidate parcels, 16 named beneficiaries, and a negative result reported in public. Screening-grade, not investment-grade.">
+  <meta property="og:image" content="assets/og.svg">
+  <link rel="icon" href="assets/favicon.svg">
+  <!-- fonts: IBM Plex Sans (prose) + IBM Plex Mono (proof) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/brand.css">
+  <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+
+<!-- render surfaces -->
+<div id="stage"></div>
+<div id="atmo"></div>
+<div class="vignette"></div>
+<div class="progress" id="prog"><i></i></div>
+
+<!-- fixed HUD overlays -->
+<div class="map-legend" id="map-legend"></div>
+<div class="zone-hud" id="zone-hud">
+  <div class="z"><span class="lab">Source · headwaters</span><br><span class="elev">9,000 to 12,000 ft · generate</span></div>
+  <div class="z"><span class="lab">Conveyance · mainstem</span><br><span class="elev">5,500 to 7,500 ft · convey</span></div>
+  <div class="z"><span class="lab">Demand · valley &amp; canyon</span><br><span class="elev">4,500 to 5,500 ft · consume</span></div>
+</div>
+<div class="fallback-note" id="fallback-note" style="display:none">Static map (no WebGL): same corridor, parcels and stations, drawn from the run geometry.</div>
+<div class="map-attrib">Basemap &copy; <a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &middot; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a> &middot; hydrography USGS WBD / NHDPlus HR</div>
+
+<header class="site-header">
+  <a class="lockup" href="#story" aria-label="Spillover Predictor, the Upper Colorado Corridor">
+    <svg class="glyph" viewBox="0 0 26 26" aria-hidden="true">
+      <line x1="6" y1="6" x2="20" y2="9" stroke="#1AA89B" stroke-width="1.4"/>
+      <line x1="20" y1="9" x2="13" y2="21" stroke="#1AA89B" stroke-width="1.4"/>
+      <line x1="6" y1="6" x2="13" y2="21" stroke="#1AA89B" stroke-width="1.4" opacity=".5"/>
+      <circle cx="6" cy="6" r="3.1" fill="#1AA89B"/>
+      <circle cx="20" cy="9" r="3.1" fill="#3AD6A3"/>
+      <circle cx="13" cy="21" r="3.4" fill="#E8694D"/>
+    </svg>
+    <span class="lockup__name"><span class="lockup__product">Spillover Predictor</span><span class="lockup__sep"> · </span><span class="gol">the Upper Colorado Corridor</span></span>
+  </a>
+  <nav class="header-nav">
+    <a class="nav-cta" href="mailto:corridor@graphoflife.com?subject=Upper%20Colorado%20Corridor%20pack">Request the pack</a>
+  </nav>
+</header>
+
+<main class="story" id="story">
+
+  <!-- 0 · HOOK -->
+  <section class="step center active" data-scene="0"><div class="card">
+    <div class="eyebrow center">Landscape intelligence, tested</div>
+    <h1 class="hero-title">We let the <span class="a">river</span> grade the model.</h1>
+    <p class="body">Some parcels of land quietly hold up the water, the farms and the towns downstream of
+      them. This engine finds those parcels, names who depends on each one, and scores that dependency with
+      honest uncertainty, so nature can be underwritten like the infrastructure it already is. Across
+      <span class="hl" id="n-length"></span> km of the Colorado, from the Eagle headwaters to the Moab canyon,
+      we then handed it to the data, testing those scores against <span class="hl" id="n-stations"></span> real
+      monitoring stations and reporting, in public, that they do not yet beat a simple two-variable baseline.
+      That reckoning is the story.</p>
+    <p class="hero-proof"><span id="n-parcels"></span> candidate parcels · <span id="n-catch"></span> catchments across
+      <span id="n-huc8"></span> sub-basins · <span id="n-benef"></span> named beneficiaries · one run · live public data</p>
+  </div></section>
+
+  <!-- 1 · THE BLIND SPOT -->
+  <section class="step" data-scene="1"><div class="card">
+    <div class="eyebrow">Why this has to exist</div>
+    <h2 class="head">Capital cannot underwrite a public good it cannot point to.</h2>
+    <p class="body">The world faces a biodiversity finance gap on the order of 700 billion dollars a year, and
+      more than half of global GDP already leans on nature. Yet no market can buy &ldquo;healthier watersheds
+      in general&rdquo;. It can only underwrite a specific asset tied to a specific cashflow at risk, and that
+      is exactly where today's tools run out of road. They can score a site's ecological condition, but almost
+      none can tell you who downstream actually depends on it, or by how much. So capital stalls, not for want
+      of money but for want of an address, right at the moment of pricing.</p>
+    <p class="marketstat">$700B / yr biodiversity finance gap &middot; more than half of global GDP is
+      nature-dependent &middot; biodiversity credits are still priced cost-plus, with baselines seldom validated.
+      These are market-wide figures, not this corridor's own value, which we have not tried to price.</p>
+  </div></section>
+
+  <!-- 2 · WHY A GRAPH -->
+  <section class="step right" data-scene="2"><div class="card">
+    <div class="eyebrow">The missing translation layer</div>
+    <h2 class="head">An ecosystem is a network. Its value has to be priced like one.</h2>
+    <p class="body">Species counts are to ecosystem health what a headcount is to a company, a tidy number
+      that flatters and hides the thing that actually carries the risk. Value in a living system does not add
+      up site by site; it moves along edges. A keystone is the node a whole neighbourhood of the network leans
+      on. A spillover is what travels down those edges. A beneficiary is where that flow finally lands as a
+      cashflow. Resolve the dependency graph, from source through conveyance to demand, and for the first time
+      you can say which parcel underwrites which payor. That graph is what turns something ecology can only
+      watch into something a market can price. It is the engine.</p>
+    <div class="badge is-routing"><span class="dot"></span>A dependency graph, not a site rating: resolved parcel by parcel</div>
+  </div></section>
+
+  <!-- 3 · THE KEYSTONE POLYGON -->
+  <section class="step" data-scene="3"><div class="card">
+    <div class="eyebrow">The primitive</div>
+    <h2 class="head">The keystone polygon: the unit finance was missing.</h2>
+    <p class="body">In any living network, the pieces that matter most are rarely the biggest ones. Ecology
+      learned this the hard way in a tide pool. Remove one unremarkable starfish and the whole community comes
+      apart, its hold on the system wildly out of proportion to its numbers (Paine, 1966). Importance was never
+      about mass; it was about where a thing sits in the web of who depends on whom. The half-century since
+      carried that idea from a single species to a place, to the discrete features a landscape leans on
+      (Tews, 2004), and to the flows of water, sediment and living things that ignore property lines on their
+      way between them (Loreau, 2003). Draw those parcels as nodes and the flows between them as edges, and the
+      word keystone stops being a metaphor and becomes something you can measure, the high-centrality polygons
+      whose loss would fragment the whole network (Urban and Keitt, 2001).</p>
+    <p class="body">A <b>keystone polygon</b> is that outsized parcel, named and scored. It is the land whose
+      position and pathways hold up the productivity of the estate around it and the people downstream who
+      depend on it, the smallest thing this engine underwrites, one polygon at a time, never a portfolio
+      average and never a site rating.</p>
+    <p class="marketstat">Foundations: Paine 1966 &middot; Tews et al. 2004 &middot; Loreau et al. 2003
+      &middot; Urban &amp; Keitt 2001 &middot; Bagstad et al. 2013. Naming the land polygon as the underwriting
+      unit is the new synthesis, set out in <a href="https://open.substack.com/pub/cryptoecologist/p/the-land-next-door?r=4r7w86&amp;utm_campaign=post-expanded-share&amp;utm_medium=web" target="_blank" rel="noopener noreferrer">The Land Next Door</a>.</p>
+  </div></section>
+
+  <!-- 4 · THE GEOGRAPHY -->
+  <section class="step right" data-scene="4"><div class="card">
+    <div class="eyebrow">The corridor</div>
+    <h2 class="head">One river, three jobs: generate, convey, consume.</h2>
+    <p class="body">We read the corridor as one network that runs from source to conveyance to demand. The
+      headwaters, at 9,000 to 12,000 ft, make the water; the mainstem, at 5,500 to 7,500 ft, carries it; the
+      valley and canyon, at 4,500 to 5,500 ft, spend it. What a parcel is worth then comes down to where it
+      sits in that flow and who lies below it, resolved across <span class="hl" id="n-catch"></span> NHDPlus
+      catchments (the national stream-and-catchment map) and drawn here over the real
+      <span class="hl" id="n-rivers"></span>-river network from USGS NHDPlus HR.</p>
+  </div></section>
+
+  <!-- 5 · THE BENEFICIARIES -->
+  <section class="step" data-scene="5"><div class="card">
+    <div class="eyebrow">Who depends on this</div>
+    <h2 class="head"><span id="n-benef">16</span> named beneficiaries, routed by hydrology, not by proximity.</h2>
+    <p class="body">From transmountain diversions to Grand Valley farms and Moab's hospital and cleanup sites,
+      every beneficiary is routed to parcels through zone-weighted service profiles. The configuration even
+      bakes in its own corrections. Homestake feeds Aurora and Colorado Springs, not Denver. Ute Water draws
+      first on Plateau Creek, with the Colorado only as a backup. Moab Regional runs on municipal wells rather
+      than a direct river intake. The framework is candid about where it might be wrong.</p>
+    <div class="benef-grid" id="benef-grid"></div>
+    <div class="badge is-routing"><span class="dot"></span>Service-area routing, not proof of a parcel-caused facility outcome</div>
+  </div></section>
+
+  <!-- 6 · THE DATA SPINE -->
+  <section class="step right" data-scene="6"><div class="card">
+    <div class="eyebrow">The data spine</div>
+    <h2 class="head">Every input is public, named, and auditable.</h2>
+    <p class="body">The backbone is USGS NLDI, the Network-Linked Data Index, which turns any coordinate into
+      a catchment and traces the river up and down from it. On top of that, the Water Quality Portal, EPA
+      StreamCat, NLCD land cover, SSURGO soils, LANDFIRE fuels, PAD-US protected areas and GBIF species records
+      build the nine ecological metrics each parcel is scored from. There is no proprietary layer and no black
+      box; a diligence team can re-pull every last source itself. This run's evidence is still
+      <span class="hl" id="n-modeled"></span> modeled-overlay records rather than live per-catchment pulls, and
+      the honest ledger says so plainly.</p>
+    <div class="spine-rail" id="spine-rail"></div>
+    <div class="badge is-measured"><span class="dot"></span>Live public sources named; this run is modeled-overlay, not yet live COMID</div>
+  </div></section>
+
+  <!-- 7 · THE MODEL -->
+  <section class="step" data-scene="7"><div class="card">
+    <div class="eyebrow">The model</div>
+    <h2 class="head">Bayesian keystone screening, humble by construction.</h2>
+    <p class="body">Seven ecological mechanisms, each a bounded score between zero and one, combine under a
+      state-space weighting. What matters is that every parcel comes back not as a single number but as a
+      probability with an error bar, a keystone posterior carrying its own 90 percent credible interval. It
+      begins from a deliberately uncertain prior, a Beta(2,2) bell centred on one-half, and thousands of
+      Monte-Carlo draws carry that uncertainty all the way through, so the width of the interval is itself a
+      result. The decision gates are explicit and set in advance, keystone at 0.72 and investable at 0.80. The
+      model is built to quantify doubt rather than to hide it.</p>
+    <div class="mech-list" id="mech-list"></div>
+  </div></section>
+
+  <!-- 8 · THE FORWARD RESULT -->
+  <section class="step right" data-scene="8"><div class="card">
+    <div class="eyebrow">The graph, both ways</div>
+    <h2 class="head">The bidirectional graph worked, end to end, on one run.</h2>
+    <p class="body">The engine traced <span class="hl" id="n-fwd"></span> forward impact paths, parcel to
+      beneficiary, and <span class="hl" id="n-rev"></span> reverse dependency paths, matching
+      <span class="hl" id="n-both"></span> of 56 parcels in both directions. The load-bearing minority turns
+      out to be small and tightly clustered. Only <span class="hl" id="n-ci-n"></span> of 56
+      (<span class="hl" id="n-ci-pct"></span>%) carry a posterior whose credible interval clears the prior, and
+      all of them sit in the Eagle headwaters, while a looser screening cutoff admits
+      <span class="hl" id="n-cut-pct"></span>%. The top of the ranking is <span class="hl" id="n-topid"></span>.</p>
+    <div class="widget" id="parcel-mount"></div>
+    <div class="badge is-measured"><span class="dot"></span>Posterior from the model; the parcel is drawn from its real run geometry</div>
+  </div></section>
+
+  <!-- 9 · THE RECKONING (the hero scene) -->
+  <section class="step" data-scene="9"><div class="card">
+    <div class="eyebrow">The day the model met the data</div>
+    <h2 class="head">A real signal, that a two-variable baseline still beats.</h2>
+    <p class="body">Before anyone looked at an answer, the team froze a hashed, timestamped pre-registration,
+      its method and success bar locked so nothing could be reverse-engineered later, and tested the
+      sediment-avoidance score against <span class="hl" id="n-stations"></span> real monitoring stations. The
+      signal is real, and catchments that avoid more sediment really do show cleaner water. But plain forest
+      cover alone beats the composite, the effect all but vanishes once elevation and development are held
+      constant, and on sub-basins it had never seen, a baseline of nothing more than elevation and percent
+      developed (<span class="hl" id="n-base-r2"></span> R squared) beats the whole bespoke apparatus. That is
+      why the engine's verdict on itself reads <b class="red" id="n-verdict"></b>.</p>
+    <div class="widget" id="validation-mount"></div>
+    <div class="badge is-measured"><span class="dot"></span>Measured against real USGS / EPA data, pre-registered</div>
+  </div></section>
+
+  <!-- 10 · THE RECALIBRATION (interactive) -->
+  <section class="step center" data-scene="10"><div class="card">
+    <div class="eyebrow center">Then it did the rare thing</div>
+    <h2 class="head">It recalibrated its confidence downward.</h2>
+    <p class="body">The Bayesian layer once drew its confidence from a synthetic, overconfident reliability
+      number. Here that is replaced by observation noise tied to the mechanism's measured out-of-sample skill,
+      so a mechanism with almost no real skill can no longer pretend to any. Move the control and the engine
+      recomputes a good parcel's posterior live, with its own precision-weighted update, and you watch it slide
+      back toward the prior of 0.54. Widening the noise can only pull the estimate toward the prior; it cannot
+      manufacture confidence the data does not support.</p>
+    <div class="widget" id="recal-mount"></div>
+  </div></section>
+
+  <!-- 11 · THE HONEST LEDGER -->
+  <section class="step" data-scene="11"><div class="card">
+    <div class="eyebrow">The honest ledger</div>
+    <h2 class="head">Proves the engine. Does not yet prove investability lift.</h2>
+    <p class="body">The ledger below is generated straight from the run, not written by hand. The proven column
+      is the machine. The not-yet column is the honest distance to a dollar. The 56 units are candidate
+      envelopes, <span id="n-envelope"></span> of them seed envelopes and <span id="n-verified"></span> verified
+      boundaries; no mechanism yet clears validated-incremental, and no cap rate is computed.</p>
+    <p class="body">This is not modesty for its own sake. The last environmental market taught buyers to
+      distrust unaudited claims. An independent review found that the large majority of a leading standard's
+      rainforest credits delivered no real benefit, and nature-based prices fell from roughly fifteen dollars
+      to about one. The next market will pay for rigor, and an engine that pre-registers its test, checks
+      itself against measured reality and publishes where it fails is built for that world.</p>
+    <div class="widget" id="ledger-mount"></div>
+  </div></section>
+
+  <!-- 12 · READ BY PEOPLE AND MACHINES -->
+  <section class="step center" data-scene="12"><div class="card">
+    <div class="eyebrow center">Read by people and machines</div>
+    <h2 class="head">Diligence an agent can check for itself.</h2>
+    <p class="body">This ships for the two audiences that now decide where capital goes. One of them is a human
+      diligence team. The other is the fast-growing population of agents that pre-screen deals on their behalf,
+      often before a person ever sees them. Every figure here and in the pack carries its own source,
+      machine-readable and audit-ready, a human narrative sitting alongside an agent-consumable
+      <code>llms.txt</code>, so an agent can re-pull the data and re-run the check itself instead of quietly
+      discounting a document it cannot parse. With machine-mediated commerce heading into the trillions by the
+      end of the decade, and provenance standards consolidating around MCP and llms.txt, an artifact a machine
+      cannot verify is already invisible to a growing share of capital.</p>
+  </div></section>
+
+  <!-- 13 · THE ASK -->
+  <section class="step center" data-scene="13"><div class="card">
+    <div class="eyebrow center">Why this is the story that matters</div>
+    <h2 class="head">In this market, rigor is the product.</h2>
+    <p class="body">Most vendors would bury &ldquo;elevation and development beat our model&rdquo;. This corridor led
+      with it. Every score carries its uncertainty, every claim carries its boundary, every mechanism carries
+      its measured verdict, and the deliverable ships with an artifact-QA gate that fails the pack the moment
+      it asserts validated value for a mechanism that has not earned it. That is the asset, a dependency-graph
+      engine that resolves who depends on what, wrapped in an honesty architecture a buyer, a regulator or an
+      auditor can trust. The next move is investability bite, one real parcel, one verified payor, one dollar,
+      and we are raising to run it and to put this engine on the next corridors.</p>
+    <div class="cta-row" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px">
+      <a class="btn btn--primary" href="mailto:corridor@graphoflife.com?subject=Upper%20Colorado%20Corridor%20pack">Request the corridor pack</a>
+    </div>
+    <p class="footnote">Built from live public data (USGS, EPA, USDA, GBIF) and real computation, with an
+      artifact-QA audit that fails the deliverable if it asserts validated value for an unvalidated mechanism.</p>
+    <div class="collab">
+      <span class="collab-lab">In collaboration with</span>
+      <a class="collab-name" href="https://ensurance.app/basin" target="_blank" rel="noopener noreferrer">
+        Thomas (TMO) Morgan<span class="collab-role"> · Founder, BASIN Natural Capital</span></a>
+    </div>
+    <div class="founder">
+      <p class="founder-bio">Built by Jay Gutierrez, PhD, working at the intersection of ecological network science,
+        graph intelligence, nature-finance translation, and publishing the work that defines the structural-risk category.</p>
+      <div class="founder-contact"><a href="mailto:jg@graphoflife.com">jg@graphoflife.com</a>
+        <span class="founder-sep">·</span>
+        <a href="https://biome-translator.emergent.host" target="_blank" rel="noopener noreferrer">biome-translator.emergent.host</a></div>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="claimbar">
+  <span class="tag">SCREENING-GRADE</span>
+  <span class="txt">Proves the engine, not investability lift. Every score carries its uncertainty and its measured verdict. Live public data, deterministic fixture fallback.</span>
+  <span class="snap">Upper Colorado Corridor · v1.7 · snapshot 2026-05-28</span>
+</footer>
+
+<!-- script order: vendor -> data -> stage -> widgets -> atmosphere -->
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/deck.gl@9.0.0/dist.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
+<script src="data/geo.js"></script>
+<script src="data/hydro.js"></script>
+<script src="data/bundle.js"></script>
+<script src="js/stage.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/parcel.js"></script>
+<script src="js/recalibrate.js"></script>
+<script src="js/ledger.js"></script>
+<script src="js/atmosphere.js"></script>
+</body>
+</html>

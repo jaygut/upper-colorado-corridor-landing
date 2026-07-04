@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'IBM Plex Sans',sans-serif">
+  <defs>
+    <radialGradient id="g" cx="72%" cy="12%" r="90%">
+      <stop offset="0" stop-color="#123a55"/><stop offset="42%" stop-color="#0c2a44"/>
+      <stop offset="100%" stop-color="#08203a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <!-- ambient corridor edges -->
+  <g stroke="#1AA89B" fill="none" opacity=".18" stroke-width="1.4">
+    <path d="M120 470 C 320 430, 430 380, 560 360 S 820 300, 1080 210"/>
+    <path d="M150 520 C 360 500, 470 470, 600 430 S 860 360, 1100 300"/>
+    <path d="M100 410 C 300 360, 420 320, 540 300 S 800 250, 1060 150"/>
+  </g>
+  <!-- keystone nodes -->
+  <circle cx="560" cy="360" r="7" fill="#3AD6A3"/>
+  <circle cx="1080" cy="210" r="9" fill="#E8694D"/>
+  <circle cx="120" cy="470" r="7" fill="#1AA89B"/>
+  <!-- lockup -->
+  <g transform="translate(80,86)">
+    <line x1="6" y1="8" x2="30" y2="12" stroke="#1AA89B" stroke-width="2"/>
+    <line x1="30" y1="12" x2="19" y2="32" stroke="#1AA89B" stroke-width="2"/>
+    <circle cx="6" cy="8" r="4.6" fill="#1AA89B"/><circle cx="30" cy="12" r="4.6" fill="#3AD6A3"/>
+    <circle cx="19" cy="32" r="5" fill="#E8694D"/>
+    <text x="52" y="26" fill="#eaf2f2" font-size="21" font-weight="600">Spillover Predictor
+      <tspan fill="#5C6E78"> · </tspan><tspan fill="#2fd4c4" font-weight="500">the Upper Colorado Corridor</tspan></text>
+  </g>
+  <text x="80" y="250" fill="#7fa9b3" font-family="'IBM Plex Mono',monospace" font-size="20" letter-spacing="3">LANDSCAPE INTELLIGENCE, TESTED</text>
+  <text x="76" y="360" fill="#ffffff" font-size="92" font-weight="700" letter-spacing="-3">We let the <tspan fill="#2fd4c4">river</tspan></text>
+  <text x="76" y="452" fill="#ffffff" font-size="92" font-weight="700" letter-spacing="-3">grade the model.</text>
+  <text x="80" y="540" fill="#b7c6cd" font-family="'IBM Plex Mono',monospace" font-size="20">232 real stations · 56 candidate parcels · a negative result, in public</text>
+  <rect x="0" y="614" width="1200" height="16" fill="#F2A24E"/>
+  <text x="1120" y="596" fill="#5C6E78" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="15">SCREENING-GRADE</text>
+</svg>

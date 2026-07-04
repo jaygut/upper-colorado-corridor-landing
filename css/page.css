@@ -1,0 +1,175 @@
+/* ============================================================================
+   page.css - Upper Colorado Corridor
+   Adds only the corridor accents + the scrollytelling stage on top of brand.css.
+   Story accent semantics: teal = water & the working machine; coral = the failed
+   signal & the honest tail; amber = caution.
+   ========================================================================== */
+
+:root{ --water:var(--teal-bright); --signal-fail:var(--coral); }
+
+/* --- the fixed stage (deck.gl canvas OR svg fallback) ----------------- */
+#stage{
+  position:fixed; inset:0; z-index:1;
+  background:
+    radial-gradient(120% 90% at 72% 8%, #123a55 0%, #0c2a44 42%, #08203a 100%);
+}
+#stage canvas{position:absolute!important; inset:0}
+#stage svg#stage-fx{position:absolute; inset:0; width:100%; height:100%}
+#stage .maplibregl-map{position:absolute; inset:0; width:100%; height:100%}
+/* brand-navy wash over the dark-matter basemap (below the parcel/station overlay) */
+#stage::after{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+  background:radial-gradient(120% 95% at 70% 6%, rgba(20,64,92,.20) 0%, rgba(9,34,60,.34) 52%, rgba(6,22,42,.62) 100%);
+}
+.maplibregl-ctrl-attrib, .maplibregl-ctrl-logo{display:none!important}
+.map-attrib{
+  position:fixed; right:14px; bottom:58px; z-index:40; pointer-events:auto;
+  font-family:var(--mono); font-size:9px; letter-spacing:.02em; color:rgba(143,163,173,.55);
+}
+.map-attrib a{color:rgba(143,163,173,.7)}
+
+#atmo{position:fixed; inset:0; z-index:2; pointer-events:none}
+.vignette{
+  position:fixed; inset:0; z-index:3; pointer-events:none;
+  background:
+    radial-gradient(130% 100% at 50% 42%, transparent 46%, rgba(4,16,30,.72) 100%),
+    linear-gradient(90deg, rgba(6,22,40,.55) 0%, transparent 26%, transparent 74%, rgba(6,22,40,.55) 100%);
+}
+
+/* --- the scrolling story --------------------------------------------- */
+.story{position:relative; z-index:10}
+.step{
+  min-height:100vh; display:flex; align-items:center;
+  padding:120px max(6vw,40px);
+}
+.step.center{justify-content:center; text-align:center}
+.step.center .card{text-align:center}
+.step.center .eyebrow{justify-content:center}
+.step.center .body{margin-left:auto; margin-right:auto}
+.step.right{justify-content:flex-end}
+.step.center .card::before{display:none}
+
+/* cards fade/rise in when their step is active */
+.step .card{opacity:.18; transform:translateY(26px) scale(.99);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.step.active .card{opacity:1; transform:none}
+
+/* the reckoning gets extra gravity (scene 9 after the keystone-polygon insert) */
+.step[data-scene="9"] .card{max-width:640px}
+.step[data-scene="9"].active .card{box-shadow:0 30px 90px -34px rgba(232,105,77,.4),
+  0 30px 80px -40px rgba(0,0,0,.85)}
+.step[data-scene="11"] .card{max-width:720px}
+
+/* tall-content scenes: top-align so nothing hides behind the fixed header */
+.step[data-scene="9"], .step[data-scene="11"]{ align-items:flex-start; }
+
+/* --- map legend + zone chips (bound by stage.js) ---------------------- */
+.map-legend{
+  position:fixed; left:26px; bottom:60px; z-index:40; pointer-events:none;
+  display:flex; flex-direction:column; gap:7px; opacity:0; transition:opacity .5s;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.02em; color:var(--text-dim);
+}
+.map-legend.show{opacity:1}
+.map-legend .lg{display:flex; align-items:center; gap:8px}
+.map-legend .sw{width:12px; height:12px; border-radius:3px; flex:0 0 auto}
+.map-legend .sw.hollow{background:transparent; border:1.5px solid var(--muted)}
+.map-legend .sw.line{height:2px; border-radius:2px}
+
+/* zone read-out that tracks the camera (scene 2; card is right-aligned so HUD sits left) */
+.zone-hud{
+  position:fixed; left:30px; top:50%; transform:translateY(-50%); z-index:40;
+  display:flex; flex-direction:column; gap:2px; pointer-events:none;
+  opacity:0; transition:opacity .5s;
+}
+.zone-hud.show{opacity:1}
+.zone-hud .z{padding:12px 16px; border-left:2px solid transparent;
+  text-align:left; opacity:.5; transition:.4s}
+.zone-hud .z.on{opacity:1; border-color:var(--teal)}
+.zone-hud .z .lab{font-family:var(--mono); font-size:12px; color:#fff; letter-spacing:.02em}
+.zone-hud .z .elev{font-family:var(--mono); font-size:10px; color:var(--muted)}
+
+/* --- data-spine source rail (scene 4) --------------------------------- */
+.spine-rail{display:flex; flex-wrap:wrap; gap:7px; margin-top:20px}
+.spine-chip{font-family:var(--mono); font-size:10.5px; letter-spacing:.02em;
+  padding:6px 11px; border-radius:999px; color:var(--text-dim);
+  background:rgba(47,212,196,.06); border:1px solid rgba(47,212,196,.18)}
+.spine-chip b{color:var(--teal-bright); font-weight:600}
+
+/* --- beneficiary class list (scene 3) --------------------------------- */
+.benef-grid{display:grid; grid-template-columns:1fr; gap:9px; margin-top:20px}
+.benef-row{display:grid; grid-template-columns:auto 1fr; gap:11px; align-items:start;
+  font-size:.82rem; line-height:1.45}
+.benef-row .k{width:10px; height:10px; border-radius:50%; margin-top:5px; flex:0 0 auto}
+.benef-row .cls{font-family:var(--mono); font-size:11px; color:#fff; letter-spacing:.01em}
+.benef-row .ent{color:var(--muted); font-size:.78rem}
+
+/* mechanism weight bars (scene 5) */
+.mech-list{margin-top:20px; display:grid; gap:9px}
+.mech{display:grid; grid-template-columns:130px 1fr 44px; gap:12px; align-items:center;
+  font-family:var(--mono); font-size:11px; color:var(--text-dim)}
+.mech .bar{height:7px; border-radius:4px; background:rgba(255,255,255,.06); overflow:hidden}
+.mech .bar>i{display:block; height:100%; background:linear-gradient(90deg,var(--teal-deep),var(--teal-bright))}
+.mech .w{text-align:right; color:var(--green); font-variant-numeric:tabular-nums}
+
+/* --- collaborator credit (scene 10) ----------------------------------- */
+.collab{
+  margin-top:28px; padding-top:20px; border-top:1px solid rgba(47,212,196,.14);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.collab-lab{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--faint);
+}
+.collab-name{
+  font-family:var(--sans); font-size:.98rem; font-weight:600; color:var(--text);
+  border-bottom:1px solid transparent; transition:.2s;
+}
+.collab-name:hover{ color:#fff; border-bottom-color:var(--teal); }
+.collab-role{ font-weight:400; color:var(--teal-bright); }
+
+/* founder credential block (bio first, then contact) */
+.founder{ margin-top:26px; max-width:56ch; margin-left:auto; margin-right:auto; text-align:left;
+  padding-top:20px; border-top:1px solid rgba(255,255,255,.1); }
+.founder-bio{
+  font-family:var(--sans); font-size:.95rem; line-height:1.6; color:var(--text-dim); margin:0;
+}
+.founder-contact{
+  font-family:var(--mono); font-size:.9rem; letter-spacing:.01em; color:var(--teal-bright); margin-top:16px;
+}
+.founder-contact a{ color:var(--teal-bright); }
+.founder-contact a:hover{ color:#fff; }
+.founder-sep{ color:var(--faint); margin:0 4px; }
+
+/* --- fallback notice -------------------------------------------------- */
+.fallback-note{position:fixed; right:26px; bottom:60px; z-index:40;
+  font-family:var(--mono); font-size:10px; color:var(--faint); letter-spacing:.03em;
+  max-width:200px; text-align:right; pointer-events:none}
+
+/* --- responsive ------------------------------------------------------- */
+@media (max-width:820px){
+  body{font-size:16px}
+  .step{padding:110px 22px; justify-content:center!important}
+  .step.right{justify-content:center}
+  .card{max-width:100%; padding:26px 22px}
+  .honesty{grid-template-columns:1fr}
+  .zone-hud{display:none}
+  .map-legend{left:16px; bottom:66px}
+  .site-header{padding:14px 16px; gap:10px}
+  .lockup__name{font-size:.82rem}
+  .lockup__sep, .gol{display:none}           /* keep just the product name on small screens */
+  .nav-cta{white-space:nowrap; font-size:11px; padding:8px 12px; flex:0 0 auto}
+  .claimbar{font-size:10.5px; padding:9px 16px}
+  .claimbar .snap{display:none}
+  .cro-hero-num b{font-size:2.5rem}
+}
+@media (max-width:820px) and (min-width:0px){
+  .step[data-scene="7"] .card,.step[data-scene="9"] .card{max-width:100%}
+}
+
+/* --- reduced motion: one framed corridor, no camera bob, no sheen ----- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #atmo{display:none}
+  .step .card{opacity:1; transform:none; transition:none}
+  .btn,.nav-cta{transition:none}
+}
