@@ -49,10 +49,13 @@
 .step.right{justify-content:flex-end}
 .step.center .card::before{display:none}
 
-/* cards fade/rise in when their step is active */
+/* cards fade/rise in when their step is active OR simply scrolled into view.
+   Reveal is driven by a dedicated IntersectionObserver (js/stage.js) so a scene
+   can never stay ghosted just because scrollama missed its onStepEnter trigger
+   (stale offsets on a slow cold load, the last-step edge case, momentum scroll). */
 .step .card{opacity:.18; transform:translateY(26px) scale(.99);
   transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
-.step.active .card{opacity:1; transform:none}
+.step.active .card, .step.in-view .card{opacity:1; transform:none}
 
 /* the reckoning gets extra gravity (scene 9 after the keystone-polygon insert) */
 .step[data-scene="9"] .card{max-width:640px}

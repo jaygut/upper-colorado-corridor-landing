@@ -383,20 +383,42 @@
     } catch(e){ STAGE.errors.push("stage init: "+(e&&e.message||e));
       try{ if(STAGE.mode!=="svg") initSvg(); }catch(e2){ STAGE.errors.push("svg init: "+e2); } }
 
+    // Card REVEAL is decoupled from the camera. A dedicated observer marks any
+    // step scrolled into view (.in-view), so a scene is always readable even when
+    // scrollama never fires its onStepEnter for it: stale trigger offsets on a slow
+    // cold load, the last-step edge case, or momentum scroll. scrollama below still
+    // drives the camera and HUD; this only governs opacity.
+    if(window.IntersectionObserver){
+      var revealObs=new IntersectionObserver(function(es){ es.forEach(function(en){
+        en.target.classList.toggle("in-view", en.isIntersecting && en.intersectionRatio>=0.4); }); },
+        { threshold:[0,0.25,0.4,0.55,0.75,1] });
+      document.querySelectorAll(".step").forEach(function(s){ revealObs.observe(s); });
+    }
+
     if(window.scrollama){
       var sc=scrollama();
       sc.setup({ step:".step", offset:0.6 }).onStepEnter(function(r){ go(r.index); });
       addEventListener("resize", function(){ sc.resize();
         if(STAGE.mode==="map" && map){ map.resize(); projectOverlay(); }
         else if(STAGE.mode==="svg"){ fit(); } });
+      // recalc trigger offsets once late-loading content (fonts, map tiles, the
+      // tall credentials block) has reflowed, so the camera keeps step with reveal.
+      addEventListener("load", function(){ try{ sc.resize(); }catch(_){} });
+      setTimeout(function(){ try{ sc.resize(); }catch(_){} }, 1400);
     } else {
+      // no scrollama: reveal observer above handles opacity; this drives the camera
       var obs=new IntersectionObserver(function(es){ es.forEach(function(en){
         if(en.isIntersecting){ go(+en.target.getAttribute("data-scene")); } }); }, {threshold:.55});
       document.querySelectorAll(".step").forEach(function(s){ obs.observe(s); });
     }
     addEventListener("scroll", function(){ var h=document.documentElement;
       var i=document.querySelector("#prog i");
-      if(i) i.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"; }, {passive:true});
+      if(i) i.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";
+      // bottom-of-page safety net: unambiguously guarantee the final scene's camera
+      // and active state even if scrollama's last trigger sits past reachable scroll.
+      if(h.scrollTop + h.clientHeight >= h.scrollHeight - 2){
+        var last=STAGE.nScenes-1; if(last>=0 && STAGE.scene!==last){ go(last); } }
+    }, {passive:true});
     sceneUI(0);
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot);
