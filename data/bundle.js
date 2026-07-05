@@ -132,6 +132,29 @@ window.APP_DATA = {
       "No mechanism yet clears validated_incremental.",
       "Investability bite (one real parcel, one verified payor, one dollar) is the stated next step."
     ]
+  },
+  // The settlement layer (BASIN Certificates of Ensurance). PLACEHOLDER: the rail is wired to
+  // the run's real situs keys (place_id / binder_asset_id from ensurance_places_normalized +
+  // binder_crosswalk), but the on-chain layer is fixture (0x routing reserved). Nothing is for
+  // sale; an instrument appears only where a polygon clears MRV and a live contract is deployed.
+  instruments: {
+    settlement: "BASIN Certificate of Ensurance",
+    settlement_url: "https://ensurance.app/basin",
+    chain: "Base",
+    placeholder_address: "0x0000000000000000000000000000000000000000",
+    purpose: "stewardship-finance-readiness",
+    // BASIN's Natural Cap Rate = Ecosystem Service Value / Real Estate Value; our engine rates
+    // the ESV-leverage side, which is exactly the "distance to a dollar" the ledger names.
+    natural_cap_rate: "Ecosystem Service Value / Real Estate Value",
+    summary: { situs: 56, binder_registered: 16, live: 0, mrv_cleared: 0 },
+    // the slot shown on the keystone tear-sheet (the top-ranked polygon)
+    top_parcel_slot: {
+      place_id: "place-red_cliff_eagle-03",
+      place_binder: "binder-red_cliff_eagle-01",
+      place_label: "Red Cliff / Eagle headwaters",
+      status: "slot_ready",       // slot_ready | awaiting_mrv | live
+      status_label: "Slot ready"
+    }
   }
 };
 

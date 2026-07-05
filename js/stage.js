@@ -107,7 +107,8 @@
     { v:{ longitude:-106.7, latitude:39.4, zoom:8.0, pitch:54, bearing:-14 }, corridor:.6, zones:.4, parcels:.9, arcs:.2, stations:.4, focus:.8 },
     { v:{ longitude:-108.0, latitude:39.0, zoom:6.5, pitch:34, bearing:0 },   corridor:.9, zones:.4, parcels:.5, arcs:.3, stations:.3, focus:0 }, // 11 ledger
     { v:{ longitude:-108.0, latitude:39.0, zoom:6.6, pitch:36, bearing:0 },   corridor:.85,zones:.3, parcels:.5, arcs:.35,stations:.25,focus:0 }, // 12 read by people and machines
-    { v:{ longitude:-108.0, latitude:39.0, zoom:6.6, pitch:48, bearing:-8 },  corridor:1, zones:.5, parcels:.6, arcs:.5, stations:.2, focus:0 }  // 13 the ask
+    { v:{ longitude:-108.0, latitude:39.0, zoom:6.7, pitch:42, bearing:-6 },  corridor:.8, zones:.35,parcels:.85,arcs:.5, stations:.2, focus:.3 }, // 13 from diligence to distribution
+    { v:{ longitude:-108.0, latitude:39.0, zoom:6.6, pitch:48, bearing:-8 },  corridor:1, zones:.5, parcels:.6, arcs:.5, stations:.2, focus:0 }  // 14 the ask
   ];
   STAGE.nScenes = SCENES.length;
   var target = SCENES[0];

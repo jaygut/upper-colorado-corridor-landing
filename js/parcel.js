@@ -50,6 +50,23 @@
     'One of the ' + kr.ci_clearing.n + ' parcels (' + kr.ci_clearing.pct.toFixed(1) +
     '%) whose credible interval clears the prior, all in the Eagle headwaters.';
 
+  // settlement-rail slot (BASIN Certificate of Ensurance) - placeholder, wired to real situs keys
+  var inst = D.instruments, slot = "";
+  if (inst && inst.top_parcel_slot) {
+    var s = inst.top_parcel_slot;
+    slot =
+      '<div class="cro-slot">'+
+        '<div class="cro-slot-head"><span>'+inst.settlement+'</span>'+
+          '<span class="cro-slot-status">'+s.status_label+'</span></div>'+
+        '<div class="cro-slot-body">situs <b>'+s.place_id+'</b> &middot; '+s.place_label+
+          ', a binder-registered place ('+s.place_binder+') &middot; settlement via '+
+          '<a href="'+inst.settlement_url+'" target="_blank" rel="noopener noreferrer">BASIN Natural Capital</a>'+
+          ' &middot; <span class="cro-slot-addr">instrument ref pending</span></div>'+
+        '<div class="cro-slot-note">Placeholder wired to the run’s real keys. An instrument appears '+
+          'only once this place clears monitoring and its Certificate of Ensurance is issued. Screening-grade, not an offer to sell.</div>'+
+      '</div>';
+  }
+
   host.className = "cro";
   host.innerHTML =
     '<div class="cro-top"><div><div class="cro-title">Keystone tear-sheet'+
@@ -60,6 +77,7 @@
       '<span class="cro-unit">keystone posterior<br>90% CI '+(p.lo!=null?p.lo.toFixed(2)+' to '+p.hi.toFixed(2):'n/a')+'</span></div>'+
     ciBar+
     '<div class="cro-hero-sub">'+gateSentence+'</div>'+
+    slot+
     '<div class="cro-foot">Provenance: keystone_state_space_v0_1 · Beta(2,2) prior · 2,000 to 6,000 MC draws. '+
       'No dollar-at-risk is computed for this run.</div>';
 
