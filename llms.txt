@@ -123,7 +123,7 @@ second_mechanism: hydrology_retention vs baseflow index -> not_supported (wrong 
 ## The recalibration (the honest turn), computed live
 
 The interactive recomputes the posterior LIVE from the engine's real precision-weighted Gaussian
-update in logit space (validation/coloradoriver/calibrated_likelihood.py): obs_sd = MAX_SD -
+update in logit space: obs_sd = MAX_SD -
 (MAX_SD-BASE_SD)*sqrt(clip(oof_r2,0,1)), BASE_SD 0.45, MAX_SD 1.40, prior_p 0.54, prior_sd 0.82,
 mechanism_value 0.70. As observation noise widens from the synthetic (overconfident) obs_sd 0.678
 to the skill-calibrated obs_sd 1.40 (sediment_avoidance OOF R2 ~ 0.0), the posterior mean slides
@@ -139,15 +139,15 @@ contact: corridor@graphoflife.com
 
 ## Provenance of this page
 
-source_run: case_studies/upper_colorado_corridor_mvp/
-geometry: data/geo.js (parcels, 232 stations, arcs, zone hulls, OOF scatter arrays) emitted by
-          data/_extract_geo.py from the run's processed GeoJSON + frozen validity record.
+source_run: upper_colorado_corridor_mvp (private engine run)
+geometry: data/geo.js (parcels, 232 stations, arcs, zone hulls, OOF scatter arrays), emitted from
+          the run's processed GeoJSON and its frozen validity record.
 hydrography: data/hydro.js (the corridor's real river network, HUC-8 basin frame, reservoirs),
-          fetched by data/_fetch_hydro.py from USGS WBD + NHDPlus HR (ArcGIS REST) and processed
-          by data/_build_hydro.py (dissolve by river name, clip to the Colorado corridor HUC-8s,
-          drop irrigation infrastructure). Basemap: MapLibre GL + CARTO dark-matter + Terrarium
-          DEM hillshade, all degrading to a solid dark canvas / d3 SVG fallback offline.
+          built from USGS WBD + NHDPlus HR (ArcGIS REST): dissolved by river name, clipped to the
+          Colorado corridor HUC-8s, irrigation infrastructure dropped. Basemap: MapLibre GL + CARTO
+          dark-matter + Terrarium DEM hillshade, all degrading to a solid dark canvas / d3 SVG
+          fallback offline.
 numbers: data/bundle.js (window.APP_DATA). No value is invented; where a corridor value does not
          exist (a dollar-at-risk / cap rate), the page says so. External market figures (the
          $700B gap, carbon prices) are sourced context, clearly distinct from corridor economics.
-oof_report: validation/COLORADO_RIVER_EVIDENCE_REPORT.md (leave-one-HUC8-out table, pre-registered).
+oof_report: a pre-registered, frozen leave-one-HUC8-out evidence record (private).

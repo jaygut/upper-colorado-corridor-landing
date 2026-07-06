@@ -1,6 +1,6 @@
 /* ============================================================================
    js/recalibrate.js - the honest what-if (scene 10), computed live
-   The engine's real calibration (validation/coloradoriver/calibrated_likelihood.py):
+   The engine's real calibration is
    a precision-weighted Gaussian update in logit space, with observation noise
    tied to the mechanism's measured out-of-sample skill. This widget recomputes
    the posterior LIVE from those parameters as the reader widens the noise from

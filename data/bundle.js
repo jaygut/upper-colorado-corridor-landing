@@ -60,14 +60,15 @@ window.APP_DATA = {
     evidence_mode: { modeled_overlay: 336, live_comid: 0 }
   },
   model: {
+    // Relative ORDER of the mechanisms only. The engine's weight VALUES are internal;
+    // the chart renders rank (not magnitude), so no coefficient ships. rank 1 = largest.
     mechanisms: [
-      { key:"hydrology_retention", w:0.20 }, { key:"timber_resilience", w:0.16 },
-      { key:"sediment_avoidance",  w:0.15 }, { key:"deployability",     w:0.14 },
-      { key:"fire_admissibility",  w:0.13 }, { key:"microclimate_buffer", w:0.12 },
-      { key:"biodiversity_support", w:0.10 }
+      { key:"hydrology_retention", rank:1 }, { key:"timber_resilience",  rank:2 },
+      { key:"sediment_avoidance",  rank:3 }, { key:"deployability",       rank:4 },
+      { key:"fire_admissibility",  rank:5 }, { key:"microclimate_buffer", rank:6 },
+      { key:"biodiversity_support", rank:7 }
     ],
-    composite: { hydrology:0.42, deployability:0.32, microclimate:0.22, biodiversity:0.10, bad_neighbor_penalty:0.16 },
-    prior: "Beta(2,2)", mc_draws: "2,000 to 6,000", hydro_sediment_corr: 0.48,
+    prior: "Beta(2,2)", mc_draws: "2,000 to 6,000",
     gates: { keystone:0.72, investable:0.80, bad_neighbor:0.55 }
   },
   graph: {
@@ -105,8 +106,8 @@ window.APP_DATA = {
     diagnosis: "The bottleneck is the FEATURES, not the weights. Their relationship to water quality is spatially non-stationary; it does not transfer to a new sub-basin, which is exactly the property a screening tool most needs.",
     hydrology: { outcome:"baseflow index", verdict:"not_supported",
       why:"the forest-based retention score peaks in high-elevation snowmelt headwaters, which are hydrologically flashier (lower baseflow), so the mechanism points the wrong way for that outcome" },
-    // real precision-weighted Gaussian update in logit space (validation/coloradoriver/
-    // calibrated_likelihood.py): obs_sd = MAX_SD - (MAX_SD-BASE_SD)*sqrt(clip(oof_r2,0,1)).
+    // real precision-weighted Gaussian update in logit space (the engine's calibration
+    // module): obs_sd = MAX_SD - (MAX_SD-BASE_SD)*sqrt(clip(oof_r2,0,1)).
     // The widget recomputes the posterior LIVE from these parameters (not interpolated).
     recal: { mechanism:"sediment_avoidance", oof_r2:0.0,
       prior_p:0.54, prior_sd:0.82, mech_value:0.70,

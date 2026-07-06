@@ -74,12 +74,13 @@
       sr.appendChild(chip);
     });
     var ml = document.getElementById("mech-list");
-    if (ml){ var maxw=Math.max.apply(null,D.model.mechanisms.map(function(m){return m.w;}));
+    if (ml){ var nm=D.model.mechanisms.length;
       D.model.mechanisms.forEach(function(m){
+        // bar length encodes ORDER only (rank 1 longest), decoupled from the real weights
+        var frac = 1 - (m.rank-1)/(nm-1) * 0.5;   // 1.0 .. 0.5, even steps
         var row=document.createElement("div"); row.className="mech";
         row.innerHTML='<span>'+m.key.replace(/_/g," ")+'</span>'+
-          '<span class="bar"><i style="width:'+(m.w/maxw*100)+'%"></i></span>'+
-          '<span class="w">'+m.w.toFixed(2)+'</span>';
+          '<span class="bar"><i style="width:'+(frac*100)+'%"></i></span>';
         ml.appendChild(row);
       });
     }
