@@ -153,13 +153,13 @@
   <section class="step right" data-scene="6"><div class="card">
     <div class="eyebrow">The data spine</div>
     <h2 class="head">Every input is public, named, and auditable.</h2>
-    <p class="body">The backbone is USGS NLDI, the Network-Linked Data Index, which turns any coordinate into
-      a catchment and traces the river up and down from it. On top of that, the Water Quality Portal, EPA
-      StreamCat, NLCD land cover, SSURGO soils, LANDFIRE fuels, PAD-US protected areas and GBIF species records
-      build the nine ecological metrics each parcel is scored from. There is no proprietary layer and no black
-      box; a diligence team can re-pull every last source itself. This run's evidence is still
-      <span class="hl" id="n-modeled"></span> modeled-overlay records rather than live per-catchment pulls, and
-      the honest ledger says so plainly.</p>
+    <p class="body">Every input is public government data. One federal service turns any point on the map into
+      its patch of watershed and follows the river up and downstream from it. On top of that, the standard
+      public records for water quality, land and forest cover, soils, fire fuel, protected land and wildlife
+      build the nine ecological measures each parcel is scored on. Nothing here is proprietary and nothing is
+      hidden, so a diligence team can pull every source and check the work itself. For this first run those
+      inputs are <span class="hl" id="n-modeled"></span> modeled stand-ins rather than live per-watershed pulls,
+      and the ledger below says so plainly.</p>
     <div class="spine-rail" id="spine-rail"></div>
     <div class="badge is-measured"><span class="dot"></span>Live public sources named; this run is modeled-overlay, not yet live COMID</div>
   </div></section>
@@ -168,13 +168,12 @@
   <section class="step" data-scene="7"><div class="card">
     <div class="eyebrow">The model</div>
     <h2 class="head">Bayesian keystone screening, humble by construction.</h2>
-    <p class="body">Seven ecological mechanisms, each a bounded score between zero and one, combine under a
-      state-space weighting. What matters is that every parcel comes back not as a single number but as a
-      probability with an error bar, a keystone posterior carrying its own 90 percent credible interval. It
-      begins from a deliberately uncertain prior, a Beta(2,2) bell centred on one-half, and thousands of
-      Monte-Carlo draws carry that uncertainty all the way through, so the width of the interval is itself a
-      result. The decision gates are explicit and set in advance, keystone at 0.72 and investable at 0.80. The
-      model is built to quantify doubt rather than to hide it.</p>
+    <p class="body">Seven ecological signals, each scored from zero to one, combine into a single reading of how
+      load-bearing a parcel is. What matters is that every parcel comes back not as one number but as a number
+      with an error bar, a best estimate plus the range the evidence actually supports. The model starts by
+      assuming very little and lets that uncertainty flow all the way through, so the width of the range is
+      itself part of the answer. The pass marks are set in advance, keystone at 0.72 and investable at 0.80. The
+      model is built to measure its own doubt rather than hide it.</p>
     <div class="mech-list" id="mech-list"></div>
   </div></section>
 
@@ -197,14 +196,14 @@
   <section class="step" data-scene="9"><div class="card">
     <div class="eyebrow">The day the model met the data</div>
     <h2 class="head">A real signal, that a two-variable baseline still beats.</h2>
-    <p class="body">Before anyone looked at an answer, the team froze a hashed, timestamped pre-registration,
-      its method and success bar locked so nothing could be reverse-engineered later, and tested the
+    <p class="body">Before anyone saw a result, the team sealed the method and the success bar in a hashed,
+      timestamped record, so no test could be quietly bent to fit the answer later, then checked the
       sediment-avoidance score against <span class="hl" id="n-stations"></span> real monitoring stations. The
-      signal is real, and catchments that avoid more sediment really do show cleaner water. But plain forest
-      cover alone beats the composite, the effect all but vanishes once elevation and development are held
-      constant, and on sub-basins it had never seen, a baseline of nothing more than elevation and percent
-      developed (<span class="hl" id="n-base-r2"></span> R squared) beats the whole bespoke apparatus. That is
-      why the engine's verdict on itself reads <b class="red" id="n-verdict"></b>.</p>
+      signal is real, and catchments that hold back more sediment really do run cleaner. But plain forest cover
+      on its own does better than the full model, the effect nearly disappears once you account for elevation
+      and development, and on watersheds it had never seen, a baseline of just elevation and percent developed
+      (<span class="hl" id="n-base-r2"></span> R squared) beats the whole custom engine. That is why the
+      engine's verdict on itself reads <b class="red" id="n-verdict"></b>.</p>
     <div class="widget" id="validation-mount"></div>
     <div class="badge is-measured"><span class="dot"></span>Measured against real USGS / EPA data, pre-registered</div>
   </div></section>
@@ -213,12 +212,12 @@
   <section class="step center" data-scene="10"><div class="card">
     <div class="eyebrow center">Then it did the rare thing</div>
     <h2 class="head">It recalibrated its confidence downward.</h2>
-    <p class="body">The Bayesian layer once drew its confidence from a synthetic, overconfident reliability
-      number. Here that is replaced by observation noise tied to the mechanism's measured out-of-sample skill,
-      so a mechanism with almost no real skill can no longer pretend to any. Move the control and the engine
-      recomputes a good parcel's posterior live, with its own precision-weighted update, and you watch it slide
-      back toward the prior of 0.54. Widening the noise can only pull the estimate toward the prior; it cannot
-      manufacture confidence the data does not support.</p>
+    <p class="body">The model used to borrow its confidence from a made-up reliability number that flattered it.
+      Now its confidence is tied to how well the signal actually held up on data it had never seen, so a
+      mechanism with almost no real skill can no longer pretend to any. Move the control and the engine
+      recomputes a good parcel's estimate live, and you watch it slide back toward its cautious starting point
+      of 0.54. Widening the noise can only pull the estimate toward caution. It cannot manufacture confidence
+      the data does not support.</p>
     <div class="widget" id="recal-mount"></div>
   </div></section>
 
