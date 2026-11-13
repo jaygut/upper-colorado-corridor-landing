@@ -5,11 +5,16 @@ source=root/'data/headwaters-evidence.json';data=json.loads(source.read_text())
 assert data['schema_version']=='1.0.0'
 assert all(s['status'] in {'observed','derived','modeled','illustrative','unavailable'} for s in data['sources'])
 source_ids={s['id'] for s in data['sources']}
+for item in data['sources']:
+ if item.get('sha256') and item['url'].startswith('data/'):
+  assert hashlib.sha256((root/item['url']).read_bytes()).hexdigest()==item['sha256'],item['id']
 for record in data['claims']+data['paths']+data['stations']:
  assert set(record['evidence_ids'])<=source_ids
 for event in data['events']:
  f=root/event['detail_url'];assert f.is_file()
  if event.get('sha256'):assert hashlib.sha256(f.read_bytes()).hexdigest()==event['sha256']
+for kind in ['perimeter','summary']:
+ f=root/data['fire_evidence'][kind+'_url'];assert hashlib.sha256(f.read_bytes()).hexdigest()==data['fire_evidence'][kind+'_sha256']
 for name,expected in data['legacy']['source_hashes'].items():assert hashlib.sha256((root/name).read_bytes()).hexdigest()==expected,name
 (root/'data/headwaters.js').write_text('// Generated from data/headwaters-evidence.json. Run python3 tools/build-evidence.py.\nwindow.HEADWATERS = '+json.dumps(data,separators=(',',':'))+';\n')
 # The legacy APP_DATA export remains the owner of its benchmark values.

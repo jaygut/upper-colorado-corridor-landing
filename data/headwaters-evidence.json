@@ -131,6 +131,30 @@
       "unit": "log1p(FNU) MAE",
       "validity": "Retrospective rainfall-selected storm-window hindcast only. Event start is not a verified forecast issuance time. Full burn-state Tier A blocked.",
       "export_rights": "authored results from public observations"
+    },
+    {
+      "id": "mtbs-final-perimeters",
+      "title": "MTBS mapped final fire footprints",
+      "url": "data/mtbs-final-perimeters.geojson",
+      "status": "observed",
+      "sha256": "67ba4b3dcd5424efd8e7c4f765f91296e8ad1673581a05a7a9c64297add81289",
+      "release_date": "retrieved 2026-11-13; East boundary revised 2026-10-16",
+      "native_resolution": "mapped final footprints; display simplified at 100 m in EPSG:5070",
+      "unit": "geographic coordinates",
+      "validity": "Final 2020 fire footprints, not chronological progression. East Troublesome boundary was revised 2026-10-16; consistency with the annual 2020 severity mosaic is unresolved. Postfire imagery and revised boundaries are unavailable as prefire issue-time inputs.",
+      "export_rights": "USGS/USFS public information"
+    },
+    {
+      "id": "mtbs-spectral-summary",
+      "title": "MTBS retrospective spectral class summary",
+      "url": "data/mtbs-severity-summary.json",
+      "status": "derived",
+      "sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
+      "release_date": "2026-11-13",
+      "native_resolution": "requested 30 m EPSG:5070 grid; native alignment unestablished",
+      "unit": "pixel-center area km\u00b2",
+      "validity": "Requested 30 m grid \u00b7 EPSG:5070 \u00b7 nearest-neighbor service extraction. Native alignment is not established. Areas count pixel centers inside the exact source perimeter. Spectral classes are not BAER soil severity. No prefire or treatment-effect claim.",
+      "export_rights": "USGS/USFS public information and authored summary"
     }
   ],
   "stations": [
@@ -488,5 +512,54 @@
       "The 24 h dry-gap event rule makes all 28 antecedent 24 h rain features zero. The fitted B1 comparison therefore varies with lagged discharge and season.",
       "One eligible window has 900 s native cadence; 27 have 600 s cadence. Sensor-change quality control remains unverified."
     ]
+  },
+  "fire_evidence": {
+    "status": "observed",
+    "perimeter_url": "data/mtbs-final-perimeters.geojson",
+    "perimeter_sha256": "67ba4b3dcd5424efd8e7c4f765f91296e8ad1673581a05a7a9c64297add81289",
+    "original_perimeter_sha256": "b273fac61b73ac0cf02693621ebcd4ac0be03427ef523d93ca8c75aad9f6d905",
+    "display_tolerance_m": 100,
+    "simplification_crs": "EPSG:5070",
+    "native_resolution": "MTBS mapped final footprint; display copy simplified at 100 m",
+    "summary_url": "data/mtbs-severity-summary.json",
+    "summary_status": "retrospective_grid_checked",
+    "validity": "Final 2020 fire footprints, not chronological progression. East Troublesome boundary was revised 2026-10-16; consistency with the annual 2020 severity mosaic is unresolved. Postfire imagery and revised boundaries are unavailable as prefire issue-time inputs.",
+    "export_rights": "USGS/USFS public MTBS information",
+    "source_url": "https://burnseverity.cr.usgs.gov/direct-download?product=MTBS",
+    "incidents": [
+      {
+        "id": "CO3957210726620200810",
+        "name": "GRIZZLY CREEK",
+        "year": 2020,
+        "assessment_type": "Extended",
+        "pre_image": "B13SCD20200710_30m",
+        "post_image": "A13SCD20210710_30m",
+        "source_comments": null,
+        "bounds": [
+          -107.290459,
+          39.54145,
+          -107.097018,
+          39.669215
+        ]
+      },
+      {
+        "id": "CO4020310623920201014",
+        "name": "EAST TROUBLESOME",
+        "year": 2020,
+        "assessment_type": "Extended",
+        "pre_image": "803403220200904",
+        "post_image": "803403220210907",
+        "source_comments": "Based on user feedback, a separate polygon was added to the burn boundary on the east side of the Continental Divide to include the additional area that was burned in the fire that was not included in the original published mapping. (Updated 10/16/2026)",
+        "bounds": [
+          -106.267993,
+          40.101136,
+          -105.585244,
+          40.374935
+        ]
+      }
+    ],
+    "summary_sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
+    "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551",
+    "source_run_id": "29749"
   }
 }

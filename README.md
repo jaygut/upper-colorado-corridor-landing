@@ -88,3 +88,18 @@ No browser runtime dependency was added.
 Publication remains gated. Review source rights, scientific claims, accessibility,
 all changed files and preserved exports before any separately authorized deployment.
 Rollback reference is `5dac603ace8423b0cba52cf4947e4cf435eedbd4`.
+
+The optional MTBS layer shows final 2020 fire footprints. It is independent of
+the dated fire accounts. East Troublesome and Grizzly Creek retain separate IDs
+and map views. The lazy class table is a retrospective spectral-severity summary,
+not BAER soil severity. The requested 30 m EPSG:5070 grid does not establish native
+alignment; East Troublesome's revised 2026 boundary and the annual 2020 mosaic have
+an unresolved edition mismatch. Neither is eligible prefire issue-time evidence.
+
+`tools/build-fire-display.py --input /path/to/mtbs_fire_boundaries.geojson
+--output data/mtbs-final-perimeters.geojson` reproduces the display simplification
+with development-only Shapely and PyProj (versions recorded in the output).
+The 100 m topology-preserving simplification is for display, never area statistics.
+The summary retains the checked source file and raster hashes from Slurm 29749.
+`python3 tools/test-fire-evidence.py --base-url http://127.0.0.1:8766
+--out /absolute/output/path` verifies the added controls, lazy loading and fallback.

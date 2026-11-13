@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "designation": "derived",
+  "release_date": "2026-11-13",
+  "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551",
+  "source_run_id": "29749",
+  "original_perimeter_sha256": "b273fac61b73ac0cf02693621ebcd4ac0be03427ef523d93ca8c75aad9f6d905",
+  "grid_note": "Requested 30 m grid \u00b7 EPSG:5070 \u00b7 nearest-neighbor service extraction. Native alignment is not established. Areas count pixel centers inside the exact source perimeter.",
+  "records": [
+    {
+      "fire": "EAST TROUBLESOME",
+      "fire_id": "CO4020310623920201014",
+      "source_sha256": "6c11beaa1ff7d281fd489006db67b8d3563ff5a327927fec0e3ab6d9243d606c",
+      "requested_pixel_m": 30,
+      "crs": "EPSG:5070",
+      "inside_perimeter_pixels": 871544,
+      "pixel_center_area_km2": 784.3896,
+      "class_pixel_counts": {
+        "0": 22349,
+        "1": 132954,
+        "2": 211613,
+        "3": 286756,
+        "4": 210965,
+        "5": 4327,
+        "6": 2580
+      },
+      "class_area_km2": {
+        "0": 20.1141,
+        "1": 119.6586,
+        "2": 190.4517,
+        "3": 258.0804,
+        "4": 189.8685,
+        "5": 3.8943,
+        "6": 2.322
+      },
+      "status": "retrospective_grid_checked",
+      "class_semantics": {
+        "0": "nodata/no mapped coverage, not unburned",
+        "1": "unburned to low",
+        "2": "low",
+        "3": "moderate",
+        "4": "high",
+        "5": "increased greenness",
+        "6": "non-processing area"
+      },
+      "limits": [
+        "Requested 30 m grid in EPSG:5070 with nearest-neighbor resampling. Native raster alignment is not established.",
+        "Annual 2020 categorical mosaic, service object 37. This is not raw per-fire dNBR.",
+        "Spectral burn classes are distinct from BAER soil burn severity.",
+        "The East Troublesome boundary was revised in 2026. Consistency with the annual 2020 mosaic is unresolved.",
+        "Postfire imagery cannot be used as prefire issue-time evidence.",
+        "These are fire-perimeter areas, not an upstream gauge basin or treatment footprint."
+      ],
+      "source_limits": [
+        "Requested 30m EPSG5070 grid, nearest resampling; native alignment not established",
+        "Annual 2020 mosaic object37, not raw per-fire dNBR",
+        "Spectral severity, not BAER soil severity",
+        "East perimeter revised2026; temporal consistency with raster edition unresolved",
+        "Postfire imagery cannot be prefire forecast input",
+        "Not an upstream gauge basin or treatment footprint"
+      ]
+    },
+    {
+      "fire": "GRIZZLY CREEK",
+      "fire_id": "CO3957210726620200810",
+      "source_sha256": "ae5942a3cc75349cab87ea2387e7ffbe5730ade690a1548b741dbb5991c60dfa",
+      "requested_pixel_m": 30,
+      "crs": "EPSG:5070",
+      "inside_perimeter_pixels": 138088,
+      "pixel_center_area_km2": 124.2792,
+      "class_pixel_counts": {
+        "0": 30,
+        "1": 22477,
+        "2": 60314,
+        "3": 30312,
+        "4": 23463,
+        "5": 67,
+        "6": 1425
+      },
+      "class_area_km2": {
+        "0": 0.027,
+        "1": 20.2293,
+        "2": 54.2826,
+        "3": 27.2808,
+        "4": 21.1167,
+        "5": 0.0603,
+        "6": 1.2825
+      },
+      "status": "retrospective_grid_checked",
+      "class_semantics": {
+        "0": "nodata/no mapped coverage, not unburned",
+        "1": "unburned to low",
+        "2": "low",
+        "3": "moderate",
+        "4": "high",
+        "5": "increased greenness",
+        "6": "non-processing area"
+      },
+      "limits": [
+        "Requested 30 m grid in EPSG:5070 with nearest-neighbor resampling. Native raster alignment is not established.",
+        "Annual 2020 categorical mosaic, service object 37. This is not raw per-fire dNBR.",
+        "Spectral burn classes are distinct from BAER soil burn severity.",
+        "The East Troublesome boundary was revised in 2026. Consistency with the annual 2020 mosaic is unresolved.",
+        "Postfire imagery cannot be used as prefire issue-time evidence.",
+        "These are fire-perimeter areas, not an upstream gauge basin or treatment footprint."
+      ],
+      "source_limits": [
+        "Requested 30m EPSG5070 grid, nearest resampling; native alignment not established",
+        "Annual 2020 mosaic object37, not raw per-fire dNBR",
+        "Spectral severity, not BAER soil severity",
+        "East perimeter revised2026; temporal consistency with raster edition unresolved",
+        "Postfire imagery cannot be prefire forecast input",
+        "Not an upstream gauge basin or treatment footprint"
+      ]
+    }
+  ],
+  "export_rights": "USGS/USFS public MTBS data and authored retrospective summary"
+}

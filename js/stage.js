@@ -164,6 +164,7 @@
       getTargetColor:function(o){ var c=rgb(benefColor(o.bk)); return [c[0],c[1],c[2], 26*em.arcs]; },
       getWidth:function(o){ return .4+o.w*1.6; }, widthMinPixels:.5, widthMaxPixels:3,
       getHeight:.5, greatCircle:false, pickable:false }));
+    if(pilot && H.fire) L.push(new d.GeoJsonLayer({id:"fire-final",data:H.fire,stroked:true,filled:false,getLineColor:rgb(C.coral),getLineWidth:2,lineWidthUnits:"pixels",pickable:false}));
     return L;
   }
 
@@ -292,7 +293,7 @@
     var host=document.getElementById("stage");
     svg=el("svg",{preserveAspectRatio:"xMidYMid slice"}); host.appendChild(svg);
     fit(); world=el("g",{}); svg.appendChild(world);
-    ["ba","zn","fl","ar","st","pc","fo"].forEach(function(k){ groups[k]=el("g",{id:"g-"+k}); world.appendChild(groups[k]); });
+    ["ba","zn","fl","ar","fi","st","pc","fo"].forEach(function(k){ groups[k]=el("g",{id:"g-"+k}); world.appendChild(groups[k]); });
     // basin frame
     (H.basin||[]).forEach(function(ring){
       var pts=ring.map(function(c){return projW(c[0],c[1]).join(",");}).join(" ");
@@ -336,6 +337,7 @@
         stroke:C.green,"stroke-opacity":.7,"stroke-width":1.6,"vector-effect":"non-scaling-stroke"}));
     });
     STAGE.mode="svg"; STAGE.ready=true;
+    if(pilot){STAGE.setFireGeometry(H.fire||null);STAGE.setStation(STAGE.station);}
     var fn=document.getElementById("fallback-note"); if(fn){fn.hidden=false;fn.style.display="block";}
     requestAnimationFrame(frameSvg);
   }
@@ -382,6 +384,17 @@
   }
   function go(i){ if(!SCENES[i]) return; if(STAGE.mode==="map") goMap(i); else goSvg(i); sceneUI(i); }
 
+  STAGE.setFireGeometry = function(geo){
+    H.fire=geo;
+    if(overlay)overlay.setProps({layers:buildDeckLayers(target)});
+    if(groups.fi){groups.fi.replaceChildren();if(geo)geo.features.forEach(function(f){var polys=f.geometry.type==="Polygon"?[f.geometry.coordinates]:f.geometry.coordinates;polys.forEach(function(rings){var path=rings.map(function(ring){return "M"+ring.map(function(c){return projW(c[0],c[1]).join(",");}).join("L")+"Z";}).join(" ");groups.fi.appendChild(el("path",{d:path,fill:"none",stroke:C.coral,"stroke-width":2,"vector-effect":"non-scaling-stroke"}));});});}
+  };
+  STAGE.focusFireBounds = function(bounds){
+    if(!pilot)return;
+    var base=pilot.scene_registry[1].camera,v={longitude:base[0],latitude:base[1],zoom:base[2],pitch:base[3],bearing:base[4]};
+    if(bounds){var box=document.getElementById("stage").getBoundingClientRect(),dx=bounds[2]-bounds[0],dy=(mercY(bounds[3])-mercY(bounds[1]))*180/Math.PI;v.longitude=(bounds[0]+bounds[2])/2;v.latitude=(bounds[1]+bounds[3])/2;v.zoom=Math.log2(Math.min(box.width/(dx||1),box.height/(dy||1))*360/256)-1;v.pitch=0;v.bearing=0;}
+    SCENES[1].v=v;if(STAGE.scene===1)go(1);
+  };
   STAGE.setContextGeometry = function(geo){
     H.basin = geo ? geo.features.flatMap(function(f){return f.geometry.type==="Polygon"?[f.geometry.coordinates[0]]:f.geometry.coordinates.map(function(p){return p[0];});}) : [];
     if(overlay)overlay.setProps({layers:buildDeckLayers(target)});

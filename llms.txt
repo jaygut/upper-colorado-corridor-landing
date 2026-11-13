@@ -5,7 +5,7 @@ Canonical manifest: data/headwaters-evidence.json
 Public station points: data/stations.geojson
 Historical experience: legacy.html
 
-The new entry has six chapters driven by URL scene/station/event/fire/direction/mode.
+The new entry has six chapters driven by URL scene/station/event/fire/direction/mode/day/incident/perimeter.
 Use ?svg=1 for the same public station evidence without WebGL. All scientific
 conclusions also appear in text and tables. Data replays never autoplay.
 
@@ -33,6 +33,19 @@ replay. Water temperature remains in the downloadable native record.
 Event model skill, treatment efficacy, fine-sediment loads, operating savings,
 rights and buyer commitments are not established. Unsupported scenarios remain
 disabled. No atmospheric moisture transport is part of this Colorado case.
+
+Optional lazy MTBS final footprints are in data/mtbs-final-perimeters.geojson.
+Their stable IDs are CO4020310623920201014 (East Troublesome) and
+CO3957210726620200810 (Grizzly Creek, a separate process case). Display-only
+simplification uses a 100 m tolerance in EPSG:5070 with topology preserved.
+Dated fire accounts do not animate these final footprints. Spectral class areas
+are in data/mtbs-severity-summary.json, derived from checked Slurm job 29749.
+The service extraction requested a 30 m EPSG:5070 grid; native alignment is not
+established. East's revised 2026 boundary and the annual 2020 mosaic have an
+unresolved edition mismatch. Class 0 is nodata, not unburned; class 6 is a
+non-processing area. Spectral classes are not BAER soil severity. Postfire
+imagery and revised perimeters are unavailable as prefire issue-time inputs.
+No gauge-basin membership, fire progression, treatment effect or ranking is inferred.
 
 APP_DATA remains backward compatible in data/bundle.js. The headwaters renderer
 uses HEADWATERS from data/headwaters.js, generated from the versioned JSON manifest.
