@@ -1,27 +1,32 @@
-<!-- Graph of Life brand v1.0.0 · tokens.json -->
-# Keystone Polygon story and evidence desk
+<!-- Graph of Life brand v1.0.0 · canonical tokens.json; IBM Plex Sans / IBM Plex Mono -->
+# Keystone Polygon experience
 
-The current entry is a six-chapter, dark, map-first story centered on a source-checked Eagle County legacy candidate. Its parcel closeup uses attributed USGS orthoimagery, then reveals retained river context before explicit geographic cuts to the separate North/East and Glenwood monitoring cases. The candidate has no validated treatment rank.
+The current entry is a seven-scene spatial story. An exact Eagle County parcel appears as an imagery-filled object, opens into river context, and returns at the close. A clearly separate Grand Lake scene shows associated basins and mapped fire overlap. The story then changes medium to native 2021 observations, frozen 2023–2024 forecast evidence and all accepted monitoring allocations. A Keystone Polygon is a candidate for disproportionate importance to a named recipient; no Colorado treatment rank is validated here.
 
-The dark `evidence.html` desk preserves the checked scientific results, all earlier negative benchmarks and the historical monitoring workflow. Old `?scene=` links redirect there; new story links use `?chapter=`.
+`review.html?case=north` and `review.html?case=glenwood` open the baseline-first historical monitoring review. The user can inspect proposed UTC windows, enter an explicit hypothetical unit cost, prepare a review draft and export an audit or evidence register. Nothing is ordered, sampled, paid or financed. Unknown outcomes remain in the all-slot budget. The separate `evidence.html` desk retains full methods, downloadable reports and earlier negative benchmarks. `legacy.html` preserves the historical screening display with a prominent archive notice.
 
- North six-hour peak forecasts modestly reduce mean absolute log1p(FNU) error, but their alert allocation does not improve on the baseline. A separate Glenwood binary-exceedance classifier also fails its frozen business promotion criteria. Neither policy is a live service or financing approval.
+Story routes use `?chapter=polygon|dependency|fire|observation|evidence|decision|next`. Old `?scene=` or `?forecastCase=` URLs still redirect to the evidence desk. `?svg=1` uses actual local vector geometry; missing source data is explicitly unavailable. The checked parcel is also embedded from the same public file, so the opening does not wait for a basemap. The Eagle scale reveal respects reduced motion; geographic cuts never imply a delivery connection between separate cases.
 
-Use the decision chapter to compare a historical window, enter a hypothetical unit laboratory cost, export a work-order **draft**, and download the investment evidence register. ALL proposed slots, including unknown outcomes, enter the budget. No actual sample, invoice, order, ROI or avoided loss is inferred.
+The new presentation adapter `data/experience-evidence.json` binds 14 public source hashes, preserves all 102 accepted allocations across both policies and both cases, and retains model/freeze/opening provenance. New Grand Lake context is copied without geometry changes from the retained public USGS map-ready files. Native observations keep their units, timestamps and null gaps. The 2021 replay is separate from final forecast validation. North improved mean absolute log1p(FNU) error modestly; monitoring promotion and East transfer failed. The separate Glenwood classifier also failed its joint business gate.
+
+The existing static vanilla JavaScript and MapLibre stack is retained. No framework, backend, package dependency, new model or HPC processing was introduced. Serve from the repository root:
 
 ```bash
-python3 tools/build-evidence.py
-python3 tools/build-story.py
-python3 -m http.server 8766 --bind 127.0.0.1
-python3 tools/test-forecast.py --base-url http://127.0.0.1:8766 --out /absolute/review/output
+python3 tools/build-experience.py
+python3 -m http.server 8769 --bind 127.0.0.1
 ```
 
-Public source records: `data/forecast-round2.json` and `data/monitoring-glenwood.json`; both contain model/freeze/opening hashes and reference lazily fetched complete issue-window files. Window SHA256 integrity is checked before dynamic allocation. Both cases have compiled no-JavaScript evidence, and retain all earlier negative experiments. Case-specific thresholds are never pooled. Forecast development and untouched-at-freeze test remain separate.
+`build-experience.py` reads only repository-local frozen public data, writes the compact adapter and token-derived opacity CSS, and regenerates the embedded exact parcel. Repeating it produces identical bytes. Existing `tools/build-evidence.py`, `tools/build-story.py`, `tools/build-round2.py` and `tools/build-fire-display.py` remain the earlier evidence generators; their scientific inputs and exports are unchanged by this design revision.
 
-The site retains the existing vanilla JavaScript/MapLibre/deck.gl/D3/Scrollama stack. No new runtime, backend or package dependency. Brand checks:
-`python3 brand/brandlint.py index.html evidence.html css/story.css css/evidence-dark.css js/story.js js/evidence-entry.js css/headwaters.css css/forecast.css js/headwaters.js js/forecast.js js/stage.js brand/runtime.css brand/graph-of-life.css legacy.html`
+Brand gate for the new experience and review:
 
-Publication is authorized for this checked historical research release. Rollback reference is `5dac603ace8423b0cba52cf4947e4cf435eedbd4`; prior local review is `705c4972ef4bb1804208acbc9e4f43e810fe38d4`. The following documentation is preserved historical context, not current service/validation status.
+```bash
+python3 brand/brandlint.py index.html review.html css/story.css css/review.css js/story.js js/review.js css/archive-notice.css brand/experience.css tools/build-experience.py README.md
+```
+
+All palette, type and spacing values derive from canonical `brand/tokens.json`. Document component conventions are intentionally not used in the main story. The new experience uses an object, geographic annotations, measured traces, an interval graphic and real schedule relationships. USDA / USGS imagery is current visual context, never event-time evidence.
+
+Publication is authorized after the actual source, functional, failure, accessibility, responsive, visual and clean-regeneration checks. The preceding public release is `ec3e51e64970e330b3ea72517a0a29cc6f743f0f`. R3 review receipts and recording live in the companion research run `keystone_experience_20261113_r3`. The material below is preserved historical documentation; its older product assertions and route descriptions do not define current validated capability.
 
 ---
 

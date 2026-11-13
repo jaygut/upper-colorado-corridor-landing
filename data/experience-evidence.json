@@ -1,0 +1,1787 @@
+{
+  "schema": "keystone-experience/3.0",
+  "purpose": "Presentation adapter only; frozen R1/R2 science unchanged",
+  "sources_sha256": {
+    "data/keystone-candidate.geojson": "dc5c013b6a94cc4844f080a4f25abbf46650adcab671a52775527c7e7c46cf91",
+    "data/hydro.js": "bf00d8aed4e31d55d6581709d005bfaa85b034aaaed9d7981aa0a4c650c34dad",
+    "data/stations.geojson": "a4ab50cc5b0d2dae6b21ed50ccdd1ed7cb5838f14302741956dee64d5f7e663c",
+    "data/context/nldi_associated_basins.geojson": "22359c2c9c5c033325c69b990649a18f09b3d34731c6d2ecb08d752be5bec857",
+    "data/context/north_upstream.geojson": "c9237c9912b9ee5b27b7922aa05a40429b8efd3453c81d22d304f3cc53286861",
+    "data/context/east_upstream.geojson": "d483dd9b8a2278a190a733e7c41d143c07e366b045dde60edd7a32894eee9831",
+    "data/context/burn_basin_intersections.geojson": "5d70b722e708fea7f558f59f4548c5ef9d590e509fcb8665c907f5ab3bde9240",
+    "data/mtbs-final-perimeters.geojson": "67ba4b3dcd5424efd8e7c4f765f91296e8ad1673581a05a7a9c64297add81289",
+    "data/events/measured-20210730-20210804.json": "2e02cdcbb3fc80231f58c3e6c713db47b7ac5d958c7b52ac10df98820e0a9ee0",
+    "data/forecast-round2.json": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772",
+    "data/monitoring-north-windows.json": "b92d16846ada4f2aebaa37d592fc52f4488faa4ccb8b358a0a4150480e7d966a",
+    "data/monitoring-glenwood.json": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d",
+    "data/monitoring-glenwood-windows.json": "edbca068fb513daa64443d86ebe8370ba0575c036c22b20aafe368cdc130d5d8",
+    "data/finance-evidence-ledger.json": "eb6f8c4ffc1f8aa3987fd00121410484c3a3d8ab4f2aaf5ea2cd8097d7cd0c1c"
+  },
+  "scenes": [
+    {
+      "id": "polygon",
+      "designation": "checked provider geometry; legacy screening candidate",
+      "source": "data/keystone-candidate.geojson",
+      "unit": "ha; lon/lat degrees",
+      "limit": "No validated rank, treatment effect, land rights or recipient established"
+    },
+    {
+      "id": "dependency",
+      "designation": "cartographic context",
+      "source": "data/hydro.js",
+      "unit": "lon/lat degrees",
+      "limit": "Simplified retained NHDPlus HR geography; no verified delivery route or travel time"
+    },
+    {
+      "id": "fire",
+      "designation": "separate Grand Lake associated-basin context",
+      "sources": [
+        "data/stations.geojson",
+        "data/context/nldi_associated_basins.geojson",
+        "data/context/north_upstream.geojson",
+        "data/context/east_upstream.geojson",
+        "data/context/burn_basin_intersections.geojson",
+        "data/mtbs-final-perimeters.geojson"
+      ],
+      "unit": "lon/lat degrees; km\u00b2",
+      "limit": "Whole associated NHDPlusV2 COMID basins, exact station split unresolved. Final revised MTBS context, not fire progression, soil severity, or as-issued model evidence"
+    },
+    {
+      "id": "observation",
+      "designation": "observed historical replay",
+      "source": "data/events/measured-20210730-20210804.json",
+      "unit": "rain inches per 5min; Q ft\u00b3/s; turbidity FNU",
+      "limit": "July30-Aug4 2021 example; native timestamps and gaps retained; separate from 2023-24 final forecast test; no sediment mass or causal treatment claim"
+    },
+    {
+      "id": "evidence",
+      "designation": "retrospective frozen evaluation",
+      "source": "data/forecast-round2.json",
+      "unit": "log1p(FNU) absolute error; FNU bands",
+      "limit": "Untouched at freeze, now consumed. Corrected archives and assumed 30-minute latency, not verified real-time issuance"
+    },
+    {
+      "id": "decision",
+      "designation": "historical monitoring proposals",
+      "sources": [
+        "data/forecast-round2.json",
+        "data/monitoring-north-windows.json",
+        "data/monitoring-glenwood.json",
+        "data/monitoring-glenwood-windows.json"
+      ],
+      "unit": "proposed 6h monitoring windows",
+      "limit": "All accepted slots including unknown outcomes. Nonnested policy sets. Neither learned policy qualified for promotion; no placed order or benefit claim"
+    },
+    {
+      "id": "next",
+      "designation": "human review workflow",
+      "source": "data/finance-evidence-ledger.json",
+      "unit": "USD only if user supplies unit cost",
+      "limit": "No contracted buyer, lab quote, treatment effect, financing approval, payout or credit"
+    }
+  ],
+  "imagery": {
+    "url": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer",
+    "credit": "USDA / USGS The National Map",
+    "meaning": "Current public orthoimagery mosaic; no event-date inference",
+    "metadata_checked": "2026-11-13",
+    "service_refresh": "June2024",
+    "CONUS_vintages": "2017-2021 NAIP"
+  },
+  "basin_sources": {
+    "provider": "USGS NLDI",
+    "url": "https://api.water.usgs.gov/nldi/linked-data/comid",
+    "fabric": "NHDPlusV2",
+    "support": "whole upstream basin associated with COMID1234473/1234493, exact station split failed"
+  },
+  "north": {
+    "station_id": "401530105475401",
+    "baseline_model_id": "B0_current",
+    "selected_model_id": "full_hgb_d3_l21",
+    "primary_comparison": {
+      "architecture": "full_hgb_d3_l21",
+      "baseline": "B0_current",
+      "paired_mae_log1p_gain": 0.010168978788062472,
+      "block_interval_95": [
+        0.0016496167459708695,
+        0.01738924103872002
+      ],
+      "positive_gain_with_lower_bound_above_zero": true
+    },
+    "external_transfer": {
+      "station_id": "09013500",
+      "status": "failed",
+      "window_count": 1481,
+      "comparison": {
+        "architecture": "state_hgb_d3_l21",
+        "baseline": "B0_current",
+        "paired_mae_log1p_gain": -0.014970927150424349,
+        "block_interval_95": [
+          -0.02681994408898525,
+          -0.003974134513980638
+        ],
+        "positive_gain_with_lower_bound_above_zero": false
+      },
+      "metrics": {
+        "B0_current": {
+          "n_windows": 1481,
+          "mae_log1p_fnu": 0.0802008907060108,
+          "mae_fnu": 0.2698176907494936,
+          "high_windows": 71,
+          "candidate_alerts": 60,
+          "accepted_alerts": 23,
+          "capacity_suppressed_alerts": 37,
+          "true_alerts": 19,
+          "false_alerts": 4,
+          "missed_high_windows": 52,
+          "precision": 0.8260869565217391,
+          "recall": 0.2676056338028169,
+          "accepted_alert_rate": 0.015530047265361242,
+          "candidate_alert_rate": 0.04051316677920324,
+          "false_alert_rate_over_nonhigh_windows": 0.0028368794326241137,
+          "true_alert_peak_time_lead_hours_median": 1.6666666666666667,
+          "true_alert_peak_time_lead_hours_range": [
+            0.16666666666666666,
+            5.833333333333333
+          ],
+          "lead_definition": "issue to observed future window peak among accepted true alerts; not guaranteed lead to onset or first threshold crossing",
+          "empirical_band_coverage": 0.9763673193787981,
+          "empirical_band_mean_width_fnu": 2.763690074274139,
+          "band_nominal_coverage": 0.9,
+          "band_is_coverage_guaranteed": false
+        },
+        "state_hgb_d3_l21": {
+          "n_windows": 1481,
+          "mae_log1p_fnu": 0.09517181785643515,
+          "mae_fnu": 0.3146701797041219,
+          "high_windows": 71,
+          "candidate_alerts": 75,
+          "accepted_alerts": 31,
+          "capacity_suppressed_alerts": 44,
+          "true_alerts": 19,
+          "false_alerts": 12,
+          "missed_high_windows": 52,
+          "precision": 0.6129032258064516,
+          "recall": 0.2676056338028169,
+          "accepted_alert_rate": 0.020931802835921675,
+          "candidate_alert_rate": 0.05064145847400405,
+          "false_alert_rate_over_nonhigh_windows": 0.00851063829787234,
+          "true_alert_peak_time_lead_hours_median": 1.6666666666666667,
+          "true_alert_peak_time_lead_hours_range": [
+            0.16666666666666666,
+            5.833333333333333
+          ],
+          "lead_definition": "issue to observed future window peak among accepted true alerts; not guaranteed lead to onset or first threshold crossing",
+          "empirical_band_coverage": 0.9763673193787981,
+          "empirical_band_mean_width_fnu": 2.362369151970311,
+          "band_nominal_coverage": 0.9,
+          "band_is_coverage_guaranteed": false
+        }
+      },
+      "source_sha256": "c78bcbc204c22d25abdc0a70db59968ca49a45a6e4aba738edf13320c9d3874e",
+      "limit": "North-trained turbidity-state model only; separate station transfer, not a pooled success or causal control."
+    },
+    "allocation_metrics": [
+      {
+        "split_id": "untouched_test",
+        "model_id": "B0_current",
+        "forecast_eligible_windows": 1021,
+        "outcome_eligible_windows": 1014,
+        "high_target_windows": 80,
+        "candidate_alerts": 63,
+        "accepted_alerts": 38,
+        "accepted_alerts_known_outcome": 38,
+        "accepted_alerts_unknown_outcome": 0,
+        "suppressed_alerts": 25,
+        "true_positive_accepted": 26,
+        "false_positive_accepted": 12,
+        "false_negative": 54,
+        "precision": 0.6842105263157895,
+        "recall": 0.325,
+        "actual_accepted_alert_fraction": 0.03721841332027424,
+        "owning_metrics": {
+          "n_windows": 1014,
+          "mae_log1p_fnu": 0.14868100944716311,
+          "mae_fnu": 1.2827416173570019,
+          "high_windows": 80,
+          "candidate_alerts": 63,
+          "accepted_alerts": 38,
+          "capacity_suppressed_alerts": 25,
+          "true_alerts": 26,
+          "false_alerts": 12,
+          "missed_high_windows": 54,
+          "precision": 0.6842105263157895,
+          "recall": 0.325,
+          "accepted_alert_rate": 0.03747534516765286,
+          "candidate_alert_rate": 0.0621301775147929,
+          "false_alert_rate_over_nonhigh_windows": 0.01284796573875803,
+          "true_alert_peak_time_lead_hours_median": 0.3333333333333333,
+          "true_alert_peak_time_lead_hours_range": [
+            0.16666666666666666,
+            5.833333333333333
+          ],
+          "lead_definition": "issue to observed future window peak among accepted true alerts; not guaranteed lead to onset or first threshold crossing",
+          "empirical_band_coverage": 0.9467455621301775,
+          "empirical_band_mean_width_fnu": 3.7584143420681877,
+          "band_nominal_coverage": 0.9,
+          "band_is_coverage_guaranteed": false
+        }
+      },
+      {
+        "split_id": "untouched_test",
+        "model_id": "full_hgb_d3_l21",
+        "forecast_eligible_windows": 1021,
+        "outcome_eligible_windows": 1014,
+        "high_target_windows": 80,
+        "candidate_alerts": 98,
+        "accepted_alerts": 46,
+        "accepted_alerts_known_outcome": 44,
+        "accepted_alerts_unknown_outcome": 2,
+        "suppressed_alerts": 52,
+        "true_positive_accepted": 25,
+        "false_positive_accepted": 19,
+        "false_negative": 55,
+        "precision": 0.5681818181818182,
+        "recall": 0.3125,
+        "actual_accepted_alert_fraction": 0.04505386875612145,
+        "owning_metrics": {
+          "n_windows": 1014,
+          "mae_log1p_fnu": 0.13851203065910064,
+          "mae_fnu": 1.2646631855324073,
+          "high_windows": 80,
+          "candidate_alerts": 96,
+          "accepted_alerts": 44,
+          "capacity_suppressed_alerts": 52,
+          "true_alerts": 25,
+          "false_alerts": 19,
+          "missed_high_windows": 55,
+          "precision": 0.5681818181818182,
+          "recall": 0.3125,
+          "accepted_alert_rate": 0.04339250493096647,
+          "candidate_alert_rate": 0.09467455621301775,
+          "false_alert_rate_over_nonhigh_windows": 0.020342612419700215,
+          "true_alert_peak_time_lead_hours_median": 2.5,
+          "true_alert_peak_time_lead_hours_range": [
+            0.16666666666666666,
+            5.833333333333333
+          ],
+          "lead_definition": "issue to observed future window peak among accepted true alerts; not guaranteed lead to onset or first threshold crossing",
+          "empirical_band_coverage": 0.9487179487179487,
+          "empirical_band_mean_width_fnu": 3.3404009691987167,
+          "band_nominal_coverage": 0.9,
+          "band_is_coverage_guaranteed": false
+        }
+      }
+    ],
+    "forecast_examples": [
+      {
+        "id": "first-four-scored",
+        "label": "First four chronological scored windows",
+        "split_id": "untouched_test",
+        "selection_rule": "Deterministic first four chronological scored windows; no selection by prediction quality or event magnitude.",
+        "interval_status": "Nominal 90% empirical development OOF absolute-log-residual bands. No guaranteed conformal coverage under temporal dependence or drift; final coverage and width reported separately.",
+        "forecast_windows": [
+          {
+            "window_id": "401530105475401:2023-05-02T12:00:00Z",
+            "station_id": "401530105475401",
+            "issue_time": "2023-05-02T12:00:00Z",
+            "data_cutoff_time": "2023-05-02T11:30:00Z",
+            "target_end": "2023-05-02T18:00:00Z",
+            "calendar_block_id": "2023:17",
+            "partition": "untouched_test",
+            "observed_max_fnu": 5.5,
+            "observed_peak_time": "2023-05-02T12:20:00Z",
+            "target_coverage_fraction": 1.0,
+            "outcome_evaluable": true,
+            "target_exclusion_reasons": [],
+            "predictions": [
+              {
+                "alert_candidate": true,
+                "alert_issued": true,
+                "capacity_suppressed": false,
+                "model_id": "B0_current",
+                "predicted_max_fnu": 5.700000000000001,
+                "predicted_log1p": 1.9021075263969205,
+                "interval_lower_fnu": 2.828571428571429,
+                "interval_upper_fnu": 10.725000000000003,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "First frozen-threshold crossing accepted within UTC-day capacity; proposed monitoring window only."
+              },
+              {
+                "alert_candidate": true,
+                "alert_issued": true,
+                "capacity_suppressed": false,
+                "model_id": "full_hgb_d3_l21",
+                "predicted_max_fnu": 5.955188751749701,
+                "predicted_log1p": 1.9394879640078262,
+                "interval_lower_fnu": 3.405640323280305,
+                "interval_upper_fnu": 9.980163386657782,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "First frozen-threshold crossing accepted within UTC-day capacity; proposed monitoring window only."
+              }
+            ]
+          },
+          {
+            "window_id": "401530105475401:2023-05-02T18:00:00Z",
+            "station_id": "401530105475401",
+            "issue_time": "2023-05-02T18:00:00Z",
+            "data_cutoff_time": "2023-05-02T17:30:00Z",
+            "target_end": "2023-05-03T00:00:00Z",
+            "calendar_block_id": "2023:17",
+            "partition": "untouched_test",
+            "observed_max_fnu": 4.7,
+            "observed_peak_time": "2023-05-02T20:20:00Z",
+            "target_coverage_fraction": 1.0,
+            "outcome_evaluable": true,
+            "target_exclusion_reasons": [],
+            "predictions": [
+              {
+                "alert_candidate": true,
+                "alert_issued": false,
+                "capacity_suppressed": true,
+                "model_id": "B0_current",
+                "predicted_max_fnu": 4.2,
+                "predicted_log1p": 1.6486586255873816,
+                "interval_lower_fnu": 1.9714285714285713,
+                "interval_upper_fnu": 8.1,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "An earlier accepted threshold crossing consumed this UTC day capacity."
+              },
+              {
+                "alert_candidate": true,
+                "alert_issued": false,
+                "capacity_suppressed": true,
+                "model_id": "full_hgb_d3_l21",
+                "predicted_max_fnu": 4.945373045850633,
+                "predicted_log1p": 1.7826132776863783,
+                "interval_lower_fnu": 2.7659905665614084,
+                "interval_upper_fnu": 8.385966329331973,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "An earlier accepted threshold crossing consumed this UTC day capacity."
+              }
+            ]
+          },
+          {
+            "window_id": "401530105475401:2023-05-03T00:00:00Z",
+            "station_id": "401530105475401",
+            "issue_time": "2023-05-03T00:00:00Z",
+            "data_cutoff_time": "2023-05-02T23:30:00Z",
+            "target_end": "2023-05-03T06:00:00Z",
+            "calendar_block_id": "2023:17",
+            "partition": "untouched_test",
+            "observed_max_fnu": 5.4,
+            "observed_peak_time": "2023-05-03T03:50:00Z",
+            "target_coverage_fraction": 1.0,
+            "outcome_evaluable": true,
+            "target_exclusion_reasons": [],
+            "predictions": [
+              {
+                "alert_candidate": true,
+                "alert_issued": true,
+                "capacity_suppressed": false,
+                "model_id": "B0_current",
+                "predicted_max_fnu": 4.6,
+                "predicted_log1p": 1.7227665977411035,
+                "interval_lower_fnu": 2.2,
+                "interval_upper_fnu": 8.800000000000002,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "First frozen-threshold crossing accepted within UTC-day capacity; proposed monitoring window only."
+              },
+              {
+                "alert_candidate": true,
+                "alert_issued": true,
+                "capacity_suppressed": false,
+                "model_id": "full_hgb_d3_l21",
+                "predicted_max_fnu": 5.781482393191186,
+                "predicted_log1p": 1.9141957201172084,
+                "interval_lower_fnu": 3.295609127148775,
+                "interval_upper_fnu": 9.705932985966786,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "First frozen-threshold crossing accepted within UTC-day capacity; proposed monitoring window only."
+              }
+            ]
+          },
+          {
+            "window_id": "401530105475401:2023-05-03T06:00:00Z",
+            "station_id": "401530105475401",
+            "issue_time": "2023-05-03T06:00:00Z",
+            "data_cutoff_time": "2023-05-03T05:30:00Z",
+            "target_end": "2023-05-03T12:00:00Z",
+            "calendar_block_id": "2023:17",
+            "partition": "untouched_test",
+            "observed_max_fnu": 5.2,
+            "observed_peak_time": "2023-05-03T06:30:00Z",
+            "target_coverage_fraction": 1.0,
+            "outcome_evaluable": true,
+            "target_exclusion_reasons": [],
+            "predictions": [
+              {
+                "alert_candidate": true,
+                "alert_issued": false,
+                "capacity_suppressed": true,
+                "model_id": "B0_current",
+                "predicted_max_fnu": 5.1,
+                "predicted_log1p": 1.8082887711792655,
+                "interval_lower_fnu": 2.4857142857142853,
+                "interval_upper_fnu": 9.674999999999999,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "An earlier accepted threshold crossing consumed this UTC day capacity."
+              },
+              {
+                "alert_candidate": true,
+                "alert_issued": false,
+                "capacity_suppressed": true,
+                "model_id": "full_hgb_d3_l21",
+                "predicted_max_fnu": 6.322622445103415,
+                "predicted_log1p": 1.9909685213421042,
+                "interval_lower_fnu": 3.6383846460226175,
+                "interval_upper_fnu": 10.560231323099039,
+                "interval_method": "development purged-forward OOF empirical absolute-log-residual band; no guaranteed conformal coverage under temporal dependence or drift",
+                "interval_nominal_coverage": 0.9,
+                "probability_exceedance": null,
+                "action_reason": "An earlier accepted threshold crossing consumed this UTC day capacity."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "contract_sha256": "ab81b06278ad86af7f353626793dc7eefc0e1133cfa712d1e7c90d9bf420697c",
+      "model_sha256": "6f5da1438b8c1481653a4acb3d198fa6e6ac1cb8a2576752af4ed91bed13aeaf",
+      "model_frozen_utc": "2026-11-13T13:30:20.675728+00:00",
+      "test_outcomes_opened_utc": "2026-11-13T13:35:00.106530+00:00",
+      "evaluation_completed_utc": "2026-11-13T13:35:40.490819+00:00",
+      "evaluation_consumed": true,
+      "selection_freeze_sha256": "46b98af3aa444dc0c1ef57babf0403f8bfc014f565291644baea4cd5e00f2a6a",
+      "opening_ledger_sha256": "e351aae3653d1d494985f5ef7a3e55ed091eba3d23b7511fc84dd9a68584af70",
+      "evaluation_sha256": "0d0c0041362298a82091ab1e9b223f7ec143cb44db6fc3b09e22702f78b4ef1b",
+      "development_summary_sha256": "cbb9a607d511920c8ce196bfe42885735d28c309385ff1814d89014777fb82cf"
+    },
+    "monitoring_policy": {
+      "target_threshold_fnu": 4.6200000000000045,
+      "daily_accepted_alert_cap": 1,
+      "daily_boundary": "UTC",
+      "development_alert_fraction_target": 0.1,
+      "model_thresholds": {
+        "B0_current": {
+          "threshold_log1p": 1.4350845252893227,
+          "threshold_fnu": 3.2000000000000006,
+          "comparison": "strict_greater_than",
+          "calibration_windows": 757,
+          "budget_fraction": 0.1,
+          "candidate_alert_count": 72,
+          "conservative_ties": true,
+          "daily_cap_applied_after_threshold": 1
+        },
+        "full_hgb_d3_l21": {
+          "threshold_log1p": 1.5004121796292171,
+          "threshold_fnu": 3.4835367120313188,
+          "comparison": "strict_greater_than",
+          "calibration_windows": 757,
+          "budget_fraction": 0.1,
+          "candidate_alert_count": 75,
+          "conservative_ties": true,
+          "daily_cap_applied_after_threshold": 1
+        }
+      },
+      "policy_description": "Each model uses its development-frozen threshold targeting at most 10% candidate alerts. First strict crossing per station/UTC day receives one proposed slot before future outcome coverage is known; later candidates are suppressed."
+    }
+  },
+  "glenwood": {
+    "station_id": "09071750",
+    "baseline_model_id": "B0_current_score@cap0.1",
+    "selected_model_id": "state_hgb_d2_l210@cap0.075",
+    "primary_business_comparison": {
+      "selected_policy_id": "state_hgb_d2_l210@cap0.075",
+      "baseline_policy_id": "B0_current_score@cap0.1",
+      "precision_difference": 0.050000000000000044,
+      "paired_precision_difference_interval_95": [
+        0.0,
+        0.13333333333333333
+      ],
+      "criteria": {
+        "development_business_gate_passed": true,
+        "known_true_alerts_at_least_baseline": true,
+        "total_accepted_alerts_at_most_baseline": false,
+        "paired_precision_difference_ci_lower_above_zero": false
+      },
+      "all_criteria_passed": false,
+      "promotion": "reject_classifier_policy_promotion"
+    },
+    "allocation_metrics": [
+      {
+        "split_id": "untouched_test",
+        "model_id": "B0_current_score@cap0.1",
+        "forecast_eligible_windows": 1530,
+        "outcome_eligible_windows": 1510,
+        "high_target_windows": 20,
+        "candidate_alerts": 10,
+        "accepted_alerts": 8,
+        "accepted_alerts_known_outcome": 8,
+        "accepted_alerts_unknown_outcome": 0,
+        "precision": 0.75,
+        "recall": 0.3,
+        "suppressed_alerts": 2,
+        "true_positive_accepted": 6,
+        "false_positive_accepted": 2,
+        "false_negative": 14,
+        "actual_accepted_alert_fraction": 0.00522875816993464,
+        "owning_metrics": {
+          "forecast_eligible_windows": 1530,
+          "outcome_eligible_windows": 1510,
+          "unknown_outcome_windows": 20,
+          "high_target_windows": 20,
+          "candidate_alerts": 10,
+          "capacity_suppressed_alerts": 2,
+          "accepted_alerts": 8,
+          "accepted_alerts_known_outcome": 8,
+          "accepted_alerts_unknown_outcome": 0,
+          "true_alerts": 6,
+          "false_alerts": 2,
+          "missed_high_windows": 14,
+          "precision": 0.75,
+          "recall": 0.3,
+          "precision_allocation_worst_bound": 0.75,
+          "precision_allocation_best_bound": 0.75,
+          "accepted_alert_rate": 0.00522875816993464,
+          "brier_score": null,
+          "log_loss": null,
+          "calibration": null,
+          "true_alert_peak_lead_hours_median": 0.5,
+          "lead_definition": "issue to observed future-window peak among accepted true alerts; different policies may select different windows; not guaranteed onset lead"
+        }
+      },
+      {
+        "split_id": "untouched_test",
+        "model_id": "state_hgb_d2_l210@cap0.075",
+        "forecast_eligible_windows": 1530,
+        "outcome_eligible_windows": 1510,
+        "high_target_windows": 20,
+        "candidate_alerts": 13,
+        "accepted_alerts": 10,
+        "accepted_alerts_known_outcome": 10,
+        "accepted_alerts_unknown_outcome": 0,
+        "precision": 0.8,
+        "recall": 0.4,
+        "suppressed_alerts": 3,
+        "true_positive_accepted": 8,
+        "false_positive_accepted": 2,
+        "false_negative": 12,
+        "actual_accepted_alert_fraction": 0.006535947712418301,
+        "owning_metrics": {
+          "forecast_eligible_windows": 1530,
+          "outcome_eligible_windows": 1510,
+          "unknown_outcome_windows": 20,
+          "high_target_windows": 20,
+          "candidate_alerts": 13,
+          "capacity_suppressed_alerts": 3,
+          "accepted_alerts": 10,
+          "accepted_alerts_known_outcome": 10,
+          "accepted_alerts_unknown_outcome": 0,
+          "true_alerts": 8,
+          "false_alerts": 2,
+          "missed_high_windows": 12,
+          "precision": 0.8,
+          "recall": 0.4,
+          "precision_allocation_worst_bound": 0.8,
+          "precision_allocation_best_bound": 0.8,
+          "accepted_alert_rate": 0.006535947712418301,
+          "brier_score": 0.007084238980272254,
+          "log_loss": 0.03889742284548174,
+          "calibration": {
+            "method": "fixed ten equal-width probability bins; no final calibration fit",
+            "bins": [
+              {
+                "lower": 0.0,
+                "upper": 0.1,
+                "upper_inclusive": false,
+                "n": 1464,
+                "mean_predicted_probability": 0.013801291999091294,
+                "observed_high_fraction": 0.004098360655737705
+              },
+              {
+                "lower": 0.1,
+                "upper": 0.2,
+                "upper_inclusive": false,
+                "n": 22,
+                "mean_predicted_probability": 0.1345691717145843,
+                "observed_high_fraction": 0.045454545454545456
+              },
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "upper_inclusive": false,
+                "n": 8,
+                "mean_predicted_probability": 0.26553974646532985,
+                "observed_high_fraction": 0.25
+              },
+              {
+                "lower": 0.3,
+                "upper": 0.4,
+                "upper_inclusive": false,
+                "n": 4,
+                "mean_predicted_probability": 0.3489823428809424,
+                "observed_high_fraction": 0.25
+              },
+              {
+                "lower": 0.4,
+                "upper": 0.5,
+                "upper_inclusive": false,
+                "n": 2,
+                "mean_predicted_probability": 0.44741175202327665,
+                "observed_high_fraction": 0.5
+              },
+              {
+                "lower": 0.5,
+                "upper": 0.6,
+                "upper_inclusive": false,
+                "n": 3,
+                "mean_predicted_probability": 0.5225469590607781,
+                "observed_high_fraction": 0.6666666666666666
+              },
+              {
+                "lower": 0.6,
+                "upper": 0.7,
+                "upper_inclusive": false,
+                "n": 0,
+                "mean_predicted_probability": null,
+                "observed_high_fraction": null
+              },
+              {
+                "lower": 0.7,
+                "upper": 0.8,
+                "upper_inclusive": false,
+                "n": 0,
+                "mean_predicted_probability": null,
+                "observed_high_fraction": null
+              },
+              {
+                "lower": 0.8,
+                "upper": 0.9,
+                "upper_inclusive": false,
+                "n": 0,
+                "mean_predicted_probability": null,
+                "observed_high_fraction": null
+              },
+              {
+                "lower": 0.9,
+                "upper": 1.0,
+                "upper_inclusive": true,
+                "n": 7,
+                "mean_predicted_probability": 0.9369705792973327,
+                "observed_high_fraction": 1.0
+              }
+            ],
+            "expected_absolute_calibration_error": 0.011698412033991194
+          },
+          "true_alert_peak_lead_hours_median": 1.0,
+          "lead_definition": "issue to observed future-window peak among accepted true alerts; different policies may select different windows; not guaranteed onset lead"
+        }
+      }
+    ],
+    "provenance": {
+      "contract_sha256": "80f5537b5f3c18140f5984c89075d83821521bf32d0d38e677d48519891fdabb",
+      "model_sha256": "d1e3f17ec66e7c955f8c9d282fb21b7949517a0b24f841534ce8af49b9547702",
+      "model_frozen_utc": "2026-11-13T14:02:57.147438Z",
+      "test_outcomes_opened_utc": "2026-11-13T14:07:29.635716+00:00",
+      "evaluation_completed_utc": "2026-11-13T14:07:35.247523+00:00",
+      "evaluation_consumed": true,
+      "selection_freeze_sha256": "80b75a8b1d074a736b3215ad353671156124b85b598769166b2ca8e8b0477a62",
+      "opening_ledger_sha256": "9766a0befc6618903c881f19bf6886e8d7bc4cb4aa0a08c1c82d0d84f13059fb",
+      "evaluation_sha256": "d327497800a4e9c8a0f5115c3e6313e05c8950a5b4b78970ee9ecc2d5dcd8921",
+      "development_summary_sha256": "ab1a237be76284a3a594bd804a63911bccf71c30c894f54bc28c6723e6a4d09b"
+    },
+    "monitoring_policy": {
+      "target_threshold_fnu": 126.0,
+      "daily_accepted_alert_cap": 1,
+      "daily_boundary": "UTC",
+      "development_alert_fraction_target": null,
+      "model_thresholds": {
+        "B0_current_score@cap0.1": {
+          "threshold_score": 4.709530201312334,
+          "candidate_fraction_cap": 0.1,
+          "comparison": "strict_greater_than",
+          "calibration_windows": 1948,
+          "candidate_count": 188,
+          "ties": "conservative",
+          "daily_cap": 1
+        },
+        "state_hgb_d2_l210@cap0.075": {
+          "threshold_score": 0.3639757339182773,
+          "candidate_fraction_cap": 0.075,
+          "comparison": "strict_greater_than",
+          "calibration_windows": 1948,
+          "candidate_count": 146,
+          "ties": "conservative",
+          "daily_cap": 1
+        }
+      },
+      "policy_description": "Development froze the current-score baseline at a 10% candidate cap and the selected classifier at 7.5%. First strict crossing per station/UTC day receives one proposed slot before future outcome coverage is known. These caps do not promise the same final alert rate."
+    }
+  },
+  "schedules": {
+    "north": {
+      "slots": [
+        {
+          "window_id": "401530105475401:2023-05-02T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-02T12:00:00Z",
+          "target_end": "2023-05-02T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.5,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-02T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-02T12:00:00Z",
+          "target_end": "2023-05-02T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.5,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-03T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-03T00:00:00Z",
+          "target_end": "2023-05-03T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-03T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-03T00:00:00Z",
+          "target_end": "2023-05-03T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-04T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-04T00:00:00Z",
+          "target_end": "2023-05-04T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 14.6,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-04T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-04T00:00:00Z",
+          "target_end": "2023-05-04T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 14.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-07T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-07T00:00:00Z",
+          "target_end": "2023-05-07T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 2.9,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-10T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-10T00:00:00Z",
+          "target_end": "2023-05-10T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.0,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-10T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-10T06:00:00Z",
+          "target_end": "2023-05-10T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.8,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-11T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-11T00:00:00Z",
+          "target_end": "2023-05-11T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.5,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-11T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-11T06:00:00Z",
+          "target_end": "2023-05-11T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.5,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-12T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-12T00:00:00Z",
+          "target_end": "2023-05-12T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.0,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-12T18:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-12T18:00:00Z",
+          "target_end": "2023-05-13T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 2.6,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-14T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-14T00:00:00Z",
+          "target_end": "2023-05-14T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.8,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-14T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-14T06:00:00Z",
+          "target_end": "2023-05-14T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.6,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-15T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-15T00:00:00Z",
+          "target_end": "2023-05-15T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 12.2,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-15T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-15T00:00:00Z",
+          "target_end": "2023-05-15T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 12.2,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-16T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-16T00:00:00Z",
+          "target_end": "2023-05-16T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.3,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-16T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-16T06:00:00Z",
+          "target_end": "2023-05-16T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.1,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-17T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-17T00:00:00Z",
+          "target_end": "2023-05-17T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-17T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-17T06:00:00Z",
+          "target_end": "2023-05-17T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.2,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-18T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-18T00:00:00Z",
+          "target_end": "2023-05-18T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.2,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-18T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-18T06:00:00Z",
+          "target_end": "2023-05-18T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.9,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-19T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-19T00:00:00Z",
+          "target_end": "2023-05-19T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.2,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-19T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-19T06:00:00Z",
+          "target_end": "2023-05-19T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-20T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-20T06:00:00Z",
+          "target_end": "2023-05-20T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 2.8,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-05-23T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-23T00:00:00Z",
+          "target_end": "2023-05-23T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.7,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-23T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-23T06:00:00Z",
+          "target_end": "2023-05-23T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.7,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-24T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-24T06:00:00Z",
+          "target_end": "2023-05-24T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-24T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-24T06:00:00Z",
+          "target_end": "2023-05-24T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-26T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-26T00:00:00Z",
+          "target_end": "2023-05-26T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.7,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-05-26T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-05-26T06:00:00Z",
+          "target_end": "2023-05-26T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-06-16T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-06-16T06:00:00Z",
+          "target_end": "2023-06-16T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 11.7,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-06-16T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-06-16T06:00:00Z",
+          "target_end": "2023-06-16T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 11.7,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-07-20T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-07-20T12:00:00Z",
+          "target_end": "2023-07-20T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 50.6,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-07-20T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-07-20T12:00:00Z",
+          "target_end": "2023-07-20T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 50.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-07-21T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-07-21T06:00:00Z",
+          "target_end": "2023-07-21T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.6,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-07-21T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-07-21T06:00:00Z",
+          "target_end": "2023-07-21T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-03T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-03T12:00:00Z",
+          "target_end": "2023-08-03T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.6,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-08-03T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-03T12:00:00Z",
+          "target_end": "2023-08-03T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-08-19T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-19T06:00:00Z",
+          "target_end": "2023-08-19T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.6,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-19T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-19T06:00:00Z",
+          "target_end": "2023-08-19T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-20T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-20T06:00:00Z",
+          "target_end": "2023-08-20T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 58.9,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-20T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-20T06:00:00Z",
+          "target_end": "2023-08-20T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 58.9,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-25T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-25T12:00:00Z",
+          "target_end": "2023-08-25T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.3,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-08-25T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-08-25T12:00:00Z",
+          "target_end": "2023-08-25T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.3,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2023-09-11T18:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-09-11T18:00:00Z",
+          "target_end": "2023-09-12T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.0,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2023-09-11T18:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2023-09-11T18:00:00Z",
+          "target_end": "2023-09-12T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.0,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-14T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-14T06:00:00Z",
+          "target_end": "2024-05-14T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.6,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-14T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-14T06:00:00Z",
+          "target_end": "2024-05-14T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-15T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-15T00:00:00Z",
+          "target_end": "2024-05-15T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.3,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-15T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-15T00:00:00Z",
+          "target_end": "2024-05-15T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.3,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-16T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-16T00:00:00Z",
+          "target_end": "2024-05-16T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.0,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-17T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-17T00:00:00Z",
+          "target_end": "2024-05-17T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.3,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-17T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-17T06:00:00Z",
+          "target_end": "2024-05-17T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-18T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-18T00:00:00Z",
+          "target_end": "2024-05-18T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 10.8,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-18T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-18T00:00:00Z",
+          "target_end": "2024-05-18T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 10.8,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-19T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-19T00:00:00Z",
+          "target_end": "2024-05-19T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-19T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-19T06:00:00Z",
+          "target_end": "2024-05-19T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.0,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-20T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-20T00:00:00Z",
+          "target_end": "2024-05-20T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-21T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-21T00:00:00Z",
+          "target_end": "2024-05-21T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.9,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-21T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-21T06:00:00Z",
+          "target_end": "2024-05-21T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.7,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-28T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-28T06:00:00Z",
+          "target_end": "2024-05-28T12:00:00Z",
+          "outcome_evaluable": false,
+          "observed_max_fnu": null,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "unknown"
+        },
+        {
+          "window_id": "401530105475401:2024-05-29T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-29T12:00:00Z",
+          "target_end": "2024-05-29T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.3,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-29T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-29T12:00:00Z",
+          "target_end": "2024-05-29T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.3,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-05-30T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-30T00:00:00Z",
+          "target_end": "2024-05-30T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.1,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-30T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-30T06:00:00Z",
+          "target_end": "2024-05-30T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.1,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-31T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-31T00:00:00Z",
+          "target_end": "2024-05-31T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 8.2,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-05-31T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-05-31T06:00:00Z",
+          "target_end": "2024-05-31T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 6.7,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-06-01T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-01T00:00:00Z",
+          "target_end": "2024-06-01T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.9,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-01T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-01T06:00:00Z",
+          "target_end": "2024-06-01T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.6,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-02T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-02T00:00:00Z",
+          "target_end": "2024-06-02T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-03T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-03T00:00:00Z",
+          "target_end": "2024-06-03T06:00:00Z",
+          "outcome_evaluable": false,
+          "observed_max_fnu": null,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "unknown"
+        },
+        {
+          "window_id": "401530105475401:2024-06-07T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-07T00:00:00Z",
+          "target_end": "2024-06-07T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 4.5,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-07T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-07T06:00:00Z",
+          "target_end": "2024-06-07T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.8,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-08T00:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-08T00:00:00Z",
+          "target_end": "2024-06-08T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.7,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-08T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-08T06:00:00Z",
+          "target_end": "2024-06-08T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 3.7,
+          "model_id": "B0_current",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-06-09T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-06-09T06:00:00Z",
+          "target_end": "2024-06-09T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 2.6,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "401530105475401:2024-08-14T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-14T06:00:00Z",
+          "target_end": "2024-08-14T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.5,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-08-14T06:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-14T06:00:00Z",
+          "target_end": "2024-08-14T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 5.5,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-08-24T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-24T12:00:00Z",
+          "target_end": "2024-08-24T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 45.2,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-08-24T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-24T12:00:00Z",
+          "target_end": "2024-08-24T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 45.2,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-08-26T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-26T12:00:00Z",
+          "target_end": "2024-08-26T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.4,
+          "model_id": "B0_current",
+          "outcome": "high"
+        },
+        {
+          "window_id": "401530105475401:2024-08-26T12:00:00Z",
+          "station_id": "401530105475401",
+          "issue_time": "2024-08-26T12:00:00Z",
+          "target_end": "2024-08-26T18:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 7.4,
+          "model_id": "full_hgb_d3_l21",
+          "outcome": "high"
+        }
+      ],
+      "range": [
+        "2023-05-02T12:00:00Z",
+        "2024-09-05T18:00:00Z"
+      ],
+      "threshold_fnu": 4.6200000000000045,
+      "threshold_kind": "station-specific development 90th percentile, not regulatory standard",
+      "allocation_rule": "Each model uses its development-frozen threshold targeting at most 10% candidate alerts. First strict crossing per station/UTC day receives one proposed slot before future outcome coverage is known; later candidates are suppressed."
+    },
+    "glenwood": {
+      "slots": [
+        {
+          "window_id": "09071750:2024-06-28T18:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-06-28T18:00:00Z",
+          "target_end": "2024-06-29T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 196.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-06-28T18:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-06-28T18:00:00Z",
+          "target_end": "2024-06-29T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 196.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-09T18:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-09T18:00:00Z",
+          "target_end": "2024-08-10T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 106.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "09071750:2024-08-09T18:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-09T18:00:00Z",
+          "target_end": "2024-08-10T00:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 106.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "09071750:2024-08-11T00:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-11T00:00:00Z",
+          "target_end": "2024-08-11T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 327.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-11T00:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-11T00:00:00Z",
+          "target_end": "2024-08-11T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 327.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-12T00:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-12T00:00:00Z",
+          "target_end": "2024-08-12T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 648.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-12T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-12T06:00:00Z",
+          "target_end": "2024-08-12T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 2440.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-13T00:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-13T00:00:00Z",
+          "target_end": "2024-08-13T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 109.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "09071750:2024-08-13T00:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-13T00:00:00Z",
+          "target_end": "2024-08-13T06:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 109.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "nonhigh"
+        },
+        {
+          "window_id": "09071750:2024-08-15T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-15T06:00:00Z",
+          "target_end": "2024-08-15T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 146.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-16T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-16T06:00:00Z",
+          "target_end": "2024-08-16T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 462.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-08-16T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-08-16T06:00:00Z",
+          "target_end": "2024-08-16T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 462.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-09-06T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-09-06T06:00:00Z",
+          "target_end": "2024-09-06T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 163.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-10-31T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-10-31T06:00:00Z",
+          "target_end": "2024-10-31T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 133.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2024-10-31T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2024-10-31T06:00:00Z",
+          "target_end": "2024-10-31T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 133.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2025-07-05T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2025-07-05T06:00:00Z",
+          "target_end": "2025-07-05T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 231.0,
+          "model_id": "B0_current_score@cap0.1",
+          "outcome": "high"
+        },
+        {
+          "window_id": "09071750:2025-07-05T06:00:00Z",
+          "station_id": "09071750",
+          "issue_time": "2025-07-05T06:00:00Z",
+          "target_end": "2025-07-05T12:00:00Z",
+          "outcome_evaluable": true,
+          "observed_max_fnu": 231.0,
+          "model_id": "state_hgb_d2_l210@cap0.075",
+          "outcome": "high"
+        }
+      ],
+      "range": [
+        "2024-04-02T06:00:00Z",
+        "2025-11-01T00:00:00Z"
+      ],
+      "threshold_fnu": 126.0,
+      "threshold_kind": "station-specific development 90th percentile, not regulatory standard",
+      "allocation_rule": "Development froze the current-score baseline at a 10% candidate cap and the selected classifier at 7.5%. First strict crossing per station/UTC day receives one proposed slot before future outcome coverage is known. These caps do not promise the same final alert rate.",
+      "set_overlap": {
+        "shared": 7,
+        "baseline_only": 1,
+        "classifier_only": 3,
+        "nested": false
+      }
+    }
+  }
+}

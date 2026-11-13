@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- Graph of Life brand v1.0.0 · tokens.json · generated Codex 2026-11-13.
+     Interactive page arc: record → comparison → review → provenance. A KPI wall
+     is deliberately omitted for the user's task-led experience requirement. -->
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Historical monitoring review · Graph of Life</title>
+<meta name="description" content="Compare frozen historical monitoring policies, enter an optional planning cost, and export a traceable review draft. No live forecast or order.">
+<link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="brand/graph-of-life.css"><link rel="stylesheet" href="brand/runtime.css"><link rel="stylesheet" href="css/review.css">
+<script defer src="js/review.js"></script>
+</head><body class="gol review">
+<a class="skip" href="#main">Skip to the review</a>
+<header class="review-head"><a class="wordmark" href="index.html">Graph of Life</a><a href="index.html">Return to the landscape <span aria-hidden="true">↗</span></a></header>
+<main id="main">
+<section class="review-intro" aria-labelledby="review-title">
+<p class="eyebrow">Historical evidence · a review, not an order</p>
+<h1 id="review-title">A monitoring decision.<br>A traceable record.</h1>
+<p class="intro-copy">Compare what two frozen policies proposed. Add your own planning cost, name a reviewer, and take the evidence into a discussion.</p>
+<p class="quiet">For water operators, watershed sponsors and diligence teams. These are intended users, not established customers.</p>
+</section>
+<section class="record-step" aria-labelledby="case-title">
+<div class="step-heading"><span class="step-number" aria-hidden="true">01</span><h2 id="case-title">Choose the historical record.</h2></div>
+<fieldset class="case-choices"><legend class="sr-only">Separate monitoring case</legend><label><input type="radio" name="case" value="north" checked><span><b>North Inlet</b><small>Peak-forecast policy · <span class="proof">2023–2024</span></small></span></label><label><input type="radio" name="case" value="glenwood"><span><b>Glenwood</b><small>High-window classifier · <span class="proof">2024–2025</span></small></span></label></fieldset>
+<p class="quiet">Separate stations, thresholds and experiments. Neither case establishes a delivery connection to the Eagle County candidate.</p>
+<div id="load-status" class="load-status" role="status" aria-live="polite">Loading and verifying the frozen record…</div><button id="retry" type="button" hidden>Retry this record</button>
+</section>
+<div id="loaded-review" hidden>
+<section class="record-step" aria-labelledby="compare-title">
+<div class="step-heading"><span class="step-number" aria-hidden="true">02</span><h2 id="compare-title">See what each policy proposed.</h2></div>
+<p id="case-context" class="proof"></p>
+<p class="decision-boundary" id="promotion-boundary"></p>
+<fieldset id="policy-choices"><legend>Choose a policy for your review draft</legend><div id="policy-rows"></div></fieldset>
+<p class="quiet">Bar length shows proposed slots on one common scale. Colors distinguish high, non-high and unknown outcomes.</p>
+<p id="set-comparison" class="quiet"></p>
+<p class="quiet">A proposed slot is a monitoring window, not a completed sample. Every proposed slot counts toward cost, including unknown outcomes. “High” uses this station’s development threshold, not a legal water-quality standard.</p>
+<details id="schedule-details"><summary>Inspect the schedules and capacity decisions</summary><p id="policy-rule"></p><div class="schedule-tools"><label for="schedule-filter">Show</label><select id="schedule-filter"><option value="accepted">Proposed slots</option><option value="suppressed">Candidates suppressed by daily capacity</option><option value="unknown">Proposed slots with unknown outcomes</option><option value="differences">Proposed by only one policy</option></select></div><div id="schedule-table" class="table-scroll"></div><div class="page-controls"><button id="previous-rows" type="button">Previous rows</button><span id="row-status" class="proof" aria-live="polite"></span><button id="next-rows" type="button">Next rows</button></div><p class="quiet">All timestamps are UTC. The target is the following six-hour window. Historical availability assumes a 30-minute release delay; live issuance is unverified. Sampling at issue time is not proven to capture a later peak.</p></details>
+<a class="continue-link" href="#prepare">Prepare this review <span aria-hidden="true">↓</span></a>
+</section>
+<section class="record-step" id="prepare" aria-labelledby="prepare-title">
+<div class="step-heading"><span class="step-number" aria-hidden="true">03</span><h2 id="prepare-title">Make the assumptions explicit.</h2></div>
+<div class="review-inputs"><div><label for="unit-cost">Planning cost · USD per proposed slot <span class="optional">optional</span></label><input id="unit-cost" type="text" inputmode="decimal" autocomplete="off" placeholder="Leave blank if unknown" aria-describedby="cost-note cost-error"><p id="cost-note" class="quiet">Your assumption, not a quote. Include all costs you intend this unit amount to cover.</p><p id="cost-error" class="input-error" role="alert"></p></div><div><label for="reviewer">Responsible reviewer <span class="optional">optional</span></label><input id="reviewer" type="text" maxlength="160" autocomplete="off" placeholder="Name or team for the draft"><p class="quiet">Kept in this page and your download only. Not sent or saved to a server.</p></div></div>
+<div class="draft-preview" aria-labelledby="draft-title"><div class="draft-label">DRAFT · HISTORICAL MONITORING REVIEW</div><h3 id="draft-title"></h3><p id="draft-policy"></p><p id="cost-preview" class="cost-preview" aria-live="polite"></p><p id="reviewer-preview" class="quiet"></p><p class="quiet">Use this to review a historical policy. It does not authorize fieldwork, procure a laboratory test or recommend a live deployment. Access, sampling design, actual prices and operational suitability still need a responsible review.</p><div class="export-actions"><button id="download-json" type="button" class="primary">Download review packet · JSON</button><button id="download-csv" type="button">Download proposed slots · CSV</button></div><p id="export-status" role="status" class="quiet"></p></div>
+<button id="reset-review" type="button" class="reset-link">Reset this review</button>
+</section>
+<section class="record-step supporting" id="investment" tabindex="-1" aria-labelledby="evidence-title"><div class="step-heading"><span class="step-number" aria-hidden="true">↳</span><h2 id="evidence-title">Keep the evidence with the decision.</h2></div><p>Compare the detailed test, identify unresolved rights and field evidence, and assign the missing documents. Prediction accuracy alone cannot justify an intervention, credit, payout or avoided-loss claim.</p><div class="support-links"><a id="deep-evidence" href="evidence.html?scene=decision&amp;desk=monitoring">Open the detailed evidence desk ↗</a><a href="data/investment-evidence-register.csv" download>Download investment evidence register ↓</a></div><details><summary>Source, version and review boundaries</summary><div id="source-record"></div><p class="quiet">Turbidity is not sediment mass. The Eagle parcel is a separate historical screening candidate. Neither learned monitoring policy earned promotion; East transfer also failed. No causal treatment effect, verified benefit recipient, financing eligibility or live service is established.</p></details></section>
+</div>
+<noscript><p class="decision-boundary">Interactive verification and exports require JavaScript. The original <a href="evidence.html?scene=decision&amp;desk=monitoring">evidence desk</a> retains both case summaries and <a href="data/investment-evidence-register.csv">the investment evidence register</a>.</p></noscript>
+<footer><span>A Graph of Life platform · <a href="https://graphoflife.com">graphoflife.com</a></span><span>Source-bound historical review · no order placed</span></footer>
+</main></body></html>
