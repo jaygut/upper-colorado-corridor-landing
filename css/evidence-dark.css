@@ -1,0 +1,217 @@
+/* Graph of Life brand v1.0.0 · evidence desk dark adapter.
+   IBM Plex Sans / IBM Plex Mono and every visual value resolve through
+   brand/tokens.json via the canonical --gol-* variables. Load last.
+   This file changes presentation only; source data and control contracts stay intact. */
+
+:root { color-scheme: dark; }
+body.gol.headwaters {
+  background: var(--gol-abyss);
+  color: var(--gol-paper);
+}
+
+/* Opaque, flat reading surfaces: no pale document column or control dock. */
+.headwaters .story-card,
+.headwaters .control-deck,
+.headwaters .site-head,
+.headwaters .skip {
+  background: var(--gol-abyss);
+  color: var(--gol-paper);
+}
+.headwaters .map-bottom,
+.headwaters .evidence-mode,
+.headwaters .decision-card,
+.headwaters .forecast-status,
+.headwaters .caveat,
+.headwaters .abstention,
+.headwaters .gol-callout,
+.headwaters pre,
+.headwaters .kpi-band,
+.headwaters .gol-kpi-band {
+  background: var(--gol-navy);
+  color: var(--gol-paper);
+}
+.headwaters .caveat,
+.headwaters .abstention,
+.headwaters .gol-callout--caveat {
+  color: var(--gol-sand);
+  border-color: var(--gol-coral);
+}
+.headwaters .decision-card,
+.headwaters .forecast-status,
+.headwaters .gol-callout--insight,
+.headwaters #forecast-round,
+.headwaters #monitoring-desk {
+  border-color: var(--gol-teal);
+}
+.headwaters .control-deck { border-color: var(--gol-teal); }
+
+/* Readable hierarchy and proof voice on both dark grounds. */
+.headwaters h1,
+.headwaters h2,
+.headwaters h3,
+.headwaters h4,
+.headwaters h5,
+.headwaters h6,
+.headwaters .gol-h1,
+.headwaters .gol-h2,
+.headwaters summary,
+.headwaters label,
+.headwaters input,
+.headwaters output,
+.headwaters code,
+.headwaters kbd,
+.headwaters dt,
+.headwaters dd {
+  color: var(--gol-paper);
+}
+.headwaters .provenance,
+.headwaters .gol-provenance,
+.headwaters .finance-status,
+.headwaters .gol-callout__label,
+.headwaters .gol-footer,
+.headwaters caption {
+  color: var(--gol-sand);
+}
+.headwaters a,
+.headwaters .gol-provenance a,
+.headwaters .gol-eyebrow {
+  color: var(--gol-teal);
+}
+.headwaters .site-head a { color: var(--gol-paper); }
+.headwaters .site-head .wordmark span { color: var(--gol-teal); }
+.headwaters summary:hover,
+.headwaters a:hover { color: var(--gol-paper); }
+.headwaters ::selection {
+  color: var(--gol-abyss);
+  background: var(--gol-green);
+}
+
+/* Native controls, including cost input, keep their DOM and behavior unchanged. */
+.headwaters button,
+.headwaters select,
+.headwaters option,
+.headwaters optgroup,
+.headwaters input,
+.headwaters textarea,
+.headwaters .button,
+.headwaters .forecast-controls input {
+  color: var(--gol-paper);
+  background: var(--gol-navy);
+  border-color: var(--gol-sand);
+  accent-color: var(--gol-green);
+}
+.headwaters input::placeholder,
+.headwaters textarea::placeholder {
+  color: var(--gol-sand);
+  opacity: 1;
+}
+.headwaters button:not(:disabled):hover,
+.headwaters .button:hover,
+.headwaters select:hover,
+.headwaters input:hover {
+  color: var(--gol-paper);
+  background: var(--gol-slate);
+  border-color: var(--gol-teal);
+}
+.headwaters .primary,
+.headwaters .primary:hover {
+  color: var(--gol-abyss);
+  background: var(--gol-teal);
+  border-color: var(--gol-teal);
+}
+.headwaters button:disabled,
+.headwaters input:disabled,
+.headwaters select:disabled,
+.headwaters [aria-disabled="true"] {
+  color: var(--gol-sand);
+  background: var(--gol-abyss);
+  border-color: var(--gol-sand);
+  opacity: 1;
+}
+.headwaters :focus-visible {
+  outline-color: var(--gol-green);
+}
+
+/* Alternating rows retain contrast without exposing the light brand default. */
+.headwaters table,
+.headwaters tbody,
+.headwaters tr {
+  background: var(--gol-abyss);
+  color: var(--gol-paper);
+}
+.headwaters th,
+.headwaters .gol-table thead th,
+.headwaters tr:nth-child(even),
+.headwaters .gol-table tbody tr:nth-child(even) {
+  background: var(--gol-navy);
+  color: var(--gol-paper);
+}
+.headwaters td,
+.headwaters th {
+  border-color: var(--gol-hairline);
+}
+
+/* SVG labels and marks must use bright tones, including native-event paths
+   whose stroke is supplied as a presentation attribute by headwaters.js. */
+.headwaters .chart-label { fill: var(--gol-sand); }
+.headwaters .chart-value,
+.headwaters .path-label { fill: var(--gol-paper); }
+.headwaters .chart-axis { stroke: var(--gol-hairline); }
+.headwaters .chart-baseline { fill: var(--gol-teal); }
+.headwaters .chart-model { fill: var(--gol-sand); }
+.headwaters .path-unknown { stroke: var(--gol-sand); }
+.headwaters .path-node {
+  fill: var(--gol-navy);
+  stroke: var(--gol-sand);
+}
+.headwaters .forecast-observed,
+.headwaters #event-chart svg path[stroke="var(--gol-teal-deep)"] {
+  stroke: var(--gol-teal);
+}
+.headwaters .forecast-predicted { stroke: var(--gol-green); }
+.headwaters .forecast-interval {
+  fill: var(--gol-navy);
+  stroke: var(--gol-sand);
+}
+.headwaters .forecast-point { fill: var(--gol-green); }
+.headwaters .forecast-chart svg,
+.headwaters #benchmark-chart svg,
+.headwaters #event-chart svg,
+.headwaters #path-diagram svg {
+  background: var(--gol-abyss);
+}
+
+/* Risk remains semantic on dark grounds; status never depends on color alone. */
+.headwaters .gol-chip--low {
+  color: var(--gol-green);
+  background: var(--gol-navy);
+}
+.headwaters .gol-chip--med {
+  color: var(--gol-amber);
+  background: var(--gol-navy);
+}
+.headwaters .gol-chip--high {
+  color: var(--gol-coral);
+  background: var(--gol-navy);
+}
+
+/* Reuse the existing evidence layout breakpoint. Keep the mobile wordmark
+   intact and the primary return route visible; secondary routes remain on
+   desktop and in the story/evidence source links. */
+@media (max-width: 800px) {
+  .headwaters .site-head .wordmark {
+    white-space: nowrap;
+    flex: none;
+  }
+  .headwaters .site-head nav a[href="legacy.html"],
+  .headwaters .site-head nav a[href="llms.txt"] {
+    display: none;
+  }
+  .headwaters .site-head nav a[href="index.html"] {
+    display: flex;
+    align-items: center;
+    min-height: var(--gol-s6);
+    white-space: nowrap;
+    color: var(--gol-teal);
+  }
+}

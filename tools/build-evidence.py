@@ -20,7 +20,7 @@ for name,expected in data['legacy']['source_hashes'].items():assert hashlib.sha2
 # The legacy APP_DATA export remains the owner of its benchmark values.
 script="const fs=require('fs'),vm=require('vm');let c={window:{}};vm.runInNewContext(fs.readFileSync('data/bundle.js','utf8'),c);process.stdout.write(JSON.stringify(c.window.APP_DATA.validation.oof));"
 legacy=json.loads(subprocess.check_output(['node','-e',script],cwd=root,text=True))
-index=root/'index.html';page=index.read_text()
+index=root/'evidence.html';page=index.read_text()
 def rows(table_id,value):
  global page
  page=re.sub(r'(<tbody id="'+table_id+r'">).*?(</tbody>)',lambda m:m[1]+value+m[2],page,flags=re.S)

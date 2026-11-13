@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "release_date": "2026-11-13",
+  "purpose": "Immersive public presentation of existing frozen evidence; no new modeling or field collection",
+  "source_files_sha256": {
+    "data/keystone-candidate.geojson": "dc5c013b6a94cc4844f080a4f25abbf46650adcab671a52775527c7e7c46cf91",
+    "data/hydro.js": "bf00d8aed4e31d55d6581709d005bfaa85b034aaaed9d7981aa0a4c650c34dad",
+    "data/stations.geojson": "a4ab50cc5b0d2dae6b21ed50ccdd1ed7cb5838f14302741956dee64d5f7e663c",
+    "data/mtbs-final-perimeters.geojson": "67ba4b3dcd5424efd8e7c4f765f91296e8ad1673581a05a7a9c64297add81289",
+    "data/forecast-round2.json": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772",
+    "data/monitoring-glenwood.json": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d",
+    "data/finance-evidence-ledger.json": "eb6f8c4ffc1f8aa3987fd00121410484c3a3d8ab4f2aaf5ea2cd8097d7cd0c1c"
+  },
+  "chapters": [
+    {
+      "id": "polygon",
+      "geography": "Eagle County legacy candidate",
+      "source": "data/keystone-candidate.geojson",
+      "claim": "Actual county parcel boundary; historical screening candidate, no validated treatment rank"
+    },
+    {
+      "id": "dependency",
+      "geography": "Eagle River region",
+      "source": "data/hydro.js",
+      "claim": "Retained NHDPlus HR cartographic network; conceptual dependency test is separate, no verified delivery edge"
+    },
+    {
+      "id": "fire",
+      "geography": "Grand Lake North/East Inlet; separate case",
+      "source": [
+        "data/stations.geojson",
+        "data/mtbs-final-perimeters.geojson"
+      ],
+      "claim": "Final MTBS footprint, not progression or BAER soil severity; no hydrologic link to Eagle candidate"
+    },
+    {
+      "id": "evidence",
+      "geography": "North/East Inlet",
+      "source": "data/forecast-round2.json",
+      "north_relative_mae_log1p_gain_pct": 6.839460416547836,
+      "claim": "North log-error improvement; monitoring promotion unsupported; East transfer failed"
+    },
+    {
+      "id": "decision",
+      "geography": "Colorado River above Glenwood Springs, station 09071750; separate case",
+      "source": "data/monitoring-glenwood.json",
+      "claim": "Classifier 8 known high windows / 10 proposed slots versus baseline 6 / 8; accepted sets are not nested; joint promotion failed"
+    },
+    {
+      "id": "next",
+      "geography": "Return to Eagle candidate",
+      "source": [
+        "data/keystone-candidate.geojson",
+        "data/finance-evidence-ledger.json"
+      ],
+      "claim": "Rights, delivery and treatment effect remain unverified; no funding, payout, credit or treatment-rank claim"
+    }
+  ],
+  "basemaps": {
+    "parcel_close_view": {
+      "service": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer",
+      "attribution": "USDA, USGS The National Map: Orthoimagery",
+      "meaning": "Current public imagery mosaic, not event-time imagery; no inferential use",
+      "metadata_checked_date": "2026-11-13",
+      "service_reported_refresh": "June 2024",
+      "service_reported_conus_naip_vintages": "2017-2021",
+      "tile_cache_maxzoom_used": 16
+    },
+    "regional_context": {
+      "style": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+      "attribution": "OpenStreetMap / CARTO; Terrarium elevation tiles",
+      "meaning": "Visual terrain and geographic context, no new terrain computation"
+    }
+  },
+  "behavior": {
+    "default": "Guided six-chapter story",
+    "old_scene_query": "Redirected to evidence.html, preserving query/hash",
+    "story_query": "chapter=polygon|dependency|fire|evidence|decision|next",
+    "geographic_transition": "Explicit camera cut from Eagle to Grand Lake and to Glenwood; no linking edge",
+    "reduced_motion": "Immediate camera cuts, no animated background",
+    "fallback": "Same local geometry and scene state in SVG; missing sources are not fabricated"
+  },
+  "scientific_data_changed": false
+}

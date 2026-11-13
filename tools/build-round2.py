@@ -28,7 +28,7 @@ for d in cases:
   raw=(R/'data/finance-evidence-ledger.json').read_bytes();assert json.loads(raw)==ledger;assert hashlib.sha256(raw).hexdigest()==d['finance_evidence_ledger_sha256']
 ledger=cases[0].get('finance_evidence_ledger')
 if ledger:monitoring+='<details><summary>Financing evidence and current gaps</summary><table><caption>No financing approval inferred</caption><thead><tr><th>Evidence needed</th><th>Status</th></tr></thead><tbody>'+''.join('<tr><td>'+esc(g['label'])+'</td><td>'+esc(g['status'].replace('_',' '))+'</td></tr>' for g in ledger['gates'])+'</tbody></table><p>Missing rights, verified field evidence and a calibrated treatment effect prevent funding, payout or credit claims.</p><a href="data/finance-evidence-ledger.json" download>Download the financing evidence ledger</a> · <a href="data/investment-evidence-register.csv" download>Download investment evidence register</a></details>'
-page=R/'index.html';s=page.read_text()
+page=R/'evidence.html';s=page.read_text()
 for id,body in [('forecast-static',forecast),('monitoring-static',monitoring)]:
  pattern=r'(<div id="'+id+r'">).*?(</div>)';s,n=re.subn(pattern,lambda m:m[1]+body+m[2],s,flags=re.S);assert n==1,('Missing static element',id)
 page.write_text(s);print('Built round-two case fallbacks:',len(cases))
