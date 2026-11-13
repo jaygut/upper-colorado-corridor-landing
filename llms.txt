@@ -18,9 +18,13 @@ Headwaters decision: monitor, defer intervention ranking. No defensible rank yet
 A separate retrospective North-only baseline test uses 13 development storms in
 2021 and 15 final storms in 2022. Development selected persistence. Final MAE on
 log1p(FNU) is 1.354616 for persistence, 1.129049 for training climatology and
-1.403059 for lagged rain/discharge/season. Paired B1 gain against persistence is
+1.403059 for B1 lagged water/season. Antecedent rain is constant zero under the
+24 h dry-gap event rule, so B1 varies with lagged discharge and season. Paired B1 gain against persistence is
 -0.048443, with 95% storm-bootstrap interval [-0.880936, 0.798559]. No predictive
-upgrade is established. Full burn-state Tier A remains blocked. Exact results:
+upgrade is established. Window selection uses future rainfall relative to window
+start, so this is a retrospective hindcast, not a validated issued forecast.
+One window has 900 s native cadence and 27 have 600 s cadence; sensor-change QC
+is unverified. Full burn-state Tier A remains blocked. Exact results:
 data/headwaters-baseline-results.json. The event test is distinct from legacy R².
 A measured native observation window, July 30 through August 4, 2021 UTC, can be
 selected explicitly. Its curves show historical observations. Held-out forecasting remains unvalidated.

@@ -177,7 +177,7 @@
     WMV = window.deck.WebMercatorViewport;
     var loaded=false;
     // watchdog: if the basemap style never loads (blocked), swap to a blank dark style
-    var watch = setTimeout(function(){ if(!loaded){ try{ map.setStyle(BLANK); }catch(e){ fallbackToSvg("style timeout"); } } }, 4500);
+    var watch = setTimeout(function(){ if(!loaded){ if(pilot){loaded=true;fallbackToSvg("basemap timeout");return;} try{ map.setStyle(BLANK); }catch(e){ fallbackToSvg("style timeout"); } } }, 4500);
     map.on("style.load", function(){ /* keep */ });
     map.on("load", function(){
       loaded=true; clearTimeout(watch);
@@ -208,7 +208,7 @@
     });
     map.on("render", projectOverlay);
     map.on("error", function(e){ /* retain failure evidence */
-      if(pilot && e && e.error){var message=String(e.error.message||e.error);if(STAGE.errors.indexOf(message)<0)STAGE.errors.push(message);}
+      if(pilot && e && e.error){var message=String(e.error.message||e.error);if(STAGE.errors.indexOf(message)<0)STAGE.errors.push(message);if(STAGE.mode==="map"){loaded=true;clearTimeout(watch);fallbackToSvg("basemap or terrain unavailable");return;}}
       if(e && e.error && String(e.error).indexOf("style")>=0 && !loaded){ try{ map.setStyle(BLANK); }catch(_){}} });
   }
   function goMap(i){
@@ -365,7 +365,7 @@
   }
   function fallbackToSvg(reason){
     STAGE.errors.push("map->svg: "+reason);
-    try{ if(map){ map.remove(); } }catch(e){}
+    try{ if(map){ map.remove(); map=null; } }catch(e){}
     var host=document.getElementById("stage"); if(host) host.innerHTML="";
     fx=null; fxG={}; fxParcels=[]; fxStations=[]; fxFocus=null;
     initSvg(); goSvg(STAGE.scene||0);

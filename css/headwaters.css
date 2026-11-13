@@ -8,3 +8,5 @@
 .map-head button{pointer-events:auto;font-size:var(--gol-provenance-size);min-height:var(--gol-s5);padding:var(--gol-s1) var(--gol-s2)}#context-status{background:var(--gol-navy);font-family:var(--gol-mono);font-size:var(--gol-provenance-size)}#event-chart pre{white-space:pre-wrap;overflow-wrap:anywhere}#event-chart details table{font-family:var(--gol-mono)}
 /* Grid children must shrink below native select option width on touch screens. */
 .paired-views{grid-template-columns:minmax(0,1fr)}.paired-views>article,.story-card,.table-scroll{min-width:0}#event{width:100%;min-width:0}.proof{overflow-wrap:anywhere}
+
+.table-scroll td{font-family:var(--gol-mono)}

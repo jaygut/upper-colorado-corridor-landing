@@ -129,7 +129,7 @@
       "release_date": "2026-11-13",
       "native_resolution": "whole rain-defined storm groups; North postfire only",
       "unit": "log1p(FNU) MAE",
-      "validity": "Retrospective storm-selected evaluation; no operational forecast claim; full burn-state Tier A blocked",
+      "validity": "Retrospective rainfall-selected storm-window hindcast only. Event start is not a verified forecast issuance time. Full burn-state Tier A blocked.",
       "export_rights": "authored results from public observations"
     }
   ],
@@ -482,6 +482,11 @@
     "uncertainty": "2000 paired storm bootstrap draws; not independent fire replications",
     "unit": "MAE on log1p(FNU)",
     "export_rights": "authored model evaluation on public measurements",
-    "validity": "Retrospective storm-selected evaluation; no operational forecast claim; full burn-state Tier A blocked"
+    "validity": "Retrospective rainfall-selected storm-window hindcast only. Event start is not a verified forecast issuance time. Full burn-state Tier A blocked.",
+    "independent_method_review": [
+      "Storm windows were selected retrospectively from rainfall. Their start can precede the qualifying 2 mm in 6 h trigger by up to 22.83 h; this is not a validated issued forecast.",
+      "The 24 h dry-gap event rule makes all 28 antecedent 24 h rain features zero. The fitted B1 comparison therefore varies with lagged discharge and season.",
+      "One eligible window has 900 s native cadence; 27 have 600 s cadence. Sensor-change quality control remains unverified."
+    ]
   }
 }
