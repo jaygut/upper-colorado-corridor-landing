@@ -1,3 +1,15 @@
+# Current historical research release · 2026-11-13
+
+The monitoring desk supports draft work orders, explicit-cost planning and an investment evidence register. No order, payment, live forecast or financing approval is executed.
+North Inlet USGS401530105475401: fixed six-hour maxima, 2021–2022 exposed development, 2023–2024 untouched at freeze. Mean absolute log1p(FNU) error 0.138512 versus current-state baseline0.148681 (6.84% lower). Paired error-gain95%CI[0.001650,0.017389]. All1021issued windows retained;1014known outcomes. Learned policy46proposed slots:25true,19false,2unknown; baseline38slots:26true,12false,0unknown. No monitoring superiority. East state-model transfer failed across1481windows, gain−0.014971 [−0.026820,−0.003974].
+Glenwood USGS09071750 is a separate binary-exceedance case, threshold126FNU (North4.62FNU). Development2021–2023; test2024–2025. All1530issued/1510known windows retained. Classifier10slots/8true/2false versus baseline8slots/6true/2false; no unknown accepted outcomes. Precision80%versus75%, paired difference95%CI[0,13.33]percentagepoints. More slots and CI touching0 fail joint promotion criteria. Probabilities uncalibrated; raw baseline log1p(FNU) history score is not probability or peak forecast.
+Both cases assume30-minute publication latency; corrected archives do not verify as-issued performance. Cost=userUSD per planned test×ALL proposed slots, including unknown outcomes; never ROI/savings. Neither learned policy is promoted. Rights, field feasibility, treatment effect and live reliability remain separate gates.
+Public records: data/forecast-round2.json, data/monitoring-glenwood.json; lazy complete window bundles referenced withSHA256. Finance: data/finance-evidence-ledger.json; editable reviewer register: data/investment-evidence-register.csv. Review PDFs: review/Colorado_monitoring_evidence.pdf and review/Glenwood_decision_evidence.pdf.
+URL adds forecastCase=north|glenwood plus forecastSplit/forecastMetric/forecastModel/forecastExample/decisionModel/decisionWindow. Cost stays private to browser session and is not shared in URL.
+The preserved48-hour storm experiment and legacy cross-sectional benchmark below are different tasks; no across-task score comparison is claimed. No atmospheric moisture transport.
+
+--- PREVIOUS RELEASE RECORDS (retained for provenance; current result status above) ---
+
 # Build Together | Colorado headwaters evidence release
 
 Release 2026-11-13. Local review only. Static evidence, not a live feed.

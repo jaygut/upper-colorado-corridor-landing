@@ -13,7 +13,7 @@
   "use strict";
   var D = window.APP_DATA || {};
   var pilot = window.HEADWATERS || null;
-  var G = pilot ? {bbox:[-105.84,40.22,-105.77,40.28], stations:pilot.stations.filter(function(s){return Number.isFinite(s.longitude)&&Number.isFinite(s.latitude);}).map(function(s){return {id:s.id,name:s.name,x:s.longitude,y:s.latitude};}), parcels:[],arcs:[],zone_hull:{},hydro:{}} : (D.geo || {});
+  var G = pilot ? {bbox:[-105.84,40.22,-105.77,40.28], stations:pilot.stations.concat(pilot.supplementary_stations||[]).filter(function(s){return Number.isFinite(s.longitude)&&Number.isFinite(s.latitude);}).map(function(s){return {id:s.id,name:s.name,x:s.longitude,y:s.latitude};}), parcels:[],arcs:[],zone_hull:{},hydro:{}} : (D.geo || {});
   var H = (G.hydro) || {};
   var STAGE = window.__STAGE = {
     ready:false, mode:"init", scene:0, nScenes:0, errors:[], viewState:null, emphasis:null, time:0
@@ -213,7 +213,7 @@
       if(e && e.error && String(e.error).indexOf("style")>=0 && !loaded){ try{ map.setStyle(BLANK); }catch(_){}} });
   }
   function goMap(i){
-    target = SCENES[i]; STAGE.scene = i; STAGE.viewState = target.v;
+    target = sceneTarget(i); STAGE.scene = i; STAGE.viewState = target.v;
     var v = target.v;
     if (reduce) map.jumpTo({ center:[v.longitude,v.latitude], zoom:v.zoom, pitch:v.pitch, bearing:v.bearing });
     else map.flyTo({ center:[v.longitude,v.latitude], zoom:v.zoom, pitch:v.pitch, bearing:v.bearing,
@@ -341,7 +341,7 @@
     var fn=document.getElementById("fallback-note"); if(fn){fn.hidden=false;fn.style.display="block";}
     requestAnimationFrame(frameSvg);
   }
-  function goSvg(i){ STAGE.scene=i; from=Object.assign({},cur); target=SCENES[i]; t0=nowT();
+  function goSvg(i){ STAGE.scene=i; from=Object.assign({},cur); target=sceneTarget(i); t0=nowT();
     if(reduce){ cur=Object.assign({},target.v); from=null; }
     applyEmphasisSvg(target); if(pilot) requestAnimationFrame(frameSvg); }
   function frameSvg(){
@@ -382,6 +382,7 @@
     var zh=document.getElementById("zone-hud"); if(zh){ zh.classList.toggle("show", i===4);
       zh.querySelectorAll(".z").forEach(function(z){ z.classList.toggle("on", i===4); }); }
   }
+  function sceneTarget(i){var target=SCENES[i];if(pilot&&STAGE.station==="09071750")return Object.assign({},target,{v:{longitude:-107.2908874,latitude:39.5588711,zoom:11.2,pitch:0,bearing:0}});return target;}
   function go(i){ if(!SCENES[i]) return; if(STAGE.mode==="map") goMap(i); else goSvg(i); sceneUI(i); }
 
   STAGE.setFireGeometry = function(geo){
@@ -401,7 +402,7 @@
     if(groups.ba){groups.ba.replaceChildren();H.basin.forEach(function(ring){var points=ring.map(function(c){return projW(c[0],c[1]).join(",");}).join(" ");groups.ba.appendChild(el("polygon",{points:points,fill:"none",stroke:C.teal,"stroke-width":1,"vector-effect":"non-scaling-stroke"}));});}
   };
   STAGE.setScene = go;
-  STAGE.setStation = function(id){STAGE.station=id;document.querySelectorAll("[data-station]").forEach(function(e){e.setAttribute("fill",e.dataset.station===id?C.green:C.teal);});};
+  STAGE.setStation = function(id){var changed=STAGE.station!==id;STAGE.station=id;document.querySelectorAll("[data-station]").forEach(function(e){e.setAttribute("fill",e.dataset.station===id?C.green:C.teal);});if(changed&&(STAGE.mode==="map"||STAGE.mode==="svg"))go(STAGE.scene);};
 
   /* ---- boot ------------------------------------------------------------ */
   function boot(){

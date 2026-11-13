@@ -1,3 +1,25 @@
+<!-- Graph of Life brand v1.0.0 · tokens.json -->
+# Historical monitoring and financing evidence desk
+
+The current entry combines the Grand Lake evidence story with two separate historical monitoring tasks. North six-hour peak forecasts modestly reduce mean absolute log1p(FNU) error, but their alert allocation does not improve on the baseline. A separate Glenwood binary-exceedance classifier also fails its frozen business promotion criteria. Neither policy is a live service or financing approval.
+
+Use the decision chapter to compare a historical window, enter a hypothetical unit laboratory cost, export a work-order **draft**, and download the investment evidence register. ALL proposed slots, including unknown outcomes, enter the budget. No actual sample, invoice, order, ROI or avoided loss is inferred.
+
+```bash
+python3 tools/build-evidence.py
+python3 -m http.server 8766 --bind 127.0.0.1
+python3 tools/test-forecast.py --base-url http://127.0.0.1:8766 --out /absolute/review/output
+```
+
+Public source records: `data/forecast-round2.json` and `data/monitoring-glenwood.json`; both contain model/freeze/opening hashes and reference lazily fetched complete issue-window files. Window SHA256 integrity is checked before dynamic allocation. Both cases have compiled no-JavaScript evidence, and retain all earlier negative experiments. Case-specific thresholds are never pooled. Forecast development and untouched-at-freeze test remain separate.
+
+The site retains the existing vanilla JavaScript/MapLibre/deck.gl/D3/Scrollama stack. No new runtime, backend or package dependency. Brand checks:
+`python3 brand/brandlint.py index.html css/headwaters.css css/forecast.css js/headwaters.js js/forecast.js js/stage.js brand/runtime.css brand/graph-of-life.css legacy.html`
+
+Publication is authorized for this checked historical research release. Rollback reference is `5dac603ace8423b0cba52cf4947e4cf435eedbd4`; prior local review is `705c4972ef4bb1804208acbc9e4f43e810fe38d4`. The following documentation is preserved historical context, not current service/validation status.
+
+---
+
 # The Upper Colorado Corridor
 
 A data-driven, cinematic scrollytelling landing for **Spillover Predictor** (a Graph of Life

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "case_id": "colorado_headwaters_events",
   "release_date": "2026-11-13",
-  "release_kind": "local_review",
+  "release_kind": "public_research_review",
   "scenario_kind": "historical_evidence_and_abstention",
   "native_resolution": "station inventory and checked native source context; no validated event surface",
   "timestamp": "2026-11-13",
@@ -167,6 +167,38 @@
       "unit": "per source, with native units and area support retained",
       "validity": "Retrospective source and pipeline checks only. Exact gauge splits, prospective joined inputs, delivery calibration and full Tier A/B remain blocked. No refit, rescoring, regime assignment or intervention rank.",
       "export_rights": "public provider links, hashes and authored summaries; no raw raster payloads or private records"
+    },
+    {
+      "id": "north-fixed-issue-r2",
+      "title": "North fixed-issue forecast and monitoring comparison",
+      "url": "data/forecast-round2.json",
+      "status": "derived",
+      "release_date": "2026-11-13",
+      "sha256": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772"
+    },
+    {
+      "id": "glenwood-decision-r2",
+      "title": "Separate Glenwood exceedance monitoring study",
+      "url": "data/monitoring-glenwood.json",
+      "status": "derived",
+      "release_date": "2026-11-13",
+      "sha256": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d"
+    },
+    {
+      "id": "finance-r2",
+      "title": "Monitoring and financing evidence ledger",
+      "url": "data/finance-evidence-ledger.json",
+      "status": "derived",
+      "release_date": "2026-11-13",
+      "sha256": "eb6f8c4ffc1f8aa3987fd00121410484c3a3d8ab4f2aaf5ea2cd8097d7cd0c1c"
+    },
+    {
+      "id": "glenwood-catalog",
+      "title": "USGS Glenwood station catalogue \u00b7 NAD83 point",
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=09071750&siteOutput=expanded",
+      "status": "observed",
+      "release_date": "2026-11-13",
+      "sha256": "4fbba24144bed4c5cf231967acc38d19faae064cadfff184273da501f7347f42"
     }
   ],
   "stations": [
@@ -325,6 +357,22 @@
       "text": "The lagged water and season baseline failed to improve on development-selected persistence in 15 final storms. No predictive upgrade is established.",
       "evidence_ids": [
         "north-baseline-20261113"
+      ]
+    },
+    {
+      "id": "claim-north-r2",
+      "status": "derived",
+      "text": "North mean absolute log1p(FNU) error was 6.84% lower on the distinct six-hour test. Monitoring superiority was not established and East transfer failed.",
+      "evidence_ids": [
+        "north-fixed-issue-r2"
+      ]
+    },
+    {
+      "id": "claim-glenwood-r2",
+      "status": "derived",
+      "text": "The supplementary Glenwood classifier found two more high windows using two more proposed slots; its frozen joint business criteria failed.",
+      "evidence_ids": [
+        "glenwood-decision-r2"
       ]
     }
   ],
@@ -573,5 +621,28 @@
     "summary_sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
     "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551",
     "source_run_id": "29749"
-  }
+  },
+  "round2": {
+    "north_case_url": "data/forecast-round2.json",
+    "glenwood_case_url": "data/monitoring-glenwood.json",
+    "cases_pooled": false,
+    "live_service": false,
+    "learned_policy_promotion": "not_supported",
+    "finance_approval": false
+  },
+  "supplementary_stations": [
+    {
+      "id": "09071750",
+      "name": "Colorado River above Glenwood Springs",
+      "longitude": -107.2908874,
+      "latitude": 39.5588711,
+      "datum": "NAD83",
+      "role": "separate Colorado River monitoring case",
+      "study_match": "Not part of the paired North/East study; not a verified beneficiary or causal fire response",
+      "observation_status": "Measured turbidity supports the separate binary high-window study; no discharge series supplied",
+      "evidence_ids": [
+        "glenwood-catalog"
+      ]
+    }
+  ]
 }
