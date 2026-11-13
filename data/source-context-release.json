@@ -1,0 +1,845 @@
+{
+  "schema_version": "1.0.0",
+  "release_date": "2026-11-13",
+  "release_kind": "local_review",
+  "designation": "authored_public_source_context_summary",
+  "source_jobs": [
+    "29750",
+    "29753",
+    "29754"
+  ],
+  "scope": "Checked native sources and partial derived context; no new validated predictive model",
+  "public_rights": "Public provider source links, hashes and authored summaries only; no private parcels, operator records or raw raster payloads",
+  "model_changes": {
+    "final_holdout_unchanged": true,
+    "refit": false,
+    "rescored": false,
+    "event_reselection": false,
+    "regime_assignment": false,
+    "Tier_A": "blocked",
+    "Tier_B": "blocked",
+    "predictive_upgrade": false,
+    "intervention_rank": "abstain"
+  },
+  "global_limits": [
+    "The primary study station is USGS 401530105475401. NLDI associated-COMID whole-upstream basins are contextual analysis geometries, not verified exact gauged contributing boundaries.",
+    "Native source processing and pipeline checks do not establish prospective issue-time joins, calibrated delivery, wildfire treatment effects, feasible actions, rights or buyer value.",
+    "Atmospheric moisture transport is excluded from this Colorado case."
+  ],
+  "records": [
+    {
+      "id": "native-terrain",
+      "title": "Native terrain and unconditioned mapped-channel contact",
+      "designation": "derived",
+      "status": "checked_context",
+      "provenance": {
+        "job_id": "29753",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29753/terrain/terrain_coverage_and_paths.json",
+        "sha256": "942224de46a29a72b1e1e0655173d917b2a69ba887e1c70ca9f274441b081768"
+      },
+      "source": {
+        "as_issued_historical_bytes_verified": false,
+        "crs": "EPSG:4269",
+        "etag": "\"1ef8fde6669143b01dcc525a9959c745-78\"",
+        "file_bytes": 405701982,
+        "header_sha256": "9c502eff10dd1616cc34905ded7fd8373ab27ab4701a72314c65c17f0d4109ba",
+        "last_modified": "2022-11-03",
+        "license": "USGS public domain",
+        "native_resolution": "1/3 arc-second",
+        "source_vintage": "2015-07-17",
+        "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n41w106/USGS_13_n41w106_20150717.tif",
+        "vertical_reference": "metres NAVD88, USGS NED product metadata"
+      },
+      "unit": {
+        "elevation": "m NAVD88",
+        "slope": "degrees",
+        "first_contact_path": "m",
+        "area_fraction": "fraction of associated basin"
+      },
+      "native_resolution": 9.259259256743215e-05,
+      "native_resolution_unit": "degrees (1/3 arc-second)",
+      "method": "Native DEM slope and strict-descent D8 to first mapped NHDPlusV2 channel contact; no pit filling or hydro-enforcement",
+      "basins": [
+        {
+          "station_id": "401530105475401",
+          "geometry_area_km2_EPSG5070": 75.36532111111214,
+          "native_valid_fraction": 1.0,
+          "native_ground_spacing_m": {
+            "east_west_range": [
+              7.869542760610185,
+              7.888176473592823
+            ],
+            "north_south_range": [
+              10.28127197888104,
+              10.281558433311716
+            ]
+          },
+          "mapped_channel_cells": 3216,
+          "state_area_fraction": {
+            "0": 0.0,
+            "1": 0.4719932569250365,
+            "2": 0.5150321203040333,
+            "3": 0.012974622770930384
+          },
+          "state_labels": {
+            "0": "nodata_or_outside_analysis_mask",
+            "1": "reaches_mapped_channel",
+            "2": "closed_pit_or_flat",
+            "3": "raster_edge_analysis_mask_boundary_or_nodata_frontier"
+          }
+        },
+        {
+          "station_id": "09013500",
+          "geometry_area_km2_EPSG5070": 72.88563722547644,
+          "native_valid_fraction": 1.0,
+          "native_ground_spacing_m": {
+            "east_west_range": [
+              7.869542760610185,
+              7.888176473592823
+            ],
+            "north_south_range": [
+              10.28127197888104,
+              10.281558433311716
+            ]
+          },
+          "mapped_channel_cells": 3093,
+          "state_area_fraction": {
+            "0": 0.0,
+            "1": 0.41120998035061784,
+            "2": 0.5737226425403719,
+            "3": 0.015067377109010228
+          },
+          "state_labels": {
+            "0": "nodata_or_outside_analysis_mask",
+            "1": "reaches_mapped_channel",
+            "2": "closed_pit_or_flat",
+            "3": "raster_edge_analysis_mask_boundary_or_nodata_frontier"
+          }
+        }
+      ],
+      "limits": [
+        "Associated COMID whole basin; exact gauge split unavailable",
+        "Strict descent without filling or hydro-enforcement",
+        "Mapped-channel contact is not sediment delivery",
+        "No erosion generation, measured load, treatment rank or rights inference",
+        "Source byte ranges are retained and individually hashed; a full-object checksum and as-issued historical snapshot are not established.",
+        "A field source-class map and calibrated erosion/sediment-delivery model remain unavailable."
+      ]
+    },
+    {
+      "id": "native-soils",
+      "title": "NRCS native soil polygons and horizon properties",
+      "designation": "derived",
+      "status": "checked_partial_context",
+      "provenance": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/soil_context/soil_basin_summary.json",
+        "sha256": "4b8c1f53c3e565381be513f01ae24c314d3dd2b5ffe845e64ca5fb438f998e5c"
+      },
+      "source_url": "https://sdmdataaccess.sc.egov.usda.gov/Tabular/post.rest",
+      "source_receipt": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/soil_context/soil_download_receipt.json",
+        "sha256": "3bd0f4d55f626220d6857571374570a1f9e1d0bf2ba08bb6d9c3504c2f59b878"
+      },
+      "native_resolution": "survey mapunit polygons, source component percentages and horizon depths; no raster upsampling",
+      "target_depth_cm": [
+        0,
+        10
+      ],
+      "method": "native polygon EPSG5070 area, source component percentage, horizon overlap depth; missing fractions explicit",
+      "units": {
+        "kwfact": "source-native US customary RUSLE Kw factor, no conversion to erosion or mass",
+        "kffact": "source-native US customary RUSLE Kf factor, distinct from Kw",
+        "ksat_r": "micrometer/second",
+        "awc_r": "volume fraction"
+      },
+      "basins": [
+        {
+          "station_id": "401530105475401",
+          "basin_role": "NLDI associated COMID whole-upstream basin; exact station split unresolved",
+          "basin_area_km2": 75.36532111111386,
+          "mapped_soil_area_fraction": 0.9999999999999982,
+          "mapunit_count": 21,
+          "properties": {
+            "kwfact": {
+              "conditional_mean_over_supported_area_component_depth": 0.07727834968920053,
+              "fraction_of_basin_supported": 0.37174042195009366,
+              "unobserved_fraction": 0.6282595780499063
+            },
+            "kffact": {
+              "conditional_mean_over_supported_area_component_depth": 0.19677887436262387,
+              "fraction_of_basin_supported": 0.37174042195009366,
+              "unobserved_fraction": 0.6282595780499063
+            },
+            "ksat_r": {
+              "conditional_mean_over_supported_area_component_depth": 104.28349128294069,
+              "fraction_of_basin_supported": 0.7883428891400295,
+              "unobserved_fraction": 0.21165711085997052
+            },
+            "awc_r": {
+              "conditional_mean_over_supported_area_component_depth": 0.12481085500122478,
+              "fraction_of_basin_supported": 0.4963257713394171,
+              "unobserved_fraction": 0.5036742286605829
+            }
+          }
+        },
+        {
+          "station_id": "09013500",
+          "basin_role": "NLDI associated COMID whole-upstream basin; exact station split unresolved",
+          "basin_area_km2": 72.88563722547705,
+          "mapped_soil_area_fraction": 0.9999999999999993,
+          "mapunit_count": 27,
+          "properties": {
+            "kwfact": {
+              "conditional_mean_over_supported_area_component_depth": 0.08373694946211115,
+              "fraction_of_basin_supported": 0.4005908384641043,
+              "unobserved_fraction": 0.5994091615358956
+            },
+            "kffact": {
+              "conditional_mean_over_supported_area_component_depth": 0.2099446297066673,
+              "fraction_of_basin_supported": 0.4005908384641043,
+              "unobserved_fraction": 0.5994091615358956
+            },
+            "ksat_r": {
+              "conditional_mean_over_supported_area_component_depth": 95.56156934713144,
+              "fraction_of_basin_supported": 0.7971890435708842,
+              "unobserved_fraction": 0.20281095642911584
+            },
+            "awc_r": {
+              "conditional_mean_over_supported_area_component_depth": 0.12867752949321626,
+              "fraction_of_basin_supported": 0.5454267754862648,
+              "unobserved_fraction": 0.45457322451373516
+            }
+          }
+        }
+      ],
+      "limits": [
+        "current NRCS survey save dates retained per mapunit; not frozen pre-event evidence",
+        "Nearly complete mapped polygon coverage does not imply complete soil-property support. Kw/Kf support is about 37.17% of North and 40.06% of East area-component-depth support.",
+        "Conditional means apply only to supported fractions. Missing fractions are not zero and are not imputed.",
+        "Associated COMID whole-upstream basin; exact station split unresolved. Kw/Kf are not sediment mass or delivery."
+      ]
+    },
+    {
+      "id": "landfire",
+      "title": "LANDFIRE fuel and canopy context",
+      "designation": "modeled",
+      "status": "checked_context",
+      "provenance": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
+        "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
+      },
+      "sources": [
+        {
+          "id": "lf2016_headwaters_FBFM40",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_FBFM40_CONUS/ImageServer/exportImage?bbox=-826845%2C1945815%2C-810915%2C1965765&bboxSR=5070&imageSR=5070&size=531%2C665&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "34f3b897f26c8b992ba3cef8a85969ba3e20f9b835c477053f6ac77b0b19d018",
+          "case": "headwaters",
+          "layer": "FBFM40",
+          "decoded_unit": "categorical fuel-model code",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_headwaters_CC",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CC_CONUS/ImageServer/exportImage?bbox=-826845%2C1945815%2C-810915%2C1965765&bboxSR=5070&imageSR=5070&size=531%2C665&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "e97b85baf5ad5889821d0974bc83800b5e02dd1636c79e538a21670fe3a40013",
+          "case": "headwaters",
+          "layer": "CC",
+          "decoded_unit": "percent",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_headwaters_CH",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CH_CONUS/ImageServer/exportImage?bbox=-826845%2C1945815%2C-810915%2C1965765&bboxSR=5070&imageSR=5070&size=531%2C665&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "da504893b1d8e19b3a909c20263d54c329b68d06ef3c3fb4365fb66fab94770e",
+          "case": "headwaters",
+          "layer": "CH",
+          "decoded_unit": "m",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_headwaters_CBH",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CBH_CONUS/ImageServer/exportImage?bbox=-826845%2C1945815%2C-810915%2C1965765&bboxSR=5070&imageSR=5070&size=531%2C665&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "c6fa61a2cb3dcf0aeec1e2ff69c320ce0deef07628317061d79fe2c71f871a30",
+          "case": "headwaters",
+          "layer": "CBH",
+          "decoded_unit": "m",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_headwaters_CBD",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CBD_CONUS/ImageServer/exportImage?bbox=-826845%2C1945815%2C-810915%2C1965765&bboxSR=5070&imageSR=5070&size=531%2C665&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "ba6576de8fdf5d17cecade5bd7f8a3b908a9b5c46ffd5aa1a35cb3c6bee25260",
+          "case": "headwaters",
+          "layer": "CBD",
+          "decoded_unit": "kg/m3",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_grizzly_FBFM40",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_FBFM40_CONUS/ImageServer/exportImage?bbox=-959865%2C1890735%2C-941295%2C1906875&bboxSR=5070&imageSR=5070&size=619%2C538&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "1c9f4b0db41060d0148fad7f338d470f1a69f5bc058c13f9bcfef3133c966c1b",
+          "case": "grizzly",
+          "layer": "FBFM40",
+          "decoded_unit": "categorical fuel-model code",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_grizzly_CC",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CC_CONUS/ImageServer/exportImage?bbox=-959865%2C1890735%2C-941295%2C1906875&bboxSR=5070&imageSR=5070&size=619%2C538&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "07f920e5a1c967fc0c785a28518956a17396693d21d53c2dd49aa05909633f35",
+          "case": "grizzly",
+          "layer": "CC",
+          "decoded_unit": "percent",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_grizzly_CH",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CH_CONUS/ImageServer/exportImage?bbox=-959865%2C1890735%2C-941295%2C1906875&bboxSR=5070&imageSR=5070&size=619%2C538&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "a4fafb11f044247b4305dd7d3a5a7f3ef87462bcf2d3d301e6f5e004cc05e1b5",
+          "case": "grizzly",
+          "layer": "CH",
+          "decoded_unit": "m",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_grizzly_CBH",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CBH_CONUS/ImageServer/exportImage?bbox=-959865%2C1890735%2C-941295%2C1906875&bboxSR=5070&imageSR=5070&size=619%2C538&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "3362f592f4900b3c9ff462a61d30437eb543fa0dcaa8bdeb7ccef635dcbca333",
+          "case": "grizzly",
+          "layer": "CBH",
+          "decoded_unit": "m",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        },
+        {
+          "id": "lf2016_grizzly_CBD",
+          "url": "https://lfps.usgs.gov/arcgis/rest/services/Landfire_LF2016/LF2016_CBD_CONUS/ImageServer/exportImage?bbox=-959865%2C1890735%2C-941295%2C1906875&bboxSR=5070&imageSR=5070&size=619%2C538&format=tiff&pixelType=S16&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&f=image",
+          "source_sha256": "c6e12f1086a959c6414a69c32aab6437030410cd77ad481380e8e24cafbfc199",
+          "case": "grizzly",
+          "layer": "CBD",
+          "decoded_unit": "kg/m3",
+          "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+          "interpretation": "model-derived prefire landscape context; no local fuel moisture or efficacy inference",
+          "license": "LANDFIRE public domain"
+        }
+      ],
+      "native_resolution": "Nominal 30 m source products; requested 30 m EPSG:5070 nearest-neighbor exports. No finer spatial information inferred.",
+      "units": {
+        "FBFM40": "categorical fuel-model code",
+        "CC": "percent",
+        "CH": "m",
+        "CBH": "m",
+        "CBD": "kg/m3"
+      },
+      "nominal_vintage": "LF2016 Remap; CONUS fuel suite released 2020-07; capable fuels 2019/2020",
+      "limits": [
+        "Model-derived landscape context, not measured local fuel moisture or treatment efficacy.",
+        "Current retained service bytes are not an archived pre-2020 issue snapshot.",
+        "Nonburnable fuel codes and canopy zero classes remain distinct from nodata."
+      ]
+    },
+    {
+      "id": "gridmet",
+      "title": "gridMET retrospective daily fire-weather context",
+      "designation": "modeled",
+      "status": "checked_context",
+      "provenance": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
+        "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
+      },
+      "sources": [
+        {
+          "id": "gridmet_headwaters_vpd",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/vpd/vpd_2020.nc?var=mean_vapor_pressure_deficit&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "8efc40400a76a80077151fc14ea62e4c6fe504d235bc1ba9deaf1656c6a47449",
+          "case": "headwaters",
+          "layer": "vpd",
+          "variable": "mean_vapor_pressure_deficit",
+          "decoded_unit": "kPa",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_headwaters_erc",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/erc/erc_2020.nc?var=energy_release_component-g&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "b37d5f86cfb5324e9a59e4dd7d8832c8da0dbc1b093e47221527afef3521d429",
+          "case": "headwaters",
+          "layer": "erc",
+          "variable": "energy_release_component-g",
+          "decoded_unit": "Unitless",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_headwaters_vs",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/vs/vs_2020.nc?var=wind_speed&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "423802de58c1127b8553096594ca2d2ca83467c4e3b4f3e601de38071b6a3ab4",
+          "case": "headwaters",
+          "layer": "vs",
+          "variable": "wind_speed",
+          "decoded_unit": "m/s",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_headwaters_rmin",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/rmin/rmin_2020.nc?var=relative_humidity&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "cf28b6fff848f3afe5f5bb810686189299fa3787939c259f84d1b2265eb7f66b",
+          "case": "headwaters",
+          "layer": "rmin",
+          "variable": "relative_humidity",
+          "decoded_unit": "%",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_headwaters_fm100",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/fm100/fm100_2020.nc?var=dead_fuel_moisture_100hr&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "8e23a524d5e036f08d428eddfd6eb40646ea60dab12fba492caaf2b1fee4fb91",
+          "case": "headwaters",
+          "layer": "fm100",
+          "variable": "dead_fuel_moisture_100hr",
+          "decoded_unit": "Percent",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_headwaters_fm1000",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/fm1000/fm1000_2020.nc?var=dead_fuel_moisture_1000hr&north=40.33564774537535&south=40.143979057214466&west=-105.83240672694875&east=-105.62034931385224&horizStride=1&time_start=2020-10-01T00%3A00%3A00Z&time_end=2020-10-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "8d728fc38192e6926fc1548ebddc091e818f8cc5c3897ccc074a9980b6bcff8f",
+          "case": "headwaters",
+          "layer": "fm1000",
+          "variable": "dead_fuel_moisture_1000hr",
+          "decoded_unit": "Percent",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-10-01",
+          "expected_end": "2020-10-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_vpd",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/vpd/vpd_2020.nc?var=mean_vapor_pressure_deficit&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "3b76d6c960ab023a20b89f60693ed66c4f33c95c5a48c4a17e4b4d0a2d4ef94f",
+          "case": "grizzly",
+          "layer": "vpd",
+          "variable": "mean_vapor_pressure_deficit",
+          "decoded_unit": "kPa",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_erc",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/erc/erc_2020.nc?var=energy_release_component-g&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "33592b3fc0f890490833127dabe2cf9feae07a3e19f15edf3830628c27ee8d49",
+          "case": "grizzly",
+          "layer": "erc",
+          "variable": "energy_release_component-g",
+          "decoded_unit": "Unitless",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_vs",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/vs/vs_2020.nc?var=wind_speed&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "ce9880edc48d0184d45fa182698aaf76bd0e8e3beb5b8255b4f9d21a1a93ca47",
+          "case": "grizzly",
+          "layer": "vs",
+          "variable": "wind_speed",
+          "decoded_unit": "m/s",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_rmin",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/rmin/rmin_2020.nc?var=relative_humidity&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "13c8e7d760e81e52197dba3c75d5e99bdd6cb885ff75a116ddd2862d3876edaa",
+          "case": "grizzly",
+          "layer": "rmin",
+          "variable": "relative_humidity",
+          "decoded_unit": "%",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_fm100",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/fm100/fm100_2020.nc?var=dead_fuel_moisture_100hr&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "71298bcc7eca11ab547b76db8cd9e890b9d76e623adceb07ba9b74a93f7eac0c",
+          "case": "grizzly",
+          "layer": "fm100",
+          "variable": "dead_fuel_moisture_100hr",
+          "decoded_unit": "Percent",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        },
+        {
+          "id": "gridmet_grizzly_fm1000",
+          "url": "https://thredds.northwestknowledge.net/thredds/ncss/grid/MET/fm1000/fm1000_2020.nc?var=dead_fuel_moisture_1000hr&north=39.686413591515695&south=39.52390881821821&west=-107.31721748557854&east=-107.07818778039271&horizStride=1&time_start=2020-08-01T00%3A00%3A00Z&time_end=2020-08-31T23%3A59%3A59Z&timeStride=1&accept=netcdf",
+          "source_sha256": "da1d1db42fe528495a5e1f529207986dd9fa99fc66fda15bd7cd07313b790c76",
+          "case": "grizzly",
+          "layer": "fm1000",
+          "variable": "dead_fuel_moisture_1000hr",
+          "decoded_unit": "Percent",
+          "native_resolution": "1/24 degree; daily; wind parent spatial information coarser",
+          "interpretation": "retrospective gridded context; not gusts, live fuel moisture, parcel weather or as-issued forecast",
+          "expected_start": "2020-08-01",
+          "expected_end": "2020-08-31",
+          "license": "Copyright waived by provider"
+        }
+      ],
+      "native_resolution": "1/24 degree daily; wind parent information is coarser",
+      "time_semantics": "Date label denotes nominal midnight-to-midnight fixed MST UTC-07, not an instantaneous UTC measurement.",
+      "limits": [
+        "2020-10 headwaters and 2020-08 Grizzly are separate historical context months.",
+        "Uniform native-cell means, no downscaling or slope/canopy microclimate inference.",
+        "Wind is not gust; modeled dead-fuel moisture is not live-fuel moisture. No historical as-issued snapshot or fire-spread validation."
+      ]
+    },
+    {
+      "id": "metar",
+      "title": "Airport weather observations with limited archive QC",
+      "designation": "observed",
+      "status": "checked_context",
+      "provenance": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
+        "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
+      },
+      "sources": [
+        {
+          "id": "metar_headwaters_GNB",
+          "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=GNB&network=CO_ASOS&data=tmpf&data=dwpf&data=relh&data=drct&data=sknt&data=gust&data=metar&year1=2020&month1=10&day1=1&year2=2020&month2=11&day2=1&tz=Etc%2FUTC&format=onlycomma&latlon=yes&elev=yes&missing=M&trace=T&direct=no&report_type=3&report_type=4",
+          "source_sha256": "8dc38beb8cdf0ea39af0c56c2ce86b729af0594a5aef284b23e752fd6b4785ec",
+          "case": "headwaters",
+          "interpretation": "Airport observations in UTC, wind/gust knots, temperature/dewpoint F, RH percent. As-is archive with limited QC, not local forest-canopy or ridge weather.",
+          "expected_start": "2020-10-01"
+        },
+        {
+          "id": "metar_grizzly_EGE",
+          "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=EGE&network=CO_ASOS&data=tmpf&data=dwpf&data=relh&data=drct&data=sknt&data=gust&data=metar&year1=2020&month1=8&day1=1&year2=2020&month2=9&day2=1&tz=Etc%2FUTC&format=onlycomma&latlon=yes&elev=yes&missing=M&trace=T&direct=no&report_type=3&report_type=4",
+          "source_sha256": "8c61d1e9b990582e8d3732ff54ba2418d8b428c3830c610bb7086a03e077738d",
+          "case": "grizzly",
+          "interpretation": "Airport observations in UTC, wind/gust knots, temperature/dewpoint F, RH percent. As-is archive with limited QC, not local forest-canopy or ridge weather.",
+          "expected_start": "2020-08-01"
+        }
+      ],
+      "native_resolution": "native timestamped GNB and EGE airport archive reports; requests use UTC",
+      "units": {
+        "temperature_and_dewpoint": "degF",
+        "relative_humidity": "percent",
+        "wind_direction": "degrees true",
+        "wind_speed_and_gust": "knots"
+      },
+      "observations": [
+        {
+          "id": "metar_headwaters_GNB",
+          "record_count": 2215,
+          "first_utc": "2020-10-01 00:11",
+          "last_utc": "2020-10-31 23:52",
+          "missing_gust_records": 1644
+        },
+        {
+          "id": "metar_grizzly_EGE",
+          "record_count": 800,
+          "first_utc": "2020-08-01 00:56",
+          "last_utc": "2020-08-31 23:56",
+          "missing_gust_records": 683
+        }
+      ],
+      "limits": [
+        "Airport elevation and exposure differ from forested slopes; no ridge or canopy representativeness established.",
+        "Missing gust is not zero gust. Limited archive QC; relative humidity may be derived.",
+        "No model of ignition or conditional arrival was validated."
+      ]
+    },
+    {
+      "id": "fsim_raw",
+      "title": "FSim encoded inspection only; probability decoding blocked",
+      "designation": "modeled",
+      "status": "inspection_only_probability_decoding_blocked",
+      "provenance": {
+        "job_id": "29750",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
+        "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
+      },
+      "sources": [
+        {
+          "id": "fsim2023_raw_headwaters",
+          "url": "https://imagery.geoplatform.gov/iipp/rest/services/Fire_Aviation/USFS_EDW_RMRS_ProbabilisticWildfireRiskBurnProbability/ImageServer/exportImage?bbox=-826875%2C1945755%2C-810675%2C1966005&bboxSR=5070&imageSR=5070&size=60%2C75&format=tiff&pixelType=S32&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&mosaicRule=%7B%22mosaicMethod%22%3A%22esriMosaicLockRaster%22%2C%22lockRasterIds%22%3A%5B2%5D%7D&f=image",
+          "source_sha256": "73f7838d7a82510bb055d86948f0cfc408d9c8d227f8af1e50515f7ba0bfb7c4",
+          "case": "headwaters",
+          "decoded_unit": null,
+          "native_resolution": "270m original CONUS raster, locked mosaic item2; requested aligned EPSG5070",
+          "nominal_vintage": "2023 edition, end-of-2020 landscape; historical weather2006-2020",
+          "interpretation": "Provider encoded raster retained for inspection only. No annual probability, pre-2020 validation, parcel rank or treatment-effect calculation.",
+          "license": "USFS CC0; citation required"
+        },
+        {
+          "id": "fsim2023_raw_grizzly",
+          "url": "https://imagery.geoplatform.gov/iipp/rest/services/Fire_Aviation/USFS_EDW_RMRS_ProbabilisticWildfireRiskBurnProbability/ImageServer/exportImage?bbox=-959985%2C1890675%2C-941085%2C1906875&bboxSR=5070&imageSR=5070&size=70%2C60&format=tiff&pixelType=S32&interpolation=RSP_NearestNeighbor&renderingRule=%7B%22rasterFunction%22%3A%22None%22%7D&mosaicRule=%7B%22mosaicMethod%22%3A%22esriMosaicLockRaster%22%2C%22lockRasterIds%22%3A%5B2%5D%7D&f=image",
+          "source_sha256": "70573ff129c588ce7298e68476d3d14cd1b34ebe154a5e4d4c8f93aa0accb203",
+          "case": "grizzly",
+          "decoded_unit": null,
+          "native_resolution": "270m original CONUS raster, locked mosaic item2; requested aligned EPSG5070",
+          "nominal_vintage": "2023 edition, end-of-2020 landscape; historical weather2006-2020",
+          "interpretation": "Provider encoded raster retained for inspection only. No annual probability, pre-2020 validation, parcel rank or treatment-effect calculation.",
+          "license": "USFS CC0; citation required"
+        }
+      ],
+      "native_resolution": "270 m provider grid",
+      "nominal_vintage": "2023 edition, end-of-2020 landscape; historical weather 2006–2020",
+      "limits": [
+        "Provider encoded raster inspected and retained only; no annual probability decoded.",
+        "Cannot validate pre-2020 predictions; no parcel ranking or treatment-effect calculation."
+      ]
+    },
+    {
+      "id": "snotel",
+      "title": "SNOTEL regional station context for unchanged North storm windows",
+      "designation": "derived",
+      "status": "checked_qualified_context",
+      "provenance": {
+        "job_id": "29754",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/snotel/snotel_frozen_storm_context.json",
+        "sha256": "e6a76d25a349b6e001878ea77cf15b5174a704bef82ad80aacfbc96977a858df"
+      },
+      "source_summary": {
+        "job_id": "29754",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/snotel/context_run_summary.json",
+        "sha256": "26b27d3c5b1eb4a1946ea1c54daf0bc0ffc531ed8d359740f199ea5fc5fdb81d"
+      },
+      "sources": [
+        {
+          "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data?stationTriplets=565%3ACO%3ASNTL%2C688%3ACO%3ASNTL%2C793%3ACO%3ASNTL&elements=WTEQ%2CPREC%2CTAVG&duration=DAILY&beginDate=2021-05-01&endDate=2021-10-03&periodRef=END&centralTendencyType=NONE&returnFlags=true&returnOriginalValues=false&returnSuspectData=true",
+          "sha256": "60d1a6aba922fd70632499a7aed8a6f02e3d0811f162abc858a700f96ab01af4",
+          "bytes": 69585
+        },
+        {
+          "url": "https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data?stationTriplets=565%3ACO%3ASNTL%2C688%3ACO%3ASNTL%2C793%3ACO%3ASNTL&elements=WTEQ%2CPREC%2CTAVG&duration=DAILY&beginDate=2022-05-01&endDate=2022-10-03&periodRef=END&centralTendencyType=NONE&returnFlags=true&returnOriginalValues=false&returnSuspectData=true",
+          "sha256": "c00817ef77580433985726772890dc6c6f25b2fd133e7763423be98801fa82b3",
+          "bytes": 69544
+        }
+      ],
+      "contract_sha256": "5befa8c642590dc9febcca2b60690b71f452da0745c86b9a716a28d4f39370bf",
+      "stations": [
+        {
+          "stationTriplet": "565:CO:SNTL",
+          "name": "Lake Irene"
+        },
+        {
+          "stationTriplet": "688:CO:SNTL",
+          "name": "Phantom Valley"
+        },
+        {
+          "stationTriplet": "793:CO:SNTL",
+          "name": "Stillwater Creek"
+        }
+      ],
+      "native_resolution": "DAILY ordinal 1; 2021 and 2022 May 1–October 3 queries",
+      "native_units": {
+        "WTEQ": "in",
+        "PREC": "in",
+        "TAVG": "degF"
+      },
+      "time_rule": {
+        "zone": "PST-fixed",
+        "utc_offset_hours": -8,
+        "duration": "DAILY",
+        "periodRef": "END",
+        "date_label": "D means daily interval from D00:00 to D+1 00:00 in fixed PST; instantaneous WTEQ/PREC assigned to end of labeled day",
+        "utc_end_example": "2021-07-01 label ends2021-07-02T08:00:00Z",
+        "context_window": "From civil PST date(event start)-1 through civil PST date(event end), inclusive. SWE delta requires exactly preceding calendar date. Future-to-event-end daily values are tagged, never issue-time predictors.",
+        "historical_asof_availability_verified": false
+      },
+      "event_count": 28,
+      "event_station_records": 84,
+      "daily_context_records": 336,
+      "source_daily_values": 2805,
+      "qa_absent_count": 2805,
+      "missing_expected_station_element_days": [
+        {
+          "stationTriplet": "688:CO:SNTL",
+          "element": "TAVG",
+          "date": "2021-08-24"
+        },
+        {
+          "stationTriplet": "565:CO:SNTL",
+          "element": "TAVG",
+          "date": "2022-08-16"
+        },
+        {
+          "stationTriplet": "688:CO:SNTL",
+          "element": "TAVG",
+          "date": "2022-09-13"
+        }
+      ],
+      "numeric_flags": "SWE presence/decrease and daily mean above 32 degF are qualified descriptive station flags only. QC V/E, or TAVG C, never implies human QA approval.",
+      "categorical_regime_assigned": false,
+      "scores_computed": false,
+      "limits": [
+        "SNOTEL points are regional context; North gauged catchment membership, spatial representativeness and precipitation phase are not verified.",
+        "SWE decline may reflect melt, sublimation, redistribution, sensor noise or editing; warm daily mean and prior snow do not prove catchment melt/runoff or rain-on-snow.",
+        "Daily means do not resolve subdaily temperature, rain intensity or event phase.",
+        "Historical edited/corrected values may use later review; issue-time availability is unverified.",
+        "WTEQ/PREC are end-of-day states; PREC accumulates liquid plus solid precipitation through the water year and can reset.",
+        "No categorical regime, outcome join, new model fit, rescoring, cohort change, or field-approved status is produced.",
+        "Rules were frozen before full seasonal queries, after original turbidity results existed; this is not a new preregistered predictive evaluation."
+      ]
+    },
+    {
+      "id": "mapped-burn-associated-basins",
+      "title": "Retrospective MTBS perimeter and spectral overlap of associated basins",
+      "designation": "derived",
+      "status": "checked_partial_context",
+      "provenance": {
+        "job_id": "29754",
+        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/burn_basins/burn_basin_intersections.json",
+        "sha256": "c4385f13f56631659697c8b9997575661bceb615ab0a38f94517f391f6a3d061"
+      },
+      "source_url": "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_MTBS_01/MapServer/75/query?where=fire_id+IN+%28%27CO4020310623920201014%27%2C%27CO3957210726620200810%27%29&outFields=fire_id%2Cfire_name%2Cyear%2Cmap_id%2Cig_date%2Cpre_id%2Cpost_id%2Casmnt_type%2Ccomments%2Cacres&returnGeometry=true&outSR=4326&f=geojson&geometryPrecision=6",
+      "raster_request_url": "https://imagery.geoplatform.gov/iipp/rest/services/Fire_Aviation/USFS_EDW_MTBS_CONUS/ImageServer/exportImage?bbox=-877110%2C1939110%2C-804210%2C2001930&bboxSR=5070&imageSR=5070&size=2430%2C2094&format=tiff&pixelType=U8&noData=0&noDataInterpretation=esriNoDataMatchAny&interpolation=RSP_NearestNeighbor&mosaicRule=%7B%22mosaicMethod%22%3A+%22esriMosaicLockRaster%22%2C+%22lockRasterIds%22%3A+%5B37%5D%7D&renderingRule=%7B%22rasterFunction%22%3A+%22None%22%7D&f=json",
+      "fire_id": "CO4020310623920201014",
+      "spectral_product": "2020 annual MTBS spectral-severity mosaic, retained 30m EPSG5070 nearest-neighbor export",
+      "postimage": "2021-09-07",
+      "perimeter_revision": "2026-10-16",
+      "edition_alignment": "2026 perimeter revision versus annual mosaic edition unresolved",
+      "inputs": [
+        {
+          "file": "mtbs_east_troublesome_perimeter_clip.tif",
+          "bytes": 155003,
+          "sha256": "f7561da433302aeb5a484c97ee17345d715ef1d2ec20719884ad64c6bef2257a"
+        },
+        {
+          "file": "mtbs_fire_boundaries.geojson",
+          "bytes": 572034,
+          "sha256": "b273fac61b73ac0cf02693621ebcd4ac0be03427ef523d93ca8c75aad9f6d905"
+        },
+        {
+          "file": "nldi_associated_basins.geojson",
+          "bytes": 48568,
+          "sha256": "22359c2c9c5c033325c69b990649a18f09b3d34731c6d2ecb08d752be5bec857"
+        }
+      ],
+      "basins": [
+        {
+          "station_id": "401530105475401",
+          "basin_role": "NLDI associated COMID whole-upstream basin; exact station split unresolved",
+          "associated_basin_area_km2": 75.36532111111386,
+          "mapped_fire_intersection_area_km2": 20.566003578019902,
+          "mapped_fire_fraction_of_associated_basin": 0.2728841763667229,
+          "outside_perimeter_interpretation": "Unclassified for this mapped fire; not proof of unburned conditions or absence of other fires",
+          "intersection_pixel_centers": 22835,
+          "class_labels": {
+            "0": "background_or_no_data_unknown",
+            "1": "unburned_to_low",
+            "2": "low",
+            "3": "moderate",
+            "4": "high",
+            "5": "increased_greenness",
+            "6": "non_processing_mask_unknown"
+          },
+          "class_counts": {
+            "0": 50,
+            "1": 4079,
+            "2": 5960,
+            "3": 6483,
+            "4": 6132,
+            "5": 131,
+            "6": 0
+          },
+          "unknown_pixels": 50,
+          "unknown_breakdown": {
+            "class0": 50,
+            "class6": 0,
+            "other_masked_or_nonfinite": 0,
+            "outside_retained_raster_extent": 0
+          },
+          "known_spectral_fraction": 0.9978103788044669,
+          "boundary_note": "Vector and pixel-center areas have different supports. Classes0/6 and other invalid coverage remain unknown; class5 is not ordinally above high severity."
+        },
+        {
+          "station_id": "09013500",
+          "basin_role": "NLDI associated COMID whole-upstream basin; exact station split unresolved",
+          "associated_basin_area_km2": 72.88563722547705,
+          "mapped_fire_intersection_area_km2": 0.0,
+          "mapped_fire_fraction_of_associated_basin": 0.0,
+          "outside_perimeter_interpretation": "Unclassified for this mapped fire; not proof of unburned conditions or absence of other fires",
+          "intersection_pixel_centers": 0,
+          "class_labels": {
+            "0": "background_or_no_data_unknown",
+            "1": "unburned_to_low",
+            "2": "low",
+            "3": "moderate",
+            "4": "high",
+            "5": "increased_greenness",
+            "6": "non_processing_mask_unknown"
+          },
+          "class_counts": {},
+          "known_spectral_fraction": null
+        }
+      ],
+      "limits": [
+        "Retrospective spectral change, not BAER soil severity or ecological outcome",
+        "September2021 imagery cannot be a predictor known for August2021 events",
+        "Associated-COMID whole upstream basins, exact gauge split unresolved",
+        "Outside mapped perimeter remains unclassified; no assertion of unburned land",
+        "No forecast, causal wildfire effect, sediment delivery, intervention rank or holdout scoring",
+        "Mapped perimeter overlap is not the fraction proved burned; the North result is about 27.2884%, East has zero mapped overlap.",
+        "This is not the roughly 20% burned fraction reported for the gauged North study basin. The associated-COMID area, mapped footprint, spectral support and source editions differ; the discrepancy is not resolved.",
+        "Requested 30 m EPSG:5070 nearest-neighbor service grid; native alignment is not established. Vector area and pixel-center area are distinct supports.",
+        "Class 0 and class 6 remain unknown. Class 5 increased greenness is not ordinally above high severity."
+      ]
+    }
+  ]
+}

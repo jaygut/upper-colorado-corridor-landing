@@ -4,7 +4,7 @@
   "release_date": "2026-11-13",
   "release_kind": "local_review",
   "scenario_kind": "historical_evidence_and_abstention",
-  "native_resolution": "station inventory; no validated event surface",
+  "native_resolution": "station inventory and checked native source context; no validated event surface",
   "timestamp": "2026-11-13",
   "validity": "screening_and_monitoring_only",
   "unit": null,
@@ -155,6 +155,18 @@
       "unit": "pixel-center area km\u00b2",
       "validity": "Requested 30 m grid \u00b7 EPSG:5070 \u00b7 nearest-neighbor service extraction. Native alignment is not established. Areas count pixel centers inside the exact source perimeter. Spectral classes are not BAER soil severity. No prefire or treatment-effect claim.",
       "export_rights": "USGS/USFS public information and authored summary"
+    },
+    {
+      "id": "source-context-20261113",
+      "title": "Checked source context; predictive gates remain blocked",
+      "url": "data/source-context-release.json",
+      "status": "derived",
+      "sha256": "b27d0c755e63280854abc89be6f20cf26ef946989f92f21ec4cb93d7ce71ba97",
+      "release_date": "2026-11-13",
+      "native_resolution": "native DEM and soil geometry; service fuel grids; native daily weather and SNOTEL; each support is explicit in the record",
+      "unit": "per source, with native units and area support retained",
+      "validity": "Retrospective source and pipeline checks only. Exact gauge splits, prospective joined inputs, delivery calibration and full Tier A/B remain blocked. No refit, rescoring, regime assignment or intervention rank.",
+      "export_rights": "public provider links, hashes and authored summaries; no raw raster payloads or private records"
     }
   ],
   "stations": [
