@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "id": "colorado_fixed_issue_round2",
+  "status": "pending_release",
+  "title": "Fixed issue times, a fresh test",
+  "summary": "Round 2 is being prepared. No new prediction or improvement is claimed until the frozen model and untouched test are checked.",
+  "forecast_task": {
+    "target": "Maximum turbidity strictly after issue and through the next six hours",
+    "horizon_hours": 6,
+    "issue_hours_utc": [
+      0,
+      6,
+      12,
+      18
+    ],
+    "issue_validity": "Retrospective issue-time assessment under an explicit latency assumption; real-time issuance is not verified.",
+    "latency_assumption_minutes": null,
+    "unit": "FNU"
+  },
+  "split_ledger": [
+    {
+      "id": "development",
+      "label": "Exposed development data",
+      "role": "development",
+      "periods": [
+        "2021",
+        "2022"
+      ],
+      "n_windows": null,
+      "availability_note": "These outcomes have already been inspected. They cannot become a fresh holdout.",
+      "was_untouched_at_model_freeze": false
+    },
+    {
+      "id": "untouched_test",
+      "label": "Untouched test",
+      "role": "untouched_test",
+      "periods": [],
+      "n_windows": null,
+      "availability_note": "Root-controlled split and result release pending.",
+      "was_untouched_at_model_freeze": null
+    }
+  ],
+  "provenance": {
+    "contract_sha256": null,
+    "contract_frozen_utc": null,
+    "model_sha256": null,
+    "model_frozen_utc": null,
+    "test_outcomes_opened_utc": null,
+    "root_scientific_release_sha256": null
+  },
+  "diagnosis": [
+    {
+      "finding": "Rainfall selected the original storm windows after their defined start.",
+      "change": "Use a fixed UTC issue grid and evaluate the next six hours without future-rain event selection.",
+      "checked": false,
+      "limit": "Awaiting exported issue-time checks."
+    },
+    {
+      "finding": "The original antecedent-rain feature was constant under the dry-gap rule.",
+      "change": "Audit varying prior-window features and compare against strong recent-turbidity baselines.",
+      "checked": false,
+      "limit": "Candidate architecture and ablations remain under evaluation."
+    }
+  ],
+  "models": [],
+  "selected_model_id": null,
+  "primary_metric_id": null,
+  "evaluations": [],
+  "forecast_examples": [],
+  "conclusion": {
+    "claim_level": "not_established",
+    "headline": "No new predictive claim yet",
+    "limitations": [
+      "Prior negative results remain valid.",
+      "No intervention rank, treatment effect or operational forecast is established."
+    ]
+  },
+  "sources": [],
+  "finance_evidence_ledger": {
+    "schema": "nature-finance-evidence-ledger/1.0",
+    "status": "working_application_with_empirical_validation_pending",
+    "asset_context": {
+      "case": "Grand Lake headwaters, Colorado",
+      "observed_station": "USGS401530105475401",
+      "control_context_station": "USGS09013500",
+      "published_operator_discharge_station": "NorthernWaterFS-0020",
+      "relationship": "Monitoring/measurement locations; not ownership, contract, buyer commitment or verified treatment-benefit recipient"
+    },
+    "application": {
+      "name": "Source-water monitoring and investment evidence desk",
+      "buyer_roles": [
+        "watershed fund or project sponsor managing monitoring spend",
+        "water operator commissioning verification",
+        "capital provider reviewing project evidence"
+      ],
+      "commercial_status": "Buyer roles are intended users, not contracted customers",
+      "transaction_supported": "A reviewable monitoring work order and evidence packet; no financial transaction executed",
+      "operational_sequence": [
+        "Read an eligible forecast monitoring window and source-quality state",
+        "Apply the frozen chronological one-alert/day policy",
+        "Review expected monitoring spend from an explicit per-sample cost input",
+        "Export the station/window/model/threshold/provenance audit",
+        "Collect and independently verify field/lab evidence outside this prototype",
+        "Attach verified evidence to a separately authorized financing review"
+      ]
+    },
+    "gates": [
+      {
+        "id": "source_identity",
+        "label": "Station and dataset identity",
+        "status": "checked",
+        "evidence": "USGS official catalogues, source receipt hashes and published operator crosswalk",
+        "decision": "Use the named measurement support; do not claim parcel delivery or ownership"
+      },
+      {
+        "id": "forecast_validation",
+        "label": "Untouched prediction and alert performance",
+        "status": "pending",
+        "evidence": "Frozen2023/24 test; outcomes remain sealed",
+        "decision": "Populate only after model freeze and independent final review"
+      },
+      {
+        "id": "as_issued",
+        "label": "Live data availability and service reliability",
+        "status": "unverified",
+        "evidence": "Historical approved archives and declared30-minute assumption",
+        "decision": "A live service-level promise needs release-time telemetry and monitored operation"
+      },
+      {
+        "id": "field_sampling",
+        "label": "Sampling access and laboratory verification",
+        "status": "unverified",
+        "evidence": "No operator sampling permission, chain of custody or paired newSSC sample supplied",
+        "decision": "Forecast flags cannot substitute for actual sample collection/results"
+      },
+      {
+        "id": "treatment_effect",
+        "label": "Additional environmental effect",
+        "status": "unverified",
+        "evidence": "No causal intervention estimate, verified source-to-receptor effect or local treatment response",
+        "decision": "No credit issuance, avoided-loss estimate or performance-based payment derived"
+      },
+      {
+        "id": "rights",
+        "label": "Land, water and action rights",
+        "status": "unverified",
+        "evidence": "Public monitoring stations and basin polygons do not establish rights",
+        "decision": "No automatic action or financing approval"
+      },
+      {
+        "id": "buyer_economics",
+        "label": "Buyer, operating threshold and cash costs",
+        "status": "unverified",
+        "evidence": "No contracted buyer, actual laboratory quote, treatment operating curve or loss data",
+        "decision": "Input-based monitoring spend only; ROI and savings remain null"
+      },
+      {
+        "id": "capital_controls",
+        "label": "Financing allocation and independent review",
+        "status": "not_implemented",
+        "evidence": "No issuance framework, use-of-proceeds ledger, funds transfer or independent financial assurance",
+        "decision": "Export evidence for review, not approve a loan, bond, credit or payout"
+      }
+    ],
+    "financial_calculations": {
+      "monitoring_spend_usd": "explicit user cost_per_sample_usd multiplied by accepted alert-window count; hypothetical if cost is hypothetical",
+      "avoided_loss": null,
+      "roi": null,
+      "credit_units": null,
+      "payout": null,
+      "sample_count_warning": "Accepted alerts are proposed monitoring windows, not completed samples or invoices"
+    },
+    "reference_frameworks": [
+      {
+        "organization": "TNFD",
+        "document": "Water utilities and services additional sector guidance,June2025",
+        "url": "https://tnfd.global/wp-content/uploads/2025/06/Additional-sector-guidance-Water-Utilities-and-Services.pdf",
+        "use": "Supports contextual water targets and sector disclosure; this desk is not TNFD certification or a complete LEAP assessment"
+      },
+      {
+        "organization": "ICMA",
+        "document": "Green Bond Principles,June2025",
+        "url": "https://www.icmagroup.org/assets/documents/Sustainable-finance/2025-updates/Green-Bond-Principles-GBP-June-2025.pdf",
+        "use": "Project evaluation,proceeds tracking and impact reporting require evidence; this desk provides a monitoring evidence input, not a bond eligibility opinion"
+      }
+    ],
+    "source_reuse": "NorthernWater public automated retrieval permission does not imply unrestricted raw redistribution. Public release includes derived QA and source links, not its native bulk observations. USGS forecast evidence retains attribution.",
+    "interpretation": "The proposed business linkage is an implementation inference from validated monitoring performance and documented financing processes. It is not demonstrated sales demand, treatment benefit or financial return."
+  },
+  "finance_evidence_ledger_sha256": "6d6d356ff5d13688ec4b3edbe2b65506d1026ff8f93e3709ad008e0d224cc6ef"
+}

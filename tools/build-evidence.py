@@ -41,3 +41,5 @@ if v:
  page=re.sub(r'(<div id="event-evaluation-content">).*?(</div>)',lambda m:m[1]+content+m[2],page,flags=re.S)
 index.write_text(page)
 print(hashlib.sha256(source.read_bytes()).hexdigest(),source)
+
+subprocess.run(["python3",str(root/"tools/build-round2.py")],check=True)
