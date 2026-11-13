@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "id": "coverage-pending",
+  "status": "unavailable",
+  "rainfall": [],
+  "discharge": [],
+  "turbidity": [],
+  "intervals": [],
+  "reason": "North-only retrospective baselines were evaluated. The full burn-state comparison is blocked by missing prefire data and incomplete joined covariates. Select the measured historical window separately. No interpolation or imputed peaks."
+}

@@ -53,3 +53,38 @@ the new synthesis, set out in "The Land Next Door".
 
 Built by Jay Gutierrez, PhD. In collaboration with Thomas (TMO) Morgan, Founder, BASIN Natural
 Capital. Data: USGS, EPA, USDA, GBIF. A Graph of Life platform.
+
+
+## Headwaters local review, 2026-11-13
+
+The new six-chapter entry reuses `js/stage.js`, MapLibre GL 4.7.1, deck.gl 9.0.0,
+D3 v7 and Scrollama 3.2.0. There is no new framework, backend or production build.
+The original entry is retained at `legacy.html`; original data exports are unchanged.
+
+Serve with `python3 -m http.server 8766 --bind 127.0.0.1` and open
+`http://127.0.0.1:8766/`. For fallback use `?svg=1`. Chapter/state example:
+`?scene=pathway&station=09013500&event=coverage-pending&mode=explore&svg=1`.
+
+`data/headwaters-evidence.json` is the source of truth. Run
+`python3 tools/build-evidence.py` after changing it. `data/headwaters.js` is generated.
+Event records load only when their chapter is opened. Optional geometry is not
+prefetched. No replay runs automatically. Missing values stay null and break lines.
+The current release abstains on new event skill and intervention rankings.
+
+The original North candidate 09012500 was rejected as the paired-study station.
+The published North study gauge is 401530105475401. Public inventory coordinates
+are not a verified flow path or a confirmed buyer asset.
+
+Brand tokens are copied from the Graph of Life skill to `brand/tokens.json`.
+`brand/runtime.css` resolves colors, typography and spacing. Run the brand gate
+on the new entry and changed renderer with:
+`python3 brand/brandlint.py index.html css/headwaters.css js/headwaters.js js/stage.js brand/runtime.css`.
+Historical archived styling is preserved separately in `legacy.html` and `css/{brand,page}.css`.
+
+For local browser verification, use `python3 tools/test-headwaters.py --base-url http://127.0.0.1:8766 --out /absolute/output/path`.
+Playwright is a development-only verification tool already available on this Mac.
+No browser runtime dependency was added.
+
+Publication remains gated. Review source rights, scientific claims, accessibility,
+all changed files and preserved exports before any separately authorized deployment.
+Rollback reference is `5dac603ace8423b0cba52cf4947e4cf435eedbd4`.

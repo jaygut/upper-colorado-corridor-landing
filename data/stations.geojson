@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "USGS-401530105475401",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.799722,
+          40.2575
+        ]
+      },
+      "properties": {
+        "station_id": "401530105475401",
+        "name": "NORTH INLET BLW SUMMERLAND PARK AT RMNP",
+        "source_crs": "NAD83 coordinates as published; no sub-metre claim",
+        "evidence_kind": "observed",
+        "use": "study_monitor",
+        "source_id": "station_inventory",
+        "not_confirmed_buyer_asset": true
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "USGS-09013500",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.797778,
+          40.236389
+        ]
+      },
+      "properties": {
+        "station_id": "09013500",
+        "name": "EAST INLET NEAR GRAND LAKE, CO.",
+        "source_crs": "NAD83 coordinates as published; no sub-metre claim",
+        "evidence_kind": "observed",
+        "use": "study_monitor",
+        "source_id": "station_inventory",
+        "not_confirmed_buyer_asset": true
+      }
+    }
+  ]
+}

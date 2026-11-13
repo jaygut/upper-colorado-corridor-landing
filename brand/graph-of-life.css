@@ -1,0 +1,157 @@
+/* Graph of Life — brand layer v1.0
+   Generated from brand/tokens.json. Do not hand-edit values.
+   Import this before any component CSS. Never write a raw hex downstream. */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ink */
+  --gol-navy:  #0E2A47;
+  --gol-abyss: #08203A;
+  --gol-slate: #243B4A;
+  --gol-muted: #5C6E78;
+
+  /* accents — bright for dark grounds, deep for text on light */
+  --gol-teal:  #1AA89B;  --gol-teal-deep:  #0E7A70;
+  --gol-green: #3AD6A3;  --gol-green-deep: #0F8059;
+  --gol-coral: #E8694D;  --gol-coral-deep: #C2442A;
+  --gol-amber: #F2A24E;  --gol-amber-deep: #A86410;
+
+  /* grounds */
+  --gol-sand:  #E9E1CC;
+  --gol-paper: #F7F6F2;
+  --gol-bone:  #FBFAF6;
+  --gol-mist:  #EAF1F1;
+  --gol-hairline: #D7DEE2;
+
+  /* semantic aliases — prefer these in components */
+  --gol-connection: var(--gol-teal);
+  --gol-signal:     var(--gol-green);
+  --gol-risk:       var(--gol-coral);
+  --gol-caution:    var(--gol-amber);
+
+  /* type */
+  --gol-sans: 'IBM Plex Sans', Aptos, Calibri, Arial, sans-serif;
+  --gol-mono: 'IBM Plex Mono', Consolas, 'Cascadia Mono', monospace;
+
+  /* geometry */
+  --gol-s1: 4px;  --gol-s2: 8px;  --gol-s3: 16px; --gol-s4: 24px;
+  --gol-s5: 32px; --gol-s6: 48px; --gol-s7: 64px; --gol-s8: 96px;
+  --gol-radius: 2px;
+  --gol-measure: 68ch;
+}
+
+/* ---------- base ---------- */
+body.gol {
+  background: var(--gol-paper);
+  color: var(--gol-slate);
+  font-family: var(--gol-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body.gol.gol-dark { background: var(--gol-navy); color: var(--gol-paper); }
+.gol p, .gol li { max-width: var(--gol-measure); }
+
+.gol-display { font: 700 clamp(44px, 6vw, 72px)/1.05 var(--gol-sans); letter-spacing: -0.025em; }
+.gol-h1 { font: 700 clamp(30px, 3.4vw, 40px)/1.15 var(--gol-sans); letter-spacing: -0.02em; color: var(--gol-navy); }
+.gol-h2 {
+  font: 600 24px/1.25 var(--gol-sans); letter-spacing: -0.01em; color: var(--gol-navy);
+  border-top: 1px solid var(--gol-hairline); padding-top: var(--gol-s3); margin-top: var(--gol-s6);
+}
+.gol-dark .gol-h1, .gol-dark .gol-h2 { color: var(--gol-paper); border-color: rgba(26,168,155,0.35); }
+
+/* ---------- the proof voice ---------- */
+.gol-num, .gol-unit, .gol-src, .gol-doi, code, kbd {
+  font-family: var(--gol-mono); font-variant-numeric: tabular-nums;
+}
+
+/* ---------- eyebrow ---------- */
+.gol-eyebrow {
+  font: 500 12px/1 var(--gol-mono);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gol-teal-deep); display: flex; align-items: center; gap: var(--gol-s2);
+  margin-bottom: var(--gol-s2);
+}
+.gol-eyebrow::before { content: "\25CF"; font-size: 10px; line-height: 1; }
+.gol-dark .gol-eyebrow { color: var(--gol-teal); }
+
+/* ---------- KPI / stat band ---------- */
+.gol-kpi-band {
+  background: var(--gol-navy); color: var(--gol-paper);
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  gap: var(--gol-s5); padding: var(--gol-s5) var(--gol-s6); border-radius: var(--gol-radius);
+}
+.gol-kpi__figure {
+  font: 600 40px/1.1 var(--gol-mono); font-variant-numeric: tabular-nums;
+  color: var(--gol-green); letter-spacing: -0.01em;
+}
+.gol-kpi__unit  { font: 400 16px/1 var(--gol-mono); color: var(--gol-green); opacity: 0.85; margin-left: 2px; }
+.gol-kpi__label { font: 400 13px/1.4 var(--gol-sans); color: var(--gol-paper); opacity: 0.72; margin-top: var(--gol-s2); }
+
+/* ---------- risk chips: Green -> Amber -> Coral ---------- */
+.gol-chip {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font: 500 11px/1.5 var(--gol-mono); letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.gol-chip--low  { color: var(--gol-green-deep); background: rgba(15,128,89,0.08); }
+.gol-chip--med  { color: var(--gol-amber-deep); background: rgba(168,100,16,0.08); }
+.gol-chip--high { color: var(--gol-coral-deep); background: rgba(194,68,42,0.08); }
+
+/* ---------- callouts ---------- */
+.gol-callout { padding: var(--gol-s4); border-radius: var(--gol-radius); margin: var(--gol-s4) 0; }
+.gol-callout--insight { background: var(--gol-mist); border-left: 3px solid var(--gol-teal); }
+.gol-callout--caveat  { background: var(--gol-sand); border-left: 3px solid var(--gol-coral); }
+.gol-callout__label {
+  font: 500 11px/1 var(--gol-mono); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gol-muted); margin-bottom: var(--gol-s2); display: block;
+}
+
+/* ---------- provenance: designed to be challenged ---------- */
+.gol-provenance {
+  font: 400 11px/1.5 var(--gol-mono); color: var(--gol-muted);
+  border-top: 1px solid var(--gol-hairline); padding-top: var(--gol-s2); margin-top: var(--gol-s2);
+}
+.gol-provenance a { color: var(--gol-teal-deep); }
+
+/* ---------- tables ---------- */
+.gol-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gol-table thead th {
+  background: var(--gol-navy); color: #FFFFFF; text-align: left;
+  font: 600 12px/1.4 var(--gol-sans); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: var(--gol-s3);
+}
+.gol-table td { padding: var(--gol-s3); border-bottom: 1px solid var(--gol-hairline); }
+.gol-table tbody tr:nth-child(even) { background: var(--gol-bone); }
+.gol-table td.gol-num, .gol-table th.gol-num { text-align: right; font-family: var(--gol-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- signature devices ---------- */
+.gol-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--gol-teal); }
+.gol-edge-tab { position: absolute; right: 0; top: 0; width: 56px; height: 11px; background: var(--gol-coral); }
+.gol-rule-teal  { border: 0; border-top: 2px solid var(--gol-teal); margin: var(--gol-s4) 0; }
+.gol-rule-coral { border: 0; border-top: 1px solid var(--gol-coral); margin: var(--gol-s4) 0; }
+.gol-rule-hair  { border: 0; border-top: 1px solid var(--gol-hairline); margin: var(--gol-s4) 0; }
+
+/* ---------- cover ---------- */
+.gol-cover {
+  position: relative; background: var(--gol-navy); color: var(--gol-paper);
+  padding: var(--gol-s8) var(--gol-s8) var(--gol-s6); overflow: hidden; isolation: isolate;
+}
+.gol-cover__subtitle { color: var(--gol-sand); font: 400 18px/1.5 var(--gol-sans); max-width: 52ch; }
+.gol-cover__meta-label { font: 500 11px/1 var(--gol-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gol-teal); }
+.gol-cover__ambient { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+
+/* ---------- footer ---------- */
+.gol-footer {
+  font: 400 11px/1 var(--gol-mono); color: var(--gol-muted);
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--gol-hairline); padding-top: var(--gol-s2);
+}
+
+/* ---------- print ---------- */
+@media print {
+  body.gol { background: #FFFFFF; }
+  .gol-h2 { break-after: avoid; }
+  .gol-callout, .gol-kpi-band, .gol-table tr { break-inside: avoid; }
+}

@@ -1,0 +1,92 @@
+/* Graph of Life brand v1.0.0 · headwaters state and evidence adapter. */
+(function(){
+  'use strict';
+  var E=window.HEADWATERS, D=window.APP_DATA;
+  if(!E||!D)return;
+  var ids=E.scene_registry.map(function(s){return s.id;}), query=new URLSearchParams(location.search), reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var state={scene:ids.includes(query.get('scene'))?query.get('scene'):ids[0],station:E.stations.some(function(s){return s.id===query.get('station');})?query.get('station'):E.stations[0].id,event:E.events.some(function(e){return e.id===query.get('event');})?query.get('event'):E.events[0].id,fire:E.fire_frames.some(function(f){return f.id===query.get('fire');})?query.get('fire'):E.fire_frames[0].id,direction:query.get('direction')==='backward'?'backward':'forward',mode:query.get('mode')==='explore'?'explore':'guided',day:/^2021-(07-(30|31)|08-0[1-4])$/.test(query.get('day')||'')?query.get('day'):'all'};
+  var eventCache={}, previousEvent=null,contextGeometry=null,contextVisible=false;
+  function by(id){return document.getElementById(id);}
+  function text(tag,body,attrs){var n=document.createElement(tag);n.textContent=body;Object.keys(attrs||{}).forEach(function(k){n.setAttribute(k,attrs[k]);});return n;}
+  function svg(tag,attrs){var n=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs||{}).forEach(function(k){n.setAttribute(k,attrs[k]);});return n;}
+  function clear(n){while(n.firstChild)n.removeChild(n.firstChild);}
+  function url(){var q=new URLSearchParams(location.search);Object.keys(state).forEach(function(k){q.set(k,String(state[k]));});history.replaceState(null,'',location.pathname+'?'+q.toString()+location.hash);}
+  function station(){return E.stations.find(function(s){return s.id===state.station;});}
+  function renderPaths(){
+    var rows=E.paths.map(function(p){var c=Object.assign({},p);if(state.station==='09013500'){c.source=c.source.replace(/North Inlet/g,'East Inlet');c.target=c.target.replace(/North Inlet/g,'East Inlet');}return c;});
+    if(state.direction==='backward')rows.reverse();
+    var host=by('path-rows');clear(host);
+    rows.forEach(function(p){var row=document.createElement('tr');row.append(text('td',p.source+' → '+p.target));row.append(text('td','Unknown · effective date unavailable'));row.append(text('td',p.reason+' Evidence '+(p.evidence_ids.join(', ')||'none')));host.append(row);});
+    var figure=by('path-diagram');clear(figure);var chart=svg('svg',{viewBox:'0 0 500 160','aria-hidden':'true'});figure.append(chart);
+    var names=state.direction==='backward'?['Receptor','Study station','Source unit']:['Source unit','Study station','Receptor'];
+    chart.append(svg('path',{d:'M 60 70 L 250 70 L 440 70',class:'path-unknown','stroke-width':'2'}));
+    names.forEach(function(n,i){chart.append(svg('circle',{cx:60+i*190,cy:70,r:8,class:'path-node'}));var label=svg('text',{x:60+i*190,y:104,'text-anchor':'middle',class:'path-label'});label.textContent=n;chart.append(label);});
+    var status=svg('text',{x:250,y:138,'text-anchor':'middle',class:'path-label'});status.textContent='Dashed · unknown delivery · no travel-time estimate';chart.append(status);
+  }
+  function renderStation(){var s=station();by('station-summary').textContent=s.name+' · '+s.id+'. '+s.study_match+'. '+s.observation_status+'.';by('map-caption').textContent=s.name+' · '+s.id+' · '+s.role+'. '+(Number.isFinite(s.longitude)?'Public inventory location; delivery unverified.':'Location unavailable; no substitute point plotted.');if(window.__STAGE)window.__STAGE.setStation(s.id);renderPaths();}
+  function renderFire(){var f=E.fire_frames.find(function(f){return f.id===state.fire;});var n=by('fire-evidence');clear(n);n.append(text('h3',f.title));n.append(text('p',f.date+' · '+f.detail));n.append(text('p','Observed regional account · perimeter geometry unavailable · source '+f.evidence_ids.join(', '),{class:'proof'}));}
+  async function renderEvent(){
+    if(previousEvent===state.event)return;previousEvent=state.event;
+    var e=E.events.find(function(e){return e.id===state.event;});var n=by('event-chart');clear(n);n.append(text('p','Loading the compact evidence record…'));
+    try{
+      var detail=eventCache[e.id];if(!detail){var response=await fetch(e.detail_url,{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);detail=await response.json();eventCache[e.id]=detail;}
+      if(state.event!==e.id)return;clear(n);
+      if(detail.status!=='observed'){n.append(text('p',detail.reason||'No eligible observed event is available.'));n.append(text('p','Rainfall, discharge and turbidity retain separate native units. No imputed peak or artificial interval is displayed.',{class:'proof'}));return;}
+      n.append(text('p',detail.interpretation,{class:'caveat'}));n.append(text('a','Download this measured window, including water temperature',{href:e.detail_url,download:''}));
+      var days=Array.from(new Set((detail.series[0]?.points||[]).map(function(p){return p[0].slice(0,10);}))), label=text('label','Observation day · UTC',{for:'observation-day'}), daySelect=document.createElement('select');daySelect.id='observation-day';daySelect.append(text('option','Full recorded window',{value:'all'}));days.forEach(function(day){daySelect.append(text('option',day,{value:day}));});if(state.day!=='all'&&!days.includes(state.day))state.day='all';daySelect.value=state.day;n.append(label,daySelect);daySelect.addEventListener('change',function(){previousEvent=null;change({day:daySelect.value,mode:'explore'});});
+      n.append(text('p','Choose a day to align all measured series. Values stay at native cadence. The window was not selected or scored as a held-out storm.',{class:'proof'}));
+      // Native timestamps, units and explicit null gaps are retained.
+      (detail.series||[]).filter(function(s){return s.station_id===state.station && s.parameter_code!=='00010';}).sort(function(a,b){return ['00045','00060','63680'].indexOf(a.parameter_code)-['00045','00060','63680'].indexOf(b.parameter_code);}).forEach(function(sourceSeries){
+        var s=Object.assign({},sourceSeries);s.points=s.points.map(function(p){return Array.isArray(p)?{time:p[0],value:p[1],qualifiers:p[2]}:p;}).filter(function(p){return state.day==='all'||p.time.slice(0,10)===state.day;});
+        n.append(text('h3',s.label+' · '+s.unit));
+        var chart=svg('svg',{viewBox:'0 0 500 190',role:'img','aria-label':s.label+' measured observations in '+s.unit+'. Gaps remain gaps.'});n.append(chart);
+        var values=s.points.filter(function(p){return Number.isFinite(p.value);}), stamps=s.points.map(function(p){return Date.parse(p.time);});
+        if(!values.length){n.append(text('p','No measured values for this station in this window.'));return;}
+        var min=Math.min.apply(null,stamps),max=Math.max.apply(null,stamps),ymax=Math.max.apply(null,values.map(function(p){return p.value;})),ymin=Math.min(0,Math.min.apply(null,values.map(function(p){return p.value;})));
+        var sx=window.d3?d3.scaleLinear().domain([min,max]).range([52,470]):function(v){return 52+(v-min)/(max-min||1)*418;};
+        var sy=window.d3?d3.scaleLinear().domain([ymin,ymax||1]).range([135,20]):function(v){return 135-(v-ymin)/(ymax-ymin||1)*115;};
+        [ymin,ymax].forEach(function(value){chart.append(svg('line',{x1:52,x2:470,y1:sy(value),y2:sy(value),class:'chart-axis'}));var tick=svg('text',{x:44,y:sy(value)+4,'text-anchor':'end',class:'chart-value'});tick.textContent=String(value);chart.append(tick);});
+        var path='',open=false;s.points.forEach(function(p){if(!Number.isFinite(p.value)){open=false;return;}path+=(open?'L':'M')+sx(Date.parse(p.time))+','+sy(p.value);open=true;});
+        chart.append(svg('path',{d:path,fill:'none',stroke:'var(--gol-teal-deep)','stroke-width':'2'}));
+        var lab=svg('text',{x:52,y:165,class:'chart-label'});lab.textContent=s.points[0].time.slice(0,16).replace('T',' ')+' to '+s.points[s.points.length-1].time.slice(0,16).replace('T',' ')+' UTC';chart.append(lab);
+        n.append(text('p',s.evidence_id+' · '+s.method+' · '+s.native_cadence_seconds+' s modal cadence; native timestamps retained · observed, no holdout validation',{class:'proof'}));
+        n.append(text('p','Method metadata '+s.methods.join('; '),{class:'proof'}));
+        var sourceLink=text('a','USGS source and query',{href:s.source.url});n.append(sourceLink);
+        var details=text('details','');details.append(text('summary','Read measured values, missing observations and qualifiers'));var table=document.createElement('table'),caption=text('caption','Native measurements · UTC · '+s.unit),body=document.createElement('tbody');var thead=document.createElement('thead'),header=document.createElement('tr');['UTC timestamp','Value','Qualifier'].forEach(function(h){header.append(text('th',h,{scope:'col'}));});thead.append(header);table.append(caption,thead,body);details.append(table);var nav=document.createElement('div'),back=text('button','Previous rows',{type:'button'}),forward=text('button','Next rows',{type:'button'}),pageStatus=text('p','',{class:'proof','aria-live':'polite'}),pageIndex=0;nav.append(back,forward,pageStatus);details.append(nav);n.append(details);
+        function drawRows(){clear(body);var first=pageIndex*25,last=Math.min(first+25,s.points.length);s.points.slice(first,last).forEach(function(p){var tr=document.createElement('tr');tr.append(text('td',p.time),text('td',p.value===null?'missing':String(p.value)),text('td',(p.qualifiers||[]).join(', ')||'none'));body.append(tr);});pageStatus.textContent='Rows '+(first+1)+' to '+last+' of '+s.points.length+' · '+s.unit;back.disabled=pageIndex===0;forward.disabled=last===s.points.length;}
+        back.addEventListener('click',function(){pageIndex--;drawRows();});forward.addEventListener('click',function(){pageIndex++;drawRows();});drawRows();
+      });
+    }catch(error){clear(n);n.append(text('p','Event details could not load. No observed curve is shown. The evidence manifest remains downloadable.'));window.__HEADWATERS_APP.errors.push(String(error));}
+  }
+  function render(){var i=ids.indexOf(state.scene);by('chapter').value=state.scene;by('station').value=state.station;by('event').value=state.event;by('fire-frame').value=state.fire;by('direction').value=state.direction;by('previous').disabled=i===0;by('next').disabled=i===ids.length-1;by('explore').setAttribute('aria-pressed',String(state.mode==='explore'));by('explore').textContent=state.mode==='explore'?'Resume guided story':'Explore freely';by('state-status').textContent=(state.mode==='guided'?'Guided story.':'Free exploration. Scroll keeps your selections.')+' Chapter '+(i+1)+' of '+ids.length+'. '+station().name+'.';if(window.__STAGE)window.__STAGE.setScene(i);document.querySelectorAll('.step').forEach(function(s){s.classList.toggle('active',s.id===state.scene);});renderStation();renderFire();if(state.scene==='fire')renderEvent();url();}
+  function change(patch,options){Object.assign(state,patch);render();if(options&&options.scroll){var el=by(state.scene);el.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});el.setAttribute('tabindex','-1');el.focus({preventScroll:true});}}
+  window.__HEADWATERS_APP={state:state,change:change,errors:[],manifest:E};
+  function boot(){
+    by('context-layer').addEventListener('click',async function(){
+      if(!contextGeometry){try{var response=await fetch(E.optional_geometry.url);if(!response.ok)throw Error('HTTP '+response.status);contextGeometry=await response.json();}catch(error){by('context-status').textContent='Context geometry could not load. Station evidence remains available.';window.__HEADWATERS_APP.errors.push(String(error));return;}}
+      contextVisible=!contextVisible;window.__STAGE.setContextGeometry(contextVisible?contextGeometry:null);by('context-layer').setAttribute('aria-pressed',String(contextVisible));by('context-layer').textContent=contextVisible?'Hide HUC12 context':'Show HUC12 context';by('context-status').textContent=contextVisible?E.optional_geometry.validity:'';
+    });
+    var eventSelect=by('event');clear(eventSelect);E.events.forEach(function(e){eventSelect.append(text('option',e.label,{value:e.id}));});
+    var rows=by('station-rows');clear(rows);E.stations.forEach(function(s){var row=document.createElement('tr');row.append(text('td',s.name+' · '+s.id));row.append(text('td',s.role));row.append(text('td',Number.isFinite(s.longitude)?s.latitude+', '+s.longitude+' · '+s.datum:'Unavailable; no substitute point'));rows.append(row);});
+    var meas=by('measurement-list');clear(meas);E.decision.measurements.forEach(function(m){meas.append(text('li',m));});
+    var sources=by('source-list');clear(sources);E.sources.forEach(function(s){var li=text('li',''),link=text('a',s.title,{href:s.url});li.append(link,document.createTextNode(' · '+s.status+' · '+s.release_date));sources.append(li);});
+    var bm=by('benchmark-rows');clear(bm);D.validation.oof.forEach(function(b){var tr=document.createElement('tr');tr.append(text('td',b.set),text('td',b.r2.toFixed(3)));bm.append(tr);});
+    var chart=svg('svg',{viewBox:'0 0 500 220','aria-hidden':'true'}), x=window.d3?d3.scaleLinear().domain([-1.1,.5]).range([20,480]):function(v){return 20+(v+1.1)/1.6*460;};
+    chart.append(svg('line',{x1:x(0),x2:x(0),y1:10,y2:195,class:'chart-axis'}));D.validation.oof.forEach(function(b,i){var y=16+i*36;chart.append(svg('rect',{x:Math.min(x(0),x(b.r2)),y:y,width:Math.abs(x(b.r2)-x(0)),height:18,class:b.kind==='baseline'?'chart-baseline':'chart-model'}));var label=svg('text',{x:b.r2>=0?x(b.r2)+4:x(b.r2)-4,y:y+13,'text-anchor':b.r2>=0?'start':'end',class:'chart-value'});label.textContent=b.r2.toFixed(3);chart.append(label);});var axis=svg('text',{x:20,y:215,class:'chart-label'});axis.textContent='OOF R² · negative values are worse than the mean';chart.append(axis);by('benchmark-chart').append(chart);
+    by('chapter').addEventListener('change',function(e){change({scene:e.target.value,mode:'explore'},{scroll:true});});
+    by('station').addEventListener('change',function(e){previousEvent=null;change({station:e.target.value,mode:'explore'});});
+    by('event').addEventListener('change',function(e){change({event:e.target.value,mode:'explore'});});
+    by('fire-frame').addEventListener('change',function(e){change({fire:e.target.value,mode:'explore'});});
+    by('direction').addEventListener('change',function(e){change({direction:e.target.value,mode:'explore'});});
+    ['previous','next'].forEach(function(id){by(id).addEventListener('click',function(){var i=ids.indexOf(state.scene)+(id==='next'?1:-1);if(ids[i])change({scene:ids[i],mode:'explore'},{scroll:true});});});
+    by('explore').addEventListener('click',function(){change({mode:state.mode==='explore'?'guided':'explore'});});
+    by('reset').addEventListener('click',function(){if(contextVisible){contextVisible=false;window.__STAGE.setContextGeometry(null);by('context-layer').setAttribute('aria-pressed','false');by('context-layer').textContent='Show HUC12 context';by('context-status').textContent='';}change({scene:ids[0],station:E.stations[0].id,event:E.events[0].id,fire:E.fire_frames[0].id,direction:'forward',mode:'guided',day:'all'},{scroll:true});});
+    document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();change({scene:a.dataset.go},{scroll:true});});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('details[open]').forEach(function(d){d.open=false;});by('chapter').focus();}});
+    function entered(i){if(state.mode==='guided'&&state.scene!==ids[i])change({scene:ids[i]});}
+    if(window.scrollama){var sc=scrollama();sc.setup({step:'.step',offset:.5}).onStepEnter(function(r){entered(r.index);});addEventListener('resize',function(){sc.resize();});}
+    else if(window.IntersectionObserver){var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)entered(+e.target.dataset.scene);});},{threshold:.45});document.querySelectorAll('.step').forEach(function(s){observer.observe(s);});}
+    render();if(query.has('scene'))change({mode:query.get('mode')==='guided'?'guided':'explore'},{scroll:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();

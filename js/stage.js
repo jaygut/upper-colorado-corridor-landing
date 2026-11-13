@@ -12,7 +12,8 @@
 (function () {
   "use strict";
   var D = window.APP_DATA || {};
-  var G = (D.geo) || {};
+  var pilot = window.HEADWATERS || null;
+  var G = pilot ? {bbox:[-105.84,40.22,-105.77,40.28], stations:pilot.stations.filter(function(s){return Number.isFinite(s.longitude)&&Number.isFinite(s.latitude);}).map(function(s){return {id:s.id,name:s.name,x:s.longitude,y:s.latitude};}), parcels:[],arcs:[],zone_hull:{},hydro:{}} : (D.geo || {});
   var H = (G.hydro) || {};
   var STAGE = window.__STAGE = {
     ready:false, mode:"init", scene:0, nScenes:0, errors:[], viewState:null, emphasis:null, time:0
@@ -23,9 +24,9 @@
   var css = getComputedStyle(document.documentElement);
   function tok(n, f){ var v=(css.getPropertyValue(n)||"").trim(); return v||f; }
   var C = {
-    teal:  tok("--teal","#1AA89B"),  tealB: tok("--teal-bright","#2fd4c4"),
-    green: tok("--green","#3AD6A3"), coral: tok("--coral","#E8694D"),
-    amber: tok("--amber","#F2A24E"), muted: tok("--muted","#8fa3ad")
+    teal:tok("--teal"), tealB:tok("--teal-bright"), green:tok("--green"),
+    coral:tok("--coral"), amber:tok("--amber"), muted:tok("--muted"),
+    navy:tok(pilot ? "--gol-navy" : "--navy"), abyss:tok(pilot ? "--gol-abyss" : "--abyss")
   };
   function rgb(hex){ hex=hex.replace("#",""); if(hex.length===3) hex=hex.replace(/./g,"$&$&");
     return [parseInt(hex.slice(0,2),16),parseInt(hex.slice(2,4),16),parseInt(hex.slice(4,6),16)]; }
@@ -60,6 +61,7 @@
   }
 
   function hydrateDOM(){
+    if(pilot) return;
     var bg = document.getElementById("benef-grid");
     if (bg) D.beneficiaries.classes.forEach(function(c){
       var row = document.createElement("div"); row.className="benef-row";
@@ -111,6 +113,7 @@
     { v:{ longitude:-108.0, latitude:39.0, zoom:6.7, pitch:42, bearing:-6 },  corridor:.8, zones:.35,parcels:.85,arcs:.5, stations:.2, focus:.3 }, // 13 from diligence to distribution
     { v:{ longitude:-108.0, latitude:39.0, zoom:6.6, pitch:48, bearing:-8 },  corridor:1, zones:.5, parcels:.6, arcs:.5, stations:.2, focus:0 }  // 14 the ask
   ];
+  if(pilot) SCENES = pilot.scene_registry.map(function(s){var c=s.camera;return {v:{longitude:c[0],latitude:c[1],zoom:c[2],pitch:c[3],bearing:c[4]},corridor:1,zones:0,parcels:0,arcs:0,stations:1,focus:0};});
   STAGE.nScenes = SCENES.length;
   var target = SCENES[0];
 
@@ -120,7 +123,7 @@
   var map=null, overlay=null, WMV=null;
   var CARTO = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   var BLANK = { version:8, sources:{}, glyphs:"https://basemaps.cartocdn.com/gl/dark-matter-gl-style/{fontstack}/{range}.pbf",
-    layers:[{ id:"bg", type:"background", paint:{ "background-color":"#08203a" } }] };
+    layers:[{ id:"bg", type:"background", paint:{ "background-color":C.abyss } }] };
 
   function webglOk(){
     try{ var c=document.createElement("canvas");
@@ -187,23 +190,25 @@
             var lyrs=map.getStyle().layers||[], firstSym=null;
             for(var li=0;li<lyrs.length;li++){ if(lyrs[li].type==="symbol"){ firstSym=lyrs[li].id; break; } }
             map.addLayer({ id:"hillshade", type:"hillshade", source:"dem",
-              paint:{ "hillshade-exaggeration":0.5, "hillshade-shadow-color":"#04101c",
-                "hillshade-highlight-color":"#1b4a63", "hillshade-accent-color":"#0b2a44" } }, firstSym);
+              paint:{ "hillshade-exaggeration":0.5, "hillshade-shadow-color":C.abyss,
+                "hillshade-highlight-color":C.teal, "hillshade-accent-color":C.navy } }, firstSym);
           }
         }catch(he){ STAGE.errors.push("hillshade: "+(he&&he.message||he)); }
         overlay = new window.deck.MapboxOverlay({ interleaved:false, layers: buildDeckLayers(target) });
         map.addControl(overlay);
         buildOverlay(); applyEmphasisOverlay(target); projectOverlay();
+        if(pilot && STAGE.station)STAGE.setStation(STAGE.station);
         STAGE.ready = true;
         // guard against init-sizing races (container measured before layout settles):
-        // force the canvas to the true viewport a few times, and on any container resize.
+        // force the canvas to the true viewport repeatedly, and on any container resize.
         function sync(){ try{ map.resize(); projectOverlay(); }catch(_){ } }
         sync(); requestAnimationFrame(sync); setTimeout(sync, 250); setTimeout(sync, 900);
         if (window.ResizeObserver){ try{ new ResizeObserver(sync).observe(document.getElementById("stage")); }catch(_){ } }
       }catch(e){ fallbackToSvg("overlay init: "+(e&&e.message||e)); }
     });
     map.on("render", projectOverlay);
-    map.on("error", function(e){ /* tile errors are non-fatal; navy bg shows */
+    map.on("error", function(e){ /* retain failure evidence */
+      if(pilot && e && e.error){var message=String(e.error.message||e.error);if(STAGE.errors.indexOf(message)<0)STAGE.errors.push(message);}
       if(e && e.error && String(e.error).indexOf("style")>=0 && !loaded){ try{ map.setStyle(BLANK); }catch(_){}} });
   }
   function goMap(i){
@@ -230,8 +235,9 @@
     ["st","pc","fo"].forEach(function(k){ fxG[k]=svgEl("g",{}); fx.appendChild(fxG[k]); });
     var top=D.graph.top_parcel.id;
     (G.stations||[]).forEach(function(o){
-      var c=svgEl("circle",{r:2.1, fill:C.coral, "fill-opacity":.85});
-      c.__ll=[o.x,o.y]; fxG.st.appendChild(c); fxStations.push(c);
+      var c=svgEl("circle",{r:pilot?8:2.1, fill:pilot?C.teal:C.coral, "fill-opacity":pilot?1:.85});
+      c.__ll=[o.x,o.y]; c.dataset.station=o.id||""; fxG.st.appendChild(c); fxStations.push(c);
+      if(pilot){var label=svgEl("text",{class:"station-label",dy:o.id==="09013500"?24:-16,"text-anchor":"middle"});label.textContent=o.name;label.__ll=[o.x,o.y];fxG.st.appendChild(label);fxStations.push(label);}
     });
     (G.parcels||[]).forEach(function(o){
       var isTop=o.id===top, rad=2.6+Math.max(0,(o.pk-0.45))*24;
@@ -246,10 +252,11 @@
   }
   function projectOverlay(){
     if(!fx || !map) return;
-    var W=window.innerWidth, H2=window.innerHeight;
+    var box=document.getElementById("stage").getBoundingClientRect();
+    var W=box.width, H2=box.height;
     function place(c){ var p=map.project({lng:c.__ll[0], lat:c.__ll[1]});
       if(p && p.x>-70 && p.x<W+70 && p.y>-70 && p.y<H2+70){
-        c.setAttribute("cx",p.x.toFixed(1)); c.setAttribute("cy",p.y.toFixed(1)); c.style.display=""; }
+        c.setAttribute(c.tagName==="text"?"x":"cx",p.x.toFixed(1)); c.setAttribute(c.tagName==="text"?"y":"cy",p.y.toFixed(1)); c.style.display=""; }
       else c.style.display="none";
     }
     for(var i=0;i<fxStations.length;i++) place(fxStations[i]);
@@ -272,11 +279,11 @@
   function nowT(){ return (window.performance&&performance.now)?performance.now():+new Date(); }
   function lerp(a,b,e){ return a+(b-a)*e; }
   function mercY(lat){ return Math.log(Math.tan(Math.PI/4 + lat*Math.PI/360)); }
-  function projW(lon,lat){ return [ (lon-refX)*sBase, (refY-mercY(lat))*sBase ]; }
+  function projW(lon,lat){ return [ (lon-refX)*sBase, (refY-mercY(lat))*sBase*(pilot?180/Math.PI:1) ]; }
   function fit(){
-    WW=window.innerWidth; WH=window.innerHeight;
+    var box=document.getElementById("stage").getBoundingClientRect(); WW=box.width; WH=box.height;
     var bb=G.bbox||[-109.75,38.2,-106.05,39.95];
-    refX=bb[0]; refY=mercY(bb[3]); sBase=(0.92*WW)/(bb[2]-bb[0]);
+    refX=bb[0]; refY=mercY(bb[3]); sBase=pilot ? 256*Math.pow(2,Z0)/360 : (0.92*WW)/(bb[2]-bb[0]);
     if(svg) svg.setAttribute("viewBox","0 0 "+WW+" "+WH);
   }
   function el(tag,attrs){ var e=document.createElementNS("http://www.w3.org/2000/svg",tag);
@@ -315,7 +322,8 @@
     });
     // stations
     (G.stations||[]).forEach(function(o){ var p=projW(o.x,o.y);
-      groups.st.appendChild(el("circle",{cx:p[0],cy:p[1],r:2.1,fill:C.coral,"fill-opacity":.85})); });
+      var circle=el("circle",{cx:p[0],cy:p[1],r:pilot?0.4:2.1,fill:pilot?C.teal:C.coral,"fill-opacity":pilot?1:.85,"data-station":o.id||""});groups.st.appendChild(circle);
+      if(pilot){var label=el("text",{x:p[0],y:p[1]+(o.id==="09013500"?1.3:-.7),class:"station-label","text-anchor":"middle"});label.textContent=o.name;groups.st.appendChild(label);} });
     // parcels
     var top=D.graph.top_parcel.id;
     (G.parcels||[]).forEach(function(o){ var p=projW(o.x,o.y);
@@ -328,12 +336,12 @@
         stroke:C.green,"stroke-opacity":.7,"stroke-width":1.6,"vector-effect":"non-scaling-stroke"}));
     });
     STAGE.mode="svg"; STAGE.ready=true;
-    var fn=document.getElementById("fallback-note"); if(fn) fn.style.display="block";
+    var fn=document.getElementById("fallback-note"); if(fn){fn.hidden=false;fn.style.display="block";}
     requestAnimationFrame(frameSvg);
   }
   function goSvg(i){ STAGE.scene=i; from=Object.assign({},cur); target=SCENES[i]; t0=nowT();
     if(reduce){ cur=Object.assign({},target.v); from=null; }
-    applyEmphasisSvg(target); }
+    applyEmphasisSvg(target); if(pilot) requestAnimationFrame(frameSvg); }
   function frameSvg(){
     if(from){ var k=Math.min(1,(nowT()-t0)/DUR), e=ease(k);
       cur={ longitude:lerp(from.longitude,target.v.longitude,e), latitude:lerp(from.latitude,target.v.latitude,e),
@@ -341,8 +349,9 @@
       if(k>=1) from=null; }
     STAGE.viewState=cur;
     var ratio=Math.pow(2, cur.zoom - Z0), wc=projW(cur.longitude, cur.latitude);
+    if(pilot&&world){world.querySelectorAll(".station-label").forEach(function(n){n.style.fontSize=(parseFloat(css.getPropertyValue("--gol-provenance-size"))/ratio)+"px";});world.querySelectorAll("[data-station]").forEach(function(n){n.setAttribute("r",parseFloat(css.getPropertyValue("--gol-s2"))/ratio);});}
     if(world) world.setAttribute("transform","translate("+(WW/2)+","+(WH/2)+") scale("+ratio+") translate("+(-wc[0])+","+(-wc[1])+")");
-    requestAnimationFrame(frameSvg);
+    if(from || !pilot) requestAnimationFrame(frameSvg);
   }
   function applyEmphasisSvg(em){ STAGE.emphasis=em;
     if(!groups.fl) return;
@@ -364,26 +373,39 @@
 
   /* ---- scene HUD wiring ------------------------------------------------ */
   function sceneUI(i){
+    if(pilot) return;
     document.querySelectorAll(".step").forEach(function(s){ s.classList.remove("active"); });
     var step=document.querySelector('.step[data-scene="'+i+'"]'); if(step) step.classList.add("active");
     var lg=document.getElementById("map-legend"); if(lg) lg.classList.toggle("show", i>=2 && i<=10);
     var zh=document.getElementById("zone-hud"); if(zh){ zh.classList.toggle("show", i===4);
       zh.querySelectorAll(".z").forEach(function(z){ z.classList.toggle("on", i===4); }); }
   }
-  function go(i){ if(STAGE.mode==="map") goMap(i); else goSvg(i); sceneUI(i); }
+  function go(i){ if(!SCENES[i]) return; if(STAGE.mode==="map") goMap(i); else goSvg(i); sceneUI(i); }
+
+  STAGE.setContextGeometry = function(geo){
+    H.basin = geo ? geo.features.flatMap(function(f){return f.geometry.type==="Polygon"?[f.geometry.coordinates[0]]:f.geometry.coordinates.map(function(p){return p[0];});}) : [];
+    if(overlay)overlay.setProps({layers:buildDeckLayers(target)});
+    if(groups.ba){groups.ba.replaceChildren();H.basin.forEach(function(ring){var points=ring.map(function(c){return projW(c[0],c[1]).join(",");}).join(" ");groups.ba.appendChild(el("polygon",{points:points,fill:"none",stroke:C.teal,"stroke-width":1,"vector-effect":"non-scaling-stroke"}));});}
+  };
+  STAGE.setScene = go;
+  STAGE.setStation = function(id){STAGE.station=id;document.querySelectorAll("[data-station]").forEach(function(e){e.setAttribute("fill",e.dataset.station===id?C.green:C.teal);});};
 
   /* ---- boot ------------------------------------------------------------ */
   function boot(){
     bindNumbers(); hydrateDOM();
-    if(D._geo_missing){ STAGE.errors.push("geometry bundle (__GEO) missing"); }
+    if(D._geo_missing && !pilot){ STAGE.errors.push("geometry bundle (__GEO) missing"); }
     var forceSvg = /[?&]svg\b/.test(location.search);
     var useMap = !forceSvg && !!(window.maplibregl && window.deck && window.deck.MapboxOverlay)
-      && webglOk() && !D._geo_missing;
+      && webglOk() && (pilot || !D._geo_missing);
     try {
       if(useMap) initMap(); else initSvg();
     } catch(e){ STAGE.errors.push("stage init: "+(e&&e.message||e));
       try{ if(STAGE.mode!=="svg") initSvg(); }catch(e2){ STAGE.errors.push("svg init: "+e2); } }
 
+    if(pilot){
+      addEventListener("resize",function(){if(map){map.resize();projectOverlay();}else{fit();goSvg(STAGE.scene);}});
+      return;
+    }
     // Card REVEAL is decoupled from the camera. A dedicated observer marks any
     // step scrolled into view (.in-view), so a scene is always readable even when
     // scrollama never fires its onStepEnter for it: stale trigger offsets on a slow

@@ -1,0 +1,655 @@
+{
+  "East": {
+    "reason": "No independent East forcing or discharge in retrieved archive",
+    "status": "context_only"
+  },
+  "Glenwood": {
+    "reason": "No independent forcing or upstream comparator in retrieved archive",
+    "status": "blocked"
+  },
+  "Tier_A": {
+    "reason": "No prefire observations and incomplete L2/L3/L5 joined covariates",
+    "status": "blocked"
+  },
+  "case_scope": "North postfire only, not paired causal wildfire effect",
+  "complete_storms": 28,
+  "development_MAE": {
+    "B0_climatology": 2.4621397579587088,
+    "B0_persistence": 2.3715781143070798,
+    "B1_lagged_water_season": 2.5328510355901726
+  },
+  "development_storms": 13,
+  "endpoint": "log1p observed peak turbidity FNU",
+  "final_MAE": {
+    "B0_climatology": 1.1290491093435855,
+    "B0_persistence": 1.3546158948950981,
+    "B1_lagged_water_season": 1.4030585910772373
+  },
+  "final_outcomes_scored": true,
+  "final_storms": 15,
+  "limitations": [
+    "No calibrated probability or prediction interval",
+    "No wildfire-treatment effect or external transfer",
+    "No peak-timing forecast",
+    "Postfire-only case study"
+  ],
+  "paired_comparisons": {
+    "B0_climatology": {
+      "bootstrap_draws": 2000,
+      "paired_MAE_gain": 0.2255667855515126,
+      "storm_bootstrap_95": [
+        -0.547956901532348,
+        1.015230904405234
+      ]
+    },
+    "B0_persistence": {
+      "bootstrap_draws": 2000,
+      "paired_MAE_gain": 0.0,
+      "storm_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    "B1_lagged_water_season": {
+      "bootstrap_draws": 2000,
+      "paired_MAE_gain": -0.04844269618213917,
+      "storm_bootstrap_95": [
+        -0.8809357021860743,
+        0.7985588179838614
+      ]
+    }
+  },
+  "predictions": [
+    {
+      "event_id": "north-rain-2021-00",
+      "model": "B0_climatology",
+      "observed_log1p": 3.339321977944068,
+      "partition": "development_oof",
+      "predicted_log1p": 2.596100963621183
+    },
+    {
+      "event_id": "north-rain-2021-00",
+      "model": "B0_persistence",
+      "observed_log1p": 3.339321977944068,
+      "partition": "development_oof",
+      "predicted_log1p": 0.6931471805599453
+    },
+    {
+      "event_id": "north-rain-2021-00",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 3.339321977944068,
+      "partition": "development_oof",
+      "predicted_log1p": -1.2070032022191521
+    },
+    {
+      "event_id": "north-rain-2021-01",
+      "model": "B0_climatology",
+      "observed_log1p": 0.6418538861723948,
+      "partition": "development_oof",
+      "predicted_log1p": 2.820889971268823
+    },
+    {
+      "event_id": "north-rain-2021-01",
+      "model": "B0_persistence",
+      "observed_log1p": 0.6418538861723948,
+      "partition": "development_oof",
+      "predicted_log1p": 0.18232155679395465
+    },
+    {
+      "event_id": "north-rain-2021-01",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.6418538861723948,
+      "partition": "development_oof",
+      "predicted_log1p": 1.65692905412171
+    },
+    {
+      "event_id": "north-rain-2021-02",
+      "model": "B0_climatology",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 2.8591843320503596
+    },
+    {
+      "event_id": "north-rain-2021-02",
+      "model": "B0_persistence",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 0.0
+    },
+    {
+      "event_id": "north-rain-2021-02",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 3.179251104616113
+    },
+    {
+      "event_id": "north-rain-2021-04",
+      "model": "B0_climatology",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 2.8591843320503596
+    },
+    {
+      "event_id": "north-rain-2021-04",
+      "model": "B0_persistence",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 0.18232155679395465
+    },
+    {
+      "event_id": "north-rain-2021-04",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 3.5900469502694943
+    },
+    {
+      "event_id": "north-rain-2021-05",
+      "model": "B0_climatology",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 2.8591843320503596
+    },
+    {
+      "event_id": "north-rain-2021-05",
+      "model": "B0_persistence",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 0.0
+    },
+    {
+      "event_id": "north-rain-2021-05",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.18232155679395465,
+      "partition": "development_oof",
+      "predicted_log1p": 4.336530697762527
+    },
+    {
+      "event_id": "north-rain-2021-06",
+      "model": "B0_climatology",
+      "observed_log1p": 5.940171252720432,
+      "partition": "development_oof",
+      "predicted_log1p": 2.3793635240564854
+    },
+    {
+      "event_id": "north-rain-2021-06",
+      "model": "B0_persistence",
+      "observed_log1p": 5.940171252720432,
+      "partition": "development_oof",
+      "predicted_log1p": 0.0
+    },
+    {
+      "event_id": "north-rain-2021-06",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 5.940171252720432,
+      "partition": "development_oof",
+      "predicted_log1p": 3.1148640514309114
+    },
+    {
+      "event_id": "north-rain-2021-07",
+      "model": "B0_climatology",
+      "observed_log1p": 5.886104031450156,
+      "partition": "development_oof",
+      "predicted_log1p": 2.383869125829009
+    },
+    {
+      "event_id": "north-rain-2021-07",
+      "model": "B0_persistence",
+      "observed_log1p": 5.886104031450156,
+      "partition": "development_oof",
+      "predicted_log1p": 0.5306282510621704
+    },
+    {
+      "event_id": "north-rain-2021-07",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 5.886104031450156,
+      "partition": "development_oof",
+      "predicted_log1p": 3.158252748818067
+    },
+    {
+      "event_id": "north-rain-2021-08",
+      "model": "B0_climatology",
+      "observed_log1p": 5.948034989180646,
+      "partition": "development_oof",
+      "predicted_log1p": 2.3787082126848014
+    },
+    {
+      "event_id": "north-rain-2021-08",
+      "model": "B0_persistence",
+      "observed_log1p": 5.948034989180646,
+      "partition": "development_oof",
+      "predicted_log1p": 0.832909122935104
+    },
+    {
+      "event_id": "north-rain-2021-08",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 5.948034989180646,
+      "partition": "development_oof",
+      "predicted_log1p": 3.028622879508448
+    },
+    {
+      "event_id": "north-rain-2021-09",
+      "model": "B0_climatology",
+      "observed_log1p": 5.648974238161206,
+      "partition": "development_oof",
+      "predicted_log1p": 2.4036299419364213
+    },
+    {
+      "event_id": "north-rain-2021-09",
+      "model": "B0_persistence",
+      "observed_log1p": 5.648974238161206,
+      "partition": "development_oof",
+      "predicted_log1p": 0.6418538861723948
+    },
+    {
+      "event_id": "north-rain-2021-09",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 5.648974238161206,
+      "partition": "development_oof",
+      "predicted_log1p": 2.7689792999174214
+    },
+    {
+      "event_id": "north-rain-2021-10",
+      "model": "B0_climatology",
+      "observed_log1p": 3.929862923556477,
+      "partition": "development_oof",
+      "predicted_log1p": 2.5468892181534817
+    },
+    {
+      "event_id": "north-rain-2021-10",
+      "model": "B0_persistence",
+      "observed_log1p": 3.929862923556477,
+      "partition": "development_oof",
+      "predicted_log1p": 0.26236426446749106
+    },
+    {
+      "event_id": "north-rain-2021-10",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 3.929862923556477,
+      "partition": "development_oof",
+      "predicted_log1p": 3.0115233615678263
+    },
+    {
+      "event_id": "north-rain-2021-11",
+      "model": "B0_climatology",
+      "observed_log1p": 1.308332819650179,
+      "partition": "development_oof",
+      "predicted_log1p": 2.7653500601456735
+    },
+    {
+      "event_id": "north-rain-2021-11",
+      "model": "B0_persistence",
+      "observed_log1p": 1.308332819650179,
+      "partition": "development_oof",
+      "predicted_log1p": 0.33647223662121295
+    },
+    {
+      "event_id": "north-rain-2021-11",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 1.308332819650179,
+      "partition": "development_oof",
+      "predicted_log1p": 2.9971268576074097
+    },
+    {
+      "event_id": "north-rain-2021-12",
+      "model": "B0_climatology",
+      "observed_log1p": 0.4700036292457355,
+      "partition": "development_oof",
+      "predicted_log1p": 2.8352108260127107
+    },
+    {
+      "event_id": "north-rain-2021-12",
+      "model": "B0_persistence",
+      "observed_log1p": 0.4700036292457355,
+      "partition": "development_oof",
+      "predicted_log1p": 0.0
+    },
+    {
+      "event_id": "north-rain-2021-12",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.4700036292457355,
+      "partition": "development_oof",
+      "predicted_log1p": 2.4995038770252074
+    },
+    {
+      "event_id": "north-rain-2021-13",
+      "model": "B0_climatology",
+      "observed_log1p": 0.832909122935104,
+      "partition": "development_oof",
+      "predicted_log1p": 2.8049687015385967
+    },
+    {
+      "event_id": "north-rain-2021-13",
+      "model": "B0_persistence",
+      "observed_log1p": 0.832909122935104,
+      "partition": "development_oof",
+      "predicted_log1p": 0.0
+    },
+    {
+      "event_id": "north-rain-2021-13",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.832909122935104,
+      "partition": "development_oof",
+      "predicted_log1p": 1.6505087756655952
+    },
+    {
+      "event_id": "north-rain-2022-00",
+      "model": "B0_climatology",
+      "observed_log1p": 3.7013019741124933,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-01",
+      "model": "B0_climatology",
+      "observed_log1p": 2.760009940032921,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-02",
+      "model": "B0_climatology",
+      "observed_log1p": 1.3862943611198906,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-03",
+      "model": "B0_climatology",
+      "observed_log1p": 1.1314021114911006,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-04",
+      "model": "B0_climatology",
+      "observed_log1p": 1.6863989535702288,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-06",
+      "model": "B0_climatology",
+      "observed_log1p": 3.1570004211501135,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-08",
+      "model": "B0_climatology",
+      "observed_log1p": 0.7884573603642702,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-09",
+      "model": "B0_climatology",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-10",
+      "model": "B0_climatology",
+      "observed_log1p": 4.483002552013883,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-11",
+      "model": "B0_climatology",
+      "observed_log1p": 0.7419373447293773,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-12",
+      "model": "B0_climatology",
+      "observed_log1p": 0.9555114450274363,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-13",
+      "model": "B0_climatology",
+      "observed_log1p": 2.6026896854443837,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-14",
+      "model": "B0_climatology",
+      "observed_log1p": 2.785011242238338,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-15",
+      "model": "B0_climatology",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-16",
+      "model": "B0_climatology",
+      "observed_log1p": 3.214867803470662,
+      "partition": "final",
+      "predicted_log1p": 2.65327181087679
+    },
+    {
+      "event_id": "north-rain-2022-00",
+      "model": "B0_persistence",
+      "observed_log1p": 3.7013019741124933,
+      "partition": "final",
+      "predicted_log1p": 0.832909122935104
+    },
+    {
+      "event_id": "north-rain-2022-01",
+      "model": "B0_persistence",
+      "observed_log1p": 2.760009940032921,
+      "partition": "final",
+      "predicted_log1p": 2.667228206581955
+    },
+    {
+      "event_id": "north-rain-2022-02",
+      "model": "B0_persistence",
+      "observed_log1p": 1.3862943611198906,
+      "partition": "final",
+      "predicted_log1p": 0.9555114450274363
+    },
+    {
+      "event_id": "north-rain-2022-03",
+      "model": "B0_persistence",
+      "observed_log1p": 1.1314021114911006,
+      "partition": "final",
+      "predicted_log1p": 0.6931471805599453
+    },
+    {
+      "event_id": "north-rain-2022-04",
+      "model": "B0_persistence",
+      "observed_log1p": 1.6863989535702288,
+      "partition": "final",
+      "predicted_log1p": 0.7884573603642702
+    },
+    {
+      "event_id": "north-rain-2022-06",
+      "model": "B0_persistence",
+      "observed_log1p": 3.1570004211501135,
+      "partition": "final",
+      "predicted_log1p": 0.5877866649021191
+    },
+    {
+      "event_id": "north-rain-2022-08",
+      "model": "B0_persistence",
+      "observed_log1p": 0.7884573603642702,
+      "partition": "final",
+      "predicted_log1p": 1.0647107369924282
+    },
+    {
+      "event_id": "north-rain-2022-09",
+      "model": "B0_persistence",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 0.4054651081081644
+    },
+    {
+      "event_id": "north-rain-2022-10",
+      "model": "B0_persistence",
+      "observed_log1p": 4.483002552013883,
+      "partition": "final",
+      "predicted_log1p": 0.5306282510621704
+    },
+    {
+      "event_id": "north-rain-2022-11",
+      "model": "B0_persistence",
+      "observed_log1p": 0.7419373447293773,
+      "partition": "final",
+      "predicted_log1p": 0.5877866649021191
+    },
+    {
+      "event_id": "north-rain-2022-12",
+      "model": "B0_persistence",
+      "observed_log1p": 0.9555114450274363,
+      "partition": "final",
+      "predicted_log1p": 0.5306282510621704
+    },
+    {
+      "event_id": "north-rain-2022-13",
+      "model": "B0_persistence",
+      "observed_log1p": 2.6026896854443837,
+      "partition": "final",
+      "predicted_log1p": 0.4700036292457355
+    },
+    {
+      "event_id": "north-rain-2022-14",
+      "model": "B0_persistence",
+      "observed_log1p": 2.785011242238338,
+      "partition": "final",
+      "predicted_log1p": 0.4054651081081644
+    },
+    {
+      "event_id": "north-rain-2022-15",
+      "model": "B0_persistence",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 0.4700036292457355
+    },
+    {
+      "event_id": "north-rain-2022-16",
+      "model": "B0_persistence",
+      "observed_log1p": 3.214867803470662,
+      "partition": "final",
+      "predicted_log1p": 0.4700036292457355
+    },
+    {
+      "event_id": "north-rain-2022-00",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 3.7013019741124933,
+      "partition": "final",
+      "predicted_log1p": 0.5798524664390047
+    },
+    {
+      "event_id": "north-rain-2022-01",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 2.760009940032921,
+      "partition": "final",
+      "predicted_log1p": 0.29260009610401994
+    },
+    {
+      "event_id": "north-rain-2022-02",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 1.3862943611198906,
+      "partition": "final",
+      "predicted_log1p": 0.616232304152267
+    },
+    {
+      "event_id": "north-rain-2022-03",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 1.1314021114911006,
+      "partition": "final",
+      "predicted_log1p": 1.203198949837704
+    },
+    {
+      "event_id": "north-rain-2022-04",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 1.6863989535702288,
+      "partition": "final",
+      "predicted_log1p": 1.2044485162805032
+    },
+    {
+      "event_id": "north-rain-2022-06",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 3.1570004211501135,
+      "partition": "final",
+      "predicted_log1p": 2.73133982872158
+    },
+    {
+      "event_id": "north-rain-2022-08",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.7884573603642702,
+      "partition": "final",
+      "predicted_log1p": 3.2520970409122216
+    },
+    {
+      "event_id": "north-rain-2022-09",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 3.296705475794736
+    },
+    {
+      "event_id": "north-rain-2022-10",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 4.483002552013883,
+      "partition": "final",
+      "predicted_log1p": 3.4031977492810044
+    },
+    {
+      "event_id": "north-rain-2022-11",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.7419373447293773,
+      "partition": "final",
+      "predicted_log1p": 3.0119399018478705
+    },
+    {
+      "event_id": "north-rain-2022-12",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.9555114450274363,
+      "partition": "final",
+      "predicted_log1p": 2.9676814628927417
+    },
+    {
+      "event_id": "north-rain-2022-13",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 2.6026896854443837,
+      "partition": "final",
+      "predicted_log1p": 2.829702348964691
+    },
+    {
+      "event_id": "north-rain-2022-14",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 2.785011242238338,
+      "partition": "final",
+      "predicted_log1p": 2.234446684319915
+    },
+    {
+      "event_id": "north-rain-2022-15",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 0.9162907318741551,
+      "partition": "final",
+      "predicted_log1p": 1.7051703368624647
+    },
+    {
+      "event_id": "north-rain-2022-16",
+      "model": "B1_lagged_water_season",
+      "observed_log1p": 3.214867803470662,
+      "partition": "final",
+      "predicted_log1p": 1.2798068425592293
+    }
+  ],
+  "predictive_upgrade": false,
+  "selected_baseline": "B0_persistence",
+  "status": "evaluated_baselines_only"
+}

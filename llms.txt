@@ -1,3 +1,45 @@
+# Build Together | Colorado headwaters evidence release
+
+Release 2026-11-13. Local review only. Static evidence, not a live feed.
+Canonical manifest: data/headwaters-evidence.json
+Public station points: data/stations.geojson
+Historical experience: legacy.html
+
+The new entry has six chapters driven by URL scene/station/event/fire/direction/mode.
+Use ?svg=1 for the same public station evidence without WebGL. All scientific
+conclusions also appear in text and tables. Data replays never autoplay.
+
+Important identity correction: Clow et al. 2024 identifies North Inlet study
+station USGS 401530105475401. Candidate 09012500 is not that sampling station.
+East Inlet is 09013500. Public inventory coordinates verify station identity;
+reach membership, event delivery and buyer asset status require separate checks.
+
+Headwaters decision: monitor, defer intervention ranking. No defensible rank yet.
+A separate retrospective North-only baseline test uses 13 development storms in
+2021 and 15 final storms in 2022. Development selected persistence. Final MAE on
+log1p(FNU) is 1.354616 for persistence, 1.129049 for training climatology and
+1.403059 for lagged rain/discharge/season. Paired B1 gain against persistence is
+-0.048443, with 95% storm-bootstrap interval [-0.880936, 0.798559]. No predictive
+upgrade is established. Full burn-state Tier A remains blocked. Exact results:
+data/headwaters-baseline-results.json. The event test is distinct from legacy R².
+A measured native observation window, July 30 through August 4, 2021 UTC, can be
+selected explicitly. Its curves show historical observations. Held-out forecasting remains unvalidated.
+North has precipitation, discharge and turbidity; East has turbidity in this
+replay. Water temperature remains in the downloadable native record.
+Event model skill, treatment efficacy, fine-sediment loads, operating savings,
+rights and buyer commitments are not established. Unsupported scenarios remain
+disabled. No atmospheric moisture transport is part of this Colorado case.
+
+APP_DATA remains backward compatible in data/bundle.js. The headwaters renderer
+uses HEADWATERS from data/headwaters.js, generated from the versioned JSON manifest.
+No private source content or private locations enter this new export.
+
+The legacy record below is retained for provenance. Its public_live and live
+labels describe historical acquisition or in-browser recalculation, not a current
+feed. The event pilot is separate from the legacy 230 km corridor.
+
+--- RETAINED LEGACY V1.7 RECORD ---
+
 # The Upper Colorado Corridor
 
 > Spillover Predictor's first end-to-end corridor. Within a hydrologically connected
