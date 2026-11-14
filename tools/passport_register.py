@@ -90,7 +90,7 @@ def build(eagle, daily, clock, fire_fraction):
                      support='Exact parcel', evidence_class='Not in the release',
                      uncertainty='No soil core, DNA sequence or soil chemistry exists for the parcel in this release.',
                      allowed_use='State the gap and propose sampling. General ecology only until local data exist.',
-                     living_meaning='Soil bacteria and fungi drive nutrient cycling, infiltration and recovery after disturbance in forests generally. Nothing is known about them here.',
+                     living_meaning='Soil bacteria and fungi help regulate nutrient cycling, infiltration and recovery after disturbance in forests generally. Nothing is known about them here.',
                      mechanism_link='Soil function underlies the sediment, water and productivity mechanisms. It is unmeasured.',
                      decision_link='A baseline core set fixes a reference before any management change.',
                      status='Field validation pending', gap='Composite cores with DNA metabarcoding for bacteria and fungi, plus carbon, pH and texture.'),

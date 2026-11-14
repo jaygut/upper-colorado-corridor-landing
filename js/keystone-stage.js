@@ -38,6 +38,7 @@ function specs(){const W=S.W,H=S.H,m=W<760,ax=m?.5:.68,ay=m?.5:.5,box=Math.min(H
     forage:eagle(m?5200:6600,48,12,{L:L({reveal:1500,forage:1,parcelLabel:1})}),
     flow:{focus:[-106.43,39.545],z:fitZoom(m?17000:24000,m?W*.95:Math.min(W*.6,H),39.55),anchor:[m?.5:.66,m?.55:.56],pitch:62,bearing:-24,L:L({rivers:A.div,flow:1,reveal:1000,ring1k:A.node,parcelLabel:1})},
     river:{focus:[-106.43,39.52],z:m?10.2:11.3,anchor:[m?.5:.64,.46],pitch:56,bearing:-28,L:L({rivers:1,flow:A.div,ring1k:A.div,reveal:1000,parcelLabel:1})},
+    valley:{focus:[-106.43,39.52],z:m?10.2:11.3,anchor:[m?.5:.64,.46],pitch:56,bearing:-28,L:L({rivers:1,ring1k:A.div,reveal:1000,parcelLabel:1})},
     transit:{focus:[-106.52,39.86],z:fitZoom(m?190000:230000,m?W*.94:W*.62,39.8),anchor:[m?.5:.64,.5],pitch:0,bearing:0,L:L({rivers:A.div,stations:1,transit:1,basins:A.div,parcelLabel:1})},
     grandlake:{focus:GRAND,z:fitZoom(21000,m?W*.98:Math.min(W*.58,H*1.05),40.26),anchor:[m?.5:.68,m?.52:.5],pitch:48,bearing:24,L:L({stations:1,basins:1,fire:1,revealBasins:1})},
     grandlakeDim:{focus:GRAND,z:fitZoom(21000,m?W*.98:Math.min(W*.58,H*1.05),40.26),anchor:[m?.5:.68,m?.52:.5],pitch:48,bearing:40,L:L({stations:A.div,basins:A.div,fire:A.div,revealBasins:1,dim:1})},

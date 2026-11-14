@@ -150,8 +150,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-     "bytes": 42074
+     "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+     "bytes": 42082
     }
    ],
    "classification": "Stated gap with proposed sampling",
@@ -163,8 +163,8 @@
    "sources": [
     {
      "file": "js/keystone-flow.js",
-     "sha256": "9fe5f5d33b5a584487549268822225b22da31633c1a4f61b794e5e42a816771f",
-     "bytes": 3274
+     "sha256": "8af58f73cc3a76894ef85f19462ad13c79cbf2a62aa165810a0bf1af32e09639",
+     "bytes": 3317
     }
    ],
    "classification": "Conditional terrain geometry",
@@ -176,8 +176,8 @@
    "sources": [
     {
      "file": "data/keystone/ecology.json",
-     "sha256": "a8f9e0a1b69c18c700e0e08ee6f5f531b556f34a6811a625b9cf7243bb209604",
-     "bytes": 12830
+     "sha256": "1bf4f0bb712f7685579c8dcb4c6582ecb7e772dea65bb21b185b1aae3c46671b",
+     "bytes": 13169
     }
    ],
    "classification": "Published literature, verified 13 Nov 2026",
@@ -189,8 +189,8 @@
    "sources": [
     {
      "file": "data/keystone/ecology.json",
-     "sha256": "a8f9e0a1b69c18c700e0e08ee6f5f531b556f34a6811a625b9cf7243bb209604",
-     "bytes": 12830
+     "sha256": "1bf4f0bb712f7685579c8dcb4c6582ecb7e772dea65bb21b185b1aae3c46671b",
+     "bytes": 13169
     }
    ],
    "classification": "Illustrative model",
@@ -202,8 +202,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-     "bytes": 42074
+     "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+     "bytes": 42082
     }
    ],
    "classification": "Stated gap",
@@ -408,8 +408,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-     "bytes": 42074
+     "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+     "bytes": 42082
     }
    ],
    "classification": "Evidence register",
@@ -434,8 +434,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-     "bytes": 42074
+     "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+     "bytes": 42082
     }
    ],
    "classification": "Hypothesis",
@@ -447,8 +447,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-     "bytes": 42074
+     "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+     "bytes": 42082
     },
     {
      "file": "data/finance-evidence-ledger.json",

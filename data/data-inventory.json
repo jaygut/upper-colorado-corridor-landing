@@ -146,7 +146,7 @@
   },
   {
    "file": "data/claim-source-map.json",
-   "sha256": "1f25069e15a90bd024b7b2c23fd74f63087f37674a16fecb432b37d5407b4a39",
+   "sha256": "dc16d8156b75e3bdfaa680566bea4ef22d9df0e88785d42457e958a2ad8972f9",
    "bytes": 18260,
    "role": "loaded by the story or candidate file"
   },
@@ -266,14 +266,14 @@
   },
   {
    "file": "data/keystone/ecology.json",
-   "sha256": "a8f9e0a1b69c18c700e0e08ee6f5f531b556f34a6811a625b9cf7243bb209604",
-   "bytes": 12830,
+   "sha256": "1bf4f0bb712f7685579c8dcb4c6582ecb7e772dea65bb21b185b1aae3c46671b",
+   "bytes": 13169,
    "role": "loaded by the story or candidate file"
   },
   {
    "file": "data/keystone/passport.json",
-   "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
-   "bytes": 42074,
+   "sha256": "47298de3271f42c8dc522001bae457f8b496838e46e1681bae32d611678f4847",
+   "bytes": 42082,
    "role": "loaded by the story or candidate file"
   },
   {
@@ -284,7 +284,7 @@
   },
   {
    "file": "data/keystone/sources.json",
-   "sha256": "03b0b836998fb8da1fe780ae434cfb286b0c657b8d6eb313d9f877841dc1d7f1",
+   "sha256": "40c4768774f524eb0672f061e883aee4f7ac6383ee914eb768bb1364c47e2685",
    "bytes": 1569,
    "role": "loaded by the story or candidate file"
   },

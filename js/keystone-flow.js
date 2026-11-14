@@ -16,7 +16,7 @@ function trace(lon,lat){if(!M||!inside(lon,lat))return null;let x=Math.floor((tx
   for(let s=0;s<9000;s++){const h=M[y*W+x];let best=0,bx=0,by=0,edge=false;
     for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const u=x+dx,v=y+dy;if(u<0||v<0||u>=W||v>=H){edge=true;continue;}const g=(h-M[v*W+u])/(dx&&dy?1.4142:1);if(g>best){best=g;bx=u;by=v;}}
     if(edge){end='edge';break;}
-    if(best<=0){let found=false;for(let r=2;r<60&&!found;r++){let bd=1e9;for(let v=Math.max(0,y-r);v<=Math.min(H-1,y+r);v++)for(let u=Math.max(0,x-r);u<=Math.min(W-1,x+r);u++){if(M[v*W+u]<h-.01){const d=(u-x)*(u-x)+(v-y)*(v-y);if(d<bd){bd=d;bx=u;by=v;found=true;}}}}
+    if(best<=0){let found=false;for(let r=2;r<60&&!found;r++){let bd=1e9;const test=(u,v)=>{if(u<0||v<0||u>=W||v>=H)return;if(M[v*W+u]<h-.01){const d=(u-x)*(u-x)+(v-y)*(v-y);if(d<bd){bd=d;bx=u;by=v;found=true;}}};for(let k=-r;k<=r;k++){test(x+k,y-r);test(x+k,y+r);if(k>-r&&k<r){test(x-r,y+k);test(x+r,y+k);}}}
       if(!found){end='pit';break;}bridges++;}
     len+=Math.hypot(bx-x,by-y)*MPP;x=bx;y=by;pts.push([x,y]);dist.push(len);
     if(floorAt===null&&pts.length>12){const back=pts[pts.length-12],slope=(M[back[1]*W+back[0]]-M[y*W+x])/(dist[dist.length-1]-dist[dist.length-12]);if(slope<.06)floorAt=dist[dist.length-12];}}
