@@ -1,0 +1,259 @@
+{
+  "schema": "eagle_structural_context_public_design/1",
+  "status": "eligible_for_design_not_published",
+  "candidate_id": "ucc-red_cliff_eagle-03",
+  "area_ha": 4.235344125503348,
+  "layers": [
+    {
+      "layer": "forest_pct",
+      "source_year": 2023,
+      "source_url": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wcs?service=WCS&version=1.0.0&request=GetCoverage&coverage=mrlc_Land-Cover-Native_conus_year_data%3ALand-Cover-Native_conus_year_data&crs=EPSG%3A5070&response_crs=EPSG%3A5070&bbox=-883125.0%2C1876665.0%2C-882555.0%2C1877205.0&width=19&height=18&format=GeoTIFF&interpolation=nearest+neighbor&time=2023-01-01T00%3A00%3A00.000Z",
+      "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+      "value": 97.87502508812541,
+      "unit": "percent",
+      "definition": "Area classified as NLCD forest41/42/43 within valid support",
+      "area_m2": 42353.441255033475,
+      "valid_area_fraction": 0.9999999999998497,
+      "cell_centers_inside": 47,
+      "intersecting_cells": 76,
+      "class_areas": [
+        {
+          "code": 41,
+          "area_m2": 5098.80741870136,
+          "fraction_of_valid_support": 0.12038708703737647,
+          "fraction_of_aoi": 0.12038708703735837
+        },
+        {
+          "code": 42,
+          "area_m2": 36354.63383534089,
+          "fraction_of_valid_support": 0.8583631638438778,
+          "fraction_of_aoi": 0.8583631638437488
+        },
+        {
+          "code": 52,
+          "area_m2": 900.0000009848736,
+          "fraction_of_valid_support": 0.021249749118746022,
+          "fraction_of_aoi": 0.021249749118742826
+        }
+      ],
+      "area_crs": "EPSG:5070",
+      "native_independence_established": false,
+      "grid": "Nominal30m provider grid agreement within0.03m; actual transform retained in private source receipt",
+      "meaning": "Remote sensing of structure. Field condition and ecological function remain unverified."
+    },
+    {
+      "layer": "canopy_pct",
+      "source_year": 2023,
+      "source_url": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_NLCD-Tree-Canopy-Native_conus_year_data/wcs?service=WCS&version=1.0.0&request=GetCoverage&coverage=mrlc_NLCD-Tree-Canopy-Native_conus_year_data%3ANLCD-Tree-Canopy-Native_conus_year_data&crs=EPSG%3A5070&response_crs=EPSG%3A5070&bbox=-883125.0%2C1876665.0%2C-882555.0%2C1877205.0&width=19&height=18&format=GeoTIFF&interpolation=nearest+neighbor&time=2023-01-01T00%3A00%3A00.000Z",
+      "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+      "value": 39.83703689033329,
+      "unit": "percent",
+      "definition": "Area-weighted mean of the provider percent values within valid support",
+      "area_m2": 42353.441255033475,
+      "valid_area_fraction": 0.9999999999998497,
+      "cell_centers_inside": 47,
+      "intersecting_cells": 76,
+      "class_areas": [],
+      "area_crs": "EPSG:5070",
+      "native_independence_established": false,
+      "grid": "Nominal30m provider grid agreement within0.03m; actual transform retained in private source receipt",
+      "meaning": "Remote sensing of structure. Field condition and ecological function remain unverified."
+    },
+    {
+      "layer": "impervious_pct",
+      "source_year": 2023,
+      "source_url": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Factional-Impervious-Surface-Native_conus_year_data/wcs?service=WCS&version=1.0.0&request=GetCoverage&coverage=mrlc_Factional-Impervious-Surface-Native_conus_year_data%3AFactional-Impervious-Surface-Native_conus_year_data&crs=EPSG%3A5070&response_crs=EPSG%3A5070&bbox=-883125.0%2C1876665.0%2C-882555.0%2C1877205.0&width=19&height=18&format=GeoTIFF&interpolation=nearest+neighbor&time=2023-01-01T00%3A00%3A00.000Z",
+      "source_sha256": "86ce77871a1455b61a368052c88825a530cd36d4d7df2eebb20c55bfc2ac74c8",
+      "value": 0.0,
+      "unit": "percent",
+      "definition": "Area-weighted mean of the provider percent values within valid support",
+      "area_m2": 42353.441255033475,
+      "valid_area_fraction": 0.9999999999998497,
+      "cell_centers_inside": 47,
+      "intersecting_cells": 76,
+      "class_areas": [],
+      "area_crs": "EPSG:5070",
+      "native_independence_established": false,
+      "grid": "Nominal30m provider grid agreement within0.03m; actual transform retained in private source receipt",
+      "meaning": "Remote sensing of structure. Field condition and ecological function remain unverified."
+    }
+  ],
+  "mapped_inventory_overlap": [
+    {
+      "layer": "padus",
+      "source_url": "https://services.arcgis.com/v01gqwM5QqNysAAi/ArcGIS/rest/services/PADUS_Public_Access/FeatureServer/0",
+      "source_sha256": "9d840a18297b26a118a96963f043dfa22904fe30eeebcd488d8b60c01735b197",
+      "retrieved_utc": "2026-11-13T22:47:10.044056+00:00",
+      "mapped_overlap_area_m2": 42353.44125503346,
+      "mapped_overlap_fraction": 0.9999999999999997,
+      "aoi_area_m2": 42353.441255033475,
+      "buffer_m": 500,
+      "context_mapped_fraction": 0.9999999999999951
+    },
+    {
+      "layer": "nwi",
+      "source_url": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
+      "source_sha256": "6e302bac1d48ab443d5594492fe87445621ef86e9de66fb60bb735d1c0b7dccd",
+      "retrieved_utc": "2026-11-13T23:18:30.117636+00:00",
+      "mapped_overlap_area_m2": 0.0,
+      "mapped_overlap_fraction": 0.0,
+      "aoi_area_m2": 42353.441255033475,
+      "buffer_m": 500,
+      "context_mapped_fraction": 0.00260429814356609
+    }
+  ],
+  "provider_feature_class_context": [
+    {
+      "layer": "padus",
+      "source_url": "https://services.arcgis.com/v01gqwM5QqNysAAi/ArcGIS/rest/services/PADUS_Public_Access/FeatureServer/0",
+      "scope": "Features returned by the neighborhood query envelope. Exact per-feature attribution to the parcel is uncomputed.",
+      "features": [
+        {
+          "object_id": 99582,
+          "attributes": {
+            "Category": "Designation",
+            "FeatClass": "Designation",
+            "Unit_Nm": "Holy Cross Wilderness",
+            "Pub_Access": "RA",
+            "GAP_Sts": "1",
+            "IUCN_Cat": "Ib",
+            "DesTp_Desc": "Wilderness Area",
+            "BndryName": "Conterminous U.S. (CONUS)",
+            "BndryID": "Not Applicable",
+            "MngTp_Desc": "Federal",
+            "MngNm_Desc": "Forest Service"
+          }
+        },
+        {
+          "object_id": 157379,
+          "attributes": {
+            "Category": "Fee",
+            "FeatClass": "Fee",
+            "Unit_Nm": "White River National Forest",
+            "Pub_Access": "OA",
+            "GAP_Sts": "3",
+            "IUCN_Cat": "Other Conservation Area",
+            "DesTp_Desc": "National Forest",
+            "BndryName": "Conterminous U.S. (CONUS)",
+            "BndryID": "Not Applicable",
+            "MngTp_Desc": "Federal",
+            "MngNm_Desc": "Forest Service"
+          }
+        }
+      ]
+    },
+    {
+      "layer": "nwi",
+      "source_url": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
+      "scope": "Features returned by the neighborhood query envelope. Exact per-feature attribution to the parcel is uncomputed.",
+      "features": [
+        {
+          "object_id": 29486802,
+          "attributes": {
+            "ATTRIBUTE": "PABGb",
+            "WETLAND_TYPE": "Freshwater Pond",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29486820,
+          "attributes": {
+            "ATTRIBUTE": "PABGb",
+            "WETLAND_TYPE": "Freshwater Pond",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487269,
+          "attributes": {
+            "ATTRIBUTE": "PSS1B",
+            "WETLAND_TYPE": "Freshwater Forested/Shrub Wetland",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487385,
+          "attributes": {
+            "ATTRIBUTE": "PSS1C",
+            "WETLAND_TYPE": "Freshwater Forested/Shrub Wetland",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487594,
+          "attributes": {
+            "ATTRIBUTE": "PSS1Eb",
+            "WETLAND_TYPE": "Freshwater Forested/Shrub Wetland",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487595,
+          "attributes": {
+            "ATTRIBUTE": "PSS1Eb",
+            "WETLAND_TYPE": "Freshwater Forested/Shrub Wetland",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487600,
+          "attributes": {
+            "ATTRIBUTE": "PSS1Eb",
+            "WETLAND_TYPE": "Freshwater Forested/Shrub Wetland",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487717,
+          "attributes": {
+            "ATTRIBUTE": "R3UBH",
+            "WETLAND_TYPE": "Riverine",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487866,
+          "attributes": {
+            "ATTRIBUTE": "R4SBC",
+            "WETLAND_TYPE": "Riverine",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487871,
+          "attributes": {
+            "ATTRIBUTE": "R4SBC",
+            "WETLAND_TYPE": "Riverine",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29487898,
+          "attributes": {
+            "ATTRIBUTE": "R4SBC",
+            "WETLAND_TYPE": "Riverine",
+            "QAQC_CODE": null
+          }
+        },
+        {
+          "object_id": 29488269,
+          "attributes": {
+            "ATTRIBUTE": "R3UBH",
+            "WETLAND_TYPE": "Riverine",
+            "QAQC_CODE": null
+          }
+        }
+      ]
+    }
+  ],
+  "rights": "unverified",
+  "biological_function": "unvalidated",
+  "financial_return": null,
+  "interpretation": "Mapped inventories describe their stated support. Land ownership, conservation effectiveness, intervention authority and collectible payments require their own evidence.",
+  "attribution": [
+    "USGS Annual NLCD / MRLC",
+    "U.S. Fish and Wildlife Service National Wetlands Inventory",
+    "USGS Protected Areas Database of the United States"
+  ],
+  "transformations": "Clipped and summarized within the retained candidate and declared context buffer. Source data years and definitions preserved."
+}

@@ -1,0 +1,376 @@
+{
+ "schema": "keystone-data-inventory/1",
+ "layers": [
+  {
+   "layer": "Eagle County parcel geometry",
+   "use": "included",
+   "reason": "Opening object and every Eagle scene. Checked 13 Nov 2026."
+  },
+  {
+   "layer": "USGS Annual NLCD land cover 2023",
+   "use": "included",
+   "reason": "Structure lens. Parcel support."
+  },
+  {
+   "layer": "USGS NLCD tree canopy 2023",
+   "use": "included",
+   "reason": "Structure lens. Clipped 30 m cells."
+  },
+  {
+   "layer": "USGS NLCD impervious surface 2023",
+   "use": "included",
+   "reason": "Passport value only. Zero mapped."
+  },
+  {
+   "layer": "National Wetlands Inventory",
+   "use": "included",
+   "reason": "Structure lens at 500 m context. Exact mapped overlap."
+  },
+  {
+   "layer": "Protected Areas Database of the United States",
+   "use": "included",
+   "reason": "Passport and rights prerequisites. Union overlap and envelope classes."
+  },
+  {
+   "layer": "GBIF bird records, reviewed public subset",
+   "use": "included",
+   "reason": "Composition lens. 45 records, 1 km neighbourhood, aggregated."
+  },
+  {
+   "layer": "USGS water temperature replay, 3 stations",
+   "use": "included",
+   "reason": "Shared clock. Separate stations."
+  },
+  {
+   "layer": "USGS daily temperature coverage 2021 to 2022",
+   "use": "included",
+   "reason": "Coverage calendar. Qualified, partial and unavailable days."
+  },
+  {
+   "layer": "USGS rainfall, discharge and turbidity, North Inlet 2021",
+   "use": "included",
+   "reason": "Shared clock. Native units and gaps."
+  },
+  {
+   "layer": "NHDPlus HR river lines",
+   "use": "included",
+   "reason": "Cartographic context only."
+  },
+  {
+   "layer": "NLDI associated basins and reaches, Grand Lake",
+   "use": "included",
+   "reason": "Separate-case map."
+  },
+  {
+   "layer": "MTBS final perimeter overlap",
+   "use": "included",
+   "reason": "Separate-case map. Retrospective context."
+  },
+  {
+   "layer": "3DEP terrain routing summary",
+   "use": "included",
+   "reason": "Coverage against support figures. No raster shown."
+  },
+  {
+   "layer": "SSURGO erodibility support summary",
+   "use": "included",
+   "reason": "Coverage against support figures. Unknown state kept."
+  },
+  {
+   "layer": "Frozen forecast evaluations, North and East",
+   "use": "included",
+   "reason": "Result intervals. Consumed holdouts."
+  },
+  {
+   "layer": "Monitoring window allocations, North and Glenwood",
+   "use": "included",
+   "reason": "Window comparison and budget review."
+  },
+  {
+   "layer": "Finance evidence ledger",
+   "use": "included",
+   "reason": "Gate statuses in the review."
+  },
+  {
+   "layer": "Complete 67-record neighbourhood and 52,389-record pool",
+   "use": "excluded",
+   "reason": "Private source context. Licence and location sensitivity."
+  },
+  {
+   "layer": "Precise occurrence coordinates, IDs, dates, observers",
+   "use": "excluded",
+   "reason": "Private. Not in the reviewed export."
+  },
+  {
+   "layer": "Historical biodiversity-support score and formula",
+   "use": "excluded",
+   "reason": "Heuristic with inconsistent inputs. Only the archived 0.6724 screening score is cited."
+  },
+  {
+   "layer": "StreamCat woody-wetland riparian percentage",
+   "use": "excluded",
+   "reason": "Catchment support, earlier mislabelled as proximity. Not in the public export."
+  },
+  {
+   "layer": "LANDFIRE LF2016 canopy and fuel",
+   "use": "excluded",
+   "reason": "Covers headwaters and Grizzly context. Cannot supply an Eagle measurement."
+  },
+  {
+   "layer": "gridMET, SNOTEL, airport weather, MRMS",
+   "use": "excluded",
+   "reason": "Regional context without joint predictive validation."
+  },
+  {
+   "layer": "FSim burn probability codes",
+   "use": "excluded",
+   "reason": "Raw codes remain undecoded."
+  },
+  {
+   "layer": "Legacy modelled overlays, 336 rows",
+   "use": "excluded",
+   "reason": "Modelled, with zero live reach identifiers."
+  },
+  {
+   "layer": "Routing and intervention scenario fixtures",
+   "use": "excluded",
+   "reason": "Software checks. No real intervention effect."
+  }
+ ],
+ "files": [
+  {
+   "file": "data/bundle.js",
+   "sha256": "31680cf42b37cee7e4af1765171c70e2b5fbdabbd1b30b86afe6e18e0d87b516",
+   "bytes": 11009,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/claim-source-map.json",
+   "sha256": "eb08540d37c4c297a48e50b333e0f36873f4652bb4f4cf7d46b97a36aad5779b",
+   "bytes": 16159,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/context/burn_basin_intersections.geojson",
+   "sha256": "5d70b722e708fea7f558f59f4548c5ef9d590e509fcb8665c907f5ab3bde9240",
+   "bytes": 30785,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/context/east_upstream.geojson",
+   "sha256": "d483dd9b8a2278a190a733e7c41d143c07e366b045dde60edd7a32894eee9831",
+   "bytes": 19473,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/context/nldi_associated_basins.geojson",
+   "sha256": "22359c2c9c5c033325c69b990649a18f09b3d34731c6d2ecb08d752be5bec857",
+   "bytes": 48568,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/context/north_upstream.geojson",
+   "sha256": "c9237c9912b9ee5b27b7922aa05a40429b8efd3453c81d22d304f3cc53286861",
+   "bytes": 18798,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/events/coverage-pending.json",
+   "sha256": "0133cd58b2d6d1310b19762a7c2b702feb4968be91e83db62edc177dde411366",
+   "bytes": 413,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/events/measured-20210730-20210804.json",
+   "sha256": "2e02cdcbb3fc80231f58c3e6c713db47b7ac5d958c7b52ac10df98820e0a9ee0",
+   "bytes": 221457,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/experience-evidence.json",
+   "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+   "bytes": 71398,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/finance-evidence-ledger.json",
+   "sha256": "eb6f8c4ffc1f8aa3987fd00121410484c3a3d8ab4f2aaf5ea2cd8097d7cd0c1c",
+   "bytes": 10821,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/forecast-round2.json",
+   "sha256": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772",
+   "bytes": 35482,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/geo.js",
+   "sha256": "cd97a0f2be0f358f217ac5f79e82e51a27ec43a8e527a47128a83461500c5670",
+   "bytes": 71224,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/headwaters-baseline-results.json",
+   "sha256": "070d65ab9f08424372ad2f8dc39a32042344df552e9978a0a027a0f75e0beeaa",
+   "bytes": 19298,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/headwaters-evidence.json",
+   "sha256": "7530e21cda32e0988a2adb66cd4e24bf773bb00d706a13e1353124f3e97c5c9c",
+   "bytes": 26088,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/headwaters.js",
+   "sha256": "deea260c043b3c92008a0b50d9c7adc110af7ae02445db4d01605b99afa3c092",
+   "bytes": 21564,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/hydro.js",
+   "sha256": "bf00d8aed4e31d55d6581709d005bfaa85b034aaaed9d7981aa0a4c650c34dad",
+   "bytes": 128602,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/investment-evidence-register.csv",
+   "sha256": "960c1050f2b349f11404b4623149b547017389b21b0b89a84ca071fbfd3db8ab",
+   "bytes": 3549,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/keystone-candidate.geojson",
+   "sha256": "dc5c013b6a94cc4844f080a4f25abbf46650adcab671a52775527c7e7c46cf91",
+   "bytes": 2420,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/clock.json",
+   "sha256": "4fe48854ab3b0c8bcb960d68bbb592a2eac3c81391ba0f5847e8503de2149bd5",
+   "bytes": 30722,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/context.json",
+   "sha256": "1d498f86329b7b38b6317e22a922796ebe22ffe557f780426c28e1140dce0d36",
+   "bytes": 2628,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/eagle.json",
+   "sha256": "0ce3381229e552d5741d2e5addf4c4eb8e9fac659a6aaeb5549b3eda63a4d49c",
+   "bytes": 31511,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/passport.json",
+   "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
+   "bytes": 35110,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/results.json",
+   "sha256": "79ee86ccb104ed9c319130de925b55a49b9bbf9da5d0bcde732ed9046cb38149",
+   "bytes": 917,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/keystone/sources.json",
+   "sha256": "bb06b893b8b06813dc7f47d75c2f4668cae8fd83dbd3ce0ca06b11a7fedb832b",
+   "bytes": 1473,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/keystone/thermal-daily.json",
+   "sha256": "bf881cde63b70993c2251abb85687a2e5180ad660551b03e8ef1c398877a0126",
+   "bytes": 32124,
+   "role": "loaded by the story or candidate file"
+  },
+  {
+   "file": "data/monitoring-glenwood-windows.json",
+   "sha256": "edbca068fb513daa64443d86ebe8370ba0575c036c22b20aafe368cdc130d5d8",
+   "bytes": 2107238,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/monitoring-glenwood.json",
+   "sha256": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d",
+   "bytes": 37419,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/monitoring-north-windows.json",
+   "sha256": "b92d16846ada4f2aebaa37d592fc52f4488faa4ccb8b358a0a4150480e7d966a",
+   "bytes": 1561057,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/mtbs-final-perimeters.geojson",
+   "sha256": "67ba4b3dcd5424efd8e7c4f765f91296e8ad1673581a05a7a9c64297add81289",
+   "bytes": 27331,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/mtbs-severity-summary.json",
+   "sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
+   "bytes": 4703,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/r4/daily_temperature.json",
+   "sha256": "48975b37a24b5e98db671d5bdf82d1ab60ab3e377494a881fc07e1c96ac66486",
+   "bytes": 879733,
+   "role": "R4 allowlisted source payload"
+  },
+  {
+   "file": "data/r4/eagle_bird_record_context_v2.json",
+   "sha256": "d15f1a3da1f08cf760dff05d8b462a996b595bbfba77464db6672a16ca9a66fc",
+   "bytes": 29352,
+   "role": "R4 allowlisted source payload"
+  },
+  {
+   "file": "data/r4/eagle_map_layers.geojson",
+   "sha256": "47f3e5fd209f8f9d3eb99b4d481369b5d528975bd45c9493394d4cf95d4bca6c",
+   "bytes": 100924,
+   "role": "R4 allowlisted source payload"
+  },
+  {
+   "file": "data/r4/eagle_structural_context.json",
+   "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+   "bytes": 10391,
+   "role": "R4 allowlisted source payload"
+  },
+  {
+   "file": "data/r4/thermal_replay.json",
+   "sha256": "bee91296137a896db053fc90e98a0c96b73080f4f53c80aa48bcf9244a8191d1",
+   "bytes": 640944,
+   "role": "R4 allowlisted source payload"
+  },
+  {
+   "file": "data/source-context-release.json",
+   "sha256": "b27d0c755e63280854abc89be6f20cf26ef946989f92f21ec4cb93d7ce71ba97",
+   "bytes": 49001,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/stations.geojson",
+   "sha256": "a4ab50cc5b0d2dae6b21ed50ccdd1ed7cb5838f14302741956dee64d5f7e663c",
+   "bytes": 1160,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/story-evidence.json",
+   "sha256": "660104dd95cf02549546c324d626a7e976aa80a9fc63a6c4bbeef4318c88b788",
+   "bytes": 3982,
+   "role": "retained evidence, review desk or archive"
+  },
+  {
+   "file": "data/wbd-context.geojson",
+   "sha256": "d933bc9bd22d75c5899f52700b52a2b5eb28a4d48d26d3e05b27718fbb1ca31c",
+   "bytes": 64828,
+   "role": "retained evidence, review desk or archive"
+  }
+ ]
+}

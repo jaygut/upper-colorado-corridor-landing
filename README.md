@@ -1,32 +1,35 @@
 <!-- Graph of Life brand v1.0.0 · canonical tokens.json; IBM Plex Sans / IBM Plex Mono -->
 # Keystone Polygon experience
 
-The current entry is a seven-scene spatial story. An exact Eagle County parcel appears as an imagery-filled object, opens into river context, and returns at the close. A clearly separate Grand Lake scene shows associated basins and mapped fire overlap. The story then changes medium to native 2021 observations, frozen 2023–2024 forecast evidence and all accepted monitoring allocations. A Keystone Polygon is a candidate for disproportionate importance to a named recipient; no Colorado treatment rank is validated here.
+`index.html` is a nine-chapter spatial story built around one real Eagle County parcel. A scroll-driven camera moves over real 3D terrain. Satellite imagery is lit only inside the geometry that currently has evidence support: the parcel, its 500 m context, its 1 km neighbourhood, and later the two basins associated with the Grand Lake stations. The story follows one chain from polygon to obligation and shows where it holds and where it breaks. A Keystone Polygon is a candidate for disproportionate importance to a named recipient. No Colorado parcel is validated as one.
 
-`review.html?case=north` and `review.html?case=glenwood` open the baseline-first historical monitoring review. The user can inspect proposed UTC windows, enter an explicit hypothetical unit cost, prepare a review draft and export an audit or evidence register. Nothing is ordered, sampled, paid or financed. Unknown outcomes remain in the all-slot budget. The separate `evidence.html` desk retains full methods, downloadable reports and earlier negative benchmarks. `legacy.html` preserves the historical screening display with a prominent archive notice.
+The living context is organised as Structure, Composition, Condition and Function. Structure uses 2023 NLCD cells clipped to the parcel and exact mapped overlap with wetland and protected-area inventories. Composition uses the reviewed public subset of 45 bird records in 26 provider species-name groups from the 1 km neighbourhood, with coordinates withheld. Condition on the parcel is unmeasured. Function is unvalidated. Water temperature, rainfall, discharge and turbidity belong to separate stations and are shown on their own ground.
 
-Story routes use `?chapter=polygon|dependency|fire|observation|evidence|decision|next`. Old `?scene=` or `?forecastCase=` URLs still redirect to the evidence desk. `?svg=1` uses actual local vector geometry; missing source data is explicitly unavailable. The checked parcel is also embedded from the same public file, so the opening does not wait for a basemap. The Eagle scale reveal respects reduced motion; geographic cuts never imply a delivery connection between separate cases.
+`passport.html` is the candidate file. It holds the ecological passport, a mechanism choice, an editable next observation with a budget line in the visitor's own figures, an evidence-to-obligation register with every field pending by default, and JSON and Markdown exports with source hashes. `review.html?case=north|glenwood` remains the historical monitoring budget review. `evidence.html` keeps full methods and negative benchmarks. `legacy.html` keeps the historical screening display behind an archive notice.
 
-The new presentation adapter `data/experience-evidence.json` binds 14 public source hashes, preserves all 102 accepted allocations across both policies and both cases, and retains model/freeze/opening provenance. New Grand Lake context is copied without geometry changes from the retained public USGS map-ready files. Native observations keep their units, timestamps and null gaps. The 2021 replay is separate from final forecast validation. North improved mean absolute log1p(FNU) error modestly; monitoring promotion and East transfer failed. The separate Glenwood classifier also failed its joint business gate.
+Story routes use `?chapter=polygon|living|spillover|measured|clock|forecast|windows|obligation|next` with an optional `&step=`. Earlier `?chapter=dependency|fire|observation|evidence|decision` links resolve to the new chapters. `?scene=` and `?forecastCase=` still redirect to the evidence desk. `?svg=1` forces the flat vector stage, which is also the automatic fallback when WebGL, the map library, imagery or terrain tiles are unavailable.
 
-The existing static vanilla JavaScript and MapLibre stack is retained. No framework, backend, package dependency, new model or HPC processing was introduced. Serve from the repository root:
+Public data added in this release are the five R4 allowlisted payloads in `data/r4/`, copied byte for byte, and compact visual formats in `data/keystone/` derived from them and from frozen public files already in the repository. `data/claim-source-map.json` binds each public claim to files by SHA256. `data/data-inventory.json` lists every source layer with its inclusion or exclusion and the reason.
+
+The stack is static HTML, CSS and vanilla JavaScript with MapLibre GL from a CDN. No framework, backend or package dependency was added. Terrain comes from the public Terrain Tiles dataset on AWS. Serve from the repository root:
 
 ```bash
-python3 tools/build-experience.py
+python3 tools/build-keystone.py
+```
+
+```bash
 python3 -m http.server 8769 --bind 127.0.0.1
 ```
 
-`build-experience.py` reads only repository-local frozen public data, writes the compact adapter and token-derived opacity CSS, and regenerates the embedded exact parcel. Repeating it produces identical bytes. Existing `tools/build-evidence.py`, `tools/build-story.py`, `tools/build-round2.py` and `tools/build-fire-display.py` remain the earlier evidence generators; their scientific inputs and exports are unchanged by this design revision.
+`tools/build-keystone.py` checks the five R4 hashes, writes `data/keystone/*`, the claim map, the inventory and `index.html` (head, embedded checked parcel and `tools/index.body.html`). Repeating it produces identical bytes. `tools/build-experience.py` and the earlier generators remain for the retained adapters and are no longer used to write `index.html`.
 
-Brand gate for the new experience and review:
+Brand gate:
 
 ```bash
-python3 brand/brandlint.py index.html review.html css/story.css css/review.css js/story.js js/review.js css/archive-notice.css brand/experience.css tools/build-experience.py README.md
+python3 brand/brandlint.py index.html passport.html review.html css/keystone-base.css css/keystone-story.css css/passport.css css/review.css js/keystone-stage.js js/keystone-gl.js js/keystone-charts.js js/keystone-story.js js/passport.js js/review.js tools/build-keystone.py tools/passport_register.py README.md
 ```
 
-All palette, type and spacing values derive from canonical `brand/tokens.json`. Document component conventions are intentionally not used in the main story. The new experience uses an object, geographic annotations, measured traces, an interval graphic and real schedule relationships. USDA / USGS imagery is current visual context, never event-time evidence.
-
-Publication is authorized after the actual source, functional, failure, accessibility, responsive, visual and clean-regeneration checks. The preceding public release is `ec3e51e64970e330b3ea72517a0a29cc6f743f0f`. R3 review receipts and recording live in the companion research run `keystone_experience_20261113_r3`. The material below is preserved historical documentation; its older product assertions and route descriptions do not define current validated capability.
+The preceding public release is `1329308f8a0a153549bb1973f30638307d8cb616`. To roll back, revert the release commit on `main` and push. The material below is preserved historical documentation. Its older product assertions and route descriptions do not define current validated capability.
 
 ---
 

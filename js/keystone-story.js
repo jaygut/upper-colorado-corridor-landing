@@ -1,0 +1,131 @@
+/* Graph of Life brand v1.0.0. Keystone story: scroll position is the only clock. Camera, layers, chapter, rail and URL all derive from it. */
+(function(){'use strict';
+const KS=window.KS,KSC=window.KSC,S=KS.S,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const q=new URLSearchParams(location.search),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const ALIAS={dependency:'spillover',fire:'measured',observation:'clock',evidence:'forecast',decision:'windows'};
+const chapters=$$('.ch'),steps=$$('.step[data-cam]'),ids=chapters.map(c=>c.id);
+const store={get(){try{return JSON.parse(localStorage.getItem('keystone-story-v1'))||{};}catch(e){return{};}},set(o){try{localStorage.setItem('keystone-story-v1',JSON.stringify(o));}catch(e){}}};
+const saved=store.get();
+const T=window.__STORY={chapter:'polygon',step:'define',active:-1,mechanism:saved.mechanism||'habitat',direction:'forward',case:saved.case||'north',cost:saved.cost||'',lens:'structure',layer:'canopy',dataReady:{},errors:S.errors,reducedMotion:reduce,stage:S,figures:{}};
+const D={};const pending=new Map();
+function persist(){store.set({mechanism:T.mechanism,case:T.case,cost:T.cost});}
+function json(url,key){if(pending.has(url))return pending.get(url);const p=fetch(url).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(j=>{T.dataReady[key]=true;D[key]=j;return j;}).catch(e=>{T.dataReady[key]=false;S.errors.push(url+' '+e.message);throw e;});pending.set(url,p);return p;}
+function script(url,key,read){if(pending.has(url))return pending.get(url);const p=new Promise((ok,no)=>{const s=document.createElement('script');s.src=url;s.async=true;s.onload=()=>{T.dataReady[key]=true;ok(read());};s.onerror=()=>{T.dataReady[key]=false;S.errors.push(url+' failed');no(Error('script'));};document.head.append(s);});pending.set(url,p);return p;}
+const bind=(k,v)=>$$(`[data-bind="${k}"]`).forEach(n=>n.textContent=v);
+
+/* ---------- layout and scroll driver ---------- */
+const mobile=()=>innerWidth<760;
+function refLine(){if(!mobile())return innerHeight*.5;if(document.body.dataset.mode==='data')return 120;const sh=$('#stage').getBoundingClientRect().height;return sh+(innerHeight-sh)*.14;}
+function anchor(el){const r=el.querySelector('.step-body').getBoundingClientRect();return mobile()?r.top+28:r.top+Math.min(r.height/2,innerHeight*.42);}
+const ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
+let ticking=false;
+function update(){ticking=false;const ref=refLine(),a=steps.map(anchor);let i=0;while(i<a.length-1&&a[i+1]<=ref)i++;let t=0,j=Math.min(i+1,steps.length-1);
+  if(a[0]>ref){i=0;j=0;}else if(j!==i){const u=(ref-a[i])/Math.max(1,a[j]-a[i]);t=reduce?(u<.5?0:1):ease((u-.22)/.56);}
+  KS.setCamera(steps[i].dataset.cam,steps[j].dataset.cam,t);hud();const act=t<.5?i:j;if(act!==T.active)activate(act);}
+let hudText='';function hud(){const v=S.view;if(!v)return;const mpp=78271.517*Math.cos(v.center[1]*Math.PI/180)/Math.pow(2,v.zoom),span=mpp*S.W,txt=`${Math.abs(v.center[1]).toFixed(4)}°N ${Math.abs(v.center[0]).toFixed(4)}°W · view ${span>=10000?(span/1000).toFixed(0)+' km':span>=1000?(span/1000).toFixed(1)+' km':Math.round(span/10)*10+' m'} wide · tilt ${Math.round(v.pitch)}° · ${S.imagery==='ready'?'terrain and imagery live':S.imagery==='pending'?'imagery loading':'vector fallback'}`;if(txt!==hudText){hudText=txt;$('#hud-readout').textContent=txt;}}
+function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+function activate(i){T.active=i;const st=steps[i],ch=st.closest('.ch');steps.forEach(s=>s.classList.toggle('is-active',s===st));
+  const changed=ch.id!==T.chapter||!document.body.dataset.chapter;T.chapter=ch.id;T.step=st.dataset.step;document.body.dataset.chapter=ch.id;document.body.dataset.mode=ch.classList.contains('data-ch')?'data':'map';document.body.dataset.place=ch.dataset.case;
+  const n=ids.indexOf(ch.id);$('#chapter-number').textContent=String(n+1).padStart(2,'0')+' / '+String(ids.length).padStart(2,'0');$('#chapter-name').textContent=ch.dataset.title;$$('#chapter-menu a').forEach(x=>x.setAttribute('aria-current',x.dataset.go===ch.id?'step':'false'));
+  if(st.dataset.lens){T.lens=st.dataset.lens;}$$('.lens-bar [data-lens]').forEach(b=>b.setAttribute('aria-pressed',String(!!st.dataset.lens&&b.dataset.lens===st.dataset.lens)));
+  if(st.dataset.support)$('#support-readout').textContent='Support · '+st.dataset.support;
+  document.body.dataset.lensbar=(ch.id==='living'||(ch.id==='spillover'&&st.dataset.step==='define'))?'on':'off';
+  rail(ch);url(false);status();need(n);
+  $('#stage-alt').textContent=({object:'The checked Eagle County parcel boundary.',cells:'The parcel filled with 30 m canopy cells.',context500:'The parcel inside its 500 m context with mapped wetland to the east.',ring1k:'The parcel inside its 1 km neighbourhood. No bird record is placed on the map.',frame:'The parcel and its neighbourhood. No station or plot lies in the frame.',river:'The parcel as a small mark beside the Eagle River network, drawn as context.',transit:'Colorado at regional scale. The Eagle parcel, the Grand Lake stations and the Glenwood station are separate places.',grandlake:'Two associated basins near Grand Lake with the mapped fire overlap on the northern one.',grandlakeDim:'Grand Lake basins, dimmed behind the figures.',back:'The Eagle parcel again.',backDim:'The Eagle parcel again.'})[st.dataset.cam]||'';}
+function url(push){const u=new URL(location.href);u.searchParams.set('chapter',T.chapter);const first=$('#'+T.chapter+' .step').dataset.step;if(T.step&&T.step!==first)u.searchParams.set('step',T.step);else u.searchParams.delete('step');u.hash='';const next=u.pathname+u.search;if(next!==location.pathname+location.search)history[push?'pushState':'replaceState']({chapter:T.chapter,step:T.step},'',next);}
+function go(chapter,step,push){chapter=ALIAS[chapter]||chapter;const ch=document.getElementById(chapter)||chapters[0],st=(step&&ch.querySelector(`.step[data-step="${step}"]`))||ch.querySelector('.step');$('#chapter-menu').open=false;document.body.dataset.mode=ch.classList.contains('data-ch')?'data':'map';
+  const y=scrollY+anchor(st)-refLine()+2;if(push){const u=new URL(location.href);u.searchParams.set('chapter',ch.id);if(step)u.searchParams.set('step',step);else u.searchParams.delete('step');history.pushState({chapter:ch.id,step},'',u.pathname+u.search);}
+  scrollTo({top:Math.max(0,y),behavior:'instant'});update();}
+function status(){const place=T.chapter==='measured'||document.body.dataset.mode==='data'?(T.chapter==='windows'&&T.case==='glenwood'?'Glenwood · separate case':'Grand Lake · separate case'):'Eagle County · checked parcel geometry';
+  const img=S.imagery==='ready'?'current imagery inside evidence support':S.imagery==='pending'?'imagery loading':'imagery off · vector geometry';$('#stage-state').textContent=place+' · '+img;const b=$('#imagery-toggle');b.setAttribute('aria-pressed',String(S.imagery!=='off'));b.textContent=S.imagery==='off'?'Imagery off':'Imagery on';}
+
+/* ---------- the chain rail: the same seven links from first screen to last ---------- */
+const LINKS=[['polygon','Polygon','polygon'],['process','Process','living'],['effect','Effect','spillover'],['beneficiary','Beneficiary','spillover'],['consequence','Consequence','windows'],['signal','Signal','clock'],['obligation','Obligation','obligation']];
+const GLENWOOD=[['pending','None attributed'],['pending','None mapped here'],['pending','Unattributed'],['pending','Unidentified'],['proxy','Monitoring spend only'],['observed','Observed'],['pending','None']];
+const FALLBACK={eagle:['observed','proxy','pending','pending','pending','pending','pending'],north:['pending','proxy','pending','pending','proxy','observed','pending']};
+function rail(ch){const place=ch.dataset.case,glen=ch.id==='windows'&&T.case==='glenwood',list=glen?GLENWOOD.map(g=>({state:g[0],eagle:g[1]})):D.passport?(place==='north'?D.passport.chain_north:D.passport.chain):null,cur=(ch.dataset.links||'').split(' '),ol=$('#rail-links');
+  $('#rail-case').textContent=place==='north'?(T.chapter==='windows'&&T.case==='glenwood'?'Glenwood station':'North Inlet station'):'Eagle parcel';
+  if(!ol.children.length){LINKS.forEach(([id,label,target],k)=>{const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.dataset.link=id;b.innerHTML=`<i></i><span>${label}</span><em></em>`;b.addEventListener('click',()=>{if(id==='beneficiary')go('spillover','chain',true);else go(target,null,true);});li.append(b);ol.append(li);});}
+  [...ol.children].forEach((li,k)=>{const b=li.firstChild,state=list?list[k].state:FALLBACK[place][k],word=list?list[k].eagle:'';b.className=state;b.setAttribute('aria-current',String(cur.includes(LINKS[k][0])));b.querySelector('em').textContent=word;b.setAttribute('aria-label',`${LINKS[k][1]}: ${word||state}. Go to that part of the story.`);});}
+
+/* ---------- lazy data per chapter ---------- */
+const loaded={};
+function once(k,f){if(!loaded[k]){loaded[k]=true;f();}}
+function need(n){once('eagle',loadEagle);if(n>=0)once('rivers',loadRivers);if(n>=1)once('grand',loadGrand);if(n>=3)once('clock',loadClock);if(n>=4)once('evidence',loadEvidence);if(n>=6)once('evidence',loadEvidence);}
+function loadEagle(){json('data/keystone/eagle.json','eagle').then(e=>{KS.provide('eagle',e);const s=e.structure,co=e.birds.cohort;bind('forest',s.forest_pct.toFixed(1)+'%');bind('canopy',s.canopy_pct.toFixed(1)+'%');bind('centers',s.cell_centers_inside);bind('year',s.source_year);bind('vmin',e.vmin+'%');bind('vmax',e.vmax+'%');bind('nwi-context',(e.inventory.nwi.context_mapped_fraction*100).toFixed(2)+'%');bind('parcel-records',e.birds.scope.exact_parcel_retained_record_count);bind('public-records',co.public_design_records);bind('groups',co.species_name_groups_in_release);bind('withheld',co.excluded_records);
+    $('#cell-slider').max=e.cells.length;$$('#canopy-scale i').forEach((n,i,a)=>n.style.background=KS.ramp(i/(a.length-1)));
+    T.figures.species=KSC.species($('#species-strip'),e,$('#species-readout'));
+  }).catch(()=>{KSC.unavailable($('#species-strip'),'Record subset');$('#cell-readout').textContent='Structure layers unavailable. The checked boundary is still drawn.';});
+  json('data/keystone/passport.json','passport').then(p=>{rail(document.getElementById(T.chapter));chain();mechanisms();T.figures.ladder=KSC.ladder($('#ladder'),p);}).catch(()=>{KSC.unavailable($('#chain-figure'),'Chain record');KSC.unavailable($('#mechanisms'),'Mechanism register');KSC.unavailable($('#task-mechanisms'),'Mechanism register');KSC.unavailable($('#ladder'),'Gate register');});}
+function loadRivers(){const run=()=>script('data/hydro.js','rivers',()=>window.__HYDRO).then(h=>KS.provide('rivers',h)).catch(()=>{});(window.requestIdleCallback||setTimeout)(run,{timeout:1500});}
+function loadGrand(){const set=(k,v)=>KS.provide(k,v);json('data/context/nldi_associated_basins.geojson','basins').then(j=>set('basins',j)).catch(()=>{});json('data/context/burn_basin_intersections.geojson','burn').then(j=>set('burn',j)).catch(()=>{});
+  Promise.allSettled([json('data/context/north_upstream.geojson','northNetwork'),json('data/context/east_upstream.geojson','eastNetwork')]).then(r=>set('networks',r.filter(x=>x.status==='fulfilled').map(x=>x.value)));
+  json('data/keystone/context.json','context').then(c=>{const f=c.fire[0];bind('fire-pct',(f.fire_fraction*100).toFixed(1)+'%');bind('fire-km2',f.fire_km2.toFixed(1)+' km²');KSC.severity($('#severity'),c.fire);KSC.supportBars($('#support-bars'),c);}).catch(()=>{KSC.unavailable($('#severity'),'Spectral class record');KSC.unavailable($('#support-bars'),'Coverage record');});}
+function loadClock(){json('data/keystone/clock.json','clock').then(c=>{const ui={slider:$('#clock-slider'),readout:$('#clock-readout'),shown:()=>$$('[data-temp][aria-pressed="true"]').map(b=>b.dataset.temp)};T.figures.clock=KSC.clock($('#clock-figure'),c,ui);const p=T.figures.clock.peaks,days=((p['63680'].ms-p['00045'].ms)/86400000);
+    $('#clock-note').textContent=`Rain peaked at ${p['00045'].max} in on ${KSC.stamp(p['00045'].ms)}. Turbidity peaked at ${p['63680'].max} FNU on ${KSC.stamp(p['63680'].ms)}. The two maxima sit ${days.toFixed(1)} days apart on the clock. Flow peaked at ${p['00060'].max} ft³/s on ${KSC.stamp(p['00060'].ms)}${p['00060'].ties>1?', the first of '+p['00060'].ties+' tied readings':''}. The comparison describes what the instruments recorded. A causal delay needs its own analysis, and turbidity in FNU is a different quantity from sediment mass.`;
+  }).catch(()=>KSC.unavailable($('#clock-figure'),'Observed record'));
+  json('data/keystone/thermal-daily.json','daily').then(d=>{bind('q-days',d.counts.qualified.toLocaleString('en-US'));bind('p-days',d.counts.partial);bind('u-days',d.counts.unavailable);T.figures.coverage=KSC.coverage($('#coverage-figure'),d,$('#coverage-readout'));}).catch(()=>KSC.unavailable($('#coverage-figure'),'Daily coverage record'));}
+function loadEvidence(){json('data/experience-evidence.json','evidence').then(e=>{const m=e.north.allocation_metrics,b=m[0].owning_metrics.mae_log1p_fnu,s=m[1].owning_metrics.mae_log1p_fnu;bind('gain-pct',((b-s)/b*100).toFixed(2)+'%');bind('n-windows',m[0].owning_metrics.n_windows.toLocaleString('en-US'));bind('east-n',e.north.external_transfer.window_count.toLocaleString('en-US'));
+    KSC.intervals($('#interval-figure'),e);KSC.features($('#feature-figure'));drawWindows();}).catch(()=>{KSC.unavailable($('#interval-figure'),'Frozen evaluation');KSC.unavailable($('#windows-figure'),'Allocation record');$('#windows-claim').textContent='The allocation could not be loaded. No schedule is invented.';$('#review-link').hidden=true;});}
+
+/* ---------- chain inspector ---------- */
+function chain(){const p=D.passport,host=$('#chain-figure');if(!p)return;host.replaceChildren();const rows=T.direction==='forward'?[['eagle','Eagle parcel',p.chain],['north','North Inlet station · separate case',p.chain_north]]:[['north','North Inlet station · separate case',p.chain_north],['eagle','Eagle parcel',p.chain]];
+  rows.forEach(([place,title,list])=>{const row=document.createElement('div');row.className='chain-row';row.dataset.place=place;const h=document.createElement('p');h.className='k-note';h.textContent=title;row.append(h);const ol=document.createElement('ol');const seq=T.direction==='forward'?list:[...list].reverse();
+    seq.forEach(l=>{const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.className='link '+l.state;b.dataset.place=place;b.dataset.link=l.id;b.innerHTML=`<i></i><span>${l.label}</span><em>${l.eagle}</em>`;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>inspect(place,l,b));li.append(b);ol.append(li);});row.append(ol);host.append(row);});
+  const note=document.createElement('p');note.className='k-note';note.textContent=T.direction==='forward'?'Forward reading asks who could receive an effect from this land. Only the first Eagle link is established.':'Reverse reading starts at an asset and asks which land it depends on. Colorado has no named asset yet. The nearest thing is a measurement station, and a station is neither a recipient nor a payer. No link joins the two rows.';host.append(note);
+  const held=p.chain.filter(l=>l.state==='observed').length;T.figures.chain={eagleObserved:held,northObserved:p.chain_north.filter(l=>l.state==='observed').length};}
+function inspect(place,l,btn){$$('#chain-figure .link').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));T.inspected=place+':'+l.id;const r=$('#chain-readout');r.innerHTML='';const h=document.createElement('h3');h.textContent=l.label+' · '+(place==='eagle'?'Eagle parcel':'North Inlet');const st=document.createElement('i');st.className='k-state '+l.state;st.textContent=l.eagle;h.append(' ',st);r.append(h);const p=document.createElement('p');p.textContent=l.detail;r.append(p);const dl=document.createElement('dl');[['Mechanism',l.mechanism],['Direction',l.direction],['Source',l.source],['Date',l.date],['Uncertainty',l.uncertainty],['Next verification',l.next]].forEach(([k,v])=>{const d=document.createElement('div');d.innerHTML='<dt></dt><dd></dd>';d.firstChild.textContent=k;d.lastChild.textContent=v;dl.append(d);});r.append(dl);}
+
+/* ---------- mechanisms: one choice shared with the candidate file ---------- */
+function mechanisms(){const p=D.passport;if(!p)return;[['#mechanisms','#mechanism-readout'],['#task-mechanisms','#task-preview']].forEach(([hostSel,outSel])=>{const host=$(hostSel);host.replaceChildren();p.mechanisms.forEach(m=>{const b=document.createElement('button');b.type='button';b.className='mech';b.setAttribute('role','radio');b.dataset.mechanism=m.id;b.innerHTML=`<span>${m.label}</span>`;b.addEventListener('click',()=>pick(m.id));
+      b.addEventListener('keydown',e=>{const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];if(!k)return;e.preventDefault();const list=p.mechanisms.map(x=>x.id),n=list[(list.indexOf(T.mechanism)+k+list.length)%list.length];pick(n);host.querySelector(`[data-mechanism="${n}"]`).focus();});host.append(b);});});pick(T.mechanism,true);}
+function pick(id,quiet){const p=D.passport,m=p.mechanisms.find(x=>x.id===id)||p.mechanisms[0];T.mechanism=m.id;if(!quiet)persist();$$('.mech').forEach(b=>{const on=b.dataset.mechanism===m.id;b.setAttribute('aria-checked',String(on));b.tabIndex=on?0:-1;});
+  $('#mechanism-readout').innerHTML=`<div class="sides"><div><h3>If it holds</h3><p></p></div><div><h3>The other side</h3><p></p></div></div><dl><div><dt>Evidence today</dt><dd></dd></div><div><dt>Another explanation</dt><dd></dd></div><div><dt>Possible recipient</dt><dd></dd></div><div><dt>Observation that would test it</dt><dd></dd></div></dl><p class="k-note"></p>`;
+  const r=$('#mechanism-readout'),ps=r.querySelectorAll('.sides p'),dd=r.querySelectorAll('dd');ps[0].textContent=m.hypothesis;ps[1].textContent=m.adverse;dd[0].textContent=m.supporting;dd[1].textContent=m.alternative;dd[2].textContent=m.recipient;dd[3].textContent=m.mrv.question;r.querySelector('.k-note').textContent=m.kind+'.';
+  $('#task-preview').innerHTML='<dl><div><dt>Question</dt><dd></dd></div><div><dt>Method</dt><dd></dd></div><div><dt>Timing</dt><dd></dd></div><div><dt>Access first</dt><dd></dd></div><div><dt>Decision it could change</dt><dd></dd></div></dl>';const td=$$('#task-preview dd');td[0].textContent=m.mrv.question;td[1].textContent=m.mrv.method;td[2].textContent=m.mrv.timing;td[3].textContent=m.mrv.access;td[4].textContent=m.mrv.decision;
+  $('#open-file').href='passport.html?mechanism='+m.id+'#observation';}
+
+/* ---------- windows and budget ---------- */
+function cents(str){const s=String(str).trim().replace(/,/g,'');if(s==='')return{empty:true};if(!/^\d{1,7}(\.\d{1,2})?$/.test(s))return{error:true};const[a,b='']=s.split('.');return{value:Number(a)*100+Number((b+'00').slice(0,2))};}
+const usd=c=>'USD '+(Math.floor(c/100)).toLocaleString('en-US')+'.'+String(c%100).padStart(2,'0');
+function drawWindows(){const e=D.evidence;if(!e)return;const name=T.case,north=name==='north',t=T.figures.windows=KSC.windows($('#windows-figure'),e,name,$('#window-readout'));$$('[data-case-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.caseChoice===name)));
+  const learned=north?'learned policy':'classifier';$('#windows-claim').textContent=`${north?'North Inlet, 2023–2024.':'Glenwood, 2024–2025.'} The baseline proposed ${t.base.n} windows and the ${learned} ${t.model.n}. They share ${t.shared.n}. Switching policy drops ${t.baseline.n} windows and adds ${t.learned.n}.`;
+  $('#windows-verdict').textContent=north?`The learned policy failed promotion. It proposed ${t.model.n-t.base.n} more windows and found ${t.model.high} known high outcomes against ${t.base.high}.`:`The classifier failed its joint gate. It used ${t.model.n-t.base.n} more windows, and its precision gain interval touches zero.`;
+  $('#windows .step').dataset.cam=north?'grandlakeDim':'glenwoodDim';update();
+  $('#review-link').href='review.html?case='+name;$('#review-link').hidden=false;$('#window-readout').textContent='Select a window to read its UTC time, policy and outcome.';rail(document.getElementById(T.chapter));status();budget();}
+function budget(){const out=$('#budget-out'),t=T.figures.windows,c=cents($('#unit-cost').value);T.cost=$('#unit-cost').value;T.budget=null;if(!t){out.textContent='';return;}
+  if(c.empty){out.innerHTML='<p class="k-note">Cost not entered. Totals stay unknown until you supply a figure.</p>';return;}
+  if(c.error){out.innerHTML='<p class="k-fail">Enter a plain amount such as 185 or 185.50. Totals are withheld.</p>';return;}
+  const b=c.value*t.base.n,m=c.value*t.model.n,per=(tot,n)=>n?usd(Math.round(tot/n)):'no known high window';T.budget={unit_cents:c.value,baseline_cents:b,learned_cents:m,difference_cents:m-b};
+  out.innerHTML=`<dl class="money"><div><dt>Baseline · ${t.base.n} windows</dt><dd class="mono">${usd(b)}</dd><dd class="k-note">${per(b,t.base.high)} per known high window</dd></div><div><dt>${T.case==='north'?'Learned policy':'Classifier'} · ${t.model.n} windows</dt><dd class="mono">${usd(m)}</dd><dd class="k-note">${per(m,t.model.high)} per known high window${t.model.unknown?' · '+t.model.unknown+' unknown outcomes costed':''}</dd></div><div><dt>Difference</dt><dd class="mono">${usd(m-b)}</dd><dd class="k-note">for ${t.model.n-t.base.n} extra windows</dd></div></dl>`;}
+
+/* ---------- wiring ---------- */
+$$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.go,a.dataset.goStep,true);}));
+$$('.lens-bar [data-lens]').forEach(b=>b.addEventListener('click',()=>{const l=b.dataset.lens;if(l==='function')go('spillover','define',true);else go('living',l,true);}));
+$$('[data-layer]').forEach(b=>b.addEventListener('click',()=>{T.layer=b.dataset.layer;S.lens=T.layer;$$('[data-layer]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#canopy-scale').hidden=T.layer!=='canopy';$('#cell-readout').textContent=T.layer==='canopy'?'Point at a cell to read its canopy cover.':T.layer==='landcover'?landcoverText():'Current imagery inside the boundary. It records no event date.';KS.invalidate();}));
+function landcoverText(){const e=D.eagle;if(!e)return'';const n={41:'deciduous forest',42:'evergreen forest',52:'shrub and scrub'};return e.structure.class_areas.map(c=>`${n[c.code]||'class '+c.code} ${(c.fraction*100).toFixed(1)}%`).join(' · ');}
+function cellText(i){const e=D.eagle;if(!e||i<0||!e.cells[i])return'Point at a cell to read its canopy cover.';return`Tile ${i+1} of ${e.cells.length} · canopy cover ${e.cells[i].v}% · 30 m cells clipped to the parcel · 2023`;}
+document.addEventListener('ks:cell',e=>{if(T.layer!=='canopy')return;const i=e.detail.index;$('#cell-readout').textContent=cellText(i);if(i>=0)$('#cell-slider').value=i+1;});
+$('#cell-slider').addEventListener('input',e=>{const i=Number(e.target.value)-1;if(T.layer!=='canopy')$('[data-layer="canopy"]').click();S.pinCell=i;KS.invalidate();$('#cell-readout').textContent=cellText(i);e.target.setAttribute('aria-valuetext',cellText(i));});
+$$('[data-direction]').forEach(b=>b.addEventListener('click',()=>{T.direction=b.dataset.direction;$$('[data-direction]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));chain();$('#chain-readout').innerHTML='<p class="k-note">Select a link to read its evidence, its uncertainty and the next check.</p>';}));
+$('#fire-toggle').addEventListener('click',e=>{S.fire=!S.fire;e.currentTarget.setAttribute('aria-pressed',String(S.fire));KS.invalidate();});
+$$('[data-peak]').forEach(b=>b.addEventListener('click',()=>{if(T.figures.clock)T.figures.clock.toPeak(b.dataset.peak);}));
+$$('[data-temp]').forEach(b=>b.addEventListener('click',()=>{b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true'));if(T.figures.clock)T.figures.clock.rebuild();}));
+$$('[data-case-choice]').forEach(b=>b.addEventListener('click',()=>{T.case=b.dataset.caseChoice;persist();drawWindows();}));
+$('#unit-cost').value=T.cost;$('#unit-cost').addEventListener('input',()=>{budget();persist();});
+$('#imagery-toggle').addEventListener('click',()=>{KS.toggleImagery(S.imagery==='off');status();});
+$('#reset-story').addEventListener('click',()=>{T.case='north';T.cost='';T.mechanism='habitat';T.direction='forward';$('#unit-cost').value='';persist();S.pinCell=-1;S.fire=true;$('#fire-toggle').setAttribute('aria-pressed','true');if(D.passport){pick('habitat',true);$('[data-direction="forward"]').click();}if(D.evidence)drawWindows();go('polygon',null,true);});
+document.addEventListener('ks:imagery',()=>{status();hud();});
+addEventListener('scroll',onScroll,{passive:true});
+let rz=0;addEventListener('resize',()=>{KS.resize();update();clearTimeout(rz);rz=setTimeout(()=>{if(D.eagle)T.figures.species=KSC.species($('#species-strip'),D.eagle,$('#species-readout'));if(T.figures.clock)T.figures.clock.rebuild();if(D.daily)KSC.coverage($('#coverage-figure'),D.daily,$('#coverage-readout'));if(D.evidence){KSC.intervals($('#interval-figure'),D.evidence);KSC.features($('#feature-figure'));drawWindows();}if(D.context){KSC.severity($('#severity'),D.context.fire);KSC.supportBars($('#support-bars'),D.context);}update();},160);});
+addEventListener('popstate',()=>{const p=new URLSearchParams(location.search);go(p.get('chapter')||'polygon',p.get('step'),false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#chapter-menu').open=false;});
+
+/* ---------- start ---------- */
+document.body.classList.add('story-ready');KS.resize();
+const wanted=ALIAS[q.get('chapter')]||q.get('chapter')||(ids.includes(location.hash.slice(1))?location.hash.slice(1):'polygon');
+update();if(wanted!=='polygon'||q.get('step')){need(ids.indexOf(wanted));requestAnimationFrame(()=>go(wanted,q.get('step'),false));}
+const begin=()=>KS.loadLibrary();if(document.readyState==='complete')setTimeout(begin,60);else addEventListener('load',()=>setTimeout(begin,60));
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>update());
+T.ready=true;
+})();

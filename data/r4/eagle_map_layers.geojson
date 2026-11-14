@@ -1,0 +1,3727 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37900187140899,
+              39.479166230376045
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "forest_pct",
+        "value": 52.0,
+        "unit": "categorical land-cover code",
+        "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.3782809148011,
+              39.479077326632364
+            ],
+            [
+              -106.37845520128822,
+              39.4789425249746
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "forest_pct",
+        "value": 41.0,
+        "unit": "categorical land-cover code",
+        "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.37900187140899,
+              39.479166230376045
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37931337107769,
+              39.478870956724876
+            ],
+            [
+              -106.37927500738678,
+              39.47860486117578
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.38015828512391,
+              39.47826189740561
+            ],
+            [
+              -106.380381178829,
+              39.47860853117252
+            ],
+            [
+              -106.37642574204114,
+              39.48161103613259
+            ],
+            [
+              -106.37594946935516,
+              39.48088050891162
+            ],
+            [
+              -106.3782809148011,
+              39.479077326632364
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "forest_pct",
+        "value": 42.0,
+        "unit": "categorical land-cover code",
+        "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37845520128822,
+              39.4789425249746
+            ],
+            [
+              -106.37891801306701,
+              39.47858456021079
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "forest_pct",
+        "value": 42.0,
+        "unit": "categorical land-cover code",
+        "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.37927500738678,
+              39.47860486117578
+            ],
+            [
+              -106.37931337107769,
+              39.478870956724876
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37891801306701,
+              39.47858456021079
+            ],
+            [
+              -106.37988488354331,
+              39.47783671114307
+            ],
+            [
+              -106.38015828512391,
+              39.47826189740561
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "forest_pct",
+        "value": 41.0,
+        "unit": "categorical land-cover code",
+        "source_sha256": "431eeda28d1519927a6ef6a0d0fc8245bd95d293d6d2fa1f9cfd9389b260da12",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ],
+            [
+              -106.37653768647235,
+              39.48152606612699
+            ],
+            [
+              -106.37651223199865,
+              39.4815453870497
+            ],
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 50.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ],
+            [
+              -106.37651223199865,
+              39.4815453870497
+            ],
+            [
+              -106.37642574204114,
+              39.48161103613259
+            ],
+            [
+              -106.37637897185222,
+              39.48153929876253
+            ],
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 43.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ],
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ],
+            [
+              -106.37682130246483,
+              39.481233124950734
+            ],
+            [
+              -106.37683139324504,
+              39.48130313029764
+            ],
+            [
+              -106.37653768647235,
+              39.48152606612699
+            ],
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 46.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ],
+            [
+              -106.3765097824349,
+              39.48152839260663
+            ],
+            [
+              -106.37637897185222,
+              39.48153929876253
+            ],
+            [
+              -106.37621245368284,
+              39.481283887443254
+            ],
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ],
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ],
+            [
+              -106.37715055235194,
+              39.48106087274878
+            ],
+            [
+              -106.37683139324504,
+              39.48130313029764
+            ],
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 49.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ],
+            [
+              -106.3773348048337,
+              39.48092101489913
+            ],
+            [
+              -106.37715055235194,
+              39.48106087274878
+            ],
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 51.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ],
+            [
+              -106.37643307315786,
+              39.48099619935643
+            ],
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ],
+            [
+              -106.37682130246483,
+              39.481233124950734
+            ],
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ],
+            [
+              -106.37643307315786,
+              39.48099619935643
+            ],
+            [
+              -106.37647142765518,
+              39.48126229597636
+            ],
+            [
+              -106.37621245368284,
+              39.481283887443254
+            ],
+            [
+              -106.37609435024747,
+              39.4811027350988
+            ],
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 30.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ],
+            [
+              -106.37609435024747,
+              39.4811027350988
+            ],
+            [
+              -106.37604593669033,
+              39.4810284759225
+            ],
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ],
+            [
+              -106.37773335900974,
+              39.48061848742108
+            ],
+            [
+              -106.37746970931933,
+              39.48081861440301
+            ],
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 50.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ],
+            [
+              -106.3770944631894,
+              39.4806717601555
+            ],
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ],
+            [
+              -106.37746970931933,
+              39.48081861440301
+            ],
+            [
+              -106.3773348048337,
+              39.48092101489913
+            ],
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 46.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ],
+            [
+              -106.37674459120738,
+              39.48070093194089
+            ],
+            [
+              -106.3770944631894,
+              39.4806717601555
+            ],
+            [
+              -106.37713281994951,
+              39.48093785654551
+            ],
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 35.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37643307315786,
+              39.48099619935643
+            ],
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ],
+            [
+              -106.37674459120738,
+              39.48070093194089
+            ],
+            [
+              -106.3767829466949,
+              39.48096702844064
+            ],
+            [
+              -106.37643307315786,
+              39.48099619935643
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 37.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ],
+            [
+              -106.37643307315786,
+              39.48099619935643
+            ],
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ],
+            [
+              -106.37605100246036,
+              39.480801984121385
+            ],
+            [
+              -106.37611364513585,
+              39.48075353671441
+            ],
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 32.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ],
+            [
+              -106.37604593669033,
+              39.4810284759225
+            ],
+            [
+              -106.37594946935516,
+              39.48088050891162
+            ],
+            [
+              -106.37605100246036,
+              39.480801984121385
+            ],
+            [
+              -106.3760831993384,
+              39.481025369292816
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 40.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ],
+            [
+              -106.3781319098494,
+              39.48031595870046
+            ],
+            [
+              -106.3781080168357,
+              39.48033409532081
+            ],
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 56.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ],
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ],
+            [
+              -106.3781080168357,
+              39.48033409532081
+            ],
+            [
+              -106.37778886414725,
+              39.48057635526034
+            ],
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 47.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ],
+            [
+              -106.37740597713871,
+              39.48037649112095
+            ],
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ],
+            [
+              -106.37778886414725,
+              39.48057635526034
+            ],
+            [
+              -106.37773335900974,
+              39.48061848742108
+            ],
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 43.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3770944631894,
+              39.4806717601555
+            ],
+            [
+              -106.37705610671169,
+              39.48040566377588
+            ],
+            [
+              -106.37740597713871,
+              39.48037649112095
+            ],
+            [
+              -106.37744433488898,
+              39.48064258739076
+            ],
+            [
+              -106.3770944631894,
+              39.4806717601555
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 21.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37674459120738,
+              39.48070093194089
+            ],
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ],
+            [
+              -106.37705610671169,
+              39.48040566377588
+            ],
+            [
+              -106.3770944631894,
+              39.4806717601555
+            ],
+            [
+              -106.37674459120738,
+              39.48070093194089
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 31.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ],
+            [
+              -106.37674459120738,
+              39.48070093194089
+            ],
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ],
+            [
+              -106.37636956788153,
+              39.48055560685983
+            ],
+            [
+              -106.37650391264322,
+              39.48045170440069
+            ],
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 35.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ],
+            [
+              -106.37611364513585,
+              39.48075353671441
+            ],
+            [
+              -106.37636956788153,
+              39.48055560685983
+            ],
+            [
+              -106.37639471894293,
+              39.48073010274679
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 36.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ],
+            [
+              -106.37853045735272,
+              39.48001342873713
+            ],
+            [
+              -106.37842716738469,
+              39.48009183458437
+            ],
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 51.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ],
+            [
+              -106.3780673571324,
+              39.480052046833144
+            ],
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ],
+            [
+              -106.37842716738469,
+              39.48009183458437
+            ],
+            [
+              -106.3781319098494,
+              39.48031595870046
+            ],
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 48.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ],
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ],
+            [
+              -106.3780673571324,
+              39.480052046833144
+            ],
+            [
+              -106.3781057171454,
+              39.48031814287297
+            ],
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 42.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37740597713871,
+              39.48037649112095
+            ],
+            [
+              -106.37736761967085,
+              39.48011039486142
+            ],
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ],
+            [
+              -106.37775584728327,
+              39.48034731748664
+            ],
+            [
+              -106.37740597713871,
+              39.48037649112095
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 30.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37705610671169,
+              39.48040566377588
+            ],
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ],
+            [
+              -106.37736761967085,
+              39.48011039486142
+            ],
+            [
+              -106.37740597713871,
+              39.48037649112095
+            ],
+            [
+              -106.37705610671169,
+              39.48040566377588
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 37.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ],
+            [
+              -106.37705610671169,
+              39.48040566377588
+            ],
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ],
+            [
+              -106.3766881311309,
+              39.480309228805
+            ],
+            [
+              -106.37689417689111,
+              39.48014987089646
+            ],
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 30.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ],
+            [
+              -106.37650391264322,
+              39.48045170440069
+            ],
+            [
+              -106.3766881311309,
+              39.480309228805
+            ],
+            [
+              -106.37670623600228,
+              39.48043483545138
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 29.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37872873118845,
+              39.47972759907739
+            ],
+            [
+              -106.37892900151971,
+              39.47971089753114
+            ],
+            [
+              -106.37874631579426,
+              39.479849573051126
+            ],
+            [
+              -106.37872873118845,
+              39.47972759907739
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 51.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ],
+            [
+              -106.37837886443636,
+              39.47975677543019
+            ],
+            [
+              -106.37872873118845,
+              39.47972759907739
+            ],
+            [
+              -106.37874631579426,
+              39.479849573051126
+            ],
+            [
+              -106.37853045735272,
+              39.48001342873713
+            ],
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 49.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3780673571324,
+              39.480052046833144
+            ],
+            [
+              -106.37802899740183,
+              39.47978595080355
+            ],
+            [
+              -106.37837886443636,
+              39.47975677543019
+            ],
+            [
+              -106.37841722543948,
+              39.480022871349924
+            ],
+            [
+              -106.3780673571324,
+              39.480052046833144
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 43.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ],
+            [
+              -106.37767913008483,
+              39.479815125197625
+            ],
+            [
+              -106.37802899740183,
+              39.47978595080355
+            ],
+            [
+              -106.3780673571324,
+              39.480052046833144
+            ],
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 36.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37732926248542,
+              39.47984429861227
+            ],
+            [
+              -106.37736761967085,
+              39.48011039486142
+            ],
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ],
+            [
+              -106.37700669220848,
+              39.48006284995691
+            ],
+            [
+              -106.37728443787951,
+              39.4798480362017
+            ],
+            [
+              -106.37732926248542,
+              39.47984429861227
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ],
+            [
+              -106.37689417689111,
+              39.48014987089646
+            ],
+            [
+              -106.37700669220848,
+              39.48006284995691
+            ],
+            [
+              -106.37701775051643,
+              39.480139567406525
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 21.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ],
+            [
+              -106.37736761967085,
+              39.48011039486142
+            ],
+            [
+              -106.37732525111426,
+              39.479816470315576
+            ],
+            [
+              -106.37764380784829,
+              39.4795700898811
+            ],
+            [
+              -106.37771748854283,
+              39.48008122133696
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 46.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ],
+            [
+              -106.3793275423504,
+              39.4794083650825
+            ],
+            [
+              -106.3790654620644,
+              39.479607310721036
+            ],
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 51.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37837886443636,
+              39.47975677543019
+            ],
+            [
+              -106.37834050371568,
+              39.47949067952077
+            ],
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ],
+            [
+              -106.3790654620644,
+              39.479607310721036
+            ],
+            [
+              -106.37892900151971,
+              39.47971089753114
+            ],
+            [
+              -106.37837886443636,
+              39.47975677543019
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 46.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37802899740183,
+              39.47978595080355
+            ],
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ],
+            [
+              -106.37834050371568,
+              39.47949067952077
+            ],
+            [
+              -106.37837886443636,
+              39.47975677543019
+            ],
+            [
+              -106.37802899740183,
+              39.47978595080355
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 39.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ],
+            [
+              -106.37802899740183,
+              39.47978595080355
+            ],
+            [
+              -106.37767913008483,
+              39.479815125197625
+            ],
+            [
+              -106.37764380784829,
+              39.4795700898811
+            ],
+            [
+              -106.37767469560849,
+              39.479546200316506
+            ],
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 42.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37732926248542,
+              39.47984429861227
+            ],
+            [
+              -106.37728443787951,
+              39.4798480362017
+            ],
+            [
+              -106.37732525111426,
+              39.479816470315576
+            ],
+            [
+              -106.37732926248542,
+              39.47984429861227
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 47.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ],
+            [
+              -106.3797260798448,
+              39.47910583139114
+            ],
+            [
+              -106.37970374818649,
+              39.479122783670206
+            ],
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 59.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37935173505105,
+              39.4791370522842
+            ],
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ],
+            [
+              -106.37970374818649,
+              39.479122783670206
+            ],
+            [
+              -106.37938460619516,
+              39.479365047594044
+            ],
+            [
+              -106.37935173505105,
+              39.4791370522842
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 53.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ],
+            [
+              -106.37900187140899,
+              39.479166230376045
+            ],
+            [
+              -106.37935173505105,
+              39.4791370522842
+            ],
+            [
+              -106.37938460619516,
+              39.479365047594044
+            ],
+            [
+              -106.3793275423504,
+              39.4794083650825
+            ],
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 42.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37869036919523,
+              39.47946150327784
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37900187140899,
+              39.479166230376045
+            ],
+            [
+              -106.37904023439229,
+              39.47943232605555
+            ],
+            [
+              -106.37869036919523,
+              39.47946150327784
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 34.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37834050371568,
+              39.47949067952077
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37869036919523,
+              39.47946150327784
+            ],
+            [
+              -106.37834050371568,
+              39.47949067952077
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.37834050371568,
+              39.47949067952077
+            ],
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ],
+            [
+              -106.37796236241056,
+              39.47932370865335
+            ],
+            [
+              -106.37806495007804,
+              39.47924436324079
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 35.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ],
+            [
+              -106.37767469560849,
+              39.479546200316506
+            ],
+            [
+              -106.37796236241056,
+              39.47932370865335
+            ],
+            [
+              -106.3779906379537,
+              39.47951985478431
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 44.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.38001309496936,
+              39.47881259782276
+            ],
+            [
+              -106.38012461400298,
+              39.478803296457215
+            ],
+            [
+              -106.38002288803847,
+              39.47888051894954
+            ],
+            [
+              -106.38001309496936,
+              39.47881259782276
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 53.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ],
+            [
+              -106.37966323316475,
+              39.478841777763485
+            ],
+            [
+              -106.38001309496936,
+              39.47881259782276
+            ],
+            [
+              -106.38002288803847,
+              39.47888051894954
+            ],
+            [
+              -106.3797260798448,
+              39.47910583139114
+            ],
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 54.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.37966323316475,
+              39.478841777763485
+            ],
+            [
+              -106.37970159841065,
+              39.47910787321301
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 39.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.37865200748445,
+              39.4791954074885
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.3782809148011,
+              39.479077326632364
+            ],
+            [
+              -106.37845520128822,
+              39.4789425249746
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 49.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ],
+            [
+              -106.37806495007804,
+              39.47924436324079
+            ],
+            [
+              -106.3782809148011,
+              39.479077326632364
+            ],
+            [
+              -106.37830214327745,
+              39.479224583621594
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 32.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.38032518448459,
+              39.47852145175829
+            ],
+            [
+              -106.380381178829,
+              39.47860853117252
+            ],
+            [
+              -106.38034202575108,
+              39.478638253432
+            ],
+            [
+              -106.38032518448459,
+              39.47852145175829
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 50.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.38034202575108,
+              39.478638253432
+            ],
+            [
+              -106.38012461400298,
+              39.478803296457215
+            ],
+            [
+              -106.38001309496936,
+              39.47881259782276
+            ],
+            [
+              -106.37997472873342,
+              39.478546502493415
+            ],
+            [
+              -106.38032263361549,
+              39.47851748477736
+            ],
+            [
+              -106.38032518448459,
+              39.47852145175829
+            ],
+            [
+              -106.38034202575108,
+              39.478638253432
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 54.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37966323316475,
+              39.478841777763485
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.37997472873342,
+              39.478546502493415
+            ],
+            [
+              -106.38001309496936,
+              39.47881259782276
+            ],
+            [
+              -106.37966323316475,
+              39.478841777763485
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 45.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37931337107769,
+              39.478870956724876
+            ],
+            [
+              -106.37927500738678,
+              39.47860486117578
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.37966323316475,
+              39.478841777763485
+            ],
+            [
+              -106.37931337107769,
+              39.478870956724876
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 31.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37892514628975,
+              39.47863403904795
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.3785994650199,
+              39.47883094381815
+            ],
+            [
+              -106.37884544923904,
+              39.47864068551793
+            ],
+            [
+              -106.37892514628975,
+              39.47863403904795
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 41.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ],
+            [
+              -106.37845520128822,
+              39.4789425249746
+            ],
+            [
+              -106.3785994650199,
+              39.47883094381815
+            ],
+            [
+              -106.37861364605614,
+              39.47892931170949
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 23.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ],
+            [
+              -106.37931337107769,
+              39.478870956724876
+            ],
+            [
+              -106.37896350870814,
+              39.47890013470686
+            ],
+            [
+              -106.37891801306701,
+              39.47858456021079
+            ],
+            [
+              -106.37923569393053,
+              39.478338844870805
+            ],
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 40.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37997472873342,
+              39.478546502493415
+            ],
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ],
+            [
+              -106.38015828512391,
+              39.47826189740561
+            ],
+            [
+              -106.38032263361549,
+              39.47851748477736
+            ],
+            [
+              -106.37997472873342,
+              39.478546502493415
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 42.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ],
+            [
+              -106.37997472873342,
+              39.478546502493415
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 26.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37927500738678,
+              39.47860486117578
+            ],
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.37962486820133,
+              39.47857568232426
+            ],
+            [
+              -106.37927500738678,
+              39.47860486117578
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 42.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37892514628975,
+              39.47863403904795
+            ],
+            [
+              -106.37884544923904,
+              39.47864068551793
+            ],
+            [
+              -106.37891801306701,
+              39.47858456021079
+            ],
+            [
+              -106.37892514628975,
+              39.47863403904795
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 37.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ],
+            [
+              -106.37989799710901,
+              39.47801431186539
+            ],
+            [
+              -106.37999393779461,
+              39.47800630983794
+            ],
+            [
+              -106.38015828512391,
+              39.47826189740561
+            ],
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 38.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ],
+            [
+              -106.37923655894241,
+              39.47833817581019
+            ],
+            [
+              -106.37955510264614,
+              39.47809179061638
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 49.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ],
+            [
+              -106.37923569393053,
+              39.478338844870805
+            ],
+            [
+              -106.37923655894241,
+              39.47833817581019
+            ],
+            [
+              -106.37923664397835,
+              39.478338765636956
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 47.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ],
+            [
+              -106.3795865035204,
+              39.478309586895286
+            ],
+            [
+              -106.37955510264614,
+              39.47809179061638
+            ],
+            [
+              -106.37987364417822,
+              39.477845404629385
+            ],
+            [
+              -106.37993636277997,
+              39.47828040717426
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 41.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37989799710901,
+              39.47801431186539
+            ],
+            [
+              -106.37987364417822,
+              39.477845404629385
+            ],
+            [
+              -106.37988488354331,
+              39.47783671114307
+            ],
+            [
+              -106.37999393779461,
+              39.47800630983794
+            ],
+            [
+              -106.37989799710901,
+              39.47801431186539
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "canopy_pct",
+        "value": 50.0,
+        "unit": "percent",
+        "source_sha256": "8e423eb3e13bca4d9f083661e4fefb8f44f3eecda9fedc251428b8efd7478f6f",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.380381178829,
+              39.47860853117252
+            ],
+            [
+              -106.37642574204114,
+              39.48161103613259
+            ],
+            [
+              -106.37594946935516,
+              39.48088050891162
+            ],
+            [
+              -106.37988488354331,
+              39.47783671114307
+            ],
+            [
+              -106.380381178829,
+              39.47860853117252
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "impervious_pct",
+        "value": 0.0,
+        "unit": "percent",
+        "source_sha256": "86ce77871a1455b61a368052c88825a530cd36d4d7df2eebb20c55bfc2ac74c8",
+        "grid_status": "provider_nominal_30m_agreement_within_0.03m_tolerance",
+        "nominal_vintage": "explicit 2023 time slice; current service retrieval",
+        "semantic_class": "remote_sensing_context_not_field_biology"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.38565055187958,
+              39.476648293839496
+            ],
+            [
+              -106.38587226414252,
+              39.47703929342229
+            ],
+            [
+              -106.3860439606066,
+              39.47744458823648
+            ],
+            [
+              -106.38616407650179,
+              39.47786048660971
+            ],
+            [
+              -106.38623151682218,
+              39.47828320022015
+            ],
+            [
+              -106.38624566633155,
+              39.47870887859912
+            ],
+            [
+              -106.38620639520087,
+              39.47913364420269
+            ],
+            [
+              -106.38611406022507,
+              39.47955362773162
+            ],
+            [
+              -106.38596950160674,
+              39.47996500337967
+            ],
+            [
+              -106.38577403533502,
+              39.48036402368735
+            ],
+            [
+              -106.38552944122766,
+              39.48074705368489
+            ],
+            [
+              -106.38523794674433,
+              39.481110604012194
+            ],
+            [
+              -106.38490220671744,
+              39.481451362714616
+            ],
+            [
+              -106.38452527918471,
+              39.4817662254234
+            ],
+            [
+              -106.38056984174149,
+              39.48476886452675
+            ],
+            [
+              -106.38013583648672,
+              39.485066980480624
+            ],
+            [
+              -106.37966495522001,
+              39.48533075033855
+            ],
+            [
+              -106.37916187785449,
+              39.48555755237037
+            ],
+            [
+              -106.37863160446305,
+              39.48574513226289
+            ],
+            [
+              -106.37807940556742,
+              39.4858916255376
+            ],
+            [
+              -106.3775107697327,
+              39.485995576092066
+            ],
+            [
+              -106.37693134898888,
+              39.486055950681305
+            ],
+            [
+              -106.37634690262348,
+              39.486072149193625
+            ],
+            [
+              -106.37576323990504,
+              39.48604401061844
+            ],
+            [
+              -106.37518616230851,
+              39.48597181464831
+            ],
+            [
+              -106.37462140581833,
+              39.48585627889681
+            ],
+            [
+              -106.37407458388422,
+              39.48569855176163
+            ],
+            [
+              -106.37355113159826,
+              39.485500201003894
+            ],
+            [
+              -106.37305625164933,
+              39.485263198156474
+            ],
+            [
+              -106.37259486259353,
+              39.484989898918
+            ],
+            [
+              -106.37217154995543,
+              39.48468301972722
+            ],
+            [
+              -106.37179052064687,
+              39.48434561075086
+            ],
+            [
+              -106.371455561157,
+              39.48398102555508
+            ],
+            [
+              -106.37116999992861,
+              39.48359288776111
+            ],
+            [
+              -106.37069376730616,
+              39.48286234005607
+            ],
+            [
+              -106.37046991995274,
+              39.4824734860333
+            ],
+            [
+              -106.37029567928307,
+              39.482070212456335
+            ],
+            [
+              -106.37017262185404,
+              39.48165617015901
+            ],
+            [
+              -106.37010186079715,
+              39.481235107399314
+            ],
+            [
+              -106.37008403577238,
+              39.48081083592323
+            ],
+            [
+              -106.37011930721025,
+              39.48038719645522
+            ],
+            [
+              -106.37020735489308,
+              39.479968023929935
+            ],
+            [
+              -106.37034738088725,
+              39.479557112777904
+            ],
+            [
+              -106.3705381167983,
+              39.47915818258076
+            ],
+            [
+              -106.3707778352826,
+              39.478774844406374
+            ],
+            [
+              -106.37106436570967,
+              39.478410568128005
+            ],
+            [
+              -106.37115283074469,
+              39.47831911613041
+            ],
+            [
+              -106.37139511383316,
+              39.47806865102372
+            ],
+            [
+              -106.37176708529094,
+              39.47775218793927
+            ],
+            [
+              -106.37472341415953,
+              39.47546579150434
+            ],
+            [
+              -106.37472341415953,
+              39.47546579150434
+            ],
+            [
+              -106.37570250527673,
+              39.47470852486319
+            ],
+            [
+              -106.37613630485603,
+              39.47440511530508
+            ],
+            [
+              -106.3766079384701,
+              39.474136344353276
+            ],
+            [
+              -106.37711264559974,
+              39.473904924662364
+            ],
+            [
+              -106.3776453320745,
+              39.47371319188309
+            ],
+            [
+              -106.3782006214743,
+              39.473563081100515
+            ],
+            [
+              -106.37877290937294,
+              39.4734561073141
+            ],
+            [
+              -106.3793564198766,
+              39.47339335015527
+            ],
+            [
+              -106.37994526388867,
+              39.47337544299763
+            ],
+            [
+              -106.38053349851386,
+              39.47340256656801
+            ],
+            [
+              -106.38111518700359,
+              39.47347444712346
+            ],
+            [
+              -106.38168445863992,
+              39.47359035921264
+            ],
+            [
+              -106.38223556795447,
+              39.47374913299307
+            ],
+            [
+              -106.38276295268696,
+              39.4739491660317
+            ],
+            [
+              -106.38326128989944,
+              39.47418843946862
+            ],
+            [
+              -106.38372554968115,
+              39.474464538382676
+            ],
+            [
+              -106.38415104590327,
+              39.47477467615295
+            ],
+            [
+              -106.38453348351148,
+              39.47511572257098
+            ],
+            [
+              -106.38484609152185,
+              39.47545907223258
+            ],
+            [
+              -106.38486900187986,
+              39.47548423542144
+            ],
+            [
+              -106.38515421378828,
+              39.47587649521147
+            ],
+            [
+              -106.38565055187958,
+              39.476648293839496
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "padus",
+        "support": "500m_context_clipped_union",
+        "source_sha256": "9d840a18297b26a118a96963f043dfa22904fe30eeebcd488d8b60c01735b197",
+        "meaning": "provider mapped features; no legal or condition inference"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -106.37035677792196,
+              39.48004468635821
+            ],
+            [
+              -106.37036188019908,
+              39.48004344706881
+            ],
+            [
+              -106.37075730870568,
+              39.47997209393088
+            ],
+            [
+              -106.3714850482904,
+              39.479792775765084
+            ],
+            [
+              -106.37186852291549,
+              39.479505875168
+            ],
+            [
+              -106.37187301937391,
+              39.47950304254219
+            ],
+            [
+              -106.37187786186112,
+              39.47950085342702
+            ],
+            [
+              -106.37188295884212,
+              39.479499349202264
+            ],
+            [
+              -106.37221641167896,
+              39.47942220034234
+            ],
+            [
+              -106.37232322765446,
+              39.479400063200124
+            ],
+            [
+              -106.37232989333427,
+              39.47939919504518
+            ],
+            [
+              -106.37233661434881,
+              39.479399308816184
+            ],
+            [
+              -106.3728758460644,
+              39.479447918718606
+            ],
+            [
+              -106.37339588796891,
+              39.479345423042126
+            ],
+            [
+              -106.37370169425456,
+              39.47920527240777
+            ],
+            [
+              -106.37410120111257,
+              39.47897679569078
+            ],
+            [
+              -106.37442449939341,
+              39.478698567230815
+            ],
+            [
+              -106.37442558994817,
+              39.47869767069759
+            ],
+            [
+              -106.37489151105176,
+              39.47833602985889
+            ],
+            [
+              -106.37523003487836,
+              39.47799671125577
+            ],
+            [
+              -106.37523264538258,
+              39.47799438288048
+            ],
+            [
+              -106.37523354459617,
+              39.47799369435258
+            ],
+            [
+              -106.37537975439183,
+              39.477885627977344
+            ],
+            [
+              -106.37556231990536,
+              39.47768287219516
+            ],
+            [
+              -106.37559550726517,
+              39.477627587226785
+            ],
+            [
+              -106.37574558969801,
+              39.47737757356233
+            ],
+            [
+              -106.37574896482816,
+              39.477373301086054
+            ],
+            [
+              -106.37575297821488,
+              39.477369621645316
+            ],
+            [
+              -106.37575752709701,
+              39.47736662945073
+            ],
+            [
+              -106.37576249500223,
+              39.47736440111622
+            ],
+            [
+              -106.37576775472934,
+              39.47736299369744
+            ],
+            [
+              -106.37577246243586,
+              39.477361233987416
+            ],
+            [
+              -106.37577739568944,
+              39.47736027373285
+            ],
+            [
+              -106.37578241972878,
+              39.477360139164695
+            ],
+            [
+              -106.37578739731259,
+              39.477360833959175
+            ],
+            [
+              -106.37579219246858,
+              39.477362339136576
+            ],
+            [
+              -106.37579667420786,
+              39.47736461357998
+            ],
+            [
+              -106.3758007201031,
+              39.47736759515868
+            ],
+            [
+              -106.3758042196329,
+              39.47737120242508
+            ],
+            [
+              -106.37580707720085,
+              39.47737533683985
+            ],
+            [
+              -106.37580921474702,
+              39.47737988546337
+            ],
+            [
+              -106.37581057388022,
+              39.477384724041386
+            ],
+            [
+              -106.37581111747309,
+              39.477389720398705
+            ],
+            [
+              -106.37581083067637,
+              39.477394738050336
+            ],
+            [
+              -106.37580972132446,
+              39.47739963992937
+            ],
+            [
+              -106.37562752142529,
+              39.47770315716065
+            ],
+            [
+              -106.37562354210489,
+              39.47770789507279
+            ],
+            [
+              -106.37561882991223,
+              39.47771190481631
+            ],
+            [
+              -106.37561351622405,
+              39.47771507459874
+            ],
+            [
+              -106.37560774918697,
+              39.47771731604602
+            ],
+            [
+              -106.375601689587,
+              39.47771856666625
+            ],
+            [
+              -106.37559550636686,
+              39.477718791591805
+            ],
+            [
+              -106.37559550636686,
+              39.47774076355037
+            ],
+            [
+              -106.37543584609648,
+              39.47791808451819
+            ],
+            [
+              -106.3754322330724,
+              39.4779214682239
+            ],
+            [
+              -106.37543133475714,
+              39.47792215605903
+            ],
+            [
+              -106.37528450781888,
+              39.478030680009056
+            ],
+            [
+              -106.37494624360538,
+              39.47836973912327
+            ],
+            [
+              -106.37494348937071,
+              39.47837218050656
+            ],
+            [
+              -106.37447664030745,
+              39.478734541572955
+            ],
+            [
+              -106.37415157953201,
+              39.47901428629224
+            ],
+            [
+              -106.374150633606,
+              39.47901506910864
+            ],
+            [
+              -106.37414635852357,
+              39.47901795561367
+            ],
+            [
+              -106.37374238793693,
+              39.47924898448692
+            ],
+            [
+              -106.3737395699219,
+              39.47925042114765
+            ],
+            [
+              -106.373427836552,
+              39.479393287612055
+            ],
+            [
+              -106.37342325601455,
+              39.47939505366269
+            ],
+            [
+              -106.37341850036124,
+              39.47939627186617
+            ],
+            [
+              -106.3728871010566,
+              39.479501005654974
+            ],
+            [
+              -106.37288063902348,
+              39.47950180141114
+            ],
+            [
+              -106.37287412938392,
+              39.47950167614043
+            ],
+            [
+              -106.37233511955219,
+              39.47945308776995
+            ],
+            [
+              -106.37223645129632,
+              39.47947350811905
+            ],
+            [
+              -106.37223545236971,
+              39.47947372652963
+            ],
+            [
+              -106.37191172199921,
+              39.47954865517429
+            ],
+            [
+              -106.37152848632596,
+              39.47983537740059
+            ],
+            [
+              -106.37152417262435,
+              39.47983811330093
+            ],
+            [
+              -106.37151953427414,
+              39.47984025313259
+            ],
+            [
+              -106.37151465316889,
+              39.47984175911531
+            ],
+            [
+              -106.37077765375024,
+              39.480023358313694
+            ],
+            [
+              -106.37077665572197,
+              39.48002359128305
+            ],
+            [
+              -106.3707749309566,
+              39.48002393935042
+            ],
+            [
+              -106.37038345503727,
+              39.48009457758029
+            ],
+            [
+              -106.37015923675536,
+              39.48019710269481
+            ],
+            [
+              -106.37017375277088,
+              39.48012799562431
+            ],
+            [
+              -106.37035186937356,
+              39.48004655055318
+            ],
+            [
+              -106.37035677792196,
+              39.48004468635821
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "aoi_id": "ucc-red_cliff_eagle-03",
+        "layer": "nwi",
+        "support": "500m_context_clipped_union",
+        "source_sha256": "6e302bac1d48ab443d5594492fe87445621ef86e9de66fb60bb735d1c0b7dccd",
+        "meaning": "provider mapped features; no legal or condition inference"
+      }
+    }
+  ]
+}

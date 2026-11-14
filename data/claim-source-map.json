@@ -1,0 +1,411 @@
+{
+ "schema": "keystone-claim-source-map/2",
+ "release": "Keystone Polygon experience R5, 13 Nov 2026",
+ "scope": "Public claims shown in index.html and passport.html, each bound to public files by SHA256. Private scientific run folders are not referenced.",
+ "r4_public_export_allowlist_sha256": {
+  "eagle_bird_record_context_v2.json": "d15f1a3da1f08cf760dff05d8b462a996b595bbfba77464db6672a16ca9a66fc",
+  "eagle_structural_context.json": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+  "eagle_map_layers.geojson": "47f3e5fd209f8f9d3eb99b4d481369b5d528975bd45c9493394d4cf95d4bca6c",
+  "thermal_replay.json": "bee91296137a896db053fc90e98a0c96b73080f4f53c80aa48bcf9244a8191d1",
+  "daily_temperature.json": "48975b37a24b5e98db671d5bdf82d1ab60ab3e377494a881fc07e1c96ac66486"
+ },
+ "provider_links": {
+  "NLCD": "https://www.mrlc.gov/data",
+  "NWI": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
+  "PAD-US": "https://services.arcgis.com/v01gqwM5QqNysAAi/ArcGIS/rest/services/PADUS_Public_Access/FeatureServer/0",
+  "eBird Observation Dataset": "https://doi.org/10.15468/aomfnb",
+  "Great Backyard Bird Count": "https://doi.org/10.15468/dml1pk",
+  "USGS NWIS": "https://waterdata.usgs.gov/",
+  "MTBS": "https://www.mtbs.gov/",
+  "Eagle County parcels": "https://map.eaglecounty.us/arcgiswa/rest/services/Parcels_Portal/FeatureServer/0"
+ },
+ "bird_citations": [
+  "Imani J, Audette C, Auer T, Barker S, Barry J, Charnoky M, Crowley C, Curtis J, Davies I, Davis C, Diaz R, Feinberg S, Fink D, Ganger J, Garrett J, Hanks C, Hayes M, Hochachka W, Iliff M, Jordan A, Ligocki S, Long T, Morris W, Morrow S, Oldham L, Padilla Obregon F, Robinson O, Rodewald A, Schloss M, Sims B, Smith A, Smith J, Smith M, Stillman A, Stokowski M, Strimas-Mackey M, Sullivan B, Tedeschi A, Weber D, Wolf H, Wood C (2026). EOD – eBird Observation Dataset. Cornell Lab of Ornithology. Sampling event dataset https://doi.org/10.15468/aomfnb accessed via GBIF.org on 2026-11-13.",
+  "Avian Knowledge Network. Great Backyard Bird Count. Occurrence dataset https://doi.org/10.15468/dml1pk accessed via GBIF.org on 2026-11-13."
+ ],
+ "claims": [
+  {
+   "id": "keystone-definition",
+   "claim": "A Keystone Polygon is a decision unit that earns the name only when something beyond its boundary depends on it.",
+   "sources": [],
+   "classification": "Framework definition",
+   "limit": "No Colorado parcel is a validated Keystone Polygon."
+  },
+  {
+   "id": "spillover-definition",
+   "claim": "A Spillover Effect is a function, disturbance or risk that travels beyond the unit where it starts.",
+   "sources": [],
+   "classification": "Framework definition",
+   "limit": "Intensity, direction and sign need specific evidence. None is observed for the Eagle parcel."
+  },
+  {
+   "id": "parcel-identity",
+   "claim": "County parcel 220531300003, candidate ucc-red_cliff_eagle-03, mapped area 4.235 ha.",
+   "sources": [
+    {
+     "file": "data/keystone-candidate.geojson",
+     "sha256": "dc5c013b6a94cc4844f080a4f25abbf46650adcab671a52775527c7e7c46cf91",
+     "bytes": 2420
+    },
+    {
+     "file": "data/r4/eagle_structural_context.json",
+     "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+     "bytes": 10391
+    }
+   ],
+   "classification": "Checked provider geometry",
+   "limit": "GIS footprint, no legal survey. Ownership and access unverified."
+  },
+  {
+   "id": "screening-score",
+   "claim": "The historical screening score 0.6724 is an archived artifact.",
+   "sources": [
+    {
+     "file": "data/keystone/results.json",
+     "sha256": "79ee86ccb104ed9c319130de925b55a49b9bbf9da5d0bcde732ed9046cb38149",
+     "bytes": 917
+    },
+    {
+     "file": "data/geo.js",
+     "sha256": "cd97a0f2be0f358f217ac5f79e82e51a27ec43a8e527a47128a83461500c5670",
+     "bytes": 71224
+    }
+   ],
+   "classification": "Historical artifact",
+   "limit": "Not a probability, rank or ecological measurement."
+  },
+  {
+   "id": "forest-class",
+   "claim": "Forest class covers 97.9% of the parcel (NLCD 2023).",
+   "sources": [
+    {
+     "file": "data/r4/eagle_structural_context.json",
+     "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+     "bytes": 10391
+    }
+   ],
+   "classification": "Habitat proxy, remote sensing",
+   "limit": "Mapped extent only. 47 cell centres inside, 76 intersecting cells. Cells are not independent samples."
+  },
+  {
+   "id": "canopy",
+   "claim": "Mean canopy cover is 39.8% and no impervious surface is mapped.",
+   "sources": [
+    {
+     "file": "data/r4/eagle_structural_context.json",
+     "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+     "bytes": 10391
+    },
+    {
+     "file": "data/r4/eagle_map_layers.geojson",
+     "sha256": "47f3e5fd209f8f9d3eb99b4d481369b5d528975bd45c9493394d4cf95d4bca6c",
+     "bytes": 100924
+    }
+   ],
+   "classification": "Habitat proxy, remote sensing",
+   "limit": "Field condition and function unverified."
+  },
+  {
+   "id": "wetland",
+   "claim": "No mapped wetland inside the parcel. Mapped wetland covers 0.26% of the 500 m context.",
+   "sources": [
+    {
+     "file": "data/r4/eagle_structural_context.json",
+     "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+     "bytes": 10391
+    }
+   ],
+   "classification": "Mapped inventory",
+   "limit": "A mapped zero leaves field wetlands unresolved."
+  },
+  {
+   "id": "protected",
+   "claim": "The PAD-US mapped union covers about 100% of the parcel.",
+   "sources": [
+    {
+     "file": "data/r4/eagle_structural_context.json",
+     "sha256": "b56396e8e69854e65f2832affeeebf584cf17269c95f56b1cc4b8acf2523b523",
+     "bytes": 10391
+    }
+   ],
+   "classification": "Mapped inventory",
+   "limit": "No ownership, access, condition or intervention authority follows. Per-feature overlap not computed."
+  },
+  {
+   "id": "bird-records",
+   "claim": "0 retained bird records on the exact parcel. 45 publishable records in 26 provider species-name groups within 1 km, 2005 to 2025. 22 noncommercial-licence records withheld.",
+   "sources": [
+    {
+     "file": "data/r4/eagle_bird_record_context_v2.json",
+     "sha256": "d15f1a3da1f08cf760dff05d8b462a996b595bbfba77464db6672a16ca9a66fc",
+     "bytes": 29352
+    }
+   ],
+   "classification": "Observed records, aggregated",
+   "limit": "Neighbourhood support only. No abundance, richness, absence, guild or parcel occupancy. Coordinates withheld. Provider taxonomy unverified."
+  },
+  {
+   "id": "condition",
+   "claim": "Condition on the Eagle parcel is unmeasured.",
+   "sources": [
+    {
+     "file": "data/keystone/passport.json",
+     "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
+     "bytes": 35110
+    }
+   ],
+   "classification": "Stated gap",
+   "limit": "Field validation pending."
+  },
+  {
+   "id": "distances",
+   "claim": "Straight-line distance from the parcel is about 100 km to the Grand Lake stations and about 79 km to the Glenwood station.",
+   "sources": [
+    {
+     "file": "data/stations.geojson",
+     "sha256": "a4ab50cc5b0d2dae6b21ed50ccdd1ed7cb5838f14302741956dee64d5f7e663c",
+     "bytes": 1160
+    },
+    {
+     "file": "data/keystone/results.json",
+     "sha256": "79ee86ccb104ed9c319130de925b55a49b9bbf9da5d0bcde732ed9046cb38149",
+     "bytes": 917
+    },
+    {
+     "file": "data/keystone-candidate.geojson",
+     "sha256": "dc5c013b6a94cc4844f080a4f25abbf46650adcab671a52775527c7e7c46cf91",
+     "bytes": 2420
+    }
+   ],
+   "classification": "Computed from published coordinates",
+   "limit": "Glenwood coordinates from the USGS site service. No delivery has been traced or tested. The Glenwood station lies downstream on the Colorado River; position alone establishes no effect."
+  },
+  {
+   "id": "fire-overlap",
+   "claim": "The East Troublesome final perimeter overlaps 27.3% (20.6 km²) of the basin associated with North Inlet and none of the East Inlet basin.",
+   "sources": [
+    {
+     "file": "data/keystone/context.json",
+     "sha256": "1d498f86329b7b38b6317e22a922796ebe22ffe557f780426c28e1140dce0d36",
+     "bytes": 2628
+    },
+    {
+     "file": "data/source-context-release.json",
+     "sha256": "b27d0c755e63280854abc89be6f20cf26ef946989f92f21ec4cb93d7ce71ba97",
+     "bytes": 49001
+    }
+   ],
+   "classification": "Retrospective mapped context",
+   "limit": "Associated NHDPlusV2 basins, not exact gauge splits. Post-fire image 7 Sep 2021, perimeter revised 16 Oct 2026. Spectral classes are not mortality, recovery or biodiversity change."
+  },
+  {
+   "id": "terrain-soil-support",
+   "claim": "Unconditioned D8 routing reaches a mapped channel for 47.2% of North and 41.1% of East. Usable erodibility values cover 37.2% and 40.1%.",
+   "sources": [
+    {
+     "file": "data/keystone/context.json",
+     "sha256": "1d498f86329b7b38b6317e22a922796ebe22ffe557f780426c28e1140dce0d36",
+     "bytes": 2628
+    },
+    {
+     "file": "data/source-context-release.json",
+     "sha256": "b27d0c755e63280854abc89be6f20cf26ef946989f92f21ec4cb93d7ce71ba97",
+     "bytes": 49001
+    }
+   ],
+   "classification": "Derived context",
+   "limit": "Limits of the routing and attributes used. Not a delivery estimate."
+  },
+  {
+   "id": "observed-window",
+   "claim": "In the fixed window 30 Jul to 4 Aug 2021 at North Inlet, rainfall peaked at 0.11 in per 5 min, turbidity at 382 FNU and discharge at 165 ft³/s.",
+   "sources": [
+    {
+     "file": "data/keystone/clock.json",
+     "sha256": "4fe48854ab3b0c8bcb960d68bbb592a2eac3c81391ba0f5847e8503de2149bd5",
+     "bytes": 30722
+    },
+    {
+     "file": "data/events/measured-20210730-20210804.json",
+     "sha256": "2e02cdcbb3fc80231f58c3e6c713db47b7ac5d958c7b52ac10df98820e0a9ee0",
+     "bytes": 221457
+    }
+   ],
+   "classification": "Observed record",
+   "limit": "Descriptive. No causal delay. FNU is not sediment mass."
+  },
+  {
+   "id": "temperature",
+   "claim": "1,040 coverage-qualified station-days, 41 partial and 209 unavailable at three stations in 2021 and 2022.",
+   "sources": [
+    {
+     "file": "data/r4/daily_temperature.json",
+     "sha256": "48975b37a24b5e98db671d5bdf82d1ab60ab3e377494a881fc07e1c96ac66486",
+     "bytes": 879733
+    },
+    {
+     "file": "data/r4/thermal_replay.json",
+     "sha256": "bee91296137a896db053fc90e98a0c96b73080f4f53c80aa48bcf9244a8191d1",
+     "bytes": 640944
+    }
+   ],
+   "classification": "Physical environmental measurement",
+   "limit": "Separate stations. No Eagle measurement, cooling effect, organism response or threshold."
+  },
+  {
+   "id": "north-forecast",
+   "claim": "At North Inlet the frozen model lowered mean absolute log1p(FNU) error by 6.84% over 1,014 windows in 2023 and 2024, interval 0.00165 to 0.01739.",
+   "sources": [
+    {
+     "file": "data/experience-evidence.json",
+     "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+     "bytes": 71398
+    },
+    {
+     "file": "data/forecast-round2.json",
+     "sha256": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772",
+     "bytes": 35482
+    }
+   ],
+   "classification": "Retrospective evaluation, consumed holdout",
+   "limit": "Corrected archives and an assumed 30-minute latency. No live forecast. The model has 19 inputs and no ecological feature."
+  },
+  {
+   "id": "east-transfer",
+   "claim": "Transfer to East Inlet failed over 1,481 windows, interval -0.02682 to -0.00397.",
+   "sources": [
+    {
+     "file": "data/experience-evidence.json",
+     "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+     "bytes": 71398
+    }
+   ],
+   "classification": "Retrospective evaluation, failed",
+   "limit": "Local improvement did not transfer."
+  },
+  {
+   "id": "north-policy",
+   "claim": "North Inlet baseline 38 windows with 26 high. Learned policy 46 windows with 25 high, 19 non-high and 2 unknown. 20 shared, 18 baseline only, 26 learned only. Promotion failed.",
+   "sources": [
+    {
+     "file": "data/experience-evidence.json",
+     "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+     "bytes": 71398
+    },
+    {
+     "file": "data/monitoring-north-windows.json",
+     "sha256": "b92d16846ada4f2aebaa37d592fc52f4488faa4ccb8b358a0a4150480e7d966a",
+     "bytes": 1561057
+    }
+   ],
+   "classification": "Historical proposals",
+   "limit": "Proposed windows, never sampled. Unknown outcomes stay in every cost."
+  },
+  {
+   "id": "glenwood-policy",
+   "claim": "Glenwood baseline 8 windows with 6 high. Classifier 10 with 8 high. 7 shared, 1 baseline only, 3 classifier only. Precision difference 5 points, interval 0 to 13.33. Joint gate failed.",
+   "sources": [
+    {
+     "file": "data/experience-evidence.json",
+     "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+     "bytes": 71398
+    },
+    {
+     "file": "data/monitoring-glenwood.json",
+     "sha256": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d",
+     "bytes": 37419
+    }
+   ],
+   "classification": "Historical proposals",
+   "limit": "Separate decision study."
+  },
+  {
+   "id": "earlier-negatives",
+   "claim": "The 48-hour storm comparator failed on 13 development and 15 final storms. The legacy spatial benchmark reached grouped R² 0.4035 with controls and 0.2703 with mechanism scores added.",
+   "sources": [
+    {
+     "file": "data/keystone/results.json",
+     "sha256": "79ee86ccb104ed9c319130de925b55a49b9bbf9da5d0bcde732ed9046cb38149",
+     "bytes": 917
+    },
+    {
+     "file": "data/headwaters-baseline-results.json",
+     "sha256": "070d65ab9f08424372ad2f8dc39a32042344df552e9978a0a027a0f75e0beeaa",
+     "bytes": 19298
+    }
+   ],
+   "classification": "Negative results",
+   "limit": "Preserved. A later task does not repair them."
+  },
+  {
+   "id": "model-inputs",
+   "claim": "The North Inlet model reads 19 inputs: 10 turbidity state, 4 discharge, 3 rainfall, 2 season. East Inlet and Glenwood models read 12. None is ecological.",
+   "sources": [
+    {
+     "file": "data/keystone/results.json",
+     "sha256": "79ee86ccb104ed9c319130de925b55a49b9bbf9da5d0bcde732ed9046cb38149",
+     "bytes": 917
+    }
+   ],
+   "classification": "Model description",
+   "limit": "Predictive results say nothing about the importance of forests or biodiversity."
+  },
+  {
+   "id": "chain-states",
+   "claim": "Of seven links, one is established for the Eagle parcel (checked geometry) and one for North Inlet (observed signal).",
+   "sources": [
+    {
+     "file": "data/keystone/passport.json",
+     "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
+     "bytes": 35110
+    }
+   ],
+   "classification": "Evidence register",
+   "limit": "No link joins the two cases."
+  },
+  {
+   "id": "budget",
+   "claim": "Every budget figure is the visitor’s cost per visit multiplied by proposed windows, to the cent.",
+   "sources": [
+    {
+     "file": "data/experience-evidence.json",
+     "sha256": "9d3365ec91ac51b403a720cd64038e730ae3ce796803a9c068f14aaaf38b09d5",
+     "bytes": 71398
+    }
+   ],
+   "classification": "User assumption",
+   "limit": "No price, avoided loss, ROI, credit or payment is supplied or computed."
+  },
+  {
+   "id": "mechanisms",
+   "claim": "Habitat, sediment, thermal and fuel mechanisms are framework hypotheses with paired adverse spillovers.",
+   "sources": [
+    {
+     "file": "data/keystone/passport.json",
+     "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
+     "bytes": 35110
+    }
+   ],
+   "classification": "Hypothesis",
+   "limit": "None is established in Colorado."
+  },
+  {
+   "id": "obligation",
+   "claim": "No rights record, payer, payment rule or agreement exists for this candidate.",
+   "sources": [
+    {
+     "file": "data/keystone/passport.json",
+     "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
+     "bytes": 35110
+    },
+    {
+     "file": "data/finance-evidence-ledger.json",
+     "sha256": "eb6f8c4ffc1f8aa3987fd00121410484c3a3d8ab4f2aaf5ea2cd8097d7cd0c1c",
+     "bytes": 10821
+    }
+   ],
+   "classification": "Stated gap",
+   "limit": "All rights, payer and performance fields are pending."
+  }
+ ]
+}

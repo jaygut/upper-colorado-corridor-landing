@@ -1,0 +1,824 @@
+{
+  "schema": "eagle_public_bird_record_context/2",
+  "status": "eligible_for_design_public_subset_only_not_published",
+  "candidate_id": "ucc-red_cliff_eagle-03",
+  "scope": {
+    "name": "One-kilometer neighborhood of the Eagle screening candidate",
+    "distance_m": 1000,
+    "geometry_basis": "EPSG:5070 1000 m buffer of the checked Eagle candidate polygon; not the parcel itself",
+    "record_query_period": "2000-01-01 through 2026-11-13",
+    "exact_parcel_retained_record_count": 0,
+    "exact_parcel_interpretation": "No retained records in the completed query; this is not evidence of biological absence."
+  },
+  "cohort": {
+    "private_neighborhood_records": 67,
+    "public_design_records": 45,
+    "excluded_records": 22,
+    "exclusion_counts_sequential": {
+      "license_not_in_public_design_allowlist": 22
+    },
+    "species_name_groups_in_release": 26,
+    "observed_year_range": [
+      2005,
+      2025
+    ],
+    "taxonomic_class": "Aves",
+    "source_record_license_counts": {
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 22,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 40,
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 5
+    },
+    "all_eligible_records_have_species_identity_and_year": true,
+    "missing_fields_in_eligible_records": {
+      "coordinateUncertaintyInMeters": 45,
+      "samplingProtocol": 45,
+      "samplingEffort": 45,
+      "eventID": 5
+    },
+    "uncertainty_class_counts": {
+      "point_inside_uncertainty_unknown": 45
+    },
+    "provider_taxonomic_status_counts": {
+      "ACCEPTED": 42,
+      "SYNONYM": 3
+    },
+    "provider_taxon_rank_counts": {
+      "SPECIES": 45
+    },
+    "provider_issue_record_counts": {
+      "CONTINENT_DERIVED_FROM_COORDINATES": 45,
+      "COORDINATE_ROUNDED": 9,
+      "GEODETIC_DATUM_ASSUMED_WGS84": 45,
+      "TAXON_CONCEPT_ID_NOT_FOUND": 40,
+      "TAXON_MATCH_FUZZY": 2
+    },
+    "provider_issue_list_missing_records": 0
+  },
+  "species_record_groups": [
+    {
+      "species_name": "Selasphorus platycercus",
+      "species_key": 2476844,
+      "taxon_url": "https://www.gbif.org/species/2476844",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2014,
+        2014
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Aeronautes saxatalis",
+      "species_key": 2477108,
+      "taxon_url": "https://www.gbif.org/species/2477108",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2014,
+        2014
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Colaptes auratus",
+      "species_key": 2478259,
+      "taxon_url": "https://www.gbif.org/species/2478259",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 3,
+      "observed_year_range": [
+        2023,
+        2025
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 3
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 3
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 3
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 3,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 3,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 3
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Buteo jamaicensis",
+      "species_key": 2480542,
+      "taxon_url": "https://www.gbif.org/species/2480542",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2014,
+        2014
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Corvus corax",
+      "species_key": 2482492,
+      "taxon_url": "https://www.gbif.org/species/2482492",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 2,
+      "observed_year_range": [
+        2005,
+        2005
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 2
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 2
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 2
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 2,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 2
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Corvus brachyrhynchos",
+      "species_key": 2482507,
+      "taxon_url": "https://www.gbif.org/species/2482507",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2014,
+        2014
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Cyanocitta stelleri",
+      "species_key": 2482598,
+      "taxon_url": "https://www.gbif.org/species/2482598",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2005,
+        2005
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Empidonax traillii",
+      "species_key": 2482786,
+      "taxon_url": "https://www.gbif.org/species/2482786",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2021,
+        2021
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Empidonax oberholseri",
+      "species_key": 2482803,
+      "taxon_url": "https://www.gbif.org/species/2482803",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2025,
+        2025
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Regulus calendula",
+      "species_key": 2484597,
+      "taxon_url": "https://www.gbif.org/species/2484597",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2022,
+        2022
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "SYNONYM": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Vireo gilvus",
+      "species_key": 2487446,
+      "taxon_url": "https://www.gbif.org/species/2487446",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 2,
+      "observed_year_range": [
+        2021,
+        2023
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 2
+      },
+      "provider_taxonomic_status_counts": {
+        "SYNONYM": 2
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 2
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 2,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 2,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 2,
+        "TAXON_MATCH_FUZZY": 2
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Poecile atricapillus",
+      "species_key": 2487805,
+      "taxon_url": "https://www.gbif.org/species/2487805",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2005,
+        2005
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Poecile gambeli",
+      "species_key": 2487825,
+      "taxon_url": "https://www.gbif.org/species/2487825",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2022,
+        2022
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Passerella iliaca",
+      "species_key": 2491872,
+      "taxon_url": "https://www.gbif.org/species/2491872",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 2,
+      "observed_year_range": [
+        2021,
+        2024
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 2
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 2
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 2
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 2,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 2,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 2
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Melospiza lincolnii",
+      "species_key": 2492192,
+      "taxon_url": "https://www.gbif.org/species/2492192",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 5,
+      "observed_year_range": [
+        2021,
+        2025
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 5
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 5
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 5
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 5,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 5,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 5
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Melospiza melodia",
+      "species_key": 2492196,
+      "taxon_url": "https://www.gbif.org/species/2492196",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 5,
+      "observed_year_range": [
+        2021,
+        2025
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 5
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 5
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 5
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 5,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 5,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 5
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Pica hudsonia",
+      "species_key": 5229487,
+      "taxon_url": "https://www.gbif.org/species/5229487",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2005,
+        2005
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Troglodytes aedon",
+      "species_key": 5231459,
+      "taxon_url": "https://www.gbif.org/species/5231459",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2023,
+        2023
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Spinus pinus",
+      "species_key": 5231635,
+      "taxon_url": "https://www.gbif.org/species/5231635",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 2,
+      "observed_year_range": [
+        2023,
+        2025
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 2
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 2
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 2
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 2,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 2,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 2
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Geothlypis tolmiei",
+      "species_key": 5789146,
+      "taxon_url": "https://www.gbif.org/species/5789146",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2023,
+        2023
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Setophaga aestiva",
+      "species_key": 8378494,
+      "taxon_url": "https://www.gbif.org/species/8378494",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 3,
+      "observed_year_range": [
+        2021,
+        2024
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 3
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 3
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 3
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 3,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 3,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 3
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Sphyrapicus nuchalis",
+      "species_key": 9406038,
+      "taxon_url": "https://www.gbif.org/species/9406038",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2022,
+        2022
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Agelaius phoeniceus",
+      "species_key": 9409198,
+      "taxon_url": "https://www.gbif.org/species/9409198",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2024,
+        2024
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Turdus migratorius",
+      "species_key": 9510564,
+      "taxon_url": "https://www.gbif.org/species/9510564",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 4,
+      "observed_year_range": [
+        2021,
+        2024
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 4
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 4
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 4
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 4,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 4,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 4
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Mergus merganser",
+      "species_key": 9537647,
+      "taxon_url": "https://www.gbif.org/species/9537647",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2022,
+        2022
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "COORDINATE_ROUNDED": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    },
+    {
+      "species_name": "Anas platyrhynchos",
+      "species_key": 9761484,
+      "taxon_url": "https://www.gbif.org/species/9761484",
+      "name_interpretation": "Provider-reported species group; current accepted taxonomy is not independently verified",
+      "record_count": 1,
+      "observed_year_range": [
+        2023,
+        2023
+      ],
+      "uncertainty_class_counts": {
+        "point_inside_uncertainty_unknown": 1
+      },
+      "provider_taxonomic_status_counts": {
+        "ACCEPTED": 1
+      },
+      "provider_taxon_rank_counts": {
+        "SPECIES": 1
+      },
+      "provider_issue_record_counts": {
+        "CONTINENT_DERIVED_FROM_COORDINATES": 1,
+        "GEODETIC_DATUM_ASSUMED_WGS84": 1,
+        "TAXON_CONCEPT_ID_NOT_FOUND": 1
+      },
+      "provider_issue_list_missing_records": 0
+    }
+  ],
+  "attribution": [
+    {
+      "dataset_title": "EOD \u2013 eBird Observation Dataset",
+      "dataset_url": "https://www.gbif.org/dataset/4fa7b334-ce0d-4e88-aaae-2e0c138d049e",
+      "doi_url": "https://doi.org/10.15468/aomfnb",
+      "citation": "Imani J, Audette C, Auer T, Barker S, Barry J, Charnoky M, Crowley C, Curtis J, Davies I, Davis C, Diaz R, Feinberg S, Fink D, Ganger J, Garrett J, Hanks C, Hayes M, Hochachka W, Iliff M, Jordan A, Ligocki S, Long T, Morris W, Morrow S, Oldham L, Padilla Obregon F, Robinson O, Rodewald A, Schloss M, Sims B, Smith A, Smith J, Smith M, Stillman A, Stokowski M, Strimas-Mackey M, Sullivan B, Tedeschi A, Weber D, Wolf H, Wood C (2026). EOD \u2013 eBird Observation Dataset. Cornell Lab of Ornithology. Sampling event dataset https://doi.org/10.15468/aomfnb accessed via GBIF.org on 2026-11-13.",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "retained_record_count": 40,
+      "retrieved_date": "2026-11-13",
+      "changes": "Filtered and aggregated; coordinates/IDs omitted. Species keys and dataset citation identifiers are retained as public taxonomic and attribution references.",
+      "endorsement": "No endorsement by data publishers or observers is implied."
+    },
+    {
+      "dataset_title": "Great Backyard Bird Count",
+      "dataset_url": "https://www.gbif.org/dataset/82cb293c-f762-11e1-a439-00145eb45e9a",
+      "doi_url": "https://doi.org/10.15468/dml1pk",
+      "citation": "Avian Knowledge Network. Great Backyard Bird Count. Occurrence dataset https://doi.org/10.15468/dml1pk accessed via GBIF.org on 2026-11-13.",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "retained_record_count": 5,
+      "retrieved_date": "2026-11-13",
+      "changes": "Filtered and aggregated; coordinates/IDs omitted. Species keys and dataset citation identifiers are retained as public taxonomic and attribution references.",
+      "endorsement": "No endorsement by data publishers or observers is implied."
+    }
+  ],
+  "method": {
+    "version": "eagle_public_bird_record_context_r4_v2",
+    "footprint": "eagle-neighborhood-1000m",
+    "class": "Aves",
+    "license_allowlist": [
+      "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode"
+    ],
+    "dataset_allowlist": [
+      "4fa7b334-ce0d-4e88-aaae-2e0c138d049e",
+      "82cb293c-f762-11e1-a439-00145eb45e9a"
+    ],
+    "sensitive_content_rule": "Exclude any nonempty informationWithheld or dataGeneralizations field",
+    "aggregation": "Provider-reported species-level name/key, record count, observed year range, uncertainty classes and taxonomy/status/issue counts only",
+    "taxonomy_interpretation": "Names and keys are provider-reported species groups, not independently validated or necessarily currently accepted taxonomy. ACCEPTED and SYNONYM refer to the provider taxonomicStatus field. Eligible refers only to the declared export filters.",
+    "issue_count_interpretation": "Counts of records carrying each provider flag; flags can co-occur and counts are not additive. No flag is used as a new exclusion in v2.",
+    "transformation_notice": "Filtered and aggregated; coordinates/IDs omitted. Species keys and dataset citation identifiers are retained as public taxonomic and attribution references.",
+    "public_fields_excluded": [
+      "occurrence identifiers",
+      "precise coordinates",
+      "exact dates",
+      "collector and individual-observer fields",
+      "sampling/event identifiers",
+      "per-record URLs",
+      "rights-holder fields",
+      "raw source payloads"
+    ],
+    "claim_boundary": "Recorded neighborhood observations only. No abundance, complete richness, absence, functional guild, ecological function or parcel benefit inferred."
+  },
+  "source_identity": {
+    "retained_private_record_store_sha256": "3fc6ba416e9081e3d74c8f1be415776ed233b6cc8db4b90949b7605028f08363",
+    "collection_summary_sha256": "6c74d11b721401b0489f1e43ca5cb88c6ae8f22ff085a83ea56f6c00c2e135d4",
+    "dataset_metadata": {
+      "4fa7b334-ce0d-4e88-aaae-2e0c138d049e": {
+        "sha256": "586b91f712199bc0391ac33a91cc62779de917a12c082032dbc6b972b792d10b",
+        "metadata_url": "https://api.gbif.org/v1/dataset/4fa7b334-ce0d-4e88-aaae-2e0c138d049e",
+        "retrieved_utc": "2026-11-13T23:11:11.031351+00:00"
+      },
+      "82cb293c-f762-11e1-a439-00145eb45e9a": {
+        "sha256": "00b820e9791dc5084ddf256e9fbc6808e23cd8e3e1a525ff21f004d9b72c58ec",
+        "metadata_url": "https://api.gbif.org/v1/dataset/82cb293c-f762-11e1-a439-00145eb45e9a",
+        "retrieved_utc": "2026-11-13T23:11:11.633638+00:00"
+      }
+    },
+    "processor_sha256": "5d9b9a7a974df89fe5a84ee0bd90c3eff8a71b58dede062688660fb568dd8d73"
+  },
+  "method_sha256": "63cd06a99a6fb38bed77690aa4c26a241a6638a1b240338b7feb1f01a5caa929",
+  "limits": [
+    "This licensed subset omits noncommercial records and is taxonomically selective.",
+    "Record counts reflect provider records and observation effort; they are not individual abundance or complete species richness.",
+    "Unknown effort, detectability and coordinate precision remain unresolved; spatial uncertainty categories are approximate provider context.",
+    "Taxonomy and issue fields are provider reported. Synonym, fuzzy-match and missing-concept flags remain visible; no current accepted taxonomy is independently asserted.",
+    "Neighborhood records do not establish observations on the exact parcel, functional guilds, a mechanism, recipient benefit or financial value.",
+    "No individual occurrence identifiers, coordinates, exact dates or observer/collector fields are included."
+  ],
+  "publication_status": "not_published",
+  "evidence_status": "descriptive_record_context_only"
+}

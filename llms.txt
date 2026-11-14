@@ -1,4 +1,13 @@
-# Current experience routes · R3 · 2026-11-13
+# Current experience routes · R5 · 2026-11-13
+
+index.html is the nine-chapter Keystone Polygon experience: polygon, living, spillover, measured, clock, forecast, windows, obligation, next. Direct route ?chapter=ID with optional &step=ID. One real Eagle County parcel (4.235 ha, historical screening candidate) opens and closes the story. Keystone function, pathway, recipient, rights, payer and financial return are all unestablished. North and East Inlet near Grand Lake and the Glenwood station are separate cases with no inferred delivery link to the parcel. No atmospheric transport.
+Living context by dimension. Structure: NLCD 2023 forest class 97.9% of the parcel, mean canopy 39.8%, impervious 0; mapped wetland 0 in the parcel and 0.26% of the 500 m context; PAD-US mapped union about 100%. Composition: 0 retained bird records on the parcel; 45 public records in 26 provider species-name groups within 1 km, 2005 to 2025, coordinates withheld, 22 noncommercial-licence records private. Condition: unmeasured on the parcel. Function: unvalidated. Water temperature (1,040 qualified, 41 partial, 209 unavailable station-days) belongs to three separate stations.
+passport.html is the candidate file: ecological passport, mechanism hypotheses, an editable next observation with a user-supplied budget, an evidence-to-obligation register with every field pending by default, and JSON or Markdown export. It records proposals only.
+review.html?case=north|glenwood is the historical monitoring budget review. evidence.html retains full scientific detail and prior negative tasks. Old scene or forecastCase query links redirect to evidence.html. legacy.html is a labelled historical archive.
+data/claim-source-map.json binds public claims to files by SHA256. data/data-inventory.json lists every source layer and why it is in or out. data/keystone/passport.json is the candidate passport. data/r4/ holds the five R4 allowlisted payloads unchanged.
+
+# Earlier routes note · R3 · 2026-11-13 (superseded by the block above)
+
 
 index.html is the seven-scene Keystone Polygon experience: polygon, dependency, fire, observation, evidence, decision, next. Direct route ?chapter=ID. A real Eagle County legacy candidate opens and closes the story; a named recipient, delivery and treatment effect remain unverified. North/East Grand Lake and Glenwood are separate cases, with no inferred parcel delivery link. No atmospheric transport in the current experience.
 review.html?case=north|glenwood is the baseline-first historical review workflow; #investment opens supporting investment evidence after verification. evidence.html retains full scientific detail and prior negative tasks. Old scene or forecastCase query links redirect to evidence.html. legacy.html is prominently labeled a historical fixture/modeled screening archive.
