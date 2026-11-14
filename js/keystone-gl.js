@@ -28,6 +28,7 @@ function apply(){if(!map||!ready||!S.view)return;const v=S.view,L=S.L;
   const fade=L.dim>0?1-L.dim*(1-A.node):1;
   set('rivers','line-opacity',L.rivers*fade);set('padus','fill-opacity',L.padus*A.node);set('nwi','fill-opacity',L.nwi*A.div);set('nwi-line','line-opacity',L.nwi);
   set('cells','fill-opacity',S.lens==='canopy'?L.cells:0);set('landcover','fill-opacity',S.lens==='landcover'?L.cells:0);set('cells-line','line-opacity',S.lens==='imagery'?0:L.cells);
+  set('forage','line-opacity',L.forage);set('forageuser','line-opacity',L.forage);show('forageLabel',L.forage>.6?1:0);
   set('ring500','line-opacity',L.ring500);set('ring1k','line-opacity',L.ring1k);
   set('basins','line-opacity',L.basins*fade);set('networks','line-opacity',L.basins*fade);set('fire','fill-opacity',S.fire?L.fire*A.node:0);set('fire-line','line-opacity',S.fire?L.fire:0);
   set('stations','circle-opacity',Math.min(1,L.stations)*fade);set('stations','circle-stroke-opacity',Math.min(1,L.stations)*fade);set('transit','line-opacity',L.transit*A.div);
@@ -52,6 +53,7 @@ function start(){if(map||!window.maplibregl||!S.imageryWanted)return;const ring=
       mask:{type:'geojson',data:maskData(0)},world:{type:'geojson',data:fc([feat(poly([WORLD]))])},parcel:{type:'geojson',data:fc([feat(poly([ring]))])},
       r500:{type:'geojson',data:fc([feat({type:'LineString',coordinates:buffer(ring,500)})])},r1k:{type:'geojson',data:fc([feat({type:'LineString',coordinates:buffer(ring,1000)})])},
       cells:{type:'geojson',data:fc([])},landcover:{type:'geojson',data:fc([])},nwi:{type:'geojson',data:fc([])},padus:{type:'geojson',data:fc([])},rivers:{type:'geojson',data:fc([])},basins:{type:'geojson',data:fc([])},networks:{type:'geojson',data:fc([])},fire:{type:'geojson',data:fc([])},
+      forage:{type:'geojson',data:fc([])},forageuser:{type:'geojson',data:fc([])},
       flow:{type:'geojson',data:fc([])},flowuser:{type:'geojson',data:fc([])},flowdots:{type:'geojson',data:fc([])},sampling:{type:'geojson',data:fc([])},transect:{type:'geojson',data:fc([])},
       stations:{type:'geojson',data:fc(KS.STATIONS.map(s=>feat({type:'Point',coordinates:s.p},{id:s.id})))},transit:{type:'geojson',data:fc(KS.STATIONS.filter(s=>s.id!=='09013500').map(s=>feat({type:'LineString',coordinates:[KS.EAGLE,s.p]})))}},
     layers:[{id:'ground',type:'background',paint:{'background-color':C.abyss}},{id:'imagery',type:'raster',source:'imagery',paint:{'raster-fade-duration':0,'raster-saturation':-.15}},
@@ -64,6 +66,7 @@ function start(){if(map||!window.maplibregl||!S.imageryWanted)return;const ring=
       {id:'landcover',type:'fill',source:'landcover',paint:{'fill-color':['match',['get','code'],42,KS.ramp(.5),41,KS.ramp(1),C.sand],'fill-opacity':0}},{id:'cells',type:'fill',source:'cells',paint:{'fill-color':C.teal,'fill-opacity':0}},{id:'cells-line',type:'line',source:'cells',paint:{'line-color':C.abyss,'line-width':1,'line-opacity':0}},{id:'cell-hi',type:'line',source:'cells',filter:['==',['get','i'],-1],paint:{'line-color':C.paper,'line-width':2.5}},
       {id:'ring500',type:'line',source:'r500',paint:{'line-color':C.sand,'line-width':1.4,'line-dasharray':[4,3],'line-opacity':0}},{id:'ring1k',type:'line',source:'r1k',paint:{'line-color':C.sand,'line-width':1.4,'line-dasharray':[4,3],'line-opacity':0}},
       {id:'transit',type:'line',source:'transit',paint:{'line-color':C.sand,'line-width':1,'line-dasharray':[1,4],'line-opacity':0}},
+      {id:'forage',type:'line',source:'forage',paint:{'line-color':C.sand,'line-width':1.2,'line-dasharray':[2,3],'line-opacity':0}},{id:'forageuser',type:'line',source:'forageuser',paint:{'line-color':C.green,'line-width':2.5,'line-opacity':0}},
       {id:'flow',type:'line',source:'flow',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':C.green,'line-width':['interpolate',['linear'],['zoom'],9,2.5,13,4],'line-opacity':0}},{id:'flowuser',type:'line',source:'flowuser',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':C.paper,'line-width':2,'line-opacity':0}},{id:'flowdots',type:'circle',source:'flowdots',paint:{'circle-radius':3.5,'circle-color':C.paper,'circle-opacity':0}},
       {id:'transect',type:'line',source:'transect',paint:{'line-color':C.paper,'line-width':1.5,'line-dasharray':[2,2],'line-opacity':0}},{id:'sampling',type:'circle',source:'sampling',paint:{'circle-radius':['match',['get','kind'],'soil',5,8],'circle-color':C.abyss,'circle-stroke-width':2,'circle-stroke-color':['match',['get','kind'],'birds',C.teal,'soil',C.sand,C.paper],'circle-opacity':0,'circle-stroke-opacity':0}},
       {id:'parcel',type:'line',source:'parcel',layout:{'line-join':'miter'},paint:{'line-color':C.coral,'line-width':['interpolate',['linear'],['zoom'],8,5,12,3,15,2.5]}},
@@ -74,16 +77,17 @@ function start(){if(map||!window.maplibregl||!S.imageryWanted)return;const ring=
     marker('parcel',KS.EAGLE,'Eagle candidate');marker('r500',buffer(ring,500)[0],'500 m context','sand');marker('r1k',buffer(ring,1000)[0],'1 km neighbourhood','sand');
     marker('north',north.p,'North Inlet','teal');marker('east',east.p,'East Inlet','teal');marker('grand',north.p,`North and East Inlet<small>${Math.round(KS.km(KS.EAGLE,north.p))} km in a straight line</small>`,'teal');marker('glenwood',glen.p,`Glenwood<small>${Math.round(KS.km(KS.EAGLE,glen.p))} km in a straight line</small>`,'teal');
     marker('nolink',[(KS.EAGLE[0]+north.p[0])/2,(KS.EAGLE[1]+north.p[1])/2],'no delivery link','sand');marker('frame',buffer(ring,1000)[Math.floor(buffer(ring,1000).length/2)],'no measurement in the reviewed record','sand');
-    ['eagle','rivers','basins','burn','networks'].forEach(addData);setFlow();setSampling();apply();});
+    ['eagle','rivers','basins','burn','networks'].forEach(addData);setFlow();setSampling();setForage();apply();});
   m.on('idle',()=>{if(map===m&&ready&&S.imagery!=='off'&&m.areTilesLoaded()){clearTimeout(timer);if(S.imagery!=='ready')KS.setImagery('ready');}});
   m.on('error',()=>{errors++;if(errors>=8&&S.imagery!=='ready')stop('Imagery or terrain service unavailable');});
   m.getCanvas().addEventListener('webglcontextlost',e=>{e.preventDefault();stop('WebGL context lost');});
   timer=setTimeout(()=>{if(S.imagery==='pending')stop('Imagery timed out');},16000);}
 function stop(why){clearTimeout(timer);const old=map;map=null;ready=false;last={};lastReveal=-99;for(const k in markers){try{markers[k].m.remove();}catch(e){}}markers={};if(old){try{old.remove();}catch(e){}}KS.setImagery('off',why);}
 function cellAt(x,y){if(!map||!ready||S.L.cells<.6||S.lens!=='canopy')return-1;try{const f=map.queryRenderedFeatures([x,y],{layers:['cells']});return f.length?f[0].properties.i:-1;}catch(e){return-1;}}
+function setForage(){if(!map||!ready||!parcel)return;map.getSource('forage').setData(fc([600,1500].map(r=>feat({type:'LineString',coordinates:buffer(parcel,r)}))));const ring=buffer(parcel,S.forageM);map.getSource('forageuser').setData(fc([feat({type:'LineString',coordinates:ring})]));if(markers.forageLabel){markers.forageLabel.m.setLngLat(ring[Math.floor(ring.length*.62)]);markers.forageLabel.el.textContent=(S.forageM/1000).toFixed(2)+' km from the parcel';}else marker('forageLabel',ring[Math.floor(ring.length*.62)],(S.forageM/1000).toFixed(2)+' km from the parcel','teal');last={};apply();}
 function setFlow(){if(!map||!ready)return;const P=S.flowPaths||[];map.getSource('flow').setData(fc(P[0]?[feat({type:'LineString',coordinates:P[0]})]:[]));map.getSource('flowuser').setData(fc(P[1]?[feat({type:'LineString',coordinates:P[1]})]:[]));}
 function setDots(pts){if(map&&ready)map.getSource('flowdots').setData(fc(pts.map(p=>feat({type:'Point',coordinates:p}))));}
 function setSampling(){if(!map||!ready||!S.samplingPts)return;map.getSource('sampling').setData(fc(S.samplingPts.filter(f=>S.sampling[f.kind]!==false).map(f=>feat({type:'Point',coordinates:f.p},{kind:f.kind}))));if(S.transectLine)map.getSource('transect').setData(fc([feat({type:'LineString',coordinates:S.transectLine})]));last={};apply();}
 function unproject(x,y){if(!map||!ready)return null;const p=map.unproject([x,y]);return[p.lng,p.lat];}
-KS.gl={setFlow,setDots,setSampling,unproject,start,stop,apply,addData,cellAt,resize(){if(map){try{map.resize();}catch(e){}}},active:()=>!!map&&ready,map:()=>map};
+KS.gl={setForage,setFlow,setDots,setSampling,unproject,start,stop,apply,addData,cellAt,resize(){if(map){try{map.resize();}catch(e){}}},active:()=>!!map&&ready,map:()=>map};
 })();

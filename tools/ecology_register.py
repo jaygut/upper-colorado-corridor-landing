@@ -1,0 +1,140 @@
+"""Published ecology behind the 'unseen engine' chapter.
+
+Every quantitative statement here was checked against the cited paper's abstract or the
+publisher's own page on 13 Nov 2026. Each describes a study in another place. None is a
+measurement of the Eagle parcel, and the page says so wherever it is shown.
+"""
+
+REFS = {
+    'vdh2008': ('van der Heijden MGA, Bardgett RD, van Straalen NM (2008) The unseen majority: soil microbes as drivers of plant diversity and productivity in terrestrial ecosystems. Ecology Letters 11:296–310.', 'https://doi.org/10.1111/j.1461-0248.2007.01139.x'),
+    'wagg2014': ('Wagg C, Bender SF, Widmer F, van der Heijden MGA (2014) Soil biodiversity and soil community composition determine ecosystem multifunctionality. PNAS 111:5266–5270.', 'https://doi.org/10.1073/pnas.1320054111'),
+    'clem2013': ('Clemmensen KE et al. (2013) Roots and associated fungi drive long-term carbon sequestration in boreal forest. Science 339:1615–1618.', 'https://doi.org/10.1126/science.1231923'),
+    'rillig2006': ('Rillig MC, Mummey DL (2006) Mycorrhizas and soil structure. New Phytologist 171:41–53.', 'https://doi.org/10.1111/j.1469-8137.2006.01750.x'),
+    'likens1970': ('Likens GE, Bormann FH, Johnson NM, Fisher DW, Pierce RS (1970) Effects of forest cutting and herbicide treatment on nutrient budgets in the Hubbard Brook watershed-ecosystem. Ecological Monographs 40:23–47.', 'https://doi.org/10.2307/1942440'),
+    'mikk2013': ('Mikkelson KM, Dickenson ERV, Maxwell RM, McCray JE, Sharp JO (2013) Water-quality impacts from climate-induced forest die-off. Nature Climate Change 3:218–222.', 'https://doi.org/10.1038/nclimate1724'),
+    'denver': ('Denver Water. From Forests to Faucets and the Buffalo Creek and Hayman fires. Utility publications, accessed 13 Nov 2026.', 'https://www.denverwater.org/tap/taking-wild-out-wildfires'),
+    'ernst2004': ('Ernst C (2004) Protecting the Source: Land Conservation and the Future of America’s Drinking Water. Trust for Public Land and American Water Works Association.', 'https://tpl.org/resource/protecting-source'),
+    'klein2007': ('Klein AM et al. (2007) Importance of pollinators in changing landscapes for world crops. Proceedings of the Royal Society B 274:303–313.', 'https://doi.org/10.1098/rspb.2006.3721'),
+    'ricketts2004': ('Ricketts TH, Daily GC, Ehrlich PR, Michener CD (2004) Economic value of tropical forest to coffee production. PNAS 101:12579–12582.', 'https://doi.org/10.1073/pnas.0405147101'),
+    'ricketts2008': ('Ricketts TH et al. (2008) Landscape effects on crop pollination services: are there general patterns? Ecology Letters 11:499–515.', 'https://doi.org/10.1111/j.1461-0248.2008.01157.x'),
+    'gathmann2002': ('Gathmann A, Tscharntke T (2002) Foraging ranges of solitary bees. Journal of Animal Ecology 71:757–764.', 'https://doi.org/10.1046/j.1365-2656.2002.00641.x'),
+    'greenleaf2007': ('Greenleaf SS, Williams NM, Winfree R, Kremen C (2007) Bee foraging ranges and their relationship to body size. Oecologia 153:589–596.', 'https://doi.org/10.1007/s00442-007-0752-9'),
+    'ipbes2016': ('IPBES (2016) The assessment report on pollinators, pollination and food production.', 'https://doi.org/10.5281/zenodo.3402856'),
+    'haddad2015': ('Haddad NM et al. (2015) Habitat fragmentation and its lasting impact on Earth’s ecosystems. Science Advances 1:e1500052.', 'https://doi.org/10.1126/sciadv.1500052'),
+    'gilbert2010': ('Gilbert-Norton L, Wilson R, Stevens JR, Beard KH (2010) A meta-analytic review of corridor effectiveness. Conservation Biology 24:660–668.', 'https://doi.org/10.1111/j.1523-1739.2010.01450.x'),
+    'tewks2002': ('Tewksbury JJ et al. (2002) Corridors affect plants, animals, and their interactions in fragmented landscapes. PNAS 99:12923–12926.', 'https://doi.org/10.1073/pnas.202242699'),
+    'saura2014': ('Saura S, Bodin Ö, Fortin MJ (2014) Stepping stones are crucial for species’ long-distance dispersal and range expansion through habitat networks. Journal of Applied Ecology 51:171–182.', 'https://doi.org/10.1111/1365-2664.12179'),
+    'usbr2021': ('U.S. Bureau of Reclamation (2021) SECURE Water Act report, Colorado River Basin.', 'https://www.usbr.gov/climate/SECURE/docs/2021secure/basinreports/ColoradoBasin.pdf'),
+    'loreau2003': ('Loreau M, Mouquet N, Holt RD (2003) Meta-ecosystems: a theoretical framework for a spatial ecosystem ecology. Ecology Letters 6:673–679.', 'https://doi.org/10.1046/j.1461-0248.2003.00483.x'),
+}
+
+# Soil engine. Nodes sit inside or beyond the parcel boundary. Coordinates are a fixed layout.
+NODES = [
+    {'id': 'canopy', 'label': 'Canopy', 'x': 200, 'y': 50},
+    {'id': 'roots', 'label': 'Roots', 'x': 200, 'y': 150},
+    {'id': 'fungi', 'label': 'Mycorrhizal fungi', 'x': 95, 'y': 250},
+    {'id': 'bacteria', 'label': 'Soil bacteria', 'x': 305, 'y': 250},
+    {'id': 'carbon', 'label': 'Soil organic carbon', 'x': 95, 'y': 350},
+    {'id': 'aggregates', 'label': 'Soil aggregates', 'x': 305, 'y': 350},
+    {'id': 'stream', 'label': 'Stream', 'x': 545, 'y': 170, 'beyond': True},
+    {'id': 'users', 'label': 'Water users', 'x': 545, 'y': 330, 'beyond': True},
+]
+FLUXES = [
+    {'id': 'c-roots', 'from': 'canopy', 'to': 'roots', 'kind': 'carbon', 'state': 'intact',
+     'title': 'Sugars flow from leaves to roots',
+     'text': 'Trees send part of the carbon they fix in their needles down to their roots, and much of it continues into the fungi that live on those roots.',
+     'refs': ['vdh2008']},
+    {'id': 'c-fungi', 'from': 'roots', 'to': 'fungi', 'kind': 'carbon', 'state': 'intact',
+     'title': 'Roots feed their fungal partners',
+     'text': 'Mycorrhizal fungi live on plant carbon and in return extend a web of fine threads through soil far beyond the reach of the roots themselves.',
+     'refs': ['vdh2008']},
+    {'id': 'np-up', 'from': 'fungi', 'to': 'canopy', 'kind': 'nutrients', 'state': 'intact',
+     'title': 'Fungi return nitrogen and phosphorus',
+     'text': 'In temperate and boreal forests, mycorrhizal fungi and nitrogen-fixing bacteria are estimated to supply up to 80% of the nitrogen and up to 75% of the phosphorus that plants take up each year, which makes the soil community a working part of the forest’s own growth.',
+     'refs': ['vdh2008']},
+    {'id': 'c-store', 'from': 'fungi', 'to': 'carbon', 'kind': 'carbon', 'state': 'intact',
+     'title': 'Fungi build long-term soil carbon',
+     'text': 'On forested islands in northern Sweden, 50 to 70% of the carbon stored in the soil came from roots and root-associated fungi, a finding that moved fungi to the centre of how forest soils hold carbon.',
+     'refs': ['clem2013']},
+    {'id': 'agg', 'from': 'fungi', 'to': 'aggregates', 'kind': 'structure', 'state': 'intact',
+     'title': 'Fungal threads bind soil into crumbs',
+     'text': 'Fungal hyphae entangle soil particles and their secretions help glue them into stable aggregates, the crumb structure that leaves pores open for air and water.',
+     'refs': ['rillig2006']},
+    {'id': 'retain', 'from': 'bacteria', 'to': 'aggregates', 'kind': 'nutrients', 'state': 'intact',
+     'title': 'A diverse soil community holds nutrients in place',
+     'text': 'When experiments simplified soil communities, several functions declined together, among them nutrient retention, nutrient cycling and decomposition, which links the diversity of soil life directly to how much the soil keeps and how much it loses.',
+     'refs': ['wagg2014']},
+    {'id': 'clear', 'from': 'aggregates', 'to': 'stream', 'kind': 'water', 'state': 'intact', 'crosses': True,
+     'title': 'Water soaks in and leaves slowly',
+     'text': 'Well-structured forest soil lets rain and snowmelt soak in and drain through the ground, so what reaches a stream arrives later and carries less soil and fewer dissolved nutrients.',
+     'refs': ['rillig2006', 'likens1970']},
+    {'id': 'nitrate', 'from': 'bacteria', 'to': 'stream', 'kind': 'nutrients', 'state': 'disturbed', 'crosses': True,
+     'title': 'Nitrate pulses into the stream',
+     'text': 'When every tree in a small New Hampshire watershed was cut and regrowth suppressed, stream nitrate rose about 41-fold in the first year and 56-fold in the second, and streamflow rose by roughly 39%, because the living roots that had been taking up nitrogen and water were gone.',
+     'where': 'Hubbard Brook, New Hampshire · experimental clearcut',
+     'refs': ['likens1970']},
+    {'id': 'doc', 'from': 'carbon', 'to': 'users', 'kind': 'carbon', 'state': 'disturbed', 'crosses': True,
+     'title': 'Dissolved carbon reaches treatment plants',
+     'text': 'Colorado treatment plants drawing from watersheds hit by the mountain pine beetle recorded more total organic carbon and more disinfection byproducts, which form when that carbon meets chlorine, and the increase tracked the extent of tree death upstream.',
+     'where': 'Colorado · mountain pine beetle die-off',
+     'refs': ['mikk2013']},
+    {'id': 'sediment', 'from': 'aggregates', 'to': 'users', 'kind': 'structure', 'state': 'disturbed', 'crosses': True,
+     'title': 'Sediment and debris fill a reservoir',
+     'text': 'After the Buffalo Creek and Hayman fires burned in the South Platte watershed, storms carried sediment and debris into Denver Water’s supply, and the utility reports spending more than US$27 million on cleanup and repairs before it began investing in forest health upstream.',
+     'where': 'South Platte, Colorado · wildfire',
+     'refs': ['denver']},
+]
+
+FORAGE = {
+    'visitation_half_km': 0.6, 'richness_half_km': 1.5,
+    'solitary_max_m': [150, 600],
+    'text': 'Across 23 studies of 16 crops on five continents, visits by native pollinators fell to half their near-habitat level about 0.6 km from natural habitat, and pollinator richness fell by half at about 1.5 km.',
+    'refs': ['ricketts2008', 'gathmann2002', 'greenleaf2007'],
+}
+VALUE = [
+    {'figure': '20%', 'text': 'more coffee from plots within 1 km of two forest fragments in Costa Rica, worth about US$60,000 a year to a single farm in 2000 to 2003', 'refs': ['ricketts2004']},
+    {'figure': '35%', 'text': 'of global crop production volume comes from crops that depend on animal pollination to some degree', 'refs': ['klein2007']},
+    {'figure': 'US$235–577 bn', 'text': 'of annual global food production relies directly on pollinators', 'refs': ['ipbes2016']},
+]
+
+# Illustrative habitat network. Fixed coordinates; the keystone is the only bridge between two clusters.
+NETWORK = {
+    'nodes': [
+        {'id': 'a', 'x': 60, 'y': 130}, {'id': 'b', 'x': 125, 'y': 60}, {'id': 'c', 'x': 140, 'y': 200},
+        {'id': 'd', 'x': 215, 'y': 120}, {'id': 'e', 'x': 70, 'y': 250},
+        {'id': 'k', 'x': 305, 'y': 140, 'keystone': True},
+        {'id': 'f', 'x': 395, 'y': 120}, {'id': 'g', 'x': 470, 'y': 55}, {'id': 'h', 'x': 465, 'y': 200},
+        {'id': 'i', 'x': 545, 'y': 125}, {'id': 'j', 'x': 535, 'y': 255},
+    ],
+    'reach': 110,
+    'text': 'Each circle is a habitat patch and each line a gap that a disperser can cross. The network is illustrative, built to show the stepping-stone role that the Eagle parcel might play, while the real habitat network around the parcel remains unmapped.',
+    'refs': ['saura2014', 'gilbert2010', 'tewks2002', 'haddad2015'],
+}
+
+LEDGER = [
+    {'recipient': 'Drinking-water utilities', 'pathway': 'Treatment cost and water quality',
+     'elsewhere': 'A survey of 27 U.S. water suppliers found treatment and chemical costs about 20% lower for every 10% more forest in the source watershed, up to about 60% cover, with forest cover explaining roughly half of the variation in cost. In Colorado, plants below beetle-killed forest saw more disinfection byproducts.',
+     'refs': ['ernst2004', 'mikk2013'], 'here': 'No intake traced from the parcel and no utility named.'},
+    {'recipient': 'Reservoir operators', 'pathway': 'Sediment and debris after disturbance',
+     'elsewhere': 'Denver Water reports more than US$27 million spent after the Buffalo Creek and Hayman fires, and its From Forests to Faucets partners have committed more than US$96 million to forest work upstream since 2010.',
+     'refs': ['denver'], 'here': 'No fire, erosion or sediment record exists for the parcel.'},
+    {'recipient': 'Growers and gardeners', 'pathway': 'Pollination within flight range',
+     'elsewhere': 'Forest near Costa Rican coffee raised yields by 20% within 1 km, and crops that depend on animal pollination supply about 35% of global production volume.',
+     'refs': ['ricketts2004', 'klein2007'], 'here': 'No pollinator is recorded and no flowering crop or garden has been mapped within flight range.'},
+    {'recipient': 'River users downstream', 'pathway': 'Water quantity and quality along the Colorado',
+     'elsewhere': 'The Colorado River and its tributaries supply municipal water to nearly 40 million people, an estimate that independent analysts place nearer 35 million, and irrigate nearly 4.5 million acres.',
+     'refs': ['usbr2021'], 'here': 'Delivery from the parcel to the Eagle River, and from there to any user, is untraced.'},
+    {'recipient': 'Wildlife and the habitat network', 'pathway': 'Connectivity between patches',
+     'elsewhere': 'Corridors increased movement between habitat patches by about 50% across 78 experiments, they carried pollen and seeds between patches in a landscape-scale trial, and fragmentation experiments lowered biodiversity by 13 to 75%.',
+     'refs': ['gilbert2010', 'tewks2002', 'haddad2015'], 'here': 'The habitat network around the parcel is unmapped, so its role as a stepping stone is unknown.'},
+]
+
+
+def build():
+    return {
+        'schema': 'keystone-ecology/1',
+        'scope': 'Published findings from other places, verified against the cited sources on 13 Nov 2026. None is a measurement of the Eagle parcel.',
+        'references': [{'id': k, 'citation': c, 'url': u} for k, (c, u) in REFS.items()],
+        'soil': {'nodes': NODES, 'fluxes': FLUXES},
+        'forage': FORAGE, 'value': VALUE, 'network': NETWORK, 'ledger': LEDGER,
+    }

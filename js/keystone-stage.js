@@ -15,7 +15,7 @@ const STATIONS=[{id:'401530105475401',name:'North Inlet',p:[-105.799722,40.2575]
 function km(a,b){const r=Math.PI/180,dlat=(b[1]-a[1])*r,dlon=(b[0]-a[0])*r,h=Math.sin(dlat/2)**2+Math.cos(a[1]*r)*Math.cos(b[1]*r)*Math.sin(dlon/2)**2;return 12742*Math.asin(Math.sqrt(h));}
 
 const stage=document.getElementById('stage'),canvas=document.getElementById('geo'),ctx=canvas.getContext('2d'),mapHost=document.getElementById('imagery');
-const S={sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
+const S={forageM:600,sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
 const off=document.createElement('canvas');let frame=0,parcelRing=null,parcelM=null;
 const embedded=document.getElementById('embedded-parcel');
 if(embedded){try{parcelRing=JSON.parse(embedded.textContent).features[0].geometry.coordinates[0];parcelM=parcelRing.map(merc);}catch(e){S.errors.push('embedded parcel unreadable');}}
@@ -25,7 +25,7 @@ const mpp=(z,lat)=>78271.517*Math.cos(lat*Math.PI/180)/Math.pow(2,z); // metres 
 function fitZoom(extentM,px,lat){return Math.log2(78271.517*Math.cos(lat*Math.PI/180)*px/extentM);}
 function specs(){const W=S.W,H=S.H,m=W<760,ax=m?.5:.68,ay=m?.5:.5,box=Math.min(H*(m?.8:.62),W*(m?.86:.5));
   const eagle=(ext,pitch,bearing,extra)=>Object.assign({focus:EAGLE,z:fitZoom(ext,box,EAGLE[1]),anchor:[ax,ay],pitch,bearing},extra);
-  const none={rivers:0,cells:0,ring500:0,ring1k:0,nwi:0,padus:0,stations:0,basins:0,fire:0,transit:0,reveal:0,revealBasins:0,dim:0,parcelLabel:0,frame:0,flow:0,sampling:0};
+  const none={rivers:0,cells:0,ring500:0,ring1k:0,nwi:0,padus:0,stations:0,basins:0,fire:0,transit:0,reveal:0,revealBasins:0,dim:0,parcelLabel:0,frame:0,flow:0,sampling:0,forage:0};
   const L=o=>Object.assign({},none,o);
   return{
     object:eagle(560,0,0,{L:L({reveal:0})}),
@@ -34,6 +34,8 @@ function specs(){const W=S.W,H=S.H,m=W<760,ax=m?.5:.68,ay=m?.5:.5,box=Math.min(H
     ring1k:eagle(3000,58,18,{L:L({ring500:A.node,ring1k:1,nwi:A.div,reveal:1000,parcelLabel:1})}),
     frame:eagle(4300,62,52,{L:L({ring1k:A.div,reveal:1000,frame:1,parcelLabel:1})}),
     sampling:eagle(760,36,-42,{L:L({reveal:60,sampling:1})}),
+    soilcam:eagle(520,66,150,{anchor:[m?.5:.8,m?.45:.42],L:L({reveal:20,dim:1})}),
+    forage:eagle(m?5200:6600,48,12,{L:L({reveal:1500,forage:1,parcelLabel:1})}),
     flow:{focus:[-106.43,39.545],z:fitZoom(m?17000:24000,m?W*.95:Math.min(W*.6,H),39.55),anchor:[m?.5:.66,m?.55:.56],pitch:62,bearing:-24,L:L({rivers:A.div,flow:1,reveal:1000,ring1k:A.node,parcelLabel:1})},
     river:{focus:[-106.43,39.52],z:m?10.2:11.3,anchor:[m?.5:.64,.46],pitch:56,bearing:-28,L:L({rivers:1,flow:A.div,ring1k:A.div,reveal:1000,parcelLabel:1})},
     transit:{focus:[-106.52,39.86],z:fitZoom(m?190000:230000,m?W*.94:W*.62,39.8),anchor:[m?.5:.64,.5],pitch:0,bearing:0,L:L({rivers:A.div,stations:1,transit:1,basins:A.div,parcelLabel:1})},
@@ -98,6 +100,7 @@ function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTr
     ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(off,0,0);ctx.setTransform(S.dpr,0,0,S.dpr,0,0);
     if(label){const top=parcelM.reduce((a,v)=>{const q=PM(v);return q[1]<a[1]?q:a;},[0,1e9]);text(label,top[0],top[1]-r-10,{align:'center',color:C.sand,size:11});}
     ctx.restore();}
+  if(L.forage>0){ring(600,L.forage*A.div,'');ring(1500,L.forage*A.div,'');if(S.forageM)ring(S.forageM,L.forage,(S.forageM/1000).toFixed(2)+' km');}
   if(L.ring500>0)ring(500,L.ring500,L.ring500>.6?'500 m context':'');
   if(L.ring1k>0)ring(1000,L.ring1k,L.ring1k>.6&&L.rivers<.5?'1 km neighbourhood':'');
   /* 5. Structure lens: clipped 30 m cells */

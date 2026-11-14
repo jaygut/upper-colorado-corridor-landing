@@ -15,6 +15,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import passport_register  # noqa: E402
+import ecology_register  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 R4 = ROOT / 'data' / 'r4'
@@ -26,7 +27,7 @@ ALLOWLIST = {
     'thermal_replay.json': 'bee91296137a896db053fc90e98a0c96b73080f4f53c80aa48bcf9244a8191d1',
     'daily_temperature.json': '48975b37a24b5e98db671d5bdf82d1ab60ab3e377494a881fc07e1c96ac66486',
 }
-VERSION = '20261113-r5d'
+VERSION = '20261113-r5e'
 STATION_NAMES = {
     '401530105475401': 'North Inlet',
     '09013500': 'East Inlet',
@@ -271,12 +272,13 @@ def main():
                          'east_inlet_and_glenwood': {'total': 12, 'kinds': 'turbidity state and season', 'ecological': 0}},
         'station_coordinates': {'09071750': {'lon': -107.2908874, 'lat': 39.5588711, 'source': 'https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=09071750&siteOutput=basic'}},
         'historical_screening_score': {'value': 0.6724, 'status': 'archived artifact'}})
+    write('ecology.json', ecology_register.build())
     write('passport.json', passport_register.build(eagle, load(OUT / 'thermal-daily.json'), load(OUT / 'clock.json'), fire[0]['fire_fraction']))
     write('sources.json', {'schema': 'keystone-visual-sources/1',
                            'note': 'SHA256 of every repository-local input read by tools/build-keystone.py.',
                            'inputs_sha256': dict(sorted(sources.items())),
                            'outputs_sha256': {f'data/keystone/{n}': sha(OUT / n) for n in
-                                              ('eagle.json', 'clock.json', 'thermal-daily.json', 'context.json', 'passport.json')}})
+                                              ('eagle.json', 'clock.json', 'thermal-daily.json', 'context.json', 'ecology.json', 'passport.json')}})
 
 
     # ---- public claim-to-source map and data inventory ---------------------------
@@ -296,6 +298,8 @@ def main():
         ('bird-records', '0 retained bird records on the exact parcel. 45 publishable records in 26 provider species-name groups within 1 km, 2005 to 2025. 22 noncommercial-licence records withheld.', ['data/r4/eagle_bird_record_context_v2.json'], 'Observed records, aggregated', 'Neighbourhood support only. No abundance, richness, absence, guild or parcel occupancy. Coordinates withheld. Provider taxonomy unverified.'),
         ('unrecorded-taxa', 'Pollinators and soil microbial communities are unsampled for this parcel. Their general ecological roles are stated as background.', ['data/keystone/passport.json'], 'Stated gap with proposed sampling', 'No local record exists. Sampling locations on the map are proposals.'),
         ('terrain-trace', 'A steepest-descent trace from the parcel centre is computed in the browser on 30 m public elevation tiles.', ['js/keystone-flow.js'], 'Conditional terrain geometry', 'Shape of the surface only. Closed pits are bridged. No volume, timing, sediment or effect is measured.'),
+        ('published-ecology', 'Soil microbes, pollinators, stepping stones and downstream costs are described with findings from named studies in other places, including Hubbard Brook, Colorado beetle-kill watersheds, the South Platte fires, Costa Rican coffee and pooled crop studies.', ['data/keystone/ecology.json'], 'Published literature, verified 13 Nov 2026', 'Each finding belongs to its own place, scale and disturbance. None is a measurement of the Eagle parcel.'),
+        ('stepping-stone-network', 'The connectivity figure is an illustrative network with fixed coordinates.', ['data/keystone/ecology.json'], 'Illustrative model', 'The habitat network around the parcel is unmapped.'),
         ('condition', 'Condition on the Eagle parcel is unmeasured.', ['data/keystone/passport.json'], 'Stated gap', 'Field validation pending.'),
         ('distances', 'Straight-line distance from the parcel is about 100 km to the Grand Lake stations and about 79 km to the Glenwood station.', ['data/stations.geojson', 'data/keystone/results.json', 'data/keystone-candidate.geojson'], 'Computed from published coordinates', 'Glenwood coordinates from the USGS site service. No delivery has been traced or tested. The Glenwood station lies downstream on the Colorado River; position alone establishes no effect.'),
         ('fire-overlap', 'The East Troublesome final perimeter overlaps 27.3% (20.6 km²) of the basin associated with North Inlet and none of the East Inlet basin.', [CX, 'data/source-context-release.json'], 'Retrospective mapped context', 'Associated NHDPlusV2 basins, not exact gauge splits. Post-fire image 7 Sep 2021, perimeter revised 16 Oct 2026. Spectral classes are not mortality, recovery or biodiversity change.'),
@@ -324,7 +328,7 @@ def main():
         'bird_citations': [a['citation'] for a in birds['attribution']],
         'claims': [{'id': i, 'claim': c, 'sources': [src(s) for s in ss], 'classification': k, 'limit': l} for i, c, ss, k, l in claims]})
     files = sorted(str(p.relative_to(ROOT)) for p in (ROOT / 'data').rglob('*') if p.is_file() and p.name not in ('data-inventory.json', '.DS_Store'))
-    used = {'data/keystone/eagle.json', 'data/keystone/clock.json', 'data/keystone/thermal-daily.json', 'data/keystone/context.json', 'data/keystone/passport.json',
+    used = {'data/keystone/ecology.json', 'data/keystone/eagle.json', 'data/keystone/clock.json', 'data/keystone/thermal-daily.json', 'data/keystone/context.json', 'data/keystone/passport.json',
             'data/keystone/sources.json', 'data/experience-evidence.json', 'data/hydro.js', 'data/keystone-candidate.geojson', 'data/context/nldi_associated_basins.geojson',
             'data/context/burn_basin_intersections.geojson', 'data/context/north_upstream.geojson', 'data/context/east_upstream.geojson', 'data/claim-source-map.json'}
     write_root('data-inventory.json', {
@@ -345,10 +349,10 @@ def main():
             f'<link rel="stylesheet" href="css/keystone-base.css?v={VERSION}"><link rel="stylesheet" href="css/keystone-story.css?v={VERSION}">'
             '<script>(function(){var q=new URLSearchParams(location.search);if(q.has("scene")||q.has("forecastCase"))location.replace("evidence.html"+location.search+location.hash);})();</script>'
             f'<script id="embedded-parcel" type="application/json">{embedded}</script>'
-            f'<script defer src="js/keystone-stage.js?v={VERSION}"></script><script defer src="js/keystone-gl.js?v={VERSION}"></script><script defer src="js/keystone-flow.js?v={VERSION}"></script><script defer src="js/keystone-charts.js?v={VERSION}"></script><script defer src="js/keystone-story.js?v={VERSION}"></script>'
+            f'<script defer src="js/keystone-stage.js?v={VERSION}"></script><script defer src="js/keystone-gl.js?v={VERSION}"></script><script defer src="js/keystone-flow.js?v={VERSION}"></script><script defer src="js/keystone-charts.js?v={VERSION}"></script><script defer src="js/keystone-ecology.js?v={VERSION}"></script><script defer src="js/keystone-story.js?v={VERSION}"></script>'
             '</head>\n')
     (ROOT / 'index.html').write_text(head + (ROOT / 'tools' / 'index.body.html').read_text())
-    for n in ('eagle.json', 'clock.json', 'thermal-daily.json', 'context.json', 'passport.json', 'sources.json'):
+    for n in ('eagle.json', 'clock.json', 'thermal-daily.json', 'context.json', 'ecology.json', 'passport.json', 'sources.json'):
         print(n, (OUT / n).stat().st_size)
 
 

@@ -150,8 +150,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
-     "bytes": 40189
+     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
+     "bytes": 42074
     }
    ],
    "classification": "Stated gap with proposed sampling",
@@ -171,13 +171,39 @@
    "limit": "Shape of the surface only. Closed pits are bridged. No volume, timing, sediment or effect is measured."
   },
   {
+   "id": "published-ecology",
+   "claim": "Soil microbes, pollinators, stepping stones and downstream costs are described with findings from named studies in other places, including Hubbard Brook, Colorado beetle-kill watersheds, the South Platte fires, Costa Rican coffee and pooled crop studies.",
+   "sources": [
+    {
+     "file": "data/keystone/ecology.json",
+     "sha256": "a8f9e0a1b69c18c700e0e08ee6f5f531b556f34a6811a625b9cf7243bb209604",
+     "bytes": 12830
+    }
+   ],
+   "classification": "Published literature, verified 13 Nov 2026",
+   "limit": "Each finding belongs to its own place, scale and disturbance. None is a measurement of the Eagle parcel."
+  },
+  {
+   "id": "stepping-stone-network",
+   "claim": "The connectivity figure is an illustrative network with fixed coordinates.",
+   "sources": [
+    {
+     "file": "data/keystone/ecology.json",
+     "sha256": "a8f9e0a1b69c18c700e0e08ee6f5f531b556f34a6811a625b9cf7243bb209604",
+     "bytes": 12830
+    }
+   ],
+   "classification": "Illustrative model",
+   "limit": "The habitat network around the parcel is unmapped."
+  },
+  {
    "id": "condition",
    "claim": "Condition on the Eagle parcel is unmeasured.",
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
-     "bytes": 40189
+     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
+     "bytes": 42074
     }
    ],
    "classification": "Stated gap",
@@ -382,8 +408,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
-     "bytes": 40189
+     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
+     "bytes": 42074
     }
    ],
    "classification": "Evidence register",
@@ -408,8 +434,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
-     "bytes": 40189
+     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
+     "bytes": 42074
     }
    ],
    "classification": "Hypothesis",
@@ -421,8 +447,8 @@
    "sources": [
     {
      "file": "data/keystone/passport.json",
-     "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
-     "bytes": 40189
+     "sha256": "f03ea40b8515f51d3dcfbb565941a6b8cc3bd4664dacd6c67ee5b3b9a10f9519",
+     "bytes": 42074
     },
     {
      "file": "data/finance-evidence-ledger.json",
