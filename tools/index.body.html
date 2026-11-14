@@ -2,7 +2,7 @@
 <div id="stage" aria-hidden="true"><div id="imagery"></div><canvas id="geo"></canvas><div id="stage-labels"></div><div class="hud" id="hud"><span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span><p class="hud-line mono" id="hud-readout"></p></div></div>
 <p id="stage-alt" class="vh" aria-live="polite">Map of the checked Eagle County parcel boundary.</p>
 <header class="top"><a class="wordmark" href="index.html">Graph of Life</a>
-<details id="chapter-menu"><summary><span class="mono" id="chapter-number">01 / 10</span> <span id="chapter-name">The polygon</span></summary><nav aria-label="Chapters"><a href="?chapter=polygon" data-go="polygon"><span class="mono">01</span> The polygon</a><a href="?chapter=living" data-go="living"><span class="mono">02</span> The living context</a><a href="?chapter=engine" data-go="engine"><span class="mono">03</span> The unseen engine</a><a href="?chapter=spillover" data-go="spillover"><span class="mono">04</span> The spillover</a><a href="?chapter=measured" data-go="measured"><span class="mono">05</span> A separate case</a><a href="?chapter=clock" data-go="clock"><span class="mono">06</span> One clock</a><a href="?chapter=forecast" data-go="forecast"><span class="mono">07</span> Six hours ahead</a><a href="?chapter=windows" data-go="windows"><span class="mono">08</span> The windows</a><a href="?chapter=obligation" data-go="obligation"><span class="mono">09</span> The last edge</a><a href="?chapter=next" data-go="next"><span class="mono">10</span> Today</a></nav></details>
+<details id="chapter-menu"><summary><span class="mono" id="chapter-number">01 / 10</span> <span id="chapter-name">The polygon</span></summary><nav aria-label="Chapters"><a href="?chapter=polygon" data-go="polygon"><span class="mono">01</span> The polygon</a><a href="?chapter=living" data-go="living"><span class="mono">02</span> The living context</a><a href="?chapter=engine" data-go="engine"><span class="mono">03</span> The unseen engine</a><a href="?chapter=spillover" data-go="spillover"><span class="mono">04</span> The spillover</a><a href="?chapter=measured" data-go="measured"><span class="mono">05</span> A separate case</a><a href="?chapter=clock" data-go="clock"><span class="mono">06</span> One clock</a><a href="?chapter=forecast" data-go="forecast"><span class="mono">07</span> Six hours ahead</a><a href="?chapter=windows" data-go="windows"><span class="mono">08</span> The windows</a><a href="?chapter=obligation" data-go="obligation"><span class="mono">09</span> The last edge</a><a href="?chapter=next" data-go="next"><span class="mono">10</span> The whole picture</a></nav></details>
 <a class="file-link" href="passport.html"><span class="wide-only">Candidate file</span><span class="narrow-only">File</span> <span aria-hidden="true">&nbsp;↗</span></a></header>
 
 <div class="lens-bar" id="lens-bar" role="group" aria-label="Evidence lens"><button class="k-tab" data-lens="structure" aria-pressed="false">Structure</button><button class="k-tab" data-lens="composition" aria-pressed="false">Composition</button><button class="k-tab" data-lens="condition" aria-pressed="false">Condition</button><button class="k-tab" data-lens="function" aria-pressed="false">Function</button><span class="k-note" id="support-readout">Support · parcel</span></div>
@@ -26,13 +26,54 @@
   </ol>
   <p class="k-note">Its historical screening score of <span class="mono">0.6724</span> survives as an archived artifact, and neither that score nor the parcel's area and position on a map can answer any of the three questions.</p>
  </div></div>
+ <div class="step" data-cam="objectDim" data-step="framework"><div class="step-body wide">
+  <p class="k-eyebrow">The quantitative framework · what is computed</p>
+  <h2 class="k-h1">Behind these figures, a quantitative framework.</h2>
+  <p>Keystone Polygon and Spillover Effect are the two working terms of a quantitative framework that Graph of Life runs on public data. It represents a landscape as a network of places and the flows between them, traces how a function or a risk would travel along those flows, tests its predictions against observations held back from fitting wherever a record exists, and turns what survives into proposals for monitoring and, once rights and payers are named, for payment. Most of the figures in this story were computed by that framework from public data, the rest are published findings or observations still to be made, and each scene that presents evidence carries a tag that says which is which.</p>
+  <div class="fw" id="framework-figure">
+   <svg class="fw-wires" aria-hidden="true"></svg>
+   <ul class="fw-in" aria-label="Public inputs">
+    <li>Parcel geometry<small>county GIS</small></li>
+    <li>Land cover and canopy<small>USGS NLCD</small></li>
+    <li>Wetland and protected areas<small>NWI · PAD-US</small></li>
+    <li>Species occurrence records<small>GBIF</small></li>
+    <li>Elevation<small>USGS 3DEP</small></li>
+    <li>Rivers and basins<small>NHDPlus</small></li>
+    <li>Gauge records<small>USGS NWIS</small></li>
+    <li>Fire perimeters and severity<small>MTBS</small></li>
+   </ul>
+   <div class="fw-core"><svg id="fw-art" aria-hidden="true"></svg><p class="fw-name">Quantitative core</p><ol class="fw-verbs"><li>Represent</li><li>Trace</li><li>Test</li><li>Decide</li></ol><p class="fw-sealed mono">core methods withheld</p></div>
+   <ol class="fw-out" aria-label="Outputs shown in this story">
+    <li><a href="?chapter=living&amp;step=structure" data-go="living" data-go-step="structure"><b class="mono" data-bind="forest">97.9%</b><span>of the parcel in the forest class, read from <span class="mono" data-bind="centers">47</span> mapped cells</span><i class="k-state observed">Computed</i></a></li>
+    <li><a href="?chapter=living&amp;step=composition" data-go="living" data-go-step="composition"><b class="mono" data-bind="public-records">45</b><span>bird records and <span class="mono" data-bind="groups">26</span> species names within 1 km</span><i class="k-state observed">Observed</i></a></li>
+    <li><a href="?chapter=spillover&amp;step=flow" data-go="spillover" data-go-step="flow"><b class="mono" data-bind="fw-flow">live</b><span>terrain route traced downhill from the parcel</span><i class="k-state observed">Computed · live</i></a></li>
+    <li><a href="?chapter=spillover&amp;step=node" data-go="spillover" data-go-step="node"><b class="mono" data-bind="fw-web">live</b><span>cells of terrain within 2 km traced to the route that leaves the parcel</span><i class="k-state observed">Computed · live</i></a></li>
+    <li><a href="?chapter=measured&amp;step=basins" data-go="measured" data-go-step="basins"><b class="mono" data-bind="fire-pct">27.3%</b><span>of a gauged basin inside a mapped fire perimeter</span><i class="k-state observed">Computed</i></a></li>
+    <li><a href="?chapter=forecast" data-go="forecast"><b class="mono" data-bind="gain-pct">6.84%</b><span>lower forecast error across <span class="mono" data-bind="n-windows">1,014</span> windows held back from fitting</span><i class="k-state observed">Tested · held</i></a></li>
+    <li><a href="?chapter=forecast" data-go="forecast"><b class="mono">5</b><span>tested predictions that failed and stay on the page</span><i class="k-state failed">Tested · failed</i></a></li>
+    <li><a href="?chapter=windows" data-go="windows"><b class="mono">38 · 46</b><span>monitoring windows proposed by two policies, priced to the cent at a cost the reader supplies</span><i class="k-state observed">Computed</i></a></li>
+    <li><a href="?chapter=spillover&amp;step=chain" data-go="spillover" data-go-step="chain"><b class="mono">7</b><span>links classified from polygon to obligation, one of them established</span><i class="k-state observed">Computed</i></a></li>
+    <li><a href="?chapter=next&amp;step=graph" data-go="next" data-go-step="graph"><b class="mono">33 · 41</b><span>nodes and edges in the dependency graph that restates the whole story</span><i class="k-state proxy">Restated</i></a></li>
+    <li><a href="?chapter=obligation&amp;step=task" data-go="obligation" data-go-step="task"><b class="mono">7</b><span>next observations written, one for each proposed mechanism</span><i class="k-state pending">Pending</i></a></li>
+   </ol>
+  </div>
+  <ul class="basis-key" aria-label="Tags used on the scenes that present evidence">
+   <li><i class="k-state observed">Computed</i><span>produced by the framework from public data</span></li>
+   <li><i class="k-state observed">Observed</i><span>instrument and observer records, aligned or aggregated</span></li>
+   <li><i class="k-state observed">Tested</i><span>scored against observations held back from fitting</span></li>
+   <li><i class="k-state proxy">Published elsewhere</i><span>peer-reviewed findings from other places</span></li>
+   <li><i class="k-state pending">Illustrative</i><span>a teaching model, labelled where it appears</span></li>
+   <li><i class="k-state pending">Pending</i><span>awaiting observation on the ground</span></li>
+  </ul>
+  <p class="k-note">The diagram names what goes in and what comes out. How the core combines them stays with Graph of Life, and every output shown here is traceable to a named public source.</p>
+ </div></div>
 </section>
 
 <section class="ch" id="living" data-title="The living context" data-links="process" data-case="eagle">
  <div class="step" data-cam="cells" data-step="structure" data-lens="structure" data-support="parcel · 30 m cells"><div class="step-body">
-  <p class="k-eyebrow">Structure · parcel support · 2023</p>
+  <p class="k-eyebrow">Structure · parcel support · 2023 <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">Begin with what a satellite can see.</h2>
-  <p>The first test asks whether anything is at work here, so the inquiry begins with the living system itself, at the scale a satellite can resolve. From orbit the parcel reads as almost unbroken forest, with the forest class covering <span class="mono" data-bind="forest">97.9%</span> of its area, a mean canopy cover of <span class="mono" data-bind="canopy">39.8%</span> and no built surface mapped anywhere inside the line. Each tile on the terrain is a group of <span class="mono">30 m</span> cells clipped to the boundary, so you can move across them and read the canopy value the product assigns to each one.</p>
+  <p>The first test asks whether anything is at work here, so the framework begins with the living system itself, at the scale a satellite can resolve. From orbit the parcel reads as almost unbroken forest, with the forest class covering <span class="mono" data-bind="forest">97.9%</span> of its area, a mean canopy cover of <span class="mono" data-bind="canopy">39.8%</span> and no built surface mapped anywhere inside the line. Each tile on the terrain is a group of <span class="mono">30 m</span> cells clipped to the boundary, so you can move across them and read the canopy value the product assigns to each one.</p>
   <div class="layer-choice" role="group" aria-label="Structure layer"><button class="k-tab" data-layer="canopy" aria-pressed="true">Canopy cover</button><button class="k-tab" data-layer="landcover" aria-pressed="false">Land-cover class</button><button class="k-tab" data-layer="imagery" aria-pressed="false">Imagery only</button></div>
   <p class="readout mono" id="cell-readout" aria-live="polite">Point at a tile to read its canopy cover.</p>
   <label class="cell-step"><span class="vh">Step through canopy tiles</span><input type="range" id="cell-slider" min="0" max="69" value="0" step="1" aria-describedby="cell-readout"></label>
@@ -41,14 +82,14 @@
   <p class="k-prov">SOURCE · USGS Annual NLCD <span data-bind="year">2023</span> · METHOD · area-weighted within the parcel · CONFIDENCE · habitat proxy · USE · mapped extent, condition unassessed</p>
  </div></div>
  <div class="step" data-cam="context500" data-step="inventory" data-lens="structure" data-support="500 m context"><div class="step-body">
-  <p class="k-eyebrow">Structure · 500 m context · mapped inventories</p>
+  <p class="k-eyebrow">Structure · 500 m context · mapped inventories <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">Then widen the frame by half a kilometre.</h2>
   <p>As the view opens to <span class="mono">500 m</span>, two public inventories come into play. The wetlands inventory maps nothing inside the parcel and a small wetland to the east that covers <span class="mono" data-bind="nwi-context">0.26%</span> of this wider frame, while the protected-areas inventory covers the whole of it.</p>
   <ul class="legend"><li><i class="sw nwi"></i>Mapped wetland, National Wetlands Inventory</li><li><i class="sw pad"></i>Mapped protected-area union, PAD-US</li><li><i class="sw ring"></i>500 m context boundary</li></ul>
   <p class="k-note">A mapped zero is still a mapped result, so seeps and wet ground wait for a site walk, and a designation drawn on a map leaves ownership, access and the authority to act for separate verification.</p>
  </div></div>
  <div class="step" data-cam="ring1k" data-step="composition" data-lens="composition" data-support="1 km neighbourhood"><div class="step-body wide">
-  <p class="k-eyebrow">Composition · 1 km neighbourhood · 2005 to 2025</p>
+  <p class="k-eyebrow">Composition · 1 km neighbourhood · 2005 to 2025 <i class="k-state observed basis">Observed</i></p>
   <h2 class="k-h1">Ask who has been recorded nearby.</h2>
   <p>Life enters the record once the frame reaches a full kilometre. The completed query returned <span class="mono" data-bind="parcel-records">0</span> bird records inside the parcel itself, which leaves absence unestablished, while <span class="mono" data-bind="public-records">45</span> publishable records within <span class="mono">1 km</span> carry <span class="mono" data-bind="groups">26</span> provider-reported species names. Their coordinates are withheld, so the names appear here as a timeline beside the land instead of points upon it.</p>
   <div id="species-strip" class="figure" aria-live="polite"></div>
@@ -57,7 +98,7 @@
   <p class="k-prov">SOURCE · eBird Observation Dataset, CC BY 4.0, and Great Backyard Bird Count, CC0, via GBIF · METHOD · filtered and aggregated, coordinates and IDs omitted · CONFIDENCE · provider-reported names · USE · recorded presence in the neighbourhood</p>
  </div></div>
  <div class="step" data-cam="frame" data-step="condition" data-lens="condition" data-support="no local measurement"><div class="step-body">
-  <p class="k-eyebrow">Condition · no local measurement</p>
+  <p class="k-eyebrow">Condition · no local measurement <i class="k-state pending basis">Pending</i></p>
   <h2 class="k-h1">Ask what state it is in today.</h2>
   <p>Condition is the question of how a living system is faring at a given moment, and here the reviewed record falls silent, holding no sensor reading, plot or dated inspection anywhere in this frame. Structure, composition and condition together still say little about function, and function is where the value of a place like this is made.</p>
   <p class="k-note">The only dated physical measurements in this release are water temperatures from three separate stations, which the story visits later on their own ground.</p>
@@ -67,7 +108,7 @@
 
 <section class="ch" id="engine" data-title="The unseen engine" data-links="process effect" data-case="eagle">
  <div class="step" data-cam="sampling" data-step="unseen" data-lens="composition" data-support="parcel · proposed sampling"><div class="step-body wide">
-  <p class="k-eyebrow">The unseen engine · what the record has yet to reach</p>
+  <p class="k-eyebrow">The unseen engine · what the record has yet to reach <i class="k-state pending basis">Pending</i></p>
   <h2 class="k-h1">Most of what lives here has never been recorded.</h2>
   <p>Birds are the only organisms in the reviewed public record, and yet much of the life that keeps a forest like this one working is smaller, quieter and far closer to the ground. Bacteria and fungi in the soil help regulate how nutrients cycle, how much carbon the ground keeps and how readily water soaks in, while bees, flies and other pollinators carry the forest’s influence out to the meadows, gardens and fields within their flight range. On this parcel neither group has ever been sampled, which is why the markers on the terrain show where a first field season would take soil cores, walk a pollinator transect and count birds.</p>
   <div id="taxa-figure" class="figure"></div>
@@ -76,16 +117,16 @@
   <p class="k-note">Every marker is a proposed location laid out along the parcel’s own long axis, and sampling on federal land may require a permit. The chapter that follows draws on published studies from other forests and watersheds, each named where it appears, to show what this unrecorded life does elsewhere and what it could be doing here.</p>
  </div></div>
  <div class="step" data-cam="soilcam" data-step="soil" data-lens="function" data-support="published elsewhere · unmeasured here"><div class="step-body wide">
-  <p class="k-eyebrow">Beneath the canopy · published soil ecology</p>
-  <h2 class="k-h1">A forest runs on an economy below ground.</h2>
-  <p>Trees and soil microbes trade constantly, with sugars from the canopy flowing down into roots and fungi while nitrogen, phosphorus and water flow back up, and that exchange is what turns a stand of trees into a system that builds soil, stores carbon and holds water in place. Select any flow to read what the published evidence says about it, then switch to three forests that were disturbed elsewhere to see which flows stopped and which ones began to cross the boundary.</p>
-  <div class="direction" role="group" aria-label="State of the soil engine"><button class="k-tab" data-soil="intact" aria-pressed="true">Living forest</button><button class="k-tab" data-soil="disturbed" aria-pressed="false">Three disturbed forests</button></div>
+  <p class="k-eyebrow">The living network · published ecology <i class="k-state proxy basis">Published elsewhere</i></p>
+  <h2 class="k-h1">A forest is a network of exchanges.</h2>
+  <p>Trees, fungi, bacteria, flowers and insects trade with one another all the time. Sugars made in the canopy flow down into roots and the fungi that live on them, nitrogen and phosphorus flow back up, fungal threads bind the soil into crumbs that hold water, and in the few plants tested so far the fungi on understory roots changed how often pollinators visited, while about three-quarters of wild bee species raise their young in the soil. Select any part or any flow to read what the published evidence says about it, then simplify the life in the soil or disturb the forest to see which exchanges weaken and which begin to cross the boundary.</p>
+  <div class="direction" role="group" aria-label="State of the living network"><button class="k-tab" data-soil="intact" aria-pressed="true">Living forest</button><button class="k-tab" data-soil="simplified" aria-pressed="false">Simplified soil life</button><button class="k-tab" data-soil="disturbed" aria-pressed="false">Three disturbed forests</button></div>
   <div id="soil-figure" class="figure"></div>
-  <div id="soil-readout" class="readout-block" aria-live="polite"><p class="k-note">Select a flow to read its mechanism and its source.</p></div>
-  <p class="k-prov">SOURCE · peer-reviewed studies named in each flow · METHOD · conceptual diagram of published mechanisms · CONFIDENCE · established elsewhere, unmeasured on this parcel · USE · hypotheses for a soil baseline</p>
+  <div id="soil-readout" class="readout-block" aria-live="polite"><p class="k-note">Select a part of the network or a flow to read its mechanism and its source.</p></div>
+  <p class="k-prov">SOURCE · peer-reviewed studies named in each flow · METHOD · conceptual network of published mechanisms · CONFIDENCE · established elsewhere, unmeasured on this parcel · USE · hypotheses for a first field season</p>
  </div></div>
  <div class="step" data-cam="forage" data-step="wing" data-lens="function" data-support="published elsewhere · unmeasured here"><div class="step-body wide">
-  <p class="k-eyebrow">On the wing · published pollination ecology</p>
+  <p class="k-eyebrow">On the wing · published pollination ecology <i class="k-state proxy basis">Published elsewhere</i></p>
   <h2 class="k-h1">Pollinators carry the forest beyond its edge.</h2>
   <p>A patch of natural habitat sends its influence outward on the wings of the insects that nest in it, and how far that influence reaches depends on how far those insects fly. Small solitary bees rarely forage more than a few hundred metres from home, larger bees range further, and the studies that pooled crop data from five continents found that pollinator visits fade with distance in a strikingly regular way. Drag the slider to move outward from the parcel and watch the published curve and the ring on the terrain move together.</p>
   <div id="forage-figure" class="figure"></div>
@@ -95,14 +136,14 @@
   <p class="k-note">Nobody has yet recorded a pollinator on this parcel or mapped a flowering crop or garden within these rings, so the curve shows what published studies would lead one to look for and the rings show where that search would happen. The pooled declines were shallower in temperate regions than in the tropics, and their effect on crop yield was less clear than their effect on visits.</p>
  </div></div>
  <div class="step" data-cam="valley" data-step="corridor" data-lens="function" data-support="illustrative network"><div class="step-body wide">
-  <p class="k-eyebrow">Stepping stones · published connectivity science</p>
+  <p class="k-eyebrow">Stepping stones · published connectivity science <i class="k-state pending basis">Illustrative</i></p>
   <h2 class="k-h1">A well-placed patch can hold a whole network together.</h2>
-  <p>Animals, seeds and pollen rarely cross a valley in a single leap, and they travel instead from patch to patch, so a patch of sufficient size that sits between two larger ones can matter far more than its area suggests. Network ecologists call such a patch a stepping stone, and when one disappears the patches on either side can drift apart, with every species that needed to cross losing its route at once. Remove patches in the network below, or shorten the distance a disperser can travel, and watch how connectivity responds.</p>
+  <p>Animals, seeds and pollen rarely cross a valley in a single leap, and they travel instead from patch to patch, which is why network ecologists draw a landscape as a graph whose nodes are habitat patches and whose edges are the gaps a disperser can cross. In that picture a patch of sufficient size sitting between two larger ones is called a stepping stone, and when it disappears the patches on either side can drift apart, leaving the species that relied on that crossing without a route. Remove nodes from the network below, or shorten the distance a disperser can travel, and watch how connectivity responds.</p>
   <div class="direction" role="group" aria-label="Network actions"><button class="k-tab" id="net-keystone" aria-pressed="false">Remove the stepping stone</button><button class="k-tab" id="net-reset">Restore every patch</button></div>
   <div id="network-figure" class="figure"></div>
   <label class="clock-slider"><span class="vh">Distance a disperser can cross</span><input type="range" id="net-reach" min="70" max="200" step="5" value="110"></label>
   <p class="readout mono" id="network-readout" aria-live="polite"></p>
-  <p class="k-note">Corridors raised movement between patches by about 50% across 78 experiments, and in a landscape-scale trial they carried pollen and seeds as well as animals. Whether a parcel of 4.2 ha is large enough to serve as a bridge of this kind, and for which species, or whether it is one tile in a continuous forest floor, is a question that a connectivity map of the surrounding habitat would settle.</p>
+  <p class="k-note">Corridors, a related way of joining patches, raised movement between them by about 50% across 78 experiments, and in a landscape-scale experiment they also facilitated pollination and seed dispersal. Whether a parcel of 4.2 ha is large enough to serve as a bridge of this kind, and for which species, or whether it is one tile in a continuous forest floor, is a question that a connectivity map of the surrounding habitat would settle.</p>
  </div></div>
 </section>
 
@@ -114,9 +155,9 @@
   <p>Everything in the last chapter happens inside a forest or within a short flight of it, and the second test asks how any of it travels further. A legal boundary settles who holds rights and duties, whereas a functional boundary shifts with the mechanism, the season and whoever stands to receive the effect. The Eagle River and its tributaries appear here as map context, since the route from this parcel to any recipient is still to be traced.</p>
  </div></div>
  <div class="step" data-cam="flow" data-step="flow" data-lens="function" data-support="terrain trace"><div class="step-body">
-  <p class="k-eyebrow">Terrain trace · computed in your browser</p>
+  <p class="k-eyebrow">Terrain trace · computed in your browser <i class="k-state observed basis">Computed · live</i></p>
   <h2 class="k-h1">Let the terrain show where water would go.</h2>
-  <p>Gravity offers the first clue to a pathway. The green line follows the steepest descent across a <span class="mono">30 m</span> elevation model from the centre of the parcel, and it shows where a drop of water would be drawn if nothing but the shape of the land decided its course.</p>
+  <p>Gravity offers the first clue to a pathway, and it is the first connection the framework computes. The green line follows the steepest descent across a <span class="mono">30 m</span> elevation model from the centre of the parcel, and it shows where a drop of water would be drawn if nothing but the shape of the land decided its course.</p>
   <p class="readout mono" id="flow-readout" aria-live="polite">Loading the elevation model for the trace.</p>
   <p>Now click or tap anywhere on the terrain to release a drop of your own, and see whether it joins the parcel's route or leaves through a different valley.</p>
   <p class="readout mono" id="flow-user" aria-live="polite">Your drop has yet to be released.</p>
@@ -124,24 +165,42 @@
   <p class="k-note">A trace describes the shape of the surface and nothing more. Volume, timing, sediment and any effect on a downstream user remain unmeasured, and those are exactly the observations the next links in the chain require.</p>
   <p class="k-prov">SOURCE · Terrain Tiles on AWS, from USGS 3DEP and other public elevation data · METHOD · steepest descent on 30 m cells, closed pits bridged to the nearest lower cell · CONFIDENCE · terrain geometry only · USE · pathway hypothesis</p>
  </div></div>
+ <div class="step" data-cam="web" data-step="node" data-lens="function" data-support="2 km terrain window"><div class="step-body">
+  <p class="k-eyebrow">Landscape network · computed in your browser <i class="k-state observed basis">Computed · live</i></p>
+  <h2 class="k-h1">The parcel is one node in a connected landscape.</h2>
+  <p>One trace shows one route, and a landscape holds thousands of them. Here the same rule has been run from every one of the <span class="mono" data-bind="web-cells">thousands of</span> cells of <span class="mono">30 m</span> that lie within <span class="mono">2 km</span> of the parcel, so that each cell becomes a node, the parcel among them, its step downhill becomes an edge, and the flow lines thicken as they gather more ground. Ecologists have a name for a set of ecosystems joined by flows of energy, materials and organisms across their boundaries, a <a href="https://doi.org/10.1046/j.1461-0248.2003.00483.x">meta-ecosystem</a>, and the terrain shows where the water layer of such a system would run here. On this surface the parcel is a source node, with almost no ground lying upslope of it, and the route that leaves it meets the drainage of the valley within <span class="mono" data-bind="web-near">a kilometre</span>, where the rest of this ground also arrives.</p>
+  <div class="layer-choice" role="group" aria-label="Network layer"><button class="k-tab" data-weblayer="water" aria-pressed="true">Water over terrain</button><button class="k-tab" data-weblayer="flight" aria-pressed="false">Pollinator flight</button><button class="k-tab" data-weblayer="all" aria-pressed="false">Both layers</button></div>
+  <p class="readout mono" id="node-readout" aria-live="polite">Loading the elevation model for the network.</p>
+  <ul class="legend" id="node-legend"><li><i class="sw web-into"></i>Ground that lies upslope of the parcel</li><li><i class="sw web-near"></i>Ground that joins the parcel's route within its first <span class="mono" data-bind="web-near">kilometre</span></li><li><i class="sw web-mid"></i>Ground that joins the route within <span class="mono">5 km</span></li><li><i class="sw web-far"></i>Ground that joins it further down the valley</li></ul>
+  <p>Click or tap any point on the terrain to ask how it is linked to the parcel.</p>
+  <p class="readout mono" id="node-point" aria-live="polite">No point selected so far.</p>
+  <ol class="edges" aria-label="Four kinds of connection that meet at this node">
+   <li><b>Water over terrain</b><span data-bind="edge-water">traced from the elevation model</span><i class="k-state observed">Computed</i></li>
+   <li><b>Flight of pollinators</b><span data-bind="edge-flight">published half-distances of 0.6 km and 1.5 km, with no insect recorded here</span><i class="k-state proxy">Published elsewhere</i></li>
+   <li><b>Movement between habitat patches</b><span>the surrounding habitat network is unmapped</span><i class="k-state pending">Pending</i></li>
+   <li><b>Dependence of people and assets</b><span>no recipient has been named</span><i class="k-state pending">Pending</i></li>
+  </ol>
+  <p class="k-note">Small source areas add up. In stream networks of the north-eastern United States, a watershed model attributed about 70% of the water and 65% of the nitrogen in second-order streams to the first-order headwaters above them (<a href="https://doi.org/10.1111/j.1752-1688.2007.00005.x">Alexander and others, 2007</a>). The lines drawn here follow the shape of the surface alone, so they show which ground is connected to which and leave volume, timing and water quality to measurement.</p>
+  <p class="k-prov">SOURCE · Terrain Tiles on AWS, from USGS 3DEP and other public elevation data · METHOD · steepest descent from every 30 m cell within 2 km, closed pits bridged, flow lines drawn where at least ten cells converge · CONFIDENCE · terrain geometry only · USE · network position of the parcel, a hypothesis for field tracing</p>
+ </div></div>
  <div class="step" data-cam="flow" data-step="ledger" data-lens="function" data-support="downstream recipients"><div class="step-body wide">
-  <p class="k-eyebrow">The spillover ledger · who carries the cost</p>
+  <p class="k-eyebrow">The spillover ledger · who carries the cost <i class="k-state proxy basis">Published elsewhere</i></p>
   <h2 class="k-h1">When a forest stops working, someone downstream pays.</h2>
-  <p>Follow a line like that one far enough and it reaches people who will never set foot in the forest it starts from. Water utilities pay to remove what an unhealthy watershed sends them, reservoir operators pay to dredge what a burned slope delivers, growers rely on insects that nest in nearby habitat, and the Eagle River joins a Colorado River system that supplies water to tens of millions of people. Switch between what published studies have shown elsewhere and what has been measured for this parcel, and the gap between the two views becomes the clearest argument for the next observation.</p>
+  <p>Follow those lines far enough and they reach people who will never set foot in the forest they start from. Water utilities pay to remove what an unhealthy watershed sends them, reservoir operators pay to dredge what a burned slope delivers, growers rely on insects that nest in nearby habitat, and the Eagle River joins a Colorado River system that supplies water to tens of millions of people. Switch between what published studies have shown elsewhere and what has been measured for this parcel, and the gap between the two views becomes the clearest argument for the next observation.</p>
   <div class="direction" role="group" aria-label="Ledger view"><button class="k-tab" data-ledger="elsewhere" aria-pressed="true">Shown elsewhere</button><button class="k-tab" data-ledger="here" aria-pressed="false">Measured here</button></div>
   <div id="ledger-figure" class="figure"></div>
   <p class="k-note">Each finding comes from a different place, scale and disturbance, so none can be transferred to this parcel as a number. Together they show which recipients a Keystone Polygon could matter to, and which evidence would have to be gathered before any of them could be named.</p>
  </div></div>
  <div class="step" data-cam="river" data-step="chain"><div class="step-body wide">
-  <p class="k-eyebrow">From a polygon to an obligation</p>
+  <p class="k-eyebrow">From a polygon to an obligation <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">Follow the chain to the link where it breaks.</h2>
-  <p>The ledger shows what is at stake, and the chain shows what it would take to claim it for this parcel. Seven links separate a polygon from an obligation to care for it, and each one calls for its own kind of evidence. Select any link to see what supports it today and what would have to be observed next, then reverse the direction to read the same chain from the side of an asset that depends on land.</p>
+  <p>The ledger shows what is at stake, and the chain shows what it would take to claim it for this parcel. Seven links separate a polygon from an obligation to care for it, and the framework classifies each one on its own kind of evidence. Select any link to see what supports it today and what would have to be observed next, then reverse the direction to read the same chain from the side of an asset that depends on land.</p>
   <div class="direction" role="group" aria-label="Reading direction"><button class="k-tab" data-direction="forward" aria-pressed="true">Start from the polygon</button><button class="k-tab" data-direction="reverse" aria-pressed="false">Start from an asset</button></div>
   <div id="chain-readout" class="readout-block" aria-live="polite"><p class="k-note">Select a link to read its evidence, its uncertainty and the next check.</p></div>
   <div id="chain-figure" class="figure"></div>
  </div></div>
  <div class="step" data-cam="river" data-step="sides"><div class="step-body wide">
-  <p class="k-eyebrow">Framework hypotheses · none established in Colorado</p>
+  <p class="k-eyebrow">Framework hypotheses · none established in Colorado <i class="k-state pending basis">Pending</i></p>
   <h2 class="k-h1">Every pathway carries a benefit and a risk.</h2>
   <p>The same forest that might hold soil in place can also carry fire toward a neighbour, which is why each proposed mechanism is recorded with both of its faces. Choose one to see the benefit it could deliver, the risk that travels with it and the single observation that would begin to test it.</p>
   <div id="mechanisms" class="mechanisms" role="radiogroup" aria-label="Mechanism hypothesis"></div>
@@ -151,13 +210,13 @@
 
 <section class="ch" id="measured" data-title="A separate case" data-links="signal" data-case="north">
  <div class="step" data-cam="transit" data-step="transit" data-support="separate cases"><div class="step-body">
-  <p class="k-eyebrow">Separate cases · straight-line distance</p>
+  <p class="k-eyebrow">Separate cases · straight-line distance <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">The water record lives elsewhere.</h2>
   <p>So far the parcel is rich in hypotheses and poor in measurements, which is the usual condition of land that markets are asked to value. To see what evidence looks like once it exists, and how hard it is to earn, the story has to leave Eagle County. Dated water measurements exist at North Inlet and East Inlet near Grand Lake, about <span class="mono" data-bind="km-north">100 km</span> to the north-east, and on the Colorado River above Glenwood Springs, about <span class="mono" data-bind="km-glenwood">79 km</span> to the west.</p>
   <p class="k-note">Delivery from the parcel to any of these stations is still untraced and untested. The Glenwood station does lie downstream on the Colorado River, although position on a map establishes no effect, so the chapters that follow test the method on each station's own ground.</p>
  </div></div>
  <div class="step" data-cam="grandlake" data-step="basins" data-support="associated basins"><div class="step-body">
-  <p class="k-eyebrow">Grand Lake, Colorado · associated basins</p>
+  <p class="k-eyebrow">Grand Lake, Colorado · associated basins <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">Two basins, one fire perimeter.</h2>
   <p>Above Grand Lake two neighbouring basins drain toward two gauges, and the mapped perimeter of the East Troublesome fire reaches into one of them. That final perimeter overlaps <span class="mono" data-bind="fire-pct">27.3%</span> of the basin associated with the North Inlet station, an area of <span class="mono" data-bind="fire-km2">20.6 km²</span>, and has no mapped overlap with the East Inlet basin. Land outside the perimeter stays unclassified for this fire, and imagery is lit only inside the two basins.</p>
   <div class="layer-choice"><button class="k-tab" id="fire-toggle" aria-pressed="true">Mapped fire overlap</button></div>
@@ -165,7 +224,7 @@
   <p class="k-note">All of this is retrospective context, since the post-fire image dates from <span class="mono">7 Sep 2021</span> and the perimeter was revised on <span class="mono">16 Oct 2026</span>, both after the August 2021 storm examined next. A spectral class records how the surface looked to a sensor, leaving mortality, recovery and biodiversity change for field measurement.</p>
  </div></div>
  <div class="step" data-cam="grandlake" data-step="support"><div class="step-body">
-  <p class="k-eyebrow">Data coverage and inferential support</p>
+  <p class="k-eyebrow">Data coverage and inferential support <i class="k-state observed basis">Computed</i></p>
   <h2 class="k-h1">Complete coverage, partial support.</h2>
   <p>Terrain and soil layers blanket both basins, yet the share of each basin they can actually resolve is much smaller, and the gap between the dashed outline and the solid bar is the part of the map that still cannot carry an inference.</p>
   <div id="support-bars" class="figure"></div>
@@ -175,7 +234,7 @@
 
 <section class="ch data-ch" id="clock" data-title="One clock" data-links="signal" data-case="north">
  <div class="step" data-cam="grandlakeDim" data-step="clock"><div class="step-body full">
-  <div class="data-head"><div><p class="k-eyebrow">North Inlet · observed record · 30 July to 4 August 2021 UTC</p><h2 class="k-h1">One clock, four signals.</h2></div>
+  <div class="data-head"><div><p class="k-eyebrow">North Inlet · observed record · 30 July to 4 August 2021 UTC <i class="k-state observed basis">Observed</i></p><h2 class="k-h1">One clock, four signals.</h2></div>
   <p>This is what a real monitoring signal looks like. Rain, flow, turbidity and water temperature share a single clock, each kept at its native interval and unit, and you can drag across the record or step through it with the arrow keys on the slider.</p></div>
   <div class="peaks" role="group" aria-label="Jump to a recorded maximum"><button class="k-tab" data-peak="00045">Rain maximum</button><button class="k-tab" data-peak="63680">Turbidity maximum</button><button class="k-tab" data-peak="00060">Flow maximum</button><button class="k-tab" data-peak="00010">Warmest water</button></div>
   <div id="clock-figure" class="figure"></div>
@@ -186,7 +245,7 @@
   <p class="k-prov">SOURCE · USGS National Water Information System, station <span class="mono">401530105475401</span> and two others for temperature · METHOD · approved native records, gaps kept, nothing interpolated · CONFIDENCE · observed · USE · description of one fixed window</p>
  </div></div>
  <div class="step" data-cam="grandlakeDim" data-step="coverage"><div class="step-body full">
-  <div class="data-head"><div><p class="k-eyebrow">Physical habitat condition · 2021 and 2022</p><h2 class="k-h1">Two seasons of water temperature.</h2></div>
+  <div class="data-head"><div><p class="k-eyebrow">Physical habitat condition · 2021 and 2022 <i class="k-state observed basis">Observed</i></p><h2 class="k-h1">Two seasons of water temperature.</h2></div>
   <p>Temperature is the one physical habitat condition this release can follow across whole seasons. Of the station-days on record, <span class="mono" data-bind="q-days">1,040</span> meet the coverage rule, <span class="mono" data-bind="p-days">41</span> are partial and <span class="mono" data-bind="u-days">209</span> hold no approved reading, and each cell below stands for a single UTC day.</p></div>
   <div id="coverage-figure" class="figure"></div>
   <p class="readout mono" id="coverage-readout" aria-live="polite">Point at a day to read its observed mean, range and coverage.</p>
@@ -196,7 +255,7 @@
 
 <section class="ch data-ch" id="forecast" data-title="Six hours ahead" data-links="signal" data-case="north">
  <div class="step" data-cam="grandlakeDim" data-step="forecast"><div class="step-body full">
-  <div class="data-head"><div><p class="k-eyebrow">Retrospective evaluation · frozen before the final years were opened</p><h2 class="k-h1">Six hours ahead.</h2></div>
+  <div class="data-head"><div><p class="k-eyebrow">Retrospective evaluation · frozen before the final years were opened <i class="k-state observed basis">Tested</i></p><h2 class="k-h1">Six hours ahead.</h2></div>
   <p>Signals like these invite a harder test, which is whether the next few hours can be foreseen. A model fitted on <span class="mono">2021–2022</span> predicted the highest turbidity of the following six hours throughout <span class="mono">2023–2024</span>, and at North Inlet it lowered the mean absolute log error by <span class="mono" data-bind="gain-pct">6.84%</span> across <span class="mono" data-bind="n-windows">1,014</span> windows.</p></div>
   <div id="interval-figure" class="figure"></div>
   <ul class="verdicts">
@@ -215,7 +274,7 @@
 
 <section class="ch data-ch" id="windows" data-title="The windows" data-links="consequence" data-case="north">
  <div class="step" data-cam="grandlakeDim" data-step="windows"><div class="step-body full">
-  <div class="data-head"><div><p class="k-eyebrow">Monitoring decision · historical proposals · no order placed</p><h2 class="k-h1">Two policies, two sets of windows.</h2></div>
+  <div class="data-head"><div><p class="k-eyebrow">Monitoring decision · historical proposals · no order placed <i class="k-state observed basis">Computed</i></p><h2 class="k-h1">Two policies, two sets of windows.</h2></div>
   <div><p>A forecast earns its keep when it changes a decision, and here the decision is when to send someone to sample the river.</p><div class="case-choice" role="group" aria-label="Monitoring case"><button class="k-tab" data-case-choice="north" aria-pressed="true">North Inlet</button><button class="k-tab" data-case-choice="glenwood" aria-pressed="false">Glenwood</button></div><p id="windows-claim" aria-live="polite"></p></div></div>
   <div id="windows-figure" class="figure"></div>
   <p class="readout mono" id="window-readout" aria-live="polite">Select a window to read its UTC time, policy and outcome.</p>
@@ -229,14 +288,14 @@
 
 <section class="ch" id="obligation" data-title="The last edge" data-links="obligation" data-case="eagle">
  <div class="step" data-cam="backDim" data-step="ladder"><div class="step-body wide">
-  <p class="k-eyebrow">Back to the parcel · evidence to obligation</p>
+  <p class="k-eyebrow">Back to the parcel · evidence to obligation <i class="k-state pending basis">Pending</i></p>
   <h2 class="k-h1">The last edge is a promise to pay.</h2>
   <p>The measured cases show how much work stands between a signal and a decision, and the parcel still has that work ahead of it. Back above the Eagle River, the final link is the one that turns evidence into care for the land. A demonstrated dependency becomes an obligation only when someone is named, holds the authority to commit funds and accepts a payment rule, and each of those gates opens separately, so sound evidence can sit beside unresolved rights for a long time.</p>
   <div id="ladder" class="figure"></div>
   <p class="k-note">Stage names describe the framework, and any accounting, insurance or financial classification would need legal review.</p>
  </div></div>
  <div class="step" data-cam="backDim" data-step="task"><div class="step-body wide">
-  <p class="k-eyebrow">A task you can finish today</p>
+  <p class="k-eyebrow">A task you can finish today <i class="k-state pending basis">Pending</i></p>
   <h2 class="k-h1">Write the next observation.</h2>
   <p>The most useful thing anyone can do for this parcel today is to decide what to observe first. Pick the mechanism you would test, and the candidate file opens with its question, method, timing, access prerequisite and a budget line waiting for your own figures.</p>
   <div id="task-mechanisms" class="mechanisms" role="radiogroup" aria-label="Mechanism to test first"></div>
@@ -246,11 +305,42 @@
  </div></div>
 </section>
 
-<section class="ch" id="next" data-title="Today" data-links="polygon obligation" data-case="eagle">
+<section class="ch" id="next" data-title="The whole picture" data-links="polygon process effect beneficiary consequence signal obligation" data-case="eagle">
+ <div class="step" data-cam="backDim" data-step="graph"><div class="step-body wide">
+  <p class="k-eyebrow">The whole picture · one dependency graph</p>
+  <h2 class="k-h1">The whole story is one dependency graph.</h2>
+  <p>Read as a whole, the story you have just scrolled through is a single graph that runs from land through living communities, ecosystem processes and pathways to the people who would receive an effect, the costs they would carry and the obligation that could return care to the land. Each node below is something a scene has already shown you and each edge carries the status the story gives it, so a road across the graph is a chain of claims that can be checked one link at a time. Choose a road to see how far it holds for this parcel today and where it breaks, or select any node or edge to read its evidence and return to its scene.</p>
+  <div class="layer-choice" role="group" aria-label="Road across the graph"><button class="k-tab" data-road="water" aria-pressed="true">Water quality</button><button class="k-tab" data-road="pollination" aria-pressed="false">Pollination</button><button class="k-tab" data-road="habitat" aria-pressed="false">Habitat network</button><button class="k-tab" data-road="disturbance" aria-pressed="false">Disturbance risk</button><button class="k-tab" data-road="monitoring" aria-pressed="false">Monitoring signal</button><button class="k-tab" data-road="all" aria-pressed="false">Whole graph</button></div>
+  <div id="graph-figure" class="figure"></div>
+  <ul class="legend graph-key" aria-label="Edge and node status"><li><i class="sw g-computed"></i>Computed, observed or tested</li><li><i class="sw g-published"></i>Published elsewhere</li><li><i class="sw g-pending"></i>Pending</li><li><i class="sw g-failed"></i>Tested and failed</li></ul>
+  <div id="graph-readout" class="readout-block" aria-live="polite"><p class="k-note">Loading the dependency graph.</p></div>
+  <p>An assessment that follows only one of these roads, a carbon stock here or a water benefit there, sees a fraction of what the parcel is connected to, and holding all of them in one structure shows which observations would serve more than one road, as a soil core would for both water quality and disturbance risk. The graph holds <span class="mono" data-bind="graph-nodes">33</span> nodes and <span class="mono" data-bind="graph-edges">41</span> edges for this one parcel, and the same kind of graph can be drawn for a basin or a portfolio.</p>
+  <p class="k-prov">SOURCE · every scene of this story, restated as one graph · METHOD · nodes and edges carry the status the story gives them · CONFIDENCE · as marked on each edge · USE · a map of what must be shown before a dependency can be valued</p>
+ </div></div>
+ <div class="step" data-cam="backDim" data-step="agents"><div class="step-body wide">
+  <p class="k-eyebrow">Agent-readable release · what software receives</p>
+  <h2 class="k-h1">Built to be read by agents as well as people.</h2>
+  <p>Everything you have scrolled through also exists as structured records, each with a fixed format, a release label and an integrity hash, so that software can read the same evidence a person reads here. An AI agent working for a utility, an insurer, a fund or a land trust can be handed those records, follow a road from the parcel to a recipient, tell which links were computed, which rest on published science and which are still open, and retrieve the next observation proposed for each open one. The panel below shows the form such an exchange takes, with three questions about this parcel and the structured answer each one returns.</p>
+  <div class="agent">
+   <div class="agent-q" role="group" aria-label="Questions an agent can ask of this record"><button class="k-tab" data-ask="road" aria-pressed="true">Which links on the water road are computed for this parcel?</button><button class="k-tab" data-ask="breaks" aria-pressed="false">Where does each road stop holding for this parcel?</button><button class="k-tab" data-ask="next" aria-pressed="false">What should be observed next for the soil mechanism?</button></div>
+   <div class="agent-io"><div id="agent-req" class="agent-req" aria-live="polite"><p class="mono">Loading the record.</p></div><pre id="agent-out" class="agent-out mono" tabindex="0" aria-label="Structured answer"></pre></div>
+  </div>
+  <h3 class="falsify-title">What the framework generates for agents</h3>
+  <ul class="agent-files" aria-label="Kinds of record generated for agents">
+   <li><b>Dependency graph</b><span>nodes, edges and roads from land to obligation, with an evidence status on every link</span></li>
+   <li><b>Evidence passport</b><span>what is known about a parcel in each dimension, with every gap named and a next observation attached</span></li>
+   <li><b>Claim register</b><span>each stated figure bound to its source and to the limit on what it can support</span></li>
+   <li><b>Reference register</b><span>the published studies behind each mechanism, with the place and scale they describe</span></li>
+   <li><b>Data inventory</b><span>every layer considered, whether it was used or set aside, and why</span></li>
+   <li><b>Release manifest</b><span>a format, a version and an integrity hash for every record, so that a reader can confirm nothing has changed</span></li>
+  </ul>
+  <p class="k-note">These records are held by Graph of Life and shared on request, so this page shows their shape while their contents and the methods behind them stay private. If institutions come to send agents to read one another's records, a parcel described this way can be compared, combined and audited without anyone retyping a figure.</p>
+  <p class="k-prov">SOURCE · the records behind this story · METHOD · three questions answered from the graph and the passport that draw this page · CONFIDENCE · identical to the figures shown above · USE · an illustration of diligence by software</p>
+ </div></div>
  <div class="step" data-cam="back" data-step="today"><div class="step-body wide">
   <p class="k-eyebrow">What this evidence supports</p>
-  <h2 class="k-h1">See the parcel as a system.</h2>
-  <p>Priced by the hectare, this is <span class="mono">4.235 ha</span> of mapped forest with an archived screening score. Seen as a system, it is a soil economy that has never been sampled, a pollinator range that reaches past its boundary, a possible bridge in a habitat network and the head of a terrain route that runs <span class="mono" data-bind="flow-km">tens of kilometres</span> down the Eagle River corridor toward the Colorado. Each of those connections now carries a named piece of evidence and a named next step, and that record is where pricing nature as infrastructure has to begin, because a dependency must be traced before it can be valued and valued before anyone can be asked to pay for its care.</p>
+  <h2 class="k-h1">See the parcel as a node.</h2>
+  <p>Priced by the hectare, this is <span class="mono">4.235 ha</span> of mapped forest with an archived screening score. Seen as a node in a living network, it is a soil community that has never been sampled, a place whose pollinators, if any nest here, would forage well past its boundary, a possible stepping stone between habitat patches and the start of a terrain route that the <span class="mono" data-bind="web-cells">thousands of</span> cells around it sooner or later join on its way <span class="mono" data-bind="flow-km">tens of kilometres</span> down the Eagle River corridor toward the Colorado. A quantitative framework computed the connections that public data can already support, cited the science behind those that still await measurement and wrote the next observation for each, and that record is where pricing nature as infrastructure has to begin, because a dependency must be traced before it can be valued and valued before anyone can be asked to pay for its care.</p>
   <div class="triad">
    <div><h3>Today</h3><p>You can review a monitoring budget against every window that two frozen policies proposed, and export the ecological passport with each pending field clearly marked.</p><a class="k-btn" href="review.html?case=north">Monitoring budget review ↗</a><a class="k-btn" href="passport.html#export">Passport and review draft ↗</a></div>
    <div><h3>Verify next</h3><p>Confirm who owns and manages the parcel, then send a first field season for soil cores, a pollinator transect, bird point counts and vegetation plots.</p><a class="k-btn" href="passport.html?mechanism=soil#observation">Next observation ↗</a></div>
@@ -260,13 +350,16 @@
   <ul class="falsify"><li>A site visit that finds the mapped forest absent or the boundary misplaced.</li><li>A traced route showing that runoff from the parcel never reaches a channel anyone values.</li><li>A named recipient whose operating record shows no sensitivity to this land.</li></ul>
   <p class="k-note">Active, transitive and critical, the three questions from the opening, all remain open for this parcel.</p>
   <p class="k-note closing-limit">Keystone function, a complete biodiversity inventory, treatment benefit, credit, payout and financial return all remain unestablished.</p>
-  <p class="k-lede closing-call">Graph of Life builds this kind of record for a parcel, a basin or a portfolio. <a href="https://graphoflife.com">Start a conversation at graphoflife.com <span aria-hidden="true">↗</span></a></p>
-  <p class="sources"><a href="data/claim-source-map.json">Claim-to-source map</a><a href="data/keystone/ecology.json">Published ecology references</a><a href="data/data-inventory.json">Data inventory</a><a href="data/keystone/passport.json">Candidate passport</a><a href="evidence.html">Complete evidence desk</a><a href="legacy.html">Historical screening archive</a></p>
+  <div class="contact"><p class="k-lede closing-call">Graph of Life builds this kind of record for a parcel, a basin or a portfolio, and the work starts with a conversation.</p><p class="contact-links"><a class="k-btn-solid" href="mailto:jg@graphoflife.com">jg@graphoflife.com</a><a class="k-btn" href="https://biome-translator.emergent.host/">Graph of Life · biome-translator.emergent.host <span aria-hidden="true">↗</span></a></p></div>
+  <ul class="record-links" aria-label="Earlier releases, kept for the record">
+   <li><a href="evidence.html">Complete evidence desk</a><span>the earlier release, with full methods and every negative result</span></li>
+   <li><a href="legacy.html">Historical screening archive</a><span>the first screening of the corridor, kept as an archive</span></li>
+  </ul>
  </div></div>
 </section>
 </main>
 
 <nav id="chain-rail" aria-label="Evidence chain for the current place"><p class="k-note" id="rail-case">Eagle parcel</p><ol id="rail-links"></ol></nav>
-<footer class="stage-foot"><div class="tools"><button class="k-btn" id="imagery-toggle" aria-pressed="true">Imagery on</button><button class="k-btn" id="reset-story">Restart</button></div><p class="k-note" id="stage-state" aria-live="polite">Checked parcel geometry · imagery loading</p><details class="credit"><summary>Sources</summary><p>Imagery: <a href="https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer">USDA / USGS The National Map</a>, a current mosaic and no record of any event date. Terrain: <a href="https://registry.opendata.aws/terrain-tiles/">Terrain Tiles on AWS</a>, built from USGS 3DEP and other public elevation data, exaggerated for display. Parcel: <a href="data/keystone-candidate.geojson">Eagle County GIS and Assessor</a>, general information only and no legal survey, checked <span class="mono">13 Nov 2026</span>. Land cover and canopy: USGS Annual NLCD / MRLC. Wetlands: U.S. Fish and Wildlife Service National Wetlands Inventory. Protected areas: USGS PAD-US. Published ecology in the unseen-engine chapter: <a href="data/keystone/ecology.json">full references with DOIs</a>. Bird records: <a href="https://doi.org/10.15468/aomfnb">eBird Observation Dataset</a>, CC BY 4.0, and <a href="https://doi.org/10.15468/dml1pk">Great Backyard Bird Count</a>, CC0, accessed via GBIF.org on <span class="mono">2026-11-13</span>, filtered and aggregated with coordinates and IDs omitted. No endorsement by data publishers or observers is implied. Water records: USGS National Water Information System. Rivers and basins: USGS NHDPlus HR and NLDI. Terrain routing: USGS 3DEP. Soil: USDA NRCS SSURGO. Fire: USGS / USDA MTBS. <a href="data/claim-source-map.json">Hashes and full citations</a>.</p></details></footer>
-<noscript><div class="no-js"><p>The story text above stays readable. Maps and charts need JavaScript, and no substitute figure is drawn. <a href="evidence.html">Read the evidence desk</a>, <a href="data/keystone/passport.json">download the candidate passport</a> or <a href="data/claim-source-map.json">the claim-to-source map</a>.</p></div></noscript>
+<footer class="stage-foot"><div class="tools"><button class="k-btn" id="imagery-toggle" aria-pressed="true">Imagery on</button><button class="k-btn" id="reset-story">Restart</button></div><p class="k-note" id="stage-state" aria-live="polite">Checked parcel geometry · imagery loading</p><details class="credit"><summary>Sources</summary><p>Contact: <a href="mailto:jg@graphoflife.com">jg@graphoflife.com</a> · <a href="https://biome-translator.emergent.host/">biome-translator.emergent.host</a>. Imagery: <a href="https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer">USDA / USGS The National Map</a>, a current mosaic and no record of any event date. Terrain: <a href="https://registry.opendata.aws/terrain-tiles/">Terrain Tiles on AWS</a>, built from USGS 3DEP and other public elevation data, exaggerated for display. Parcel: Eagle County GIS and Assessor, general information only and no legal survey, checked <span class="mono">13 Nov 2026</span>. Land cover and canopy: USGS Annual NLCD / MRLC. Wetlands: U.S. Fish and Wildlife Service National Wetlands Inventory. Protected areas: USGS PAD-US. Published ecology in the unseen-engine and spillover chapters is cited with its DOI beside each figure. Bird records: <a href="https://doi.org/10.15468/aomfnb">eBird Observation Dataset</a>, CC BY 4.0, and <a href="https://doi.org/10.15468/dml1pk">Great Backyard Bird Count</a>, CC0, accessed via GBIF.org on <span class="mono">2026-11-13</span>, filtered and aggregated with coordinates and IDs omitted. No endorsement by data publishers or observers is implied. Water records: USGS National Water Information System. Rivers and basins: USGS NHDPlus HR and NLDI. Terrain routing: USGS 3DEP. Soil: USDA NRCS SSURGO. Fire: USGS / USDA MTBS.</p></details></footer>
+<noscript><div class="no-js"><p>The story text above stays readable. Maps and charts need JavaScript, and no substitute figure is drawn. <a href="passport.html">Open the candidate file</a> or <a href="evidence.html">read the evidence desk</a>.</p></div></noscript>
 </body></html>

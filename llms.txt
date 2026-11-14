@@ -1,24 +1,29 @@
-# Current experience routes · R5 · 2026-11-13
+# Current release · Keystone Polygon experience R6 · 2026-11-14
 
-index.html is the ten-chapter Keystone Polygon experience: polygon, living, engine, spillover, measured, clock, forecast, windows, obligation, next. Direct route ?chapter=ID with optional &step=ID. One real Eagle County parcel (4.235 ha, historical screening candidate) opens and closes the story. Keystone function, pathway, recipient, rights, payer and financial return are all unestablished. North and East Inlet near Grand Lake and the Glenwood station are separate cases with no traced delivery from the parcel. No atmospheric transport.
-The engine chapter presents published soil, pollination and connectivity findings from other places (references with DOIs in data/keystone/ecology.json). Pollinators and soil microbes are unsampled on the parcel. The stepping-stone network is illustrative. The terrain trace in the spillover chapter is steepest descent on 30 m public elevation tiles computed in the browser, a statement about surface shape with no measured flow.
-Living context by dimension. Structure: NLCD 2023 forest class 97.9% of the parcel, mean canopy 39.8%, impervious 0; mapped wetland 0 in the parcel and 0.26% of the 500 m context; PAD-US mapped union about 100%. Composition: 0 retained bird records on the parcel; 45 public records in 26 provider species-name groups within 1 km, 2005 to 2025, coordinates withheld, 22 noncommercial-licence records private. Condition: unmeasured on the parcel. Function: unvalidated. Water temperature (1,040 qualified, 41 partial, 209 unavailable station-days) belongs to three separate stations.
-passport.html is the candidate file: ecological passport, mechanism hypotheses, an editable next observation with a user-supplied budget, an evidence-to-obligation register with every field pending by default, and JSON or Markdown export. It records proposals only.
-review.html?case=north|glenwood is the historical monitoring budget review. evidence.html retains full scientific detail and prior negative tasks. Old scene or forecastCase query links redirect to evidence.html. legacy.html is a labelled historical archive.
-data/claim-source-map.json binds public claims to files by SHA256. data/data-inventory.json lists every source layer and why it is in or out. data/keystone/passport.json is the candidate passport. data/r4/ holds the five R4 allowlisted payloads unchanged.
+index.html is a ten-chapter story in 29 scenes about one real Eagle County, Colorado parcel (220531300003, 4.235 ha, a historical screening candidate). Direct route ?chapter=ID with optional &step=ID. Chapters: polygon, living, engine, spillover, measured, clock, forecast, windows, obligation, next.
+
+A Keystone Polygon is a parcel whose condition and position shape what happens to people and places well beyond its boundary, a name it earns only when an active function, a pathway across the boundary and a recipient who would feel its loss have each been shown. No Colorado parcel is validated as one. Keystone function, pathway, recipient, rights, payer and financial return are all unestablished for this parcel.
+
+The story shows the parcel as a node in a dependency graph that runs from land through living communities, ecosystem processes and pathways to recipients, consequences and an obligation. Each scene that presents evidence is tagged Computed, Observed, Tested, Published elsewhere, Illustrative or Pending. Published ecology comes from other places and is unmeasured on the parcel. Terrain results describe the shape of the surface and carry no measured flow. North Inlet, East Inlet and the Glenwood station are separate cases with no traced delivery from the parcel. No atmospheric transport.
+
+The framework generates machine-readable records for agents (a dependency graph, an evidence passport, a claim register, a reference register, a data inventory and a release manifest with integrity hashes). They are held by Graph of Life and shared on request. The core methods are withheld.
+
+passport.html is the candidate file. review.html is the historical monitoring budget review. evidence.html and legacy.html are earlier releases kept for the record.
+
+Contact: jg@graphoflife.com, https://biome-translator.emergent.host/.
 
 # Earlier routes note · R3 · 2026-11-13 (superseded by the block above)
 
 
 index.html is the seven-scene Keystone Polygon experience: polygon, dependency, fire, observation, evidence, decision, next. Direct route ?chapter=ID. A real Eagle County legacy candidate opens and closes the story; a named recipient, delivery and treatment effect remain unverified. North/East Grand Lake and Glenwood are separate cases, with no inferred parcel delivery link. No atmospheric transport in the current experience.
 review.html?case=north|glenwood is the baseline-first historical review workflow; #investment opens supporting investment evidence after verification. evidence.html retains full scientific detail and prior negative tasks. Old scene or forecastCase query links redirect to evidence.html. legacy.html is prominently labeled a historical fixture/modeled screening archive.
-data/experience-evidence.json is a presentation adapter with 14 public source hashes and all102 accepted policy allocations (84North,18Glenwood, including duplicate shared windows across policies). No frozen scientific output was changed for this design. Native2021 peak markers are descriptive, not causal lag or forecast performance. Shared schedule connectors mean the exact same accepted UTC issue window, not physical delivery.
+data/experience-evidence.json is a presentation adapter with 14 public source hashes and all 102 accepted policy allocations (84 North, 18 Glenwood, including duplicate shared windows across policies). No frozen scientific output was changed for this design. Native 2021 peak markers are descriptive, not causal lag or forecast performance. Shared schedule connectors mean the exact same accepted UTC issue window, not physical delivery.
 
-# Current historical research release · 2026-11-13
+# Monitoring research release · 2026-11-13 (still current for review.html and evidence.html)
 
-The monitoring desk supports draft work orders, explicit-cost planning and an investment evidence register. No order, payment, live forecast or financing approval is executed.
+The monitoring desk supports draft monitoring reviews with no order placed, explicit-cost planning and an investment evidence register. No order, payment, live forecast or financing approval is executed.
 North Inlet USGS401530105475401: fixed six-hour maxima, 2021–2022 exposed development, 2023–2024 untouched at freeze. Mean absolute log1p(FNU) error 0.138512 versus current-state baseline0.148681 (6.84% lower). Paired error-gain95%CI[0.001650,0.017389]. All1021issued windows retained;1014known outcomes. Learned policy46proposed slots:25true,19false,2unknown; baseline38slots:26true,12false,0unknown. No monitoring superiority. East state-model transfer failed across1481windows, gain−0.014971 [−0.026820,−0.003974].
-Glenwood USGS09071750 is a separate binary-exceedance case, threshold126FNU (North4.62FNU). Development2021–2023; test2024–2025. All1530issued/1510known windows retained. Classifier10slots/8true/2false versus baseline8slots/6true/2false; no unknown accepted outcomes. Precision80%versus75%, paired difference95%CI[0,13.33]percentagepoints. More slots and CI touching0 fail joint promotion criteria. Probabilities uncalibrated; raw baseline log1p(FNU) history score is not probability or peak forecast.
+Glenwood USGS09071750 is a separate binary-exceedance case, threshold 126 FNU (North 4.62 FNU). Development2021–2023; test2024–2025. All1530issued/1510known windows retained. Classifier10slots/8true/2false versus baseline8slots/6true/2false; no unknown accepted outcomes. Precision80%versus75%, paired difference95%CI[0,13.33]percentagepoints. More slots and CI touching0 fail joint promotion criteria. Probabilities uncalibrated; raw baseline log1p(FNU) history score is not probability or peak forecast.
 Both cases assume30-minute publication latency; corrected archives do not verify as-issued performance. Cost=userUSD per planned test×ALL proposed slots, including unknown outcomes; never ROI/savings. Neither learned policy is promoted. Rights, field feasibility, treatment effect and live reliability remain separate gates.
 Public records: data/forecast-round2.json, data/monitoring-glenwood.json; lazy complete window bundles referenced withSHA256. Finance: data/finance-evidence-ledger.json; editable reviewer register: data/investment-evidence-register.csv. Review PDFs: review/Colorado_monitoring_evidence.pdf and review/Glenwood_decision_evidence.pdf.
 URL adds forecastCase=north|glenwood plus forecastSplit/forecastMetric/forecastModel/forecastExample/decisionModel/decisionWindow. Cost stays private to browser session and is not shared in URL.
@@ -222,7 +227,8 @@ keystone posterior uses a Beta(2,2) prior, mean 0.5 -- two different priors.)
 ## The ask
 
 one real parcel, one verified payor, one dollar.
-contact: corridor@graphoflife.com
+contact: jg@graphoflife.com
+website: https://biome-translator.emergent.host/
 
 ## Provenance of this page
 
