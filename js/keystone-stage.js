@@ -15,7 +15,7 @@ const STATIONS=[{id:'401530105475401',name:'North Inlet',p:[-105.799722,40.2575]
 function km(a,b){const r=Math.PI/180,dlat=(b[1]-a[1])*r,dlon=(b[0]-a[0])*r,h=Math.sin(dlat/2)**2+Math.cos(a[1]*r)*Math.cos(b[1]*r)*Math.sin(dlon/2)**2;return 12742*Math.asin(Math.sqrt(h));}
 
 const stage=document.getElementById('stage'),canvas=document.getElementById('geo'),ctx=canvas.getContext('2d'),mapHost=document.getElementById('imagery');
-const S={W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
+const S={sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
 const off=document.createElement('canvas');let frame=0,parcelRing=null,parcelM=null;
 const embedded=document.getElementById('embedded-parcel');
 if(embedded){try{parcelRing=JSON.parse(embedded.textContent).features[0].geometry.coordinates[0];parcelM=parcelRing.map(merc);}catch(e){S.errors.push('embedded parcel unreadable');}}
@@ -25,7 +25,7 @@ const mpp=(z,lat)=>78271.517*Math.cos(lat*Math.PI/180)/Math.pow(2,z); // metres 
 function fitZoom(extentM,px,lat){return Math.log2(78271.517*Math.cos(lat*Math.PI/180)*px/extentM);}
 function specs(){const W=S.W,H=S.H,m=W<760,ax=m?.5:.68,ay=m?.5:.5,box=Math.min(H*(m?.8:.62),W*(m?.86:.5));
   const eagle=(ext,pitch,bearing,extra)=>Object.assign({focus:EAGLE,z:fitZoom(ext,box,EAGLE[1]),anchor:[ax,ay],pitch,bearing},extra);
-  const none={rivers:0,cells:0,ring500:0,ring1k:0,nwi:0,padus:0,stations:0,basins:0,fire:0,transit:0,reveal:0,revealBasins:0,dim:0,parcelLabel:0,frame:0};
+  const none={rivers:0,cells:0,ring500:0,ring1k:0,nwi:0,padus:0,stations:0,basins:0,fire:0,transit:0,reveal:0,revealBasins:0,dim:0,parcelLabel:0,frame:0,flow:0,sampling:0};
   const L=o=>Object.assign({},none,o);
   return{
     object:eagle(560,0,0,{L:L({reveal:0})}),
@@ -33,7 +33,9 @@ function specs(){const W=S.W,H=S.H,m=W<760,ax=m?.5:.68,ay=m?.5:.5,box=Math.min(H
     context500:eagle(1750,52,-24,{L:L({ring500:1,nwi:1,padus:1,reveal:500,parcelLabel:1})}),
     ring1k:eagle(3000,58,18,{L:L({ring500:A.node,ring1k:1,nwi:A.div,reveal:1000,parcelLabel:1})}),
     frame:eagle(4300,62,52,{L:L({ring1k:A.div,reveal:1000,frame:1,parcelLabel:1})}),
-    river:{focus:[-106.43,39.52],z:m?10.2:11.3,anchor:[m?.5:.64,.46],pitch:56,bearing:-28,L:L({rivers:1,ring1k:A.div,reveal:1000,parcelLabel:1})},
+    sampling:eagle(760,36,-42,{L:L({reveal:60,sampling:1})}),
+    flow:{focus:[-106.43,39.545],z:fitZoom(m?17000:24000,m?W*.95:Math.min(W*.6,H),39.55),anchor:[m?.5:.66,m?.55:.56],pitch:62,bearing:-24,L:L({rivers:A.div,flow:1,reveal:1000,ring1k:A.node,parcelLabel:1})},
+    river:{focus:[-106.43,39.52],z:m?10.2:11.3,anchor:[m?.5:.64,.46],pitch:56,bearing:-28,L:L({rivers:1,flow:A.div,ring1k:A.div,reveal:1000,parcelLabel:1})},
     transit:{focus:[-106.52,39.86],z:fitZoom(m?190000:230000,m?W*.94:W*.62,39.8),anchor:[m?.5:.64,.5],pitch:0,bearing:0,L:L({rivers:A.div,stations:1,transit:1,basins:A.div,parcelLabel:1})},
     grandlake:{focus:GRAND,z:fitZoom(21000,m?W*.98:Math.min(W*.58,H*1.05),40.26),anchor:[m?.5:.68,m?.52:.5],pitch:48,bearing:24,L:L({stations:1,basins:1,fire:1,revealBasins:1})},
     grandlakeDim:{focus:GRAND,z:fitZoom(21000,m?W*.98:Math.min(W*.58,H*1.05),40.26),anchor:[m?.5:.68,m?.52:.5],pitch:48,bearing:40,L:L({stations:A.div,basins:A.div,fire:A.div,revealBasins:1,dim:1})},
@@ -119,6 +121,8 @@ function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTr
       else if(L.dim<.5){const north=s.id==='401530105475401';if(s.id!=='09071750')text(s.name,q[0]+10,q[1]+(north?-10:18),{size:12});}}
     if(L.transit>.5){const mid=P([(EAGLE[0]+STATIONS[0].p[0])/2,(EAGLE[1]+STATIONS[0].p[1])/2]);text('no delivery link',mid[0]+10,mid[1]+4,{size:11,color:C.sand});}
     ctx.restore();}
+  if(L.flow>0&&S.flowPaths){ctx.save();ctx.globalAlpha=L.flow;ctx.lineJoin='round';S.flowPaths.forEach((c,k)=>{if(!c)return;ctx.beginPath();trace(c.map(merc),false);ctx.strokeStyle=k?C.paper:C.green;ctx.lineWidth=k?2:3;ctx.stroke();});ctx.restore();}
+  if(L.sampling>0&&S.samplingPts){ctx.save();ctx.globalAlpha=L.sampling;for(const f of S.samplingPts){if(S.sampling[f.kind]===false)continue;const q=P(f.p);ctx.beginPath();ctx.arc(q[0],q[1],f.kind==='soil'?5:8,0,7);ctx.fillStyle=C.abyss;ctx.fill();ctx.strokeStyle=f.kind==='birds'?C.teal:f.kind==='soil'?C.sand:C.paper;ctx.lineWidth=2;ctx.stroke();}ctx.restore();}
   if(L.frame>.6){text('no measurement in the reviewed record',P(EAGLE)[0],S.H-(S.W<760?16:96),{align:'center',size:11,color:C.sand});}
   S.drawn=(S.drawn||0)+1;}
 function invalidate(){if(window.KS&&KS.gl&&KS.gl.active())KS.gl.apply();if(!frame)frame=requestAnimationFrame(draw);}
@@ -138,6 +142,7 @@ function loadLibrary(){if(libraryRequested||!S.imageryWanted)return;libraryReque
 
 function resize(){const r=stage.getBoundingClientRect();S.W=Math.round(r.width);S.H=Math.round(r.height);S.dpr=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.round(S.W*S.dpr);canvas.height=Math.round(S.H*S.dpr);if(window.KS&&KS.gl)KS.gl.resize();if(S.camNames)setCamera(...S.camNames);}
 document.body.dataset.imagery=S.imageryWanted?'pending':'off';if(!S.imageryWanted)S.imagery='off';
-window.KS={S,C,A,ramp,setCamera,provide,invalidate,resize,loadLibrary,toggleImagery,setImagery,STATIONS,EAGLE,km,P,specs};
+function unproject(x,y){const s=scale();return inv([(x-S.W/2)/s+S.cam.c[0],(y-S.H/2)/s+S.cam.c[1]]);}
+window.KS={unproject,parcel:()=>parcelRing,S,C,A,ramp,setCamera,provide,invalidate,resize,loadLibrary,toggleImagery,setImagery,STATIONS,EAGLE,km,P,specs};
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(invalidate);
 })();

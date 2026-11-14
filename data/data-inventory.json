@@ -146,8 +146,8 @@
   },
   {
    "file": "data/claim-source-map.json",
-   "sha256": "eb08540d37c4c297a48e50b333e0f36873f4652bb4f4cf7d46b97a36aad5779b",
-   "bytes": 16159,
+   "sha256": "8a40aa3caf5afa677dec8ce925b54c318531b48f731e632566f78bf0c78242ec",
+   "bytes": 17163,
    "role": "loaded by the story or candidate file"
   },
   {
@@ -266,8 +266,8 @@
   },
   {
    "file": "data/keystone/passport.json",
-   "sha256": "eefaeaae1fa4f8b5d80ba326cb12e017fcf1b7a04c82acdfdf1422fd2f72bb7b",
-   "bytes": 35110,
+   "sha256": "5350ff22ebdcafffd56ba7baf5231d6250a598211fab70a680c629f5fc52a991",
+   "bytes": 40189,
    "role": "loaded by the story or candidate file"
   },
   {
@@ -278,7 +278,7 @@
   },
   {
    "file": "data/keystone/sources.json",
-   "sha256": "bb06b893b8b06813dc7f47d75c2f4668cae8fd83dbd3ce0ca06b11a7fedb832b",
+   "sha256": "1d8314ae1bd5675a8e0850ee1cb05bf3b448891a7c68c11c6555222baf9f3cdd",
    "bytes": 1473,
    "role": "loaded by the story or candidate file"
   },
