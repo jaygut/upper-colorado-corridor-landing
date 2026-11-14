@@ -15,7 +15,7 @@ const STATIONS=[{id:'401530105475401',name:'North Inlet',p:[-105.799722,40.2575]
 function km(a,b){const r=Math.PI/180,dlat=(b[1]-a[1])*r,dlon=(b[0]-a[0])*r,h=Math.sin(dlat/2)**2+Math.cos(a[1]*r)*Math.cos(b[1]*r)*Math.sin(dlon/2)**2;return 12742*Math.asin(Math.sqrt(h));}
 
 const stage=document.getElementById('stage'),canvas=document.getElementById('geo'),ctx=canvas.getContext('2d'),mapHost=document.getElementById('imagery');
-const S={forageM:600,sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
+const S={overlay:{line:null,dots:null},forageM:600,sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
 const off=document.createElement('canvas');let frame=0,parcelRing=null,parcelM=null;
 const embedded=document.getElementById('embedded-parcel');
 if(embedded){try{parcelRing=JSON.parse(embedded.textContent).features[0].geometry.coordinates[0];parcelM=parcelRing.map(merc);}catch(e){S.errors.push('embedded parcel unreadable');}}
@@ -76,7 +76,7 @@ function provide(key,value){S.data[key]=value;
 /* ---------- drawing ---------- */
 function text(str,x,y,o={}){ctx.font=(o.weight||500)+' '+(o.size||12)+'px '+(o.sans?SANS:MONO);ctx.textAlign=o.align||'left';ctx.textBaseline=o.base||'alphabetic';const w=ctx.measureText(str).width;if(o.align!=='center'&&o.align!=='right')x=Math.max(8,Math.min(S.W-w-8,x));ctx.lineWidth=4;ctx.strokeStyle=C.abyss;ctx.lineJoin='round';ctx.strokeText(str,x,y);ctx.fillStyle=o.color||C.paper;ctx.fillText(str,x,y);return w;}
 function leader(a,b,color){ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.strokeStyle=color||C.paper;ctx.lineWidth=1;ctx.stroke();}
-function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTransform(S.dpr,0,0,S.dpr,0,0);ctx.clearRect(0,0,W,H);ctx.globalAlpha=1;if(S.imagery==='ready'){S.drawn=(S.drawn||0)+1;return;}
+function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTransform(S.dpr,0,0,S.dpr,0,0);ctx.clearRect(0,0,W,H);ctx.globalAlpha=1;if(S.imagery==='ready'){overlay();S.drawn=(S.drawn||0)+1;return;}
   const E=S.data.eagle,px=1/mpp(S.cam.z,EAGLE[1]);
   /* 1. Ground and imagery mask. Imagery shows only inside current evidence support. */
   ctx.fillStyle=C.abyss;ctx.fillRect(0,0,W,H);
@@ -128,7 +128,10 @@ function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTr
   if(L.flow>0&&S.flowPaths){ctx.save();ctx.globalAlpha=L.flow;ctx.lineJoin='round';S.flowPaths.forEach((c,k)=>{if(!c)return;ctx.beginPath();trace(c.map(merc),false);ctx.strokeStyle=k?C.paper:C.green;ctx.lineWidth=k?2:3;ctx.stroke();});ctx.restore();}
   if(L.sampling>0&&S.samplingPts){ctx.save();ctx.globalAlpha=L.sampling;for(const f of S.samplingPts){if(S.sampling[f.kind]===false)continue;const q=P(f.p);ctx.beginPath();ctx.arc(q[0],q[1],f.kind==='soil'?5:8,0,7);ctx.fillStyle=C.abyss;ctx.fill();ctx.strokeStyle=f.kind==='birds'?C.teal:f.kind==='soil'?C.sand:C.paper;ctx.lineWidth=2;ctx.stroke();}ctx.restore();}
   if(L.frame>.6){text('no measurement in the reviewed record',P(EAGLE)[0],S.H-(S.W<760?16:96),{align:'center',size:11,color:C.sand});}
-  S.drawn=(S.drawn||0)+1;}
+  overlay();S.drawn=(S.drawn||0)+1;}
+function overlay(){const o=S.overlay;if(!o)return;ctx.save();ctx.globalAlpha=1;if(o.line&&o.line.length>1){ctx.beginPath();o.line.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));ctx.strokeStyle=C.green;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}if(o.dots)for(const q of o.dots){ctx.beginPath();ctx.arc(q[0],q[1],3.5,0,7);ctx.fillStyle=C.paper;ctx.fill();ctx.strokeStyle=C.abyss;ctx.lineWidth=1.5;ctx.stroke();}ctx.restore();}
+function overlayDraw(){if(!frame)frame=requestAnimationFrame(draw);}
+function screen(ll){if(window.KS&&KS.gl&&KS.gl.active()&&S.imagery==='ready')return KS.gl.project(ll);return P(ll);}
 function invalidate(){if(window.KS&&KS.gl&&KS.gl.active())KS.gl.apply();if(!frame)frame=requestAnimationFrame(draw);}
 
 /* ---------- interaction: read a canopy cell ---------- */
@@ -147,6 +150,6 @@ function loadLibrary(){if(libraryRequested||!S.imageryWanted)return;libraryReque
 function resize(){const r=stage.getBoundingClientRect();S.W=Math.round(r.width);S.H=Math.round(r.height);S.dpr=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.round(S.W*S.dpr);canvas.height=Math.round(S.H*S.dpr);if(window.KS&&KS.gl)KS.gl.resize();if(S.camNames)setCamera(...S.camNames);}
 document.body.dataset.imagery=S.imageryWanted?'pending':'off';if(!S.imageryWanted)S.imagery='off';
 function unproject(x,y){const s=scale();return inv([(x-S.W/2)/s+S.cam.c[0],(y-S.H/2)/s+S.cam.c[1]]);}
-window.KS={unproject,parcel:()=>parcelRing,S,C,A,ramp,setCamera,provide,invalidate,resize,loadLibrary,toggleImagery,setImagery,STATIONS,EAGLE,km,P,specs};
+window.KS={overlayDraw,screen,unproject,parcel:()=>parcelRing,S,C,A,ramp,setCamera,provide,invalidate,resize,loadLibrary,toggleImagery,setImagery,STATIONS,EAGLE,km,P,specs};
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(invalidate);
 })();

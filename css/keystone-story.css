@@ -7,9 +7,10 @@ body.story{overflow-x:hidden;--gutter:clamp(var(--gol-s3),5vw,var(--gol-s8));--s
 #imagery,#geo,#stage-labels{position:absolute;inset:0;width:100%;height:100%}
 #imagery{visibility:hidden}
 body[data-imagery="ready"] #imagery{visibility:visible}
-body[data-imagery="ready"] #geo{visibility:hidden}
+#geo{pointer-events:none}
 #stage-labels{pointer-events:none}
 #imagery .maplibregl-canvas{outline:0}
+.geo-label[hidden]{display:none}
 .geo-label{font:var(--gol-eyebrow-weight) var(--gol-provenance-max)/1.3 var(--gol-mono);letter-spacing:.04em;color:var(--gol-paper);background:var(--gol-abyss);padding:var(--gol-s1) var(--gol-s2);border-left:var(--gol-teal_rule_px) solid var(--gol-coral);white-space:nowrap;pointer-events:none;transition:opacity .25s}
 .geo-label.teal{border-left-color:var(--gol-teal);color:var(--gol-teal)}
 .geo-label.sand{border-left-color:var(--gol-sand);color:var(--gol-sand)}
@@ -308,3 +309,5 @@ body[data-chapter="engine"] .hud-line{display:none}
 body[data-mode="data"] .lens-bar{visibility:hidden}
 
 .figure text.case{fill:var(--gol-coral);font-size:var(--gol-provenance-size)}
+
+.flux .pad{fill:transparent;stroke:none}

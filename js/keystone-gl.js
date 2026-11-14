@@ -17,8 +17,9 @@ function buffer(ring,r){const L=local(ring);let pts=ring.slice(0,-1).map(L.to);l
   out.push(out[0]);return out.map(L.from);}
 function maskData(r){const holes=[buffer(parcel,r)];return fc([feat(poly([WORLD,...holes,...basinHoles]))]);}
 
-function marker(id,lngLat,html,cls){const el=document.createElement('div'),inner=document.createElement('div');inner.className='geo-label '+(cls||'');inner.innerHTML=html;inner.hidden=true;el.append(inner);markers[id]={el:inner,m:new maplibregl.Marker({element:el,anchor:'bottom-left',offset:[8,-8]}).setLngLat(lngLat).addTo(map)};}
-function show(id,v){const m=markers[id];if(m){const o=v>.5?1:0;if(m.o!==o){m.o=o;m.el.hidden=!o;}}}
+function marker(id,lngLat,html,cls){const el=document.createElement('div');el.className='geo-label '+(cls||'');el.innerHTML=html;el.hidden=true;el.style.position='absolute';el.style.left='0';el.style.top='0';labels.append(el);markers[id]={el,ll:lngLat,o:0};}
+function show(id,v){const m=markers[id];if(m){const o=v>.5?1:0;if(m.o!==o){m.o=o;m.el.hidden=!o;if(o)place();}}}
+function place(){if(!map||!ready)return;for(const k in markers){const m=markers[k];if(!m.o)continue;const q=map.project(m.ll);m.el.style.transform='translate('+Math.round(q.x+8)+'px,'+Math.round(q.y-8)+'px) translateY(-100%)';}}
 
 function set(layer,prop,v){const k=layer+prop;if(last[k]!==undefined&&Math.abs(last[k]-v)<.004)return;last[k]=v;if(map.getLayer(layer))map.setPaintProperty(layer,prop,v);}
 function apply(){if(!map||!ready||!S.view)return;const v=S.view,L=S.L;
@@ -33,7 +34,8 @@ function apply(){if(!map||!ready||!S.view)return;const v=S.view,L=S.L;
   set('basins','line-opacity',L.basins*fade);set('networks','line-opacity',L.basins*fade);set('fire','fill-opacity',S.fire?L.fire*A.node:0);set('fire-line','line-opacity',S.fire?L.fire:0);
   set('stations','circle-opacity',Math.min(1,L.stations)*fade);set('stations','circle-stroke-opacity',Math.min(1,L.stations)*fade);set('transit','line-opacity',L.transit*A.div);
   const k=S.pinCell>=0?S.pinCell:S.hoverCell;if(last.hi!==k){last.hi=k;if(map.getLayer('cell-hi'))map.setFilter('cell-hi',['==',['get','i'],k]);}
-  set('flow','line-opacity',L.flow);set('flowuser','line-opacity',L.flow);set('flowdots','circle-opacity',L.flow>.6?1:0);set('sampling','circle-opacity',L.sampling*A.div);set('sampling','circle-stroke-opacity',L.sampling);set('transect','line-opacity',S.sampling.poll?L.sampling:0);
+  set('flow','line-opacity',L.flow);set('flowuser','line-opacity',L.flow);set('sampling','circle-opacity',L.sampling*A.div);set('sampling','circle-stroke-opacity',L.sampling);set('transect','line-opacity',S.sampling.poll?L.sampling:0);
+  place();
   show('parcel',Math.max(L.parcelLabel*(L.rivers>.5||L.transit>.5?1:0),0));show('r500',L.ring500>.6?1:0);show('r1k',L.ring1k>.6&&L.rivers<.5?1:0);show('eagleRiver',L.rivers>.8&&L.transit<.2?1:0);
   show('north',L.stations>.5&&L.transit<.5&&L.dim<.5?1:0);show('east',L.stations>.5&&L.transit<.5&&L.dim<.5?1:0);show('grand',L.transit>.5?1:0);show('glenwood',L.transit>.5?1:0);show('nolink',L.transit>.5?1:0);show('nwiLabel',L.nwi>.8?1:0);show('frame',L.frame>.6?1:0);}
 
@@ -78,16 +80,17 @@ function start(){if(map||!window.maplibregl||!S.imageryWanted)return;const ring=
     marker('north',north.p,'North Inlet','teal');marker('east',east.p,'East Inlet','teal');marker('grand',north.p,`North and East Inlet<small>${Math.round(KS.km(KS.EAGLE,north.p))} km in a straight line</small>`,'teal');marker('glenwood',glen.p,`Glenwood<small>${Math.round(KS.km(KS.EAGLE,glen.p))} km in a straight line</small>`,'teal');
     marker('nolink',[(KS.EAGLE[0]+north.p[0])/2,(KS.EAGLE[1]+north.p[1])/2],'no delivery link','sand');marker('frame',buffer(ring,1000)[Math.floor(buffer(ring,1000).length/2)],'no measurement in the reviewed record','sand');
     ['eagle','rivers','basins','burn','networks'].forEach(addData);setFlow();setSampling();setForage();apply();});
-  m.on('idle',()=>{if(map===m&&ready&&S.imagery!=='off'&&m.areTilesLoaded()){clearTimeout(timer);if(S.imagery!=='ready')KS.setImagery('ready');}});
+  m.on('idle',()=>{place();if(map===m&&ready&&S.imagery!=='off'&&m.areTilesLoaded()){clearTimeout(timer);if(S.imagery!=='ready')KS.setImagery('ready');}});
   m.on('error',()=>{errors++;if(errors>=8&&S.imagery!=='ready')stop('Imagery or terrain service unavailable');});
   m.getCanvas().addEventListener('webglcontextlost',e=>{e.preventDefault();stop('WebGL context lost');});
   timer=setTimeout(()=>{if(S.imagery==='pending')stop('Imagery timed out');},16000);}
-function stop(why){clearTimeout(timer);const old=map;map=null;ready=false;last={};lastReveal=-99;for(const k in markers){try{markers[k].m.remove();}catch(e){}}markers={};if(old){try{old.remove();}catch(e){}}KS.setImagery('off',why);}
+function stop(why){clearTimeout(timer);const old=map;map=null;ready=false;last={};lastReveal=-99;for(const k in markers){markers[k].el.remove();}markers={};if(old){try{old.remove();}catch(e){}}KS.setImagery('off',why);}
 function cellAt(x,y){if(!map||!ready||S.L.cells<.6||S.lens!=='canopy')return-1;try{const f=map.queryRenderedFeatures([x,y],{layers:['cells']});return f.length?f[0].properties.i:-1;}catch(e){return-1;}}
-function setForage(){if(!map||!ready||!parcel)return;map.getSource('forage').setData(fc([600,1500].map(r=>feat({type:'LineString',coordinates:buffer(parcel,r)}))));const ring=buffer(parcel,S.forageM);map.getSource('forageuser').setData(fc([feat({type:'LineString',coordinates:ring})]));if(markers.forageLabel){markers.forageLabel.m.setLngLat(ring[Math.floor(ring.length*.62)]);markers.forageLabel.el.textContent=(S.forageM/1000).toFixed(2)+' km from the parcel';}else marker('forageLabel',ring[Math.floor(ring.length*.62)],(S.forageM/1000).toFixed(2)+' km from the parcel','teal');last={};apply();}
+function setForage(){if(!map||!ready||!parcel)return;map.getSource('forage').setData(fc([600,1500].map(r=>feat({type:'LineString',coordinates:buffer(parcel,r)}))));const ring=buffer(parcel,S.forageM);map.getSource('forageuser').setData(fc([feat({type:'LineString',coordinates:ring})]));if(markers.forageLabel){markers.forageLabel.ll=ring[Math.floor(ring.length*.62)];markers.forageLabel.el.textContent=(S.forageM/1000).toFixed(2)+' km from the parcel';}else marker('forageLabel',ring[Math.floor(ring.length*.62)],(S.forageM/1000).toFixed(2)+' km from the parcel','teal');last={};apply();}
 function setFlow(){if(!map||!ready)return;const P=S.flowPaths||[];map.getSource('flow').setData(fc(P[0]?[feat({type:'LineString',coordinates:P[0]})]:[]));map.getSource('flowuser').setData(fc(P[1]?[feat({type:'LineString',coordinates:P[1]})]:[]));}
 function setDots(pts){if(map&&ready)map.getSource('flowdots').setData(fc(pts.map(p=>feat({type:'Point',coordinates:p}))));}
 function setSampling(){if(!map||!ready||!S.samplingPts)return;map.getSource('sampling').setData(fc(S.samplingPts.filter(f=>S.sampling[f.kind]!==false).map(f=>feat({type:'Point',coordinates:f.p},{kind:f.kind}))));if(S.transectLine)map.getSource('transect').setData(fc([feat({type:'LineString',coordinates:S.transectLine})]));last={};apply();}
+function project(ll){if(!map||!ready)return null;const q=map.project(ll);return[q.x,q.y];}
 function unproject(x,y){if(!map||!ready)return null;const p=map.unproject([x,y]);return[p.lng,p.lat];}
-KS.gl={setForage,setFlow,setDots,setSampling,unproject,start,stop,apply,addData,cellAt,resize(){if(map){try{map.resize();}catch(e){}}},active:()=>!!map&&ready,map:()=>map};
+KS.gl={project,setForage,setFlow,setDots,setSampling,unproject,start,stop,apply,addData,cellAt,resize(){if(map){try{map.resize();}catch(e){}}},active:()=>!!map&&ready,map:()=>map};
 })();

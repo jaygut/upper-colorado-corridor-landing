@@ -27,7 +27,7 @@ ALLOWLIST = {
     'thermal_replay.json': 'bee91296137a896db053fc90e98a0c96b73080f4f53c80aa48bcf9244a8191d1',
     'daily_temperature.json': '48975b37a24b5e98db671d5bdf82d1ab60ab3e377494a881fc07e1c96ac66486',
 }
-VERSION = '20261113-r5f'
+VERSION = '20261113-r5h'
 STATION_NAMES = {
     '401530105475401': 'North Inlet',
     '09013500': 'East Inlet',
