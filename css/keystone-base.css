@@ -50,5 +50,6 @@ select.k-input{appearance:none;-webkit-appearance:none;cursor:pointer}
 .k-state.pending{color:var(--gol-sand);border-style:dashed}
 .k-state.failed{color:var(--gol-coral)}
 .k-state.private{color:var(--gol-hairline);border-style:dotted}
+.k-state.assessed{color:var(--gol-mist)}
 .k-rule{border:0;border-top:var(--gol-hairline_px) solid var(--gol-muted);margin:0}
 @media (prefers-reduced-motion:reduce){.keystone *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
