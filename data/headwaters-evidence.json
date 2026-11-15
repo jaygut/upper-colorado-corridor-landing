@@ -149,7 +149,7 @@
       "title": "MTBS retrospective spectral class summary",
       "url": "data/mtbs-severity-summary.json",
       "status": "derived",
-      "sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
+      "sha256": "6bf216f6568d0196250c6c6764dd8895565ba795ceb6476d5b4d146017e5b48a",
       "release_date": "2026-11-13",
       "native_resolution": "requested 30 m EPSG:5070 grid; native alignment unestablished",
       "unit": "pixel-center area km\u00b2",
@@ -161,7 +161,7 @@
       "title": "Checked source context; predictive gates remain blocked",
       "url": "data/source-context-release.json",
       "status": "derived",
-      "sha256": "b27d0c755e63280854abc89be6f20cf26ef946989f92f21ec4cb93d7ce71ba97",
+      "sha256": "20fe241da333c05c408845b6b2ed174cf87695653183c170d6c037d911b71cf3",
       "release_date": "2026-11-13",
       "native_resolution": "native DEM and soil geometry; service fuel grids; native daily weather and SNOTEL; each support is explicit in the record",
       "unit": "per source, with native units and area support retained",
@@ -618,9 +618,8 @@
         ]
       }
     ],
-    "summary_sha256": "cdb568a387e6d3655c6440f4dc7df48048f6098892793f406c8f613b22be4887",
-    "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551",
-    "source_run_id": "29749"
+    "summary_sha256": "6bf216f6568d0196250c6c6764dd8895565ba795ceb6476d5b4d146017e5b48a",
+    "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551"
   },
   "round2": {
     "north_case_url": "data/forecast-round2.json",

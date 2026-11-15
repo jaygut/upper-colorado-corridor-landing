@@ -33,8 +33,6 @@
       "designation": "derived",
       "status": "checked_context",
       "provenance": {
-        "job_id": "29753",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29753/terrain/terrain_coverage_and_paths.json",
         "sha256": "942224de46a29a72b1e1e0655173d917b2a69ba887e1c70ca9f274441b081768"
       },
       "source": {
@@ -132,14 +130,10 @@
       "designation": "derived",
       "status": "checked_partial_context",
       "provenance": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/soil_context/soil_basin_summary.json",
         "sha256": "4b8c1f53c3e565381be513f01ae24c314d3dd2b5ffe845e64ca5fb438f998e5c"
       },
       "source_url": "https://sdmdataaccess.sc.egov.usda.gov/Tabular/post.rest",
       "source_receipt": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/soil_context/soil_download_receipt.json",
         "sha256": "3bd0f4d55f626220d6857571374570a1f9e1d0bf2ba08bb6d9c3504c2f59b878"
       },
       "native_resolution": "survey mapunit polygons, source component percentages and horizon depths; no raster upsampling",
@@ -227,8 +221,6 @@
       "designation": "modeled",
       "status": "checked_context",
       "provenance": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
         "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
       },
       "sources": [
@@ -364,8 +356,6 @@
       "designation": "modeled",
       "status": "checked_context",
       "provenance": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
         "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
       },
       "sources": [
@@ -552,8 +542,6 @@
       "designation": "observed",
       "status": "checked_context",
       "provenance": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
         "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
       },
       "sources": [
@@ -609,8 +597,6 @@
       "designation": "modeled",
       "status": "inspection_only_probability_decoding_blocked",
       "provenance": {
-        "job_id": "29750",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29750/fire_context/context_summaries.json",
         "sha256": "4afc364e0a11e0a025f7a0b641452ccbac328f96fb076af00afcdbece476c5bf"
       },
       "sources": [
@@ -650,13 +636,9 @@
       "designation": "derived",
       "status": "checked_qualified_context",
       "provenance": {
-        "job_id": "29754",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/snotel/snotel_frozen_storm_context.json",
         "sha256": "e6a76d25a349b6e001878ea77cf15b5174a704bef82ad80aacfbc96977a858df"
       },
       "source_summary": {
-        "job_id": "29754",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/snotel/context_run_summary.json",
         "sha256": "26b27d3c5b1eb4a1946ea1c54daf0bc0ffc531ed8d359740f199ea5fc5fdb81d"
       },
       "sources": [
@@ -743,8 +725,6 @@
       "designation": "derived",
       "status": "checked_partial_context",
       "provenance": {
-        "job_id": "29754",
-        "evidence_bundle_record": "06_HPC_AND_REPRODUCIBILITY/cluster_returns/29754/burn_basins/burn_basin_intersections.json",
         "sha256": "c4385f13f56631659697c8b9997575661bceb615ab0a38f94517f391f6a3d061"
       },
       "source_url": "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_MTBS_01/MapServer/75/query?where=fire_id+IN+%28%27CO4020310623920201014%27%2C%27CO3957210726620200810%27%29&outFields=fire_id%2Cfire_name%2Cyear%2Cmap_id%2Cig_date%2Cpre_id%2Cpost_id%2Casmnt_type%2Ccomments%2Cacres&returnGeometry=true&outSR=4326&f=geojson&geometryPrecision=6",

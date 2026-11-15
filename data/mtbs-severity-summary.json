@@ -3,7 +3,6 @@
   "designation": "derived",
   "release_date": "2026-11-13",
   "source_summary_sha256": "75b012dac46dd337a34eb47666c66a75f432e14565f65d727e98e9bff3271551",
-  "source_run_id": "29749",
   "original_perimeter_sha256": "b273fac61b73ac0cf02693621ebcd4ac0be03427ef523d93ca8c75aad9f6d905",
   "grid_note": "Requested 30 m grid \u00b7 EPSG:5070 \u00b7 nearest-neighbor service extraction. Native alignment is not established. Areas count pixel centers inside the exact source perimeter.",
   "records": [
