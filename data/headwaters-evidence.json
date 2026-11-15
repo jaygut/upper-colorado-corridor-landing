@@ -12,11 +12,11 @@
   "uncertainty": "Event model, routing and action ranks remain unvalidated.",
   "export_rights": "public_sources_and_authored_summaries_only",
   "legacy": {
-    "case_id": "upper_colorado_corridor_mvp",
+    "release": "historical corridor release v1.7",
     "release_date": "2026-05-28",
     "source_revision": "5dac603ace8423b0cba52cf4947e4cf435eedbd4",
     "source_hashes": {
-      "data/bundle.js": "31680cf42b37cee7e4af1765171c70e2b5fbdabbd1b30b86afe6e18e0d87b516",
+      "data/bundle.js": "9f6d1957a4cbe9e55101093e94e76870c6b70db471a5c5a4e8acaec00dd61ad0",
       "data/geo.js": "cd97a0f2be0f358f217ac5f79e82e51a27ec43a8e527a47128a83461500c5670",
       "data/hydro.js": "bf00d8aed4e31d55d6581709d005bfaa85b034aaaed9d7981aa0a4c650c34dad"
     },
@@ -77,7 +77,7 @@
       "title": "Published corridor evidence snapshot",
       "url": "legacy.html",
       "status": "derived",
-      "sha256": "31680cf42b37cee7e4af1765171c70e2b5fbdabbd1b30b86afe6e18e0d87b516",
+      "sha256": "9f6d1957a4cbe9e55101093e94e76870c6b70db471a5c5a4e8acaec00dd61ad0",
       "release_date": "2026-05-28",
       "native_resolution": "45 catchment labels across HUC8 holdouts",
       "unit": "R\u00b2 on log turbidity",

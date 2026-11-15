@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/archive-notice.css">
 </head>
 <body>
-<aside class="archive-notice" aria-label="Historical archive status"><span>Historical 2026-05-28 screening · fixture and modeled layers · not current validation or treatment evidence</span><a href="index.html">Current evidence experience ↗</a></aside>
+<aside class="archive-notice" aria-label="Historical archive status"><span>Historical 2026-05-28 screening, kept for the record · placeholder and modeled inputs · ranges were not statistical intervals · audit notes added 2026-11-15</span><a href="index.html">Current evidence experience ↗</a></aside>
 
 <!-- render surfaces -->
 <div id="stage"></div>
@@ -72,6 +72,7 @@
       we then handed it to the data, testing those scores against <span class="hl" id="n-stations"></span> real
       monitoring stations and reporting, in public, that they do not yet beat a simple two-variable baseline.
       That reckoning is the story.</p>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> This page is kept as a record of what the May 2026 release claimed. Notes in later scenes give what an independent audit found in November 2026, and the current evidence is in <a href="index.html">the Keystone Polygon story</a>.</p>
     <p class="hero-proof"><span id="n-parcels"></span> candidate parcels · <span id="n-catch"></span> catchments across
       <span id="n-huc8"></span> sub-basins · <span id="n-benef"></span> named beneficiaries · one archived run · release 2026-05-28</p>
   </div></section>
@@ -175,9 +176,9 @@
       load-bearing a parcel is. What matters is that every parcel comes back not as one number but as a number
       with an error bar, a best estimate plus the range the evidence actually supports. The model starts by
       assuming very little and lets that uncertainty flow all the way through, so the width of the range is
-      itself part of the answer. The pass marks are set in advance, keystone at 0.72 and investable at 0.80. The
+      itself part of the answer. [Two pass marks were set in advance. Their values are withheld from this archive.] The
       model is built to measure its own doubt rather than hide it.</p>
-    <div class="mech-list" id="mech-list"></div>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> The range reported for each parcel was set by an assumed constant and was a fixed function of the score, so it carried no information about the evidence and was not a statistical interval. The preset pass marks have no recorded derivation, and eight of the nine parcel attributes were placeholder values.</p>
   </div></section>
 
   <!-- 8 · THE FORWARD RESULT -->
@@ -191,8 +192,8 @@
       (<span class="hl" id="n-ci-pct"></span>%) carry a posterior whose credible interval clears the prior, and
       all of them sit in the Eagle headwaters, while a looser screening cutoff admits
       <span class="hl" id="n-cut-pct"></span>%. The top of the ranking is <span class="hl" id="n-topid"></span>.</p>
-    <div class="widget" id="parcel-mount"></div>
     <div class="badge is-measured"><span class="dot"></span>Posterior from the model; the parcel is drawn from its real run geometry</div>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> Clearing the prior measured the score itself, since each band was a fixed function of it. The ranking cannot be regenerated from the stored inputs, and with small noise on its inputs the top parcel ranked first in fewer than half of draws. The tear-sheet that stood here has been removed from the archive.</p>
   </div></section>
 
   <!-- 9 · THE RECKONING (the hero scene) -->
@@ -209,19 +210,16 @@
       engine's verdict on itself reads <b class="red" id="n-verdict"></b>.</p>
     <div class="widget" id="validation-mount"></div>
     <div class="badge is-measured"><span class="dot"></span>Measured against real USGS / EPA data, pre-registered</div>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> Once the dependence among catchments in the same basin is respected, the association is indistinguishable from zero, and the gap between the two out-of-sample R² values is not established. The benchmark had no station in the parcel's own Eagle basin.</p>
   </div></section>
 
   <!-- 10 · THE RECALIBRATION (interactive) -->
   <section class="step center" data-scene="10"><div class="card">
     <div class="eyebrow center">Then it did the rare thing</div>
     <h2 class="head">It recalibrated its confidence downward.</h2>
-    <p class="body">The model used to borrow its confidence from a made-up reliability number that flattered it.
-      Now its confidence is tied to how well the signal actually held up on data it had never seen, so a
-      mechanism with almost no real skill can no longer pretend to any. Move the control and the engine
-      recomputes a good parcel's estimate live, and you watch it slide back toward its cautious starting point
-      of 0.54. Widening the noise can only pull the estimate toward caution. It cannot manufacture confidence
-      the data does not support.</p>
-    <div class="widget" id="recal-mount"></div>
+    <p class="body">[This scene showed an interactive recalibration of one mechanism's confidence. The widget and its
+      parameters are withheld from this archive.]</p>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> The observation noise presented as tied to measured skill came from an asserted mapping. It reached its ceiling because the measured skill was negative, and it was never wired into the screening engine.</p>
   </div></section>
 
   <!-- 11 · THE HONEST LEDGER -->
@@ -238,6 +236,7 @@
       to about one. The next market will pay for rigor, and an engine that pre-registers its test, checks
       itself against measured reality and publishes where it fails is built for that world.</p>
     <div class="widget" id="ledger-mount"></div>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> The proven column's line on keystone posteriors with real credible intervals does not hold. The screen had no likelihood for observed data, so its bands re-expressed each score through an assumed count and were not credible intervals.</p>
   </div></section>
 
   <!-- 12 · READ BY PEOPLE AND MACHINES -->
@@ -275,6 +274,7 @@
     <p class="marketstat">56 situs &middot; 16 binder-registered places &middot; 0 instruments issued today
       &middot; settlement via BASIN Certificates of Ensurance</p>
     <div class="badge is-caution"><span class="dot"></span>Settlement rail wired to real keys, not an offer to sell. Screening-grade.</div>
+    <p class="audit-note"><span class="audit-note__label">Audit note · 15 Nov 2026</span> A screening provider whose outputs flag parcels for a platform that issues certificates has a conflict of interest that must be disclosed to any counterparty, and any issuance decision belongs with an independent party. No parcel in this screening has an established function, pathway or recipient.</p>
   </div></section>
 
   <!-- 14 · THE ASK -->
@@ -325,8 +325,6 @@
 <script src="data/bundle.js"></script>
 <script src="js/stage.js"></script>
 <script src="js/validation.js"></script>
-<script src="js/parcel.js"></script>
-<script src="js/recalibrate.js"></script>
 <script src="js/ledger.js"></script>
 <script src="js/atmosphere.js"></script>
 </body>

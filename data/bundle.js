@@ -1,17 +1,15 @@
 /* ============================================================================
    data/bundle.js  ->  window.APP_DATA
-   The single source of truth. Every number the landing shows lives here,
-   traceable to the upper_colorado_corridor_mvp run outputs and the frozen,
-   pre-registered validation record. Seeded (20260507), stamped, reproducible.
-   Geometry (window.__GEO, loaded by geo.js first) is merged in at the bottom.
-   No em-dashes, per house style.
+   Display data for the historical 2026-05-28 corridor release (legacy.html),
+   kept for the record. Internal model parameters were removed on 2026-11-15;
+   the audit notes on legacy.html state what that release claimed and what the
+   November 2026 audit found. Geometry (window.__GEO, loaded by geo.js first) is
+   merged in at the bottom.
    ========================================================================== */
 window.APP_DATA = {
   _meta: {
-    case_id: "upper_colorado_corridor_mvp", engine: "spillover_predictor_v3.0",
-    model_card: "keystone_state_space_v0_1", artifact: "v1.7-agent-portal",
-    data_mode: "public_live", prereg: "SHA-256 frozen 2026-05-28, before unblinding",
-    seed: 20260507, generated_at: "2026-05-28"
+    release: "historical corridor release v1.7", prereg: "SHA-256 frozen 2026-05-28, before unblinding",
+    generated_at: "2026-05-28", parameters_withheld: "2026-11-15"
   },
   corridor: {
     length_km: 230, bbox: [-109.75, 38.20, -106.05, 39.95],
@@ -56,20 +54,7 @@ window.APP_DATA = {
       { src:"BLM / USFS / Reclamation", gives:"vegetation & fuel treatment events", role:"intervention ledger" },
       { src:"County parcel services (Eagle, Garfield, Mesa CO; Grand UT)", gives:"real parcel boundaries where an API exists", role:"geometry" }
     ],
-    metrics: ["forest_pct","canopy_pct","impervious_pct","riparian_proximity","soil_erodibility","fuel_load","biodiversity_obs","protected_adjacency","wetland_adjacency"],
     evidence_mode: { modeled_overlay: 336, live_comid: 0 }
-  },
-  model: {
-    // Relative ORDER of the mechanisms only. The engine's weight VALUES are internal;
-    // the chart renders rank (not magnitude), so no coefficient ships. rank 1 = largest.
-    mechanisms: [
-      { key:"hydrology_retention", rank:1 }, { key:"timber_resilience",  rank:2 },
-      { key:"sediment_avoidance",  rank:3 }, { key:"deployability",       rank:4 },
-      { key:"fire_admissibility",  rank:5 }, { key:"microclimate_buffer", rank:6 },
-      { key:"biodiversity_support", rank:7 }
-    ],
-    prior: "Beta(2,2)", mc_draws: "2,000 to 6,000",
-    gates: { keystone:0.72, investable:0.80, bad_neighbor:0.55 }
   },
   graph: {
     forward: 255, reverse: 199, both: 44, parcels: 56,
@@ -78,7 +63,7 @@ window.APP_DATA = {
   },
   keystone_ratio: {
     // recomputed from tables/keystone_ranking.csv (56 parcels):
-    ci_clearing: { n:4,  of:56, pct:7.1,  def:"posterior credible interval excludes the prior (ci_low > 0.5)" },
+    ci_clearing: { n:4,  of:56, pct:7.1,  def:"archived band low end above 0.5 (ci_low > 0.5); a pseudo-count band, not a credible interval (audit 2026-11-15)" },
     score_cutoff: { n:16, of:56, pct:28.6, def:"keystone_score >= 0.50" },
     band: "23 to 29%", prior_run_pct: 17,
     ci_parcels: "the four Eagle headwaters parcels (the Red Cliff / Eagle River source corridor)"
@@ -105,15 +90,7 @@ window.APP_DATA = {
     verdict: "associated_not_incremental", strength: "WEAK",
     diagnosis: "The bottleneck is the FEATURES, not the weights. Their relationship to water quality is spatially non-stationary; it does not transfer to a new sub-basin, which is exactly the property a screening tool most needs.",
     hydrology: { outcome:"baseflow index", verdict:"not_supported",
-      why:"the forest-based retention score peaks in high-elevation snowmelt headwaters, which are hydrologically flashier (lower baseflow), so the mechanism points the wrong way for that outcome" },
-    // real precision-weighted Gaussian update in logit space (the engine's calibration
-    // module): obs_sd = MAX_SD - (MAX_SD-BASE_SD)*sqrt(clip(oof_r2,0,1)).
-    // The widget recomputes the posterior LIVE from these parameters (not interpolated).
-    recal: { mechanism:"sediment_avoidance", oof_r2:0.0,
-      prior_p:0.54, prior_sd:0.82, mech_value:0.70,
-      synth_sd:0.678, calib_sd:1.40, base_sd:0.45, max_sd:1.40,
-      before:0.638, after:0.583, prior:0.54,
-      note:"synthetic overconfident observation noise replaced with noise tied to measured out-of-sample skill" }
+      why:"the forest-based retention score peaks in high-elevation snowmelt headwaters, which are hydrologically flashier (lower baseflow), so the mechanism points the wrong way for that outcome" }
   },
   ledger: {
     partner_summary: "This run proves the engine; it does not yet prove investability lift.",
@@ -133,29 +110,6 @@ window.APP_DATA = {
       "No mechanism yet clears validated_incremental.",
       "Investability bite (one real parcel, one verified payor, one dollar) is the stated next step."
     ]
-  },
-  // The settlement layer (BASIN Certificates of Ensurance). PLACEHOLDER: the rail is wired to
-  // the run's real situs keys (place_id / binder_asset_id from ensurance_places_normalized +
-  // binder_crosswalk), but the on-chain layer is fixture (0x routing reserved). Nothing is for
-  // sale; an instrument appears only where a polygon clears MRV and a live contract is deployed.
-  instruments: {
-    settlement: "BASIN Certificate of Ensurance",
-    settlement_url: "https://ensurance.app/basin",
-    chain: "Base",
-    placeholder_address: "0x0000000000000000000000000000000000000000",
-    purpose: "stewardship-finance-readiness",
-    // BASIN's Natural Cap Rate = Ecosystem Service Value / Real Estate Value; our engine rates
-    // the ESV-leverage side, which is exactly the "distance to a dollar" the ledger names.
-    natural_cap_rate: "Ecosystem Service Value / Real Estate Value",
-    summary: { situs: 56, binder_registered: 16, live: 0, mrv_cleared: 0 },
-    // the slot shown on the keystone tear-sheet (the top-ranked polygon)
-    top_parcel_slot: {
-      place_id: "place-red_cliff_eagle-03",
-      place_binder: "binder-red_cliff_eagle-01",
-      place_label: "Red Cliff / Eagle headwaters",
-      status: "slot_ready",       // slot_ready | awaiting_mrv | live
-      status_label: "Slot ready"
-    }
   }
 };
 
