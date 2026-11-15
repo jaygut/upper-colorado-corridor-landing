@@ -15,7 +15,7 @@ const STATIONS=[{id:'401530105475401',name:'North Inlet',p:[-105.799722,40.2575]
 function km(a,b){const r=Math.PI/180,dlat=(b[1]-a[1])*r,dlon=(b[0]-a[0])*r,h=Math.sin(dlat/2)**2+Math.cos(a[1]*r)*Math.cos(b[1]*r)*Math.sin(dlon/2)**2;return 12742*Math.asin(Math.sqrt(h));}
 
 const stage=document.getElementById('stage'),canvas=document.getElementById('geo'),ctx=canvas.getContext('2d'),mapHost=document.getElementById('imagery');
-const S={web:null,webMode:'water',overlay:{line:null,dots:null},forageM:600,sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
+const S={web:null,webMode:'all',overlay:{line:null,dots:null},forageM:600,sampling:{birds:true,soil:true,poll:true},flowPaths:null,samplingPts:null,W:0,H:0,dpr:1,cam:null,L:{},imagery:'pending',imageryWanted:new URLSearchParams(location.search).get('svg')!=='1',lens:'canopy',hoverCell:-1,pinCell:-1,fire:true,data:{},errors:[]};
 const off=document.createElement('canvas');let frame=0,parcelRing=null,parcelM=null;
 const embedded=document.getElementById('embedded-parcel');
 if(embedded){try{parcelRing=JSON.parse(embedded.textContent).features[0].geometry.coordinates[0];parcelM=parcelRing.map(merc);}catch(e){S.errors.push('embedded parcel unreadable');}}
@@ -127,12 +127,20 @@ function draw(){frame=0;if(!S.cam||!S.W)return;const L=S.L,W=S.W,H=S.H;ctx.setTr
       else if(L.dim<.5){const north=s.id==='401530105475401';if(s.id!=='09071750')text(s.name,q[0]+10,q[1]+(north?-10:18),{size:12});}}
     if(L.transit>.5){const mid=P([(EAGLE[0]+STATIONS[0].p[0])/2,(EAGLE[1]+STATIONS[0].p[1])/2]);text('no delivery link',mid[0]+10,mid[1]+4,{size:11,color:C.sand});}
     ctx.restore();}
-  if(L.web>0&&S.web){const wm=S.webMode||'water',cols={4:C.coral,5:C.green,6:C.teal,7:C.sand},al={4:1,5:1,6:A.div,7:A.div};ctx.save();ctx.lineJoin='round';ctx.lineCap='round';if(!S.web.m)S.web.m=S.web.lines.map(l=>({c:l.c,b:l.b,m:l.p.map(merc)}));for(const l of S.web.m){if(l.c===8)continue;ctx.globalAlpha=L.web*al[l.c]*(wm==='flight'?A.node:1);ctx.strokeStyle=cols[l.c];ctx.lineWidth=.6+l.b*.6;ctx.beginPath();trace(l.m,false);ctx.stroke();}ctx.restore();if(wm!=='water'){ring(600,L.web*A.div,'0.6 km');ring(1500,L.web*A.div,'1.5 km');}}
-  if(L.flow>0&&S.flowPaths){ctx.save();ctx.globalAlpha=L.flow;ctx.lineJoin='round';S.flowPaths.forEach((c,k)=>{if(!c)return;ctx.beginPath();trace(c.map(merc),false);ctx.strokeStyle=k?C.paper:C.green;ctx.lineWidth=k?2:3;ctx.stroke();});ctx.restore();}
+  if(L.web>0&&S.web){const wm=S.webMode||'all',cols={4:C.paper,5:C.teal,6:C.teal,7:C.teal},al={4:A.div*.6,5:A.div,6:A.div*.7,7:A.div*.45};ctx.save();ctx.lineJoin='round';ctx.lineCap='round';if(!S.web.m)S.web.m=S.web.lines.map(l=>({c:l.c,b:l.b,m:l.p.map(merc)}));for(const l of S.web.m){if(l.c===8)continue;ctx.globalAlpha=L.web*al[l.c]*(wm==='flight'?A.edge:1);ctx.strokeStyle=cols[l.c];ctx.lineWidth=.6+l.b*.6;ctx.beginPath();trace(l.m,false);ctx.stroke();}ctx.restore();}
+  if(L.flow>0&&S.flowPaths){ctx.save();ctx.globalAlpha=L.flow;ctx.lineJoin='round';S.flowPaths.forEach((c,k)=>{if(!c)return;ctx.beginPath();trace(c.map(merc),false);ctx.strokeStyle=k?C.paper:(L.web>.6?C.teal:C.green);ctx.lineWidth=k?2:3;ctx.stroke();});ctx.restore();}
   if(L.sampling>0&&S.samplingPts){ctx.save();ctx.globalAlpha=L.sampling;for(const f of S.samplingPts){if(S.sampling[f.kind]===false)continue;const q=P(f.p);ctx.beginPath();ctx.arc(q[0],q[1],f.kind==='soil'?5:8,0,7);ctx.fillStyle=C.abyss;ctx.fill();ctx.strokeStyle=f.kind==='birds'?C.teal:f.kind==='soil'?C.sand:C.paper;ctx.lineWidth=2;ctx.stroke();}ctx.restore();}
   if(L.frame>.6){text('no measurement in the reviewed record',P(EAGLE)[0],S.H-(S.W<760?16:96),{align:'center',size:11,color:C.sand});}
   overlay();S.drawn=(S.drawn||0)+1;}
-function overlay(){const o=S.overlay;if(!o)return;ctx.save();ctx.globalAlpha=1;if(o.line&&o.line.length>1){ctx.beginPath();o.line.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));ctx.strokeStyle=C.green;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}if(o.dots)for(const q of o.dots){ctx.beginPath();ctx.arc(q[0],q[1],3.5,0,7);ctx.fillStyle=C.paper;ctx.fill();ctx.strokeStyle=C.abyss;ctx.lineWidth=1.5;ctx.stroke();}ctx.restore();}
+function overlay(){const o=S.overlay;if(!o)return;ctx.save();ctx.globalAlpha=1;if(o.line&&o.line.length>1){ctx.beginPath();o.line.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));ctx.strokeStyle=C.green;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}if(o.dots)for(const q of o.dots){ctx.beginPath();ctx.arc(q[0],q[1],3.5,0,7);ctx.fillStyle=C.paper;ctx.fill();ctx.strokeStyle=C.abyss;ctx.lineWidth=1.5;ctx.stroke();}
+  /* connectivity scene (keystone-connect.js): organism corridors, then movers. Water is a teal streak pointing downhill;
+     each movement group has its own token colour and marker shape, so colour and shape both carry the distinction. */
+  if(o.corr){ctx.lineCap='round';for(const c of o.corr){ctx.globalAlpha=c.trail?A.node:c.thru?A.div:A.edge*1.6;ctx.strokeStyle=C[c.col];ctx.lineWidth=c.trail?1.2:c.thru?1.4:1;ctx.setLineDash(c.trail||c.thru?[]:[2,4]);ctx.beginPath();c.q.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));ctx.stroke();}ctx.setLineDash([]);ctx.globalAlpha=1;}
+  if(o.parts)for(const p of o.parts){const q=p.q;if(p.k==='w'){ctx.lineCap='round';ctx.beginPath();ctx.moveTo(p.t[0],p.t[1]);ctx.lineTo(q[0],q[1]);ctx.strokeStyle=C.abyss;ctx.lineWidth=4.2;ctx.stroke();ctx.strokeStyle=C.teal;ctx.lineWidth=2.4;ctx.stroke();ctx.beginPath();ctx.arc(q[0],q[1],1.6,0,7);ctx.fillStyle=C.teal;ctx.fill();continue;}
+    ctx.beginPath();if(p.k==='dot'){ctx.arc(q[0],q[1],3.2,0,7);ctx.fillStyle=C[p.col];ctx.fill();ctx.strokeStyle=C.abyss;ctx.lineWidth=1;ctx.stroke();}
+    else if(p.k==='dash'){ctx.rect(q[0]-3.5,q[1]-1.4,7,2.8);ctx.fillStyle=C[p.col];ctx.fill();}
+    else{ctx.arc(q[0],q[1],3.4,0,7);ctx.strokeStyle=C[p.col];ctx.lineWidth=1.8;ctx.stroke();}}
+  ctx.restore();}
 function overlayDraw(){if(!frame)frame=requestAnimationFrame(draw);}
 function screen(ll){if(window.KS&&KS.gl&&KS.gl.active()&&S.imagery==='ready')return KS.gl.project(ll);return P(ll);}
 function invalidate(){if(window.KS&&KS.gl&&KS.gl.active())KS.gl.apply();if(!frame)frame=requestAnimationFrame(draw);}
