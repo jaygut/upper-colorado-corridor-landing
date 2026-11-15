@@ -4,8 +4,8 @@
 'use strict';
 const VERSION = 'keystone-monitoring-review-1.0.0';
 const CASES = Object.freeze({
-  north: {label:'North Inlet',station:'401530105475401',url:'data/forecast-round2.json',sha256:'316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772',years:[2023,2024]},
-  glenwood: {label:'Glenwood',station:'09071750',url:'data/monitoring-glenwood.json',sha256:'9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d',years:[2024,2025]}
+  north: {label:'North Inlet',station:'401530105475401',url:'data/forecast-round2.json',sha256:'0f2a615c2a2ba45782f915e01716ea6b68cc312bc6130f8c8de0fa4b8de85151',years:[2023,2024]},
+  glenwood: {label:'Glenwood',station:'09071750',url:'data/monitoring-glenwood.json',sha256:'e9760865dffdd4bfc0887bf7324c61f2ddca1fe0547660459289e90cbfb484e7',years:[2024,2025]}
 });
 const finite = x => typeof x === 'number' && Number.isFinite(x);
 const assert = (test,message) => { if (!test) throw Error(message); };

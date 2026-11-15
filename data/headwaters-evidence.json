@@ -174,7 +174,7 @@
       "url": "data/forecast-round2.json",
       "status": "derived",
       "release_date": "2026-11-13",
-      "sha256": "316eecbf0fd3f978d2a53b32413d67fd6d38cd432d8e3255d62aceb3d12ac772"
+      "sha256": "0f2a615c2a2ba45782f915e01716ea6b68cc312bc6130f8c8de0fa4b8de85151"
     },
     {
       "id": "glenwood-decision-r2",
@@ -182,7 +182,7 @@
       "url": "data/monitoring-glenwood.json",
       "status": "derived",
       "release_date": "2026-11-13",
-      "sha256": "9a04ce48e4a4b0ae4f2fc286d8c23fd8cf02edc5fdf06d308faa40a8d6937c7d"
+      "sha256": "e9760865dffdd4bfc0887bf7324c61f2ddca1fe0547660459289e90cbfb484e7"
     },
     {
       "id": "finance-r2",
