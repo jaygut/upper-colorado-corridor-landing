@@ -26,7 +26,7 @@
   size(); addEventListener("resize", size);
 
   // seeded pseudo-random so the field is stable across reloads
-  var seed = 20260507;
+  var seed = 97531;
   function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
 
   var N = 90, motes = [];
