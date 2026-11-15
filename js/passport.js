@@ -5,13 +5,11 @@
   var KEY = 'keystone-file-v1';
   var FILES = {
     passport: 'data/keystone/passport.json',
-    eagle: 'data/keystone/eagle.json',
-    sources: 'data/keystone/sources.json'
+    eagle: 'data/keystone/eagle.json'
   };
   var UNAVAILABLE = {
     passport: 'Passport data unavailable. No substitute values are shown.',
-    eagle: 'Parcel geometry and bird record data unavailable. No substitute values are shown.',
-    sources: 'Source hash data unavailable. No substitute values are shown.'
+    eagle: 'Parcel geometry and bird record data unavailable. No substitute values are shown.'
   };
   var ACRES_PER_HA = 2.4710538;
   var PASSPORT_STATUS = 'Descriptive source context. Field validation pending.';
@@ -60,7 +58,7 @@
   var WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   var SVGNS = 'http://www.w3.org/2000/svg';
 
-  var D = { passport: null, eagle: null, sources: null };
+  var D = { passport: null, eagle: null };
   var failed = {};
   var pendingMechanism = null;
   var state = restore();
@@ -878,10 +876,6 @@
 
   /* ---------- export ---------- */
 
-  function sourceHashes() {
-    return { file: FILES.sources, inputs_sha256: D.sources.inputs_sha256, outputs_sha256: D.sources.outputs_sha256 };
-  }
-
   function buildPassport() {
     var p = D.passport;
     return {
@@ -894,8 +888,7 @@
       dimensions: p.dimensions,
       chain: p.chain,
       layer_inventory: p.layer_inventory,
-      attribution: p.attribution,
-      sources: sourceHashes()
+      attribution: p.attribution
     };
   }
 
@@ -930,7 +923,7 @@
       reviewer: state.review.reviewer.trim() || null,
       obligation: { note: p.obligation.note, pending_count: pendingCount(), field_count: obFields().length, groups: groups },
       claim_limits: p.claim_limits,
-      sources: sourceHashes()
+      release: p.release
     };
   }
 
@@ -973,11 +966,7 @@
     });
     L.push('', '## What this file does not establish', '');
     d.claim_limits.forEach(function (c) { L.push('- ' + c); });
-    L.push('', '## Source hashes', '', 'From ' + d.sources.file + '. SHA-256.', '', '### Inputs', '');
-    Object.keys(d.sources.inputs_sha256).forEach(function (k) { L.push('- `' + k + '` `' + d.sources.inputs_sha256[k] + '`'); });
-    L.push('', '### Outputs', '');
-    Object.keys(d.sources.outputs_sha256).forEach(function (k) { L.push('- `' + k + '` `' + d.sources.outputs_sha256[k] + '`'); });
-    L.push('');
+    L.push('', '## Release', '', d.release, '');
     return L.join('\n');
   }
 
@@ -994,7 +983,7 @@
     setTimeout(function () { out.textContent = 'Started the download of ' + name + '.'; }, 30);
   }
 
-  function exportsReady() { return !!(D.passport && D.sources); }
+  function exportsReady() { return !!D.passport; }
 
   function syncExport() {
     var ok = exportsReady();
@@ -1070,7 +1059,7 @@
 
   function start() {
     bindExport();
-    load(['passport', 'eagle', 'sources']).then(function () {
+    load(['passport', 'eagle']).then(function () {
       window.__FILE_READY = true;
       if (window.location.hash.length > 1) {
         var target = document.getElementById(window.location.hash.slice(1));
